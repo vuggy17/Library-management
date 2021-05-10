@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using main.model;
+using main.model.enums;
 
 namespace main
 {
@@ -23,6 +27,15 @@ namespace main
         public MainWindow()
         {
             InitializeComponent();
+
+            Person duy = new Person("Duy@alljf.com.vn");
+            Person trang = new Person("trang");
+
+            Account github = new Account(duy);
+            
+            Console.WriteLine("account: "+github.info.email.ToString());
+
+            var bookStatus = BookFormat.AUDBOOK.ToString();
         }
     }
 }
