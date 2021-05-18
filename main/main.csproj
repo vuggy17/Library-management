@@ -73,6 +73,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
@@ -88,6 +89,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -112,6 +114,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="layout\HomeAndFeature\components\FeatureNavigationBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\components\HomeNavigationBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\components\UserScanerBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\HomeAndFeatureTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="layout\member.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +143,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="db\Db.cs" />
+    <Compile Include="layout\HomeAndFeature\components\FeatureNavigationBar.xaml.cs">
+      <DependentUpon>FeatureNavigationBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\HomeNavigationBar.xaml.cs">
+      <DependentUpon>HomeNavigationBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\UserScanerBoard.xaml.cs">
+      <DependentUpon>UserScanerBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\HomeAndFeatureTest.xaml.cs">
+      <DependentUpon>HomeAndFeatureTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\member.xaml.cs">
       <DependentUpon>member.xaml</DependentUpon>
     </Compile>
@@ -170,6 +200,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="layout\member\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="layout\HomeAndFeature\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\ic_book.png" />
+    <Resource Include="assests\ic_home.png" />
+    <Resource Include="assests\ic_member.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\ic_search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
