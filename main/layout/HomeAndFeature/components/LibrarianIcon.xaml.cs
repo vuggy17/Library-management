@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace main.layout.HomeAndFeature.components
 {
     /// <summary>
-    /// Interaction logic for UserScanerBoard.xaml
+    /// Interaction logic for LibrarianIcon.xaml
     /// </summary>
-    public partial class UserScanerBoard : UserControl
+    public partial class LibrarianIcon : UserControl
     {
-        public UserScanerBoard()
+        public LibrarianIcon()
         {
             InitializeComponent();
         }
-
     }
 }
