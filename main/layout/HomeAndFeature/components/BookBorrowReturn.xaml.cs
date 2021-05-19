@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace main.layout.HomeAndFeature.components
 {
     /// <summary>
-    /// Interaction logic for Searchbar.xaml
+    /// Interaction logic for BookBorrowReturn.xaml
     /// </summary>
-    public partial class Searchbar : UserControl
+    public partial class BookBorrowReturn : UserControl
     {
-        public Searchbar()
+        public BookBorrowReturn()
         {
             InitializeComponent();
         }

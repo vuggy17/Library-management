@@ -37,9 +37,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="340"/>
                 <RowDefinition/>
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions> 
             <components:UserScanerBoard Margin="0 20"></components:UserScanerBoard>
-            <components:ReserveAndCheckOutBoard Grid.Row="1" Margin="0,0,0,20" ></components:ReserveAndCheckOutBoard>
+            <components:BookBorrowReturn Grid.Row="1" Margin="0,0,0,20" ></components:BookBorrowReturn>
         </Grid>
         
         <!--Icon-->

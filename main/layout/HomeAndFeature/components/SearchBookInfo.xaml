@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="main.layout.HomeAndFeature.components.SearchBookInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:main.layout.HomeAndFeature.components"
+             mc:Ignorable="d" 
+             d:DesignHeight="70" d:DesignWidth="1245">
+    <TextBox 
+                             FontSize="25"
+                             FontFamily="Roboto"                                                   
+                             BorderThickness="1.2"
+                             VerticalContentAlignment="Center"                           
+                             VerticalAlignment="Stretch"
+                             Height="70" BorderBrush="Black" MaxLines="1"                                  
+                             TextWrapping="Wrap"                             
+           
+                              >
+        <TextBox.Style>
+            <Style TargetType="TextBox"
+                                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                <Style.Resources>
+                    <VisualBrush x:Key="CueBannerBrush"
+                                     AlignmentX="Left"
+                                     AlignmentY="Center"
+                                     Stretch="None">
+                        <VisualBrush.Visual>
+                            <Grid Background="White"
+                                              Margin="50 0 0 0"
+                                              Height="70"
+                                              Width="1275">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Image Margin="20 0 0 0"
+                                                    Source="/assests/ic_search.png" 
+                                                   Stretch="None"/>
+                                <Label x:Name="HintText"
+                                        Content="Select book"
+                                       Grid.Column="1"
+                                       FontSize="25"
+                                       FontFamily="Roboto"
+                                       VerticalContentAlignment="Center"
+                                       Padding="15 0 0 0"
+                                       Opacity="0.5"                                                   
+                                                   />
+                            </Grid>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                    <VisualBrush x:Key="CueBannerBrushNoneText"
+                                     AlignmentX="Left"
+                                     AlignmentY="Center"
+                                     Stretch="None">
+                        <VisualBrush.Visual>
+                            <Grid Background="White"
+                                              Margin="50 0 0 0"
+                                              Height="70"
+                                              Width="1275">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Image Margin="20 0 0 0"
+                                                    Source="/assests/ic_search.png" 
+                                                   Stretch="None"/>
+                            </Grid>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius"    Value="30 30 30 30" />
+                        <Setter Property="Padding" Value="60 0 0 0"/>
+                        <Setter Property="Background"
+                                    Value="{StaticResource CueBannerBrush}" />
+                    </Style>
+                </Style.Resources>
+                <Style.Triggers >
+                    <Trigger  Property="Text"
+                                 Value="{x:Static sys:String.Empty}">
+                        <Setter Property="Background"
+                                    Value="{StaticResource CueBannerBrush}" />
+
+                    </Trigger>
+                    <Trigger Property="Text"
+                                 Value="{x:Null}">
+                        <Setter Property="Background"
+                                    Value="{StaticResource CueBannerBrush}" />
+                    </Trigger>
+                    <Trigger Property="IsSelectionActive"
+                                 Value="True">
+                        <Setter Property="Background"
+                                    Value="{StaticResource CueBannerBrushNoneText}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </TextBox.Style>
+    </TextBox>
+</UserControl>

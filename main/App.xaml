@@ -72,6 +72,10 @@
             <Style TargetType="Button" x:Key="ConfirmButton">
                 <Setter Property="Background" Value="#28A745"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="Width" Value="223"></Setter>
+                <Setter Property="Height" Value="66"></Setter>
+                <Setter Property="FontSize" Value="27"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
                 <Setter Property="Button.Effect">
                     <Setter.Value>
                         <DropShadowEffect Color="#386781" Direction="320" 
@@ -112,6 +116,10 @@
             <Style TargetType="Button" x:Key="CancelButton">
                 <Setter Property="Background" Value="#818181"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
+                <Setter Property="Width" Value="223"></Setter>
+                <Setter Property="Height" Value="66"></Setter>
+                <Setter Property="FontSize" Value="27"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
                 <Setter Property="Button.Effect">
                     <Setter.Value>
                         <DropShadowEffect Color="#386781" Direction="320" 
@@ -144,6 +152,20 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+
+            <Style TargetType="Label" 
+                   x:Key="Imagelabel"
+                   xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+                   >
+                <Setter Property="Background" Value="White"></Setter>
+                <Setter Property="BorderThickness" Value="1"></Setter>
+                <Style.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius"
+                                Value="30"/>
+                    </Style>
+                </Style.Resources>
             </Style>
 
 

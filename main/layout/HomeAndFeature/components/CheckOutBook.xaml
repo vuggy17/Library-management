@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="main.layout.HomeAndFeature.components.ReserveAndCheckOutBoard"
+﻿<UserControl x:Class="main.layout.HomeAndFeature.components.CheckOutBook"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -19,7 +19,7 @@
                         <ColumnDefinition Width="7*"/>
                         <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
-                    <local:Searchbar Margin="50,20,0,0"></local:Searchbar>
+                    <local:SearchBookID Margin="50,20,0,0"></local:SearchBookID>
                     <Button Grid.Column="1"
                             Width="260"
                             Height="70"

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace main.layout.HomeAndFeature.components
 {
     /// <summary>
-    /// Interaction logic for ReserveAndCheckOutBoard.xaml
+    /// Interaction logic for CheckOutBook.xaml
     /// </summary>
-    public partial class ReserveAndCheckOutBoard : UserControl
+    public partial class CheckOutBook : UserControl
     {
-        public ReserveAndCheckOutBoard()
+        public CheckOutBook()
         {
             InitializeComponent();
         }

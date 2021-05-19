@@ -14,7 +14,90 @@
                     <RowDefinition Height="90"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <local:Searchbar Margin="50 20 70 0"></local:Searchbar>
+                <local:SearchUserID Margin="50 20 70 0"></local:SearchUserID>
+                <Grid Grid.Row="1" Margin="50,0,80,0" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="2.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Style="{DynamicResource Imagelabel}"
+                           Width="118"
+                           Height="142" BorderBrush="Black" 
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"
+                          
+                           >
+                        <Label.Background>
+                            <ImageBrush ImageSource="/assests/avatar_user.png"
+                                        Stretch="UniformToFill"
+                                        >
+                            </ImageBrush>
+                        </Label.Background>
+                    </Label>
+                    <Grid Grid.Column="1"  Height="142" VerticalAlignment="Center"
+>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Phạm Minh Tân"                              
+                               FontFamily="Roboto"
+                               FontSize="38"
+                               Padding="0 0 4 0"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"
+                               VerticalContentAlignment="Center" HorizontalAlignment="Left" TextOptions.TextHintingMode="Animated"
+                               >                            
+                        </Label>
+                        <Label Grid.Row="1"
+                                Content="ID: NJNKJZNJKFNJKLBNDFJB "                              
+                               FontFamily="Roboto"
+                               FontSize="25"
+                               Padding="0 0 4 0"
+                               FontWeight="Regular"
+                               VerticalAlignment="Center"
+                               VerticalContentAlignment="Center" HorizontalAlignment="Left" TextOptions.TextHintingMode="Animated"
+                               >
+                        </Label>
+                        <Label Grid.Row="2"
+                                Content="Borrowed books: 2/5"                              
+                               FontFamily="Roboto"
+                               FontSize="25"
+                               Padding="0 0 4 0"
+                               FontWeight="Regular"
+                               VerticalAlignment="Center"
+                               VerticalContentAlignment="Center" HorizontalAlignment="Left" TextOptions.TextHintingMode="Animated"
+                               >
+                        </Label>
+                        <Label Grid.Row="2"
+                                Content="Over due: 0"                              
+                               FontFamily="Roboto"
+                               Foreground="Red"
+                               FontSize="25"
+                               Padding="0 0 4 0"
+                               FontWeight="Regular"
+                               VerticalAlignment="Center"
+                               VerticalContentAlignment="Center" HorizontalAlignment="Right" TextOptions.TextHintingMode="Animated"
+                               >
+                        </Label>
+                    </Grid>
+                    <Label
+                               Grid.Column="2"
+                               Content="Full information"                              
+                               FontFamily="Roboto"
+                               Foreground="#00A2FF"
+                               FontSize="25"
+                               Padding="0 0 4 0"
+                               FontWeight="Regular"
+                               VerticalAlignment="Top"
+                               VerticalContentAlignment="Center" HorizontalAlignment="Right" TextOptions.TextHintingMode="Animated" Margin="0,42,20,0"
+                               >
+                    </Label>
+
+                </Grid>
+               
              
             </Grid>
         </Label>

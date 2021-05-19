@@ -114,6 +114,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="layout\HomeAndFeature\components\BookBorrowReturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\components\CheckOutBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="layout\HomeAndFeature\components\FeatureNavigationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,15 +134,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\HomeAndFeature\components\ReserveAndCheckOutBoard.xaml">
+    <Page Include="layout\HomeAndFeature\components\ReseviceBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\HomeAndFeature\components\Searchbar.xaml">
+    <Page Include="layout\HomeAndFeature\components\SearchBookID.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\components\SearchBookInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\components\SearchUserID.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\components\UserBookBorrow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\HomeAndFeature\components\UserScanerBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\form\RenewForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\form\ReturnBookForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,6 +183,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="db\Db.cs" />
+    <Compile Include="layout\HomeAndFeature\components\BookBorrowReturn.xaml.cs">
+      <DependentUpon>BookBorrowReturn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\CheckOutBook.xaml.cs">
+      <DependentUpon>CheckOutBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\HomeAndFeature\components\FeatureNavigationBar.xaml.cs">
       <DependentUpon>FeatureNavigationBar.xaml</DependentUpon>
     </Compile>
@@ -164,14 +198,29 @@
     <Compile Include="layout\HomeAndFeature\components\LibrarianIcon.xaml.cs">
       <DependentUpon>LibrarianIcon.xaml</DependentUpon>
     </Compile>
-    <Compile Include="layout\HomeAndFeature\components\ReserveAndCheckOutBoard.xaml.cs">
-      <DependentUpon>ReserveAndCheckOutBoard.xaml</DependentUpon>
+    <Compile Include="layout\HomeAndFeature\components\ReseviceBook.xaml.cs">
+      <DependentUpon>ReseviceBook.xaml</DependentUpon>
     </Compile>
-    <Compile Include="layout\HomeAndFeature\components\Searchbar.xaml.cs">
-      <DependentUpon>Searchbar.xaml</DependentUpon>
+    <Compile Include="layout\HomeAndFeature\components\SearchBookID.xaml.cs">
+      <DependentUpon>SearchBookID.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\SearchBookInfo.xaml.cs">
+      <DependentUpon>SearchBookInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\SearchUserID.xaml.cs">
+      <DependentUpon>SearchUserID.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\UserBookBorrow.xaml.cs">
+      <DependentUpon>UserBookBorrow.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\HomeAndFeature\components\UserScanerBoard.xaml.cs">
       <DependentUpon>UserScanerBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\form\RenewForm.xaml.cs">
+      <DependentUpon>RenewForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\form\ReturnBookForm.xaml.cs">
+      <DependentUpon>ReturnBookForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\HomeAndFeature\HomeAndFeatureTest.xaml.cs">
       <DependentUpon>HomeAndFeatureTest.xaml</DependentUpon>
@@ -220,7 +269,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="layout\HomeAndFeature\form\" />
     <Folder Include="layout\member\" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +293,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assests\ic_double_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\avatar_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\img_confirm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
