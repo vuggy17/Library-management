@@ -20,9 +20,16 @@ namespace main.layout.HomeAndFeature.components
     /// </summary>
     public partial class CheckOutBook : UserControl
     {
+        public List<String> tempList = new List<string>();
         public CheckOutBook()
         {
             InitializeComponent();
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            testLv.ItemsSource = tempList;
         }
     }
 }

@@ -7,63 +7,100 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1245">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50 "/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Label Content="Book borrowed:"
-               FontFamily="Roboto"
-               FontSize="30"
-               FontWeight="Bold"
-               Foreground="White"
-               VerticalAlignment="Center"
-               VerticalContentAlignment="Center"
-               ></Label>
         <Label Grid.Row="1"
                Style="{DynamicResource HomeLabel}">
             <Grid Width="1245"
-                  Height="670"
+                  Height="720"
                   VerticalAlignment="Center"
                   HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="90"/>
                 </Grid.RowDefinitions>
-                <ListView Margin="70 30 70 10 ">
-                    <ListViewItem>
-                        <ListViewItem.Template>
-                            <ControlTemplate>
-                                <Grid Height="167" >
-                                    <Border  BorderThickness="1.5"
+                <Label Content="Book borrowed:"
+                       FontFamily="Roboto"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="Black"
+                       VerticalAlignment="Bottom"
+                       VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="70,0,0,0"
+               ></Label>
+                <Viewbox                        
+                         HorizontalAlignment="Right"
+                         Height="50" 
+                         VerticalAlignment="Bottom" Margin="0,0,210,0"
+                    >
+                    <CheckBox                                      
+                              FontFamily="Roboto"
+                              Foreground="Black"
+                              FontSize="30"                            
+                              FontWeight="Regular"
+                              VerticalAlignment="Center"                                                   
+                              HorizontalAlignment="Center"/>
+                </Viewbox>
+                <Label Content="Select all"
+                       FontFamily="Roboto"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="Black"
+                       VerticalAlignment="Bottom"
+                       VerticalContentAlignment="Center"
+                       HorizontalAlignment="Right" Margin="0,0,70,0"
+               ></Label>
+
+                <ListView Margin="70 10 50 10 "
+                          Name="testLv"
+                          Grid.Row="1"
+                          SelectionMode="Multiple"
+                          ItemsSource="{Binding tempList}">
+                    <ListView.Resources>
+                        <Style TargetType="ScrollBar">
+                            <Setter Property="Height" Value="auto"/>
+                            <Setter Property="MinWidth" Value="0"/>
+                            <Setter Property="Width" Value="10"/>
+                            <Setter Property="Opacity" Value="1"></Setter>
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Height" Value="187"></Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Grid Height="167" Margin="0,0,20,0" 
+                                             
+                                              >
+                                            <Border  BorderThickness="1.5"
                                              Background="White"
                                              CornerRadius="15"
                                              BorderBrush="Black">
-                                        <Grid Grid.Row="1" >
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="5*"/>
-                                                <ColumnDefinition Width="1.5*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Style="{DynamicResource Imagelabel}"
+                                                <Grid Grid.Row="1" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="5*"/>
+                                                        <ColumnDefinition Width="1.5*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Style="{DynamicResource Imagelabel}"
                                                    Width="97"
                                                    Height="135"
                                                    BorderBrush="Black" 
                                                    HorizontalAlignment="Center" 
                                                    VerticalAlignment="Center">
-                                                <Label.Background>
-                                                    <ImageBrush ImageSource="/assests/img_book.png"
+                                                        <Label.Background>
+                                                            <ImageBrush ImageSource="/assests/img_book.png"
                                                                 Stretch="Fill">
-                                                    </ImageBrush>
-                                                </Label.Background>
-                                            </Label>
-                                            <Grid Grid.Column="1"  Height="142" VerticalAlignment="Center"
+                                                            </ImageBrush>
+                                                        </Label.Background>
+                                                    </Label>
+                                                    <Grid Grid.Column="1"  Height="142" VerticalAlignment="Center"
 >
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-                                                <Label Content="Sự im lặng của bầy cừu"                              
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Content="Sự im lặng của bầy cừu"                              
                                                        FontFamily="Roboto"
                                                        FontSize="38"
                                                        Padding="0 0 4 0"
@@ -72,8 +109,8 @@
                                                        VerticalContentAlignment="Center"
                                                        HorizontalAlignment="Left"
                                                        TextOptions.TextHintingMode="Animated">
-                                                </Label>
-                                                <Label Grid.Row="1"
+                                                        </Label>
+                                                        <Label Grid.Row="1"
                                                        Content="ID: NJNKJZNJKFNJKLBNDFJB "                              
                                                        FontFamily="Roboto"
                                                        FontSize="25"
@@ -83,8 +120,8 @@
                                                        VerticalContentAlignment="Center"
                                                        HorizontalAlignment="Left"
                                                        TextOptions.TextHintingMode="Animated"                               >
-                                                </Label>
-                                                <Label Grid.Row="2"
+                                                        </Label>
+                                                        <Label Grid.Row="2"
                                                        Content="Over due fees: 0VND"                              
                                                        FontFamily="Roboto"
                                                        FontSize="25"
@@ -95,8 +132,8 @@
                                                        VerticalContentAlignment="Center"
                                                        HorizontalAlignment="Left"
                                                        TextOptions.TextHintingMode="Animated">
-                                                </Label>
-                                                <Label Grid.Row="2"
+                                                        </Label>
+                                                        <Label Grid.Row="2"
                                                        Content="Status: Available"                              
                                                        FontFamily="Roboto"
                                                        FontSize="25"
@@ -107,32 +144,41 @@
                                                        VerticalContentAlignment="Center"
                                                        HorizontalAlignment="Right"
                                                        TextOptions.TextHintingMode="Animated">
-                                                </Label>
-                                            </Grid>
-                                            <Viewbox Grid.Column="2"
+                                                        </Label>
+                                                    </Grid>
+                                                    <Viewbox Grid.Column="2"
                                                      Margin="50,50,50,50"
                                                      HorizontalAlignment="Right"
                                                      >
-                                                <CheckBox                                                                                              
+                                                        <CheckBox
+                                                   x:Name="isSelected"
                                                    FontFamily="Roboto"
                                                    Foreground="#00A2FF"                                                 
                                                    FontWeight="Regular"
                                                    VerticalAlignment="Center"                                                   
                                                    HorizontalAlignment="Center"                                                    
                                                    />
-                                            </Viewbox>
+                                                    </Viewbox>
+                                                </Grid>
+                                            </Border>
                                         </Grid>
-                                    </Border>
-                                </Grid>
-                            </ControlTemplate>
-                        </ListViewItem.Template>
-                    </ListViewItem>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="IsChecked" TargetName="isSelected" Value="true"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                        </Style>
+                    </ListView.ItemContainerStyle>
                 </ListView>
-                <Button Grid.Row="1"
+                <Button Grid.Row="2"
                         Style="{DynamicResource ConfirmButton}"
                         Width="223"
                         Height="66"
-                        VerticalAlignment="Top"
+                       VerticalAlignment="Top"
                         Content="Renew"
                         HorizontalAlignment="Right"
                         Margin="0 0 50 0"
@@ -141,3 +187,4 @@
         </Label>
     </Grid>
 </UserControl>
+

@@ -49,40 +49,51 @@
                         </Grid>
                     </Button>
                 </Grid>
-                <ListView Margin="45 30 45 10 " Grid.Row="1">
-                    <ListViewItem>
-                        <ListViewItem.Template>
-                            <ControlTemplate>
-                                <Grid Height="167" >
-                                    <Border  BorderThickness="1.5"
+                <ListView Margin="50 20 50 30 " Grid.Row="1" x:Name="testLv">
+                    <ListView.Resources>
+                        <Style TargetType="ScrollBar">
+                            <Setter Property="Height" Value="auto"/>
+                            <Setter Property="MinWidth" Value="0"/>
+                            <Setter Property="Width" Value="10"/>
+                            <Setter Property="Opacity" Value="1"></Setter>
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Height" Value="187"></Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Grid Height="167" Margin="0 0 20 0" >
+                                            <Border  BorderThickness="1.5"
                                              Background="White"
                                              CornerRadius="15"
                                              BorderBrush="Black">
-                                        <Grid Grid.Row="1" >
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"/>
-                                                <ColumnDefinition Width="5*"/>
-                                                <ColumnDefinition Width="1.5*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Style="{DynamicResource Imagelabel}"
+                                                <Grid Grid.Row="1"  >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="5*"/>
+                                                        <ColumnDefinition Width="1.5*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Style="{DynamicResource Imagelabel}"
                                                    Width="97"
                                                    Height="135"
                                                    BorderBrush="Black" 
                                                    HorizontalAlignment="Center" 
                                                    VerticalAlignment="Center">
-                                                <Label.Background>
-                                                    <ImageBrush ImageSource="/assests/img_book.png"
+                                                        <Label.Background>
+                                                            <ImageBrush ImageSource="/assests/img_book.png"
                                                                 Stretch="Fill">
-                                                    </ImageBrush>
-                                                </Label.Background>
-                                            </Label>
-                                            <Grid Grid.Column="1"  Height="142" VerticalAlignment="Center"
+                                                            </ImageBrush>
+                                                        </Label.Background>
+                                                    </Label>
+                                                    <Grid Grid.Column="1"  Height="142" VerticalAlignment="Center"
 >
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition/>
-                                                    <RowDefinition/>
-                                                </Grid.RowDefinitions>
-                                                <Label Content="Sự im lặng của bầy cừu"                              
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Content="Sự im lặng của bầy cừu"                              
                                                        FontFamily="Roboto"
                                                        FontSize="38"
                                                        Padding="0 0 4 0"
@@ -91,8 +102,8 @@
                                                        VerticalContentAlignment="Center"
                                                        HorizontalAlignment="Left"
                                                        TextOptions.TextHintingMode="Animated">
-                                                </Label>
-                                                <Label Grid.Row="1"
+                                                        </Label>
+                                                        <Label Grid.Row="1"
                                                        Content="ID: NJNKJZNJKFNJKLBNDFJB "                              
                                                        FontFamily="Roboto"
                                                        FontSize="25"
@@ -102,24 +113,26 @@
                                                        VerticalContentAlignment="Center"
                                                        HorizontalAlignment="Left"
                                                        TextOptions.TextHintingMode="Animated"                               >
-                                                </Label>
-                                            </Grid>
-                                            <Button Grid.Column="2"
+                                                        </Label>
+                                                    </Grid>
+                                                    <Button Grid.Column="2"
                                                     Style="{DynamicResource DeleteButton}"
                                                     Background="#A72828"                                                   
                                                     Width="70"
                                                     Height="80" Margin="0,0,50,0" HorizontalAlignment="Right"                                                    
                                                     >
-                                                <Image Margin="10"                                                       
+                                                        <Image Margin="10"                                                       
                                                        Source="/assests/ic_delete.png" />
-                                            </Button>
-
+                                                    </Button>
+                                                </Grid>
+                                            </Border>
                                         </Grid>
-                                    </Border>
-                                </Grid>
-                            </ControlTemplate>
-                        </ListViewItem.Template>
-                    </ListViewItem>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                        </Style>
+                    </ListView.ItemContainerStyle>
                 </ListView>
             </Grid>
         </Label>

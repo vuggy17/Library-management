@@ -39,7 +39,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions> 
             <components:UserScanerBoard Margin="0 20"></components:UserScanerBoard>
-            <components:BookBorrowReturn Grid.Row="1" Margin="0,0,0,20" ></components:BookBorrowReturn>
+            <components:ReseviceBook Grid.Row="1" Margin="0,0,0,20" ></components:ReseviceBook>
         </Grid>
         
         <!--Icon-->

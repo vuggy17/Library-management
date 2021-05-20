@@ -7,30 +7,51 @@
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1245">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50 "/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Label Content="Book borrowed:"
-               FontFamily="Roboto"
-               FontSize="30"
-               FontWeight="Bold"
-               Foreground="White"
-               VerticalAlignment="Center"
-               VerticalContentAlignment="Center"
-               ></Label>
         <Label Grid.Row="1"
                Style="{DynamicResource HomeLabel}">
             <Grid Width="1245"
-                  Height="670"
+                  Height="720"
                   VerticalAlignment="Center"
                   HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="90"/>
                 </Grid.RowDefinitions>
-                <ListView Margin="70 30 50 10 "
+                <Label Content="Book borrowed:"
+                       FontFamily="Roboto"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="Black"
+                       VerticalAlignment="Bottom"
+                       VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="70,0,0,0"
+               ></Label>
+                <Viewbox                        
+                         HorizontalAlignment="Right"
+                         Height="50" 
+                         VerticalAlignment="Bottom" Margin="0,0,210,0"
+                    >
+                    <CheckBox                                      
+                              FontFamily="Roboto"
+                              Foreground="Black"
+                              FontSize="30"                            
+                              FontWeight="Regular"
+                              VerticalAlignment="Center"                                                   
+                              HorizontalAlignment="Center"/>
+                </Viewbox>
+                <Label Content="Select all"
+                       FontFamily="Roboto"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="Black"
+                       VerticalAlignment="Bottom"
+                       VerticalContentAlignment="Center"
+                       HorizontalAlignment="Right" Margin="0,0,70,0"
+               ></Label>
+
+                <ListView Margin="70 10 50 10 "
                           Name="testLv"
+                          Grid.Row="1"
                           SelectionMode="Multiple"
                           ItemsSource="{Binding tempList}">
                     <ListView.Resources>
@@ -141,7 +162,7 @@
                         </Style>
                     </ListView.ItemContainerStyle>
                 </ListView>
-                <Button Grid.Row="1"
+                <Button Grid.Row="2"
                         Style="{DynamicResource ConfirmButton}"
                         Width="223"
                         Height="66"

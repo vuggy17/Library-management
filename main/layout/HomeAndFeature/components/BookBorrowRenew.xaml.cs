@@ -15,14 +15,23 @@ using System.Windows.Shapes;
 
 namespace main.layout.HomeAndFeature.components
 {
+    
     /// <summary>
     /// Interaction logic for BookBorrowRenew.xaml
     /// </summary>
+    /// 
     public partial class BookBorrowRenew : UserControl
     {
+        public List<String> tempList = new List<string>();
         public BookBorrowRenew()
         {
             InitializeComponent();
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            testLv.ItemsSource = tempList;
         }
     }
 }
