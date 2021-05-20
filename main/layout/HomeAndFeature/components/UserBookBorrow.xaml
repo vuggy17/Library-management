@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="main.layout.HomeAndFeature.components.UserBookBorrow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:main.layout.HomeAndFeature.components"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1245 ">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50 "/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Book borrowed:"
+               FontFamily="Roboto"
+               FontSize="30"
+               FontWeight="Bold"
+               Foreground="White"
+               VerticalAlignment="Center"
+               VerticalContentAlignment="Center"
+               ></Label>
+        <Label Grid.Row="1"
+               Style="{DynamicResource HomeLabel}">
+            
+        </Label>
+    </Grid>
+</UserControl>

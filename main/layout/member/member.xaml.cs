@@ -14,6 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using main.model;
 using main.model.enums;
+using main.controller;
+using System.Diagnostics;
+using main.layout.member.component;
+using MaterialDesignThemes.Wpf;
 
 namespace main.layout
 {
@@ -22,109 +26,26 @@ namespace main.layout
     /// </summary>
     public partial class Member : UserControl
     {
+        public static  Member instance;
+        // lock object for multi thread-safe
+        private static object syncLock = new object();
+        public static  Member getInstance()
+        {
+            if (instance == null)
+                lock (syncLock)
+                    if(instance  == null)
+                        instance = new Member();
+            return instance;
+        }
         public Member()
         {
             InitializeComponent();
-            Account member = new Account("duy", "khanh hoa", "duy mail", "08969256174",12, "this is paswd",AccountStatus.ACTIVE,new DateTime(1200),5);
-            List<Converter> memberList = new List<Converter>()
-            {
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-        };
-            memberListv.ItemsSource = memberList;
-
+            this.DataContext = new MemberViewModel();
+          
         }
+       
+
+       
     }
-    public class Converter
-    {
-        #region properties
-        private string _name;
 
-        public string name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-        private string _address;
-
-        public string address
-        {
-            get { return _address; }
-            set { _address = value; }
-        }
-
-        private string _email;
-
-        public string email
-        {
-            get { return _email; }
-            set
-            {
-                //if (validateEmail(value))
-                    _email = value;
-                //else thow err
-            }
-        }
-        private string _phone;
-
-        public string phone
-        {
-            get { return _phone; }
-            set { _phone = value; }
-        }
-        private int _bookNumber;
-
-        public int bookNumber
-        {
-            get { return _bookNumber; }
-            set { _bookNumber = value; }
-        }
-        private int _overDue;
-
-        public int overDue
-        {
-            get { return _overDue; }
-            set { _overDue = value; }
-        }
-        private AccountStatus _status;
-
-        public AccountStatus status
-        {
-            get { return _status; }
-            set { _status = value; }
-        }
-        private BitmapImage _imgSrc;
-
-        public BitmapImage imgSrc
-        {
-            get { return _imgSrc; }
-            set { _imgSrc = value; }
-        }
-
-
-
-        #endregion
-
-
-        public Converter(string name, string addr, string mail, string phone, AccountStatus status, int totB, string imgSrc)
-        {
-            this.name = name;
-            this.address = addr;
-            this.email = mail;
-            this.phone = phone;
-            this.status = status;
-            this.bookNumber = totB;
-            this.overDue = 0;
-            this.imgSrc = LoadImage(imgSrc);
-        }
-         private BitmapImage LoadImage(string filename)
-        {
-            return new BitmapImage(new Uri("pack://application:,,,/" + filename));
-        }
-    }
 }
