@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="main.layout.HomeAndFeature.components.FeatureNavigationBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:main.layout.HomeAndFeature.components"
+             mc:Ignorable="d" 
+             d:DesignHeight="605" d:DesignWidth="496">
+    <Grid>
+        <Label Style="{DynamicResource HomeLabel}">
+            <Grid Margin="16,20,20,0"
+                  Width="456">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition Height="90"/>
+                    <RowDefinition  Height="90"/>
+                    <RowDefinition  Height="90"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Button Width="420"
+                    Height="70"
+                     Grid.Row="0" 
+                     Style="{DynamicResource HomeButton}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                    <Label Grid.Column="1"
+                          Margin="0,0,0,7"
+                           Content="Return book"
+                           Padding="10 7 0 0"
+                           FontSize="35"
+                           FontFamily="Roboto"
+                           Foreground="White"/>
+                </Button>
+
+                <Button Width="420"
+                    Height="70"
+                     Grid.Row="1" 
+                     Style="{DynamicResource HomeButton}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                    <Label Grid.Column="1"
+                          Margin="0,0,0,7"
+                           Content="Renew book"
+                           Padding="10 7 0 0"
+                           FontSize="35"
+                           FontFamily="Roboto"
+                           Foreground="White"/>
+                </Button>
+                <Button Width="420"
+                    Height="70"
+                     Grid.Row="2" 
+                     Style="{DynamicResource HomeButton}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                    <Label Grid.Column="1"
+                          Margin="0,0,0,7"
+                           Content="Reserve book"
+                           Padding="10 7 0 0"
+                           FontSize="35"
+                           FontFamily="Roboto"
+                           Foreground="White"/>
+                </Button>
+                <Button Width="420"
+                    Height="70"
+                     Grid.Row="3" 
+                     Style="{DynamicResource HomeButton}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+                    <Label Grid.Column="1"
+                          Margin="0,0,0,7"
+                           Content="Check-out book"
+                           Padding="10 7 0 0"
+                           FontSize="35"
+                           FontFamily="Roboto"
+                           Foreground="White"/>
+                </Button>
+            </Grid>           
+        </Label>
+    </Grid>
+</UserControl>
