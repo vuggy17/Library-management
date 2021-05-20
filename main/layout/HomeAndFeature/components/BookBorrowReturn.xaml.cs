@@ -20,9 +20,18 @@ namespace main.layout.HomeAndFeature.components
     /// </summary>
     public partial class BookBorrowReturn : UserControl
     {
+        public List<String> tempList = new List<string>();
         public BookBorrowReturn()
         {
             InitializeComponent();
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            testLv.ItemsSource = tempList;
+
+
         }
     }
 }

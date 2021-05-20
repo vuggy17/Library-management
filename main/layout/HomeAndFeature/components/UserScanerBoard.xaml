@@ -29,8 +29,8 @@
                           
                            >
                         <Label.Background>
-                            <ImageBrush ImageSource="/assests/avatar_user.png"
-                                        Stretch="UniformToFill"
+                            <ImageBrush ImageSource="/assests/img_user.png"
+                                        Stretch="Fill"
                                         >
                             </ImageBrush>
                         </Label.Background>

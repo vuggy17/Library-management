@@ -49,6 +49,152 @@
                         </Grid>
                     </Button>
                 </Grid>
+                <ListView Margin="45 30 45 10 " Grid.Row="1">
+                    <ListViewItem>
+                        <ListViewItem.Template>
+                            <ControlTemplate>
+                                <Grid Height="210" >
+                                    <Border  BorderThickness="1.5"
+                                             Background="White"
+                                             CornerRadius="15"
+                                             BorderBrush="Black">
+                                        <Grid Grid.Row="1" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="5*"/>
+                                                <ColumnDefinition Width="1.5*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition Height="0.75*"/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Button Style="{DynamicResource DeleteButton}"
+                                                        Width="55"
+                                                        Height="55"
+                                                        Background="#EBEBEB"
+                                                        HorizontalAlignment="Right"
+                                                        Margin="20 0"
+                                                        VerticalAlignment="Bottom"
+                                                        Content="+"
+                                                        Foreground="#707070"
+                                                        FontSize="40"                                                        
+                                                        ></Button>
+                                                <Label Grid.Row="1"
+                                                       Content="2"
+                                                       FontSize="38"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Right"
+                                                       Margin="0 0 35 0"
+                                                       FontFamily="Roboto"
+                                                       Foreground="#707070"
+                                                       >
+                                                    
+                                                </Label>
+                                                <Button Style="{DynamicResource DeleteButton}"
+                                                        Width="55"
+                                                        Grid.Row="2"
+                                                        Height="55"
+                                                        Background="#EBEBEB"
+                                                        HorizontalAlignment="Right"
+                                                        Margin="20 0"
+                                                        VerticalAlignment="Top"
+                                                        Content="-"
+                                                        Foreground="#707070"
+                                                        FontSize="40"                                                        
+                                                        ></Button>
+                                            </Grid>
+                                            
+                                            <Label Style="{DynamicResource Imagelabel}"
+                                                   Width="132"
+                                                   Height="186"
+                                                   Grid.Column="1"
+                                                   BorderBrush="Black" 
+                                                   HorizontalAlignment="Center" 
+                                                   VerticalAlignment="Center">
+                                                <Label.Background>
+                                                    <ImageBrush ImageSource="/assests/img_book.png"
+                                                                Stretch="Fill">
+                                                    </ImageBrush>
+                                                </Label.Background>
+                                            </Label>
+                                            <Grid Grid.Column="2"
+                                                  Height="186"
+                                                  VerticalAlignment="Center"
+>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Label Content="Sự im lặng của bầy cừu"                              
+                                                       FontFamily="Roboto"
+                                                       FontSize="36"
+                                                       Padding="0 0 4 0"
+                                                       FontWeight="Bold"
+                                                       VerticalAlignment="Center"
+                                                       VerticalContentAlignment="Center"
+                                                       HorizontalAlignment="Left"
+                                                       TextOptions.TextHintingMode="Animated">
+                                                </Label>
+                                                <Label Grid.Row="1"
+                                                       Content="Author(s): Thomas Harris "                              
+                                                       FontFamily="Roboto"
+                                                       FontSize="23"
+                                                       Padding="0 0 4 0"
+                                                       FontWeight="Regular"
+                                                       VerticalAlignment="Center"
+                                                       VerticalContentAlignment="Center"
+                                                       HorizontalAlignment="Left"
+                                                       TextOptions.TextHintingMode="Animated"                               >
+                                                </Label>
+                                                <Label Grid.Row="2"
+                                                       Content="Publication date: 04/05/2021"                              
+                                                       FontFamily="Roboto"
+                                                       FontSize="23"
+                                                       Padding="0 0 4 0"
+                                                       FontWeight="Regular"
+                                                       VerticalAlignment="Center"
+                                                       VerticalContentAlignment="Center"
+                                                       HorizontalAlignment="Left"
+                                                       TextOptions.TextHintingMode="Animated"                               >
+                                                </Label>
+                                                <Label Grid.Row="3"
+                                                       Content="Available copies: 6"                              
+                                                       FontFamily="Roboto"
+                                                       FontSize="23"
+                                                       Padding="0 0 4 0"
+                                                       FontWeight="Regular"
+                                                       VerticalAlignment="Center"
+                                                       VerticalContentAlignment="Center"
+                                                       HorizontalAlignment="Left"
+                                                       TextOptions.TextHintingMode="Animated"                               >
+                                                </Label>
+
+                                            </Grid>
+                                            <Viewbox Grid.Column="3"                                                     
+                                                     Height="80"
+                                                     HorizontalAlignment="Right"
+                                                     VerticalAlignment="Center"
+                                                     Margin="70"
+                                                     >
+                                                <CheckBox                                    
+                                                   VerticalAlignment="Center"                                                   
+                                                   HorizontalAlignment="Center"                                                    
+                                                   />
+                                            </Viewbox>
+
+
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </ListViewItem.Template>
+                    </ListViewItem>
+                </ListView>
             </Grid>
         </Label>
     </Grid>

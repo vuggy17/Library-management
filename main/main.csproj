@@ -300,6 +300,15 @@
   <ItemGroup>
     <Resource Include="assests\img_confirm.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\img_book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\img_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\ic_delete.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
