@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace main.layout.HomeAndFeature.components
 {
     /// <summary>
-    /// Interaction logic for UserBookBorrow.xaml
+    /// Interaction logic for BookBorrowRenew.xaml
     /// </summary>
-    public partial class UserBookBorrow : UserControl
+    public partial class BookBorrowRenew : UserControl
     {
-        public UserBookBorrow()
+        public BookBorrowRenew()
         {
             InitializeComponent();
         }

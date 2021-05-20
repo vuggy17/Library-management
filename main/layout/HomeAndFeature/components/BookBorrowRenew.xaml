@@ -1,0 +1,144 @@
+﻿<UserControl x:Class="main.layout.HomeAndFeature.components.BookBorrowRenew"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:main.layout.HomeAndFeature.components"
+             mc:Ignorable="d" 
+             d:DesignHeight="720" d:DesignWidth="1245">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50 "/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Book borrowed:"
+               FontFamily="Roboto"
+               FontSize="30"
+               FontWeight="Bold"
+               Foreground="White"
+               VerticalAlignment="Center"
+               VerticalContentAlignment="Center"
+               ></Label>
+        <Label Grid.Row="1"
+               Style="{DynamicResource HomeLabel}">
+            <Grid Width="1245"
+                  Height="670"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="90"/>
+                </Grid.RowDefinitions>
+                <ListView Margin="50 30 50 10 ">
+                    <ListViewItem>
+                        <ListViewItem.Template>
+                            <ControlTemplate>
+                                <Grid Height="170" >
+                                    <Border  BorderThickness="1.5"
+                                             Background="White"
+                                             CornerRadius="15"
+                                             BorderBrush="Black">
+                                        <Grid Grid.Row="1" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1.5*"/>
+                                                <ColumnDefinition Width="5*"/>
+                                                <ColumnDefinition Width="2.5*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Style="{DynamicResource Imagelabel}"
+                                                   Width="97"
+                                                   Height="135"
+                                                   BorderBrush="Black" 
+                                                   HorizontalAlignment="Center" 
+                                                   VerticalAlignment="Center">
+                                                <Label.Background>
+                                                    <ImageBrush ImageSource="/assests/avatar_user.png"
+                                                                Stretch="UniformToFill">
+                                                    </ImageBrush>
+                                                </Label.Background>
+                                            </Label>
+                                            <Grid Grid.Column="1"  Height="142" VerticalAlignment="Center"
+>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Label Content="Phạm Minh Tân"                              
+                                                       FontFamily="Roboto"
+                                                       FontSize="38"
+                                                       Padding="0 0 4 0"
+                                                       FontWeight="Bold"
+                                                       VerticalAlignment="Center"
+                                                       VerticalContentAlignment="Center"
+                                                       HorizontalAlignment="Left"
+                                                       TextOptions.TextHintingMode="Animated">
+                                                </Label>
+                                                <Label Grid.Row="1"
+                                                       Content="ID: NJNKJZNJKFNJKLBNDFJB "                              
+                                                       FontFamily="Roboto"
+                                                       FontSize="25"
+                                                       Padding="0 0 4 0"
+                                                       FontWeight="Regular"
+                                                       VerticalAlignment="Center"
+                                                       VerticalContentAlignment="Center"
+                                                       HorizontalAlignment="Left"
+                                                       TextOptions.TextHintingMode="Animated"                               >
+                                                </Label>
+                                                <Label Grid.Row="2"
+                                                       Content="Borrowed books: 2/5"                              
+                                                       FontFamily="Roboto"
+                                                       FontSize="25"
+                                                       Padding="0 0 4 0"
+                                                       FontWeight="Regular"
+                                                       VerticalAlignment="Center"
+                                                       VerticalContentAlignment="Center"
+                                                       HorizontalAlignment="Left"
+                                                       TextOptions.TextHintingMode="Animated">
+                                                </Label>
+                                                <Label Grid.Row="2"
+                                                       Content="Over due: 0"                              
+                                                       FontFamily="Roboto"
+                                                       Foreground="Red"
+                                                       FontSize="25"
+                                                       Padding="0 0 4 0"
+                                                       FontWeight="Regular"
+                                                       VerticalAlignment="Center"
+                                                       VerticalContentAlignment="Center"
+                                                       HorizontalAlignment="Right"
+                                                       TextOptions.TextHintingMode="Animated"                               >
+                                                </Label>
+                                            </Grid>
+                                            <Label
+                                                   Grid.Column="2"
+                                                   Content="Full information"                              
+                                                   FontFamily="Roboto"
+                                                   Foreground="#00A2FF"
+                                                   FontSize="25"
+                                                   Padding="0 0 4 0"
+                                                   FontWeight="Regular"
+                                                   VerticalAlignment="Top"
+                                                   VerticalContentAlignment="Center"
+                                                   HorizontalAlignment="Right"
+                                                   TextOptions.TextHintingMode="Animated"
+                                                   Margin="0,42,20,0">
+                                            </Label>
+                                        </Grid>
+                                    </Border>                         
+                                </Grid>
+                            </ControlTemplate>
+                        </ListViewItem.Template>
+                    </ListViewItem>
+                </ListView>
+                <Button Grid.Row="1"
+                        Style="{DynamicResource ConfirmButton}"
+                        Width="223"
+                        Height="66"
+                        VerticalAlignment="Top"
+                        Content="Renew"
+                        HorizontalAlignment="Right"
+                        Margin="0 0 50 0"
+                        ></Button>
+            </Grid>
+        </Label>
+    </Grid>
+</UserControl>

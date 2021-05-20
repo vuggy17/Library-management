@@ -114,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="layout\HomeAndFeature\components\BookBorrowRenew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="layout\HomeAndFeature\components\BookBorrowReturn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,10 +154,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\HomeAndFeature\components\UserBookBorrow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="layout\HomeAndFeature\components\UserScanerBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +183,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="db\Db.cs" />
+    <Compile Include="layout\HomeAndFeature\components\BookBorrowRenew.xaml.cs">
+      <DependentUpon>BookBorrowRenew.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\HomeAndFeature\components\BookBorrowReturn.xaml.cs">
       <DependentUpon>BookBorrowReturn.xaml</DependentUpon>
     </Compile>
@@ -209,9 +212,6 @@
     </Compile>
     <Compile Include="layout\HomeAndFeature\components\SearchUserID.xaml.cs">
       <DependentUpon>SearchUserID.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="layout\HomeAndFeature\components\UserBookBorrow.xaml.cs">
-      <DependentUpon>UserBookBorrow.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\HomeAndFeature\components\UserScanerBoard.xaml.cs">
       <DependentUpon>UserScanerBoard.xaml</DependentUpon>
