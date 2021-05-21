@@ -3,10 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:main.layout.LoginForm"
+        xmlns:local="clr-namespace:main.layout.LoginForm" 
+        xmlns:components="clr-namespace:main.layout.LoginForm.Components"
         mc:Ignorable="d"
-        Title="LoginForm" Height="450" Width="800">
+        Title="LoginForm" Height="1080" Width="1920">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/main;component/assets/Background.png"
+           Height="1100" Grid.ColumnSpan="2">
+    </Image>
+        <components:LoginBoard Height="750"
+                               Width="650"
+                               Grid.Column="0"/>
     </Grid>
 </Window>

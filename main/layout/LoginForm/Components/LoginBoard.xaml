@@ -5,11 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:main.layout.LoginForm.Components"
              mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="750" d:DesignWidth="650">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Border CornerRadius="45,45,45,45" Background="White">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="0.7*"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
@@ -34,20 +45,35 @@
                        FontFamily="Roboto"
                        Foreground="#00A2FF"
                        Padding="60,0,0,0"></TextBlock>
+            <TextBox Grid.Row="3"
+                     Height="90"
+                     Width="525"
+                     FontSize="24"
+                     FontFamily="Roboto"
+                     materialDesign:HintAssist.Hint="ID or email"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+            <PasswordBox Grid.Row="4"
+                     Height="90"
+                     Width="525"
+                     materialDesign:HintAssist.Hint="Password"
+                     FontSize="24"
+                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"></PasswordBox>
             <Button Grid.Row="5"
                     Content="Login"
                     FontFamily="Roboto"
+                    Foreground="White"
                     FontSize="20"
                     Height="70"
                     Width="411"
                     Background="#00A2FF"
-                    Template="{DynamicResource RoundedButton}">
+                    Style="{DynamicResource RoundedButtonStyle}">
             </Button>
             <TextBlock Text="Forgot password? Please contact with your manager"
                        Grid.Row="6"
                        HorizontalAlignment="Center"
                        FontSize="20"
-                       FontFamily="Roboto"></TextBlock>
+                       FontFamily="Roboto"
+                       Padding="0,20,0,0"></TextBlock>
         </Grid>
     </Border>
 </UserControl>
