@@ -74,7 +74,10 @@ namespace main.controller
 
         #endregion
 
-        public Converter(string name, string addr, string mail, string phone, AccountStatus status, int totB, string imgSrc)
+        public Converter()
+        {
+        }
+        public Converter build(string name, string addr, string mail, string phone, AccountStatus status, int totB, string imgSrc)
         {
             this.name = name;
             this.address = addr;
@@ -84,6 +87,7 @@ namespace main.controller
             this.bookNumber = totB;
             this.overDue = 0;
             this.imgSrc = LoadImage(imgSrc);
+            return this;
         }
         private BitmapImage LoadImage(string filename)
         {

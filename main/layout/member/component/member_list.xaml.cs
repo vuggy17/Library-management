@@ -28,22 +28,16 @@ namespace main.layout.member.component
         public Member_list()
         {
             InitializeComponent();
-            this.DataContext = new MemberViewModel();
-            List<Converter> memberList = new List<Converter>()
-            {
-                new Converter("duy", "khanh hoa", "duy mail", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-        };
-            memberListv.ItemsSource = memberList;
-
+            var memberViewModel = new MemberViewModel();
+            memberListv.DataContext = memberViewModel;
+         ;
 
         }
-
-      
+        /*System.Windows.Data Error: 40 : BindingExpression path error: 'RunBlockNotificationCommand' property not found on 'object' ''Converter' (HashCode=65737292)'. 
+         * BindingExpression:Path=RunBlockNotificationCommand; 
+         * DataItem='Converter' (HashCode=65737292) ; 
+         * target element is 'Button' (Name=''); 
+         * target property is 'Command' (type 'ICommand')
+        */
     }
 }

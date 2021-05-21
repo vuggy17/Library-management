@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace main.controller
 {
     public class MemberViewModel : ViewModelBase
     {
+        public Converter converter { get; set; }
+        public ObservableCollection<Converter> memberList { get; set; }
         public ICommand RunBlockNotificationCommand => new AnotherCommandImplementation(RunBlockNotification);
 
         private async void RunBlockNotification(object o)
@@ -52,5 +55,15 @@ namespace main.controller
                 .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
                     TaskScheduler.FromCurrentSynchronizationContext());
         }
+        public MemberViewModel()
+        {
+            converter = new Converter();
+
+            memberList = new ObservableCollection<Converter>()
+            {
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+            };
+
+        }
     }
-    }
+}

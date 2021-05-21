@@ -5,16 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:memberComponent="clr-namespace:main.layout.member.component"
              xmlns:controller="clr-namespace:main.controller"
-             
+               xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
-            d:DataContext="{d:DesignInstance controller:MemberViewModel}"
              d:DesignHeight="1080" d:DesignWidth="1245"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              
              Margin="0,0,0,16"
              Background="White">
     <materialDesign:DialogHost
-        Identifier="BlockDialog">
+        Identifier="BlockDialog" >
         <ListView x:Name="memberListv" ItemsSource="{Binding memberList}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -66,8 +65,9 @@
                         </StackPanel>
 
 
-                        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center" Height="auto" Margin="0,12,0,12">
+                        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center" Height="auto" Margin="0,12,0,12" x:Name="buttonBlock">
                             <Button Background="#ffcc00" Width="140" Height="auto" Padding="10" BorderThickness="0" FontSize="24" FontWeight="DemiBold" 
+                                    Command="{Binding Path=DataContext.RunBlockNotificationCommand , ElementName=memberListv }" 
                                     Margin="0,0,0,8">
                                 <TextBlock
                                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
@@ -79,7 +79,7 @@
                                       Text="Delete" />
                             </Button>
                             <Button Background="Black" Width="auto" Height="auto" Padding="10" BorderThickness="0" FontSize="24" FontWeight="DemiBold"  Margin="0,0,0,0"
-                              Command="{Binding RunBlockNotificationCommand}">
+                              >
                                 <TextBlock
                                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                       Text="Block" />

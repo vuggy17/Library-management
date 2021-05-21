@@ -26,18 +26,18 @@ namespace main.layout.member.component
         public Member_blacklist()
         {
             InitializeComponent();
-            Account member = new Account("duy", "khanh hoa", "duy mail", "08969256174", 12, "this is paswd", AccountStatus.ACTIVE, new DateTime(1200), 5);
-            List<Converter> memberList = new List<Converter>()
-            {
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-            new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
-        };
-            memberListv.ItemsSource = memberList;
+        //    Account member = new Account("duy", "khanh hoa", "duy mail", "08969256174", 12, "this is paswd", AccountStatus.ACTIVE, new DateTime(1200), 5);
+        //    List<Converter> memberList = new List<Converter>()
+        //    {
+        //    new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
+        //    new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
+        //    new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
+        //    new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
+        //    new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
+        //    new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
+        //    new Converter("duy", "khanh hoa", "duy mail", "08969256174",  AccountStatus.ACTIVE, 5,"../resource/img/avt_default.png"),
+        //};
+        //    memberListv.ItemsSource = memberList;
 
         }
     }
