@@ -31,13 +31,16 @@
                          Height="50" 
                          VerticalAlignment="Bottom" Margin="0,0,210,0"
                     >
-                    <CheckBox                                      
+                    <CheckBox x:Name="SelectAll"
+                              Checked="SelectAll_Checked"
+                              Unchecked="SelectAll_Unchecked"
                               FontFamily="Roboto"
                               Foreground="Black"
                               FontSize="30"                            
                               FontWeight="Regular"
                               VerticalAlignment="Center"                                                   
-                              HorizontalAlignment="Center"/>
+                              HorizontalAlignment="Center"
+                              />
                 </Viewbox>
                 <Label Content="Select all"
                        FontFamily="Roboto"
@@ -50,7 +53,7 @@
                ></Label>
 
                 <ListView Margin="70 10 50 10 "
-                          Name="testLv"
+                          Name="ListReturnBook"
                           Grid.Row="1"
                           SelectionMode="Multiple"
                           ItemsSource="{Binding tempList}">
@@ -169,7 +172,7 @@
                        VerticalAlignment="Top"
                         Content="Return"
                         HorizontalAlignment="Right"
-                        Margin="0 0 50 0"
+                        Margin="0 0 50 0" Click="Button_Click"
                         ></Button>
             </Grid>
         </Label>

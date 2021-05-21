@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.layout.HomeAndFeature.form;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,9 +30,25 @@ namespace main.layout.HomeAndFeature.components
             tempList.Add("");
             tempList.Add("");
             tempList.Add("");
-            testLv.ItemsSource = tempList;
+            ListReturnBook.ItemsSource = tempList;
 
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ReturnBookForm returnBook = new ReturnBookForm();
+            returnBook.Show();
+        }
+
+        private void SelectAll_Checked(object sender, RoutedEventArgs e)
+        {
+            ListReturnBook.SelectAll();
+        }
+
+        private void SelectAll_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ListReturnBook.UnselectAll();
         }
     }
 }

@@ -19,10 +19,17 @@ namespace main.layout.HomeAndFeature.form
     /// </summary>
     public partial class RenewForm : Window
     {
+        public static event ToggleFormDialogNotifyHandler ToggleForm;
         public RenewForm()
         {
             InitializeComponent();
+            ToggleForm();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ToggleForm();
+        }
     }
 }

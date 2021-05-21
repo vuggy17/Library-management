@@ -31,7 +31,9 @@
                          Height="50" 
                          VerticalAlignment="Bottom" Margin="0,0,210,0"
                     >
-                    <CheckBox                                      
+                    <CheckBox x:Name="SelectAll"
+                              Checked="SelectAll_Checked"
+                              Unchecked="SelectAll_Unchecked"
                               FontFamily="Roboto"
                               Foreground="Black"
                               FontSize="30"                            
@@ -50,7 +52,7 @@
                ></Label>
 
                 <ListView Margin="70 10 50 10 "
-                          Name="testLv"
+                          Name="RenewBookList"
                           Grid.Row="1"
                           SelectionMode="Multiple"
                           ItemsSource="{Binding tempList}">
@@ -181,7 +183,7 @@
                        VerticalAlignment="Top"
                         Content="Renew"
                         HorizontalAlignment="Right"
-                        Margin="0 0 50 0"
+                        Margin="0 0 50 0" Click="Button_Click"
                         ></Button>
             </Grid>
         </Label>

@@ -24,7 +24,7 @@
                             Width="260"
                             Height="70"
                             Style="{StaticResource ConfirmButton}"
-                            Margin="20,20,45,0"                            
+                            Margin="20,20,45,0" Click="Button_Click"                            
                             >
                         <Grid Width="260"
                               Height="65

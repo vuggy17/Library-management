@@ -6,62 +6,68 @@
         xmlns:local="clr-namespace:main.layout.HomeAndFeature.form"
         mc:Ignorable="d"
         Title="ReturnBookForm" 
-        Background="Transparent"
+      
         Height="315" Width="1040"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        ResizeMode="NoResize"
+        
         >
-    <Grid>
-        <Label Style="{DynamicResource HomeLabel}">
-            <Grid Height="315"
+    <Window.Background>
+        <SolidColorBrush Color="White" Opacity="0.3">
+            
+        </SolidColorBrush>
+    </Window.Background>
+    <Border Background="White" CornerRadius="30">
+        <Grid Height="315"
                   Width="1040"                
                   VerticalAlignment="Center"
                   HorizontalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1.5*"/>                   
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="5*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Width="130"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Width="130"
                            Height="145"
                            Style="{DynamicResource Imagelabel}"
                            >
-                        <Label.Background>
-                            <ImageBrush ImageSource="/assests/img_confirm.png">
-                                
-                            </ImageBrush>
-                        </Label.Background>
-                    </Label>
-                    <Grid Grid.Column="1" Margin="0 30">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Label Content="Are you sure you have charged membership overdue fees?"
+                    <Label.Background>
+                        <ImageBrush ImageSource="/assests/img_confirm.png">
+
+                        </ImageBrush>
+                    </Label.Background>
+                </Label>
+                <Grid Grid.Column="1" Margin="0 30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Are you sure you have charged membership overdue fees?"
                                FontSize="30"
                                FontWeight="Bold"
                                VerticalAlignment="Bottom"
                                />
-                        <Label Grid.Row="1"
+                    <Label Grid.Row="1"
                                 Content="Overdue fees: 0 VND"
                                FontSize="30"
                                FontWeight="Bold"
                                Foreground="Red"
                                VerticalAlignment="Top"
                                />
-                    </Grid>
                 </Grid>
-                <Grid Grid.Row="1" Margin="0 0 30 0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Style="{DynamicResource ConfirmButton}"
+            </Grid>
+            <Grid Grid.Row="1" Margin="0 0 30 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Style="{DynamicResource ConfirmButton}"
                             Margin="10 20 10 30"
                             Content="Confirm"
                             Width="223"
@@ -70,7 +76,7 @@
                             FontFamily="Roboto"
                             Foreground="White"
                         Grid.Column="1"></Button>
-                    <Button Style="{DynamicResource CancelButton}"
+                <Button Style="{DynamicResource CancelButton}"
                             Margin="10 20 10 30"
                             Width="223"
                             Height="66"
@@ -78,11 +84,12 @@
                             FontSize="27"
                             FontFamily="Roboto"
                             Foreground="White"
-                        Grid.Column="2"></Button>
-                </Grid>
-
-                
+                        Grid.Column="2" Click="Button_Click"></Button>
             </Grid>
-        </Label>
-    </Grid> 
+
+
+        </Grid>
+
+    </Border>
+
 </Window>

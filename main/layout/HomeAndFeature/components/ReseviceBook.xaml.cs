@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Reflection;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using main.viewmodel.features;
+using main.layout.HomeAndFeature.form;
 
 namespace main.layout.HomeAndFeature.components
 {
@@ -20,16 +23,19 @@ namespace main.layout.HomeAndFeature.components
     /// </summary>
     public partial class ReseviceBook : UserControl
     {
-        public List<String> tempList = new List<string>();
+
+        
         public ReseviceBook()
         {
             InitializeComponent();
-            tempList.Add("");
-            tempList.Add("");
-            tempList.Add("");
-            tempList.Add("");
-            tempList.Add("");
-            testLv.ItemsSource = tempList;
+            this.DataContext = new ResearveBookViewModel();
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RenewForm renew = new RenewForm();
+            renew.Show();
         }
     }
 }

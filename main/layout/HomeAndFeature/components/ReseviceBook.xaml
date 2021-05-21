@@ -24,7 +24,7 @@
                             Width="260"
                             Height="70"
                             Style="{StaticResource ConfirmButton}"
-                            Margin="20,20,45,0"                            
+                            Margin="20,20,45,0" Click="Button_Click"                            
                             >
                         <Grid Width="260"
                               Height="65
@@ -49,7 +49,7 @@
                         </Grid>
                     </Button>
                 </Grid>
-                <ListView Margin="50 20 50 30 " Grid.Row="1" x:Name="testLv" SelectionMode="Multiple">
+                <ListView Margin="50 20 50 30 " Grid.Row="1" x:Name="testLv" SelectionMode="Multiple" ItemsSource="{Binding ListBookReserve}">
                     <ListView.Resources>
                         <Style TargetType="ScrollBar">
                             <Setter Property="Height" Value="auto"/>
@@ -146,7 +146,7 @@
                                                             <RowDefinition/>
                                                             <RowDefinition/>
                                                         </Grid.RowDefinitions>
-                                                        <Label Content="Sự im lặng của bầy cừu"                              
+                                                        <Label Content="{Binding title}"                              
                                                                FontFamily="Roboto"
                                                                FontSize="36"
                                                                Padding="0 0 4 0"
@@ -157,7 +157,7 @@
                                                                TextOptions.TextHintingMode="Animated">
                                                         </Label>
                                                         <Label Grid.Row="1"
-                                                               Content="Author(s): Thomas Harris "                              
+                                                               Content="Author(s): Thomas Harris"                              
                                                                FontFamily="Roboto"
                                                                FontSize="23"
                                                                Padding="0 0 4 0"
@@ -214,9 +214,7 @@
                                                 <Setter Property="IsEnabled" TargetName="remove" Value="False"></Setter>                                                
                                             </Trigger>
                                             <Trigger Property="IsSelected" Value="True">
-                                                <Setter Property="IsChecked" TargetName="isSelected" Value="true"></Setter>
-                                                <Setter Property="Visibility" TargetName="add" Value="Visible"></Setter>
-                                                <Setter Property="Visibility" TargetName="remove" Value="Visible"></Setter>
+                                                <Setter Property="IsChecked" TargetName="isSelected" Value="true"></Setter>                                                
                                                 <Setter Property="IsEnabled" TargetName="add" Value="True"></Setter>
                                                 <Setter Property="IsEnabled" TargetName="remove" Value="True"></Setter>
                                             </Trigger>
