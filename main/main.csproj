@@ -114,6 +114,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="layout\Book\BooksForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\Book\Components\AddBookBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\Book\Components\BookItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\Book\Components\SearchByIdTitleAuthorBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="layout\HomeAndFeature\components\BookBorrowReturn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +199,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="db\Db.cs" />
+    <Compile Include="layout\Book\BooksForm.xaml.cs">
+      <DependentUpon>BooksForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\Book\Components\AddBookBoard.xaml.cs">
+      <DependentUpon>AddBookBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\Book\Components\BookItem.xaml.cs">
+      <DependentUpon>BookItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\Book\Components\SearchByIdTitleAuthorBar.xaml.cs">
+      <DependentUpon>SearchByIdTitleAuthorBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\HomeAndFeature\components\BookBorrowReturn.xaml.cs">
       <DependentUpon>BookBorrowReturn.xaml</DependentUpon>
     </Compile>
@@ -299,6 +327,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assests\img_confirm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\Book image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
