@@ -12,22 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using main.model;
-using main.model.enums;
-using main.controller;
 
 namespace main.layout.member.component
 {
     /// <summary>
-    /// Interaction logic for Member_blacklist.xaml
+    /// Interaction logic for MemberBlackListWraper.xaml
     /// </summary>
-    public partial class Member_blacklist : UserControl
+    public partial class MemberBlackListWraper : UserControl
     {
-        public Member_blacklist()
+        public MemberBlackListWraper()
         {
             InitializeComponent();
-            var memberViewModel = MemberViewModel.getInstance();
-            memberListv.DataContext = memberViewModel;
         }
+
+     
+    
     }
 }

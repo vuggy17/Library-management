@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:main.layout.member.component"
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             x:Name="Navigation"
              d:DesignHeight="605" d:DesignWidth="496">
     <Grid>
         <Label Style="{DynamicResource HomeLabel}">
@@ -17,6 +18,9 @@
                 </Grid.RowDefinitions>
 
                 <Button Width="420"
+                       
+                Command="{Binding Path=DataContext.SwichToActiveListCommand,ElementName=Navigation}"
+                       
                     Height="70"
                      Grid.Row="0" 
                        materialDesign:ButtonAssist.CornerRadius="23"
@@ -34,13 +38,16 @@
                 </Button>
 
                 <Button Width="420"
+                    Command="{Binding Path=DataContext.SwichToBlackListCommand,ElementName=Navigation}"
                     Height="70"
                      Grid.Row="1" 
                         Background="#00a2ff"
                     materialDesign:ButtonAssist.CornerRadius="23"
                         materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         HorizontalContentAlignment="Center"
-                        VerticalContentAlignment="Center">
+                        VerticalContentAlignment="Center" 
+                        
+                        >
                     <Label Grid.Column="1"
                           Margin="0,0,0,7"
                            Content="Blocked member"

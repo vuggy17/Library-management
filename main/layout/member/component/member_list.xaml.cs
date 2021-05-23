@@ -28,16 +28,11 @@ namespace main.layout.member.component
         public Member_list()
         {
             InitializeComponent();
-            var memberViewModel = new MemberViewModel();
+            var memberViewModel = MemberViewModel.getInstance();
             memberListv.DataContext = memberViewModel;
          ;
 
         }
-        /*System.Windows.Data Error: 40 : BindingExpression path error: 'RunBlockNotificationCommand' property not found on 'object' ''Converter' (HashCode=65737292)'. 
-         * BindingExpression:Path=RunBlockNotificationCommand; 
-         * DataItem='Converter' (HashCode=65737292) ; 
-         * target element is 'Button' (Name=''); 
-         * target property is 'Command' (type 'ICommand')
-        */
+      
     }
 }

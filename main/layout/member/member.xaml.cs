@@ -29,23 +29,23 @@ namespace main.layout
         public static  Member instance;
         // lock object for multi thread-safe
         private static object syncLock = new object();
-        public static  Member getInstance()
+        public static Frame navigationFrame { get; set; }
+        public static Member getInstance()
         {
             if (instance == null)
                 lock (syncLock)
-                    if(instance  == null)
+                    if (instance == null)
                         instance = new Member();
             return instance;
         }
+
         public Member()
         {
             InitializeComponent();
             this.DataContext = new MemberViewModel();
-          
+            navigationFrame = frame;
         }
-       
 
-       
     }
 
 }

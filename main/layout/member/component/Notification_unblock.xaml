@@ -20,6 +20,7 @@
             </StackPanel>
             <DockPanel LastChildFill="False" Margin="0,40,0,0">
                 <Button
+                      Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
                             DockPanel.Dock="Right"
                             materialDesign:ButtonAssist.CornerRadius="14"
                             Height="66"
@@ -27,7 +28,7 @@
                            Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     Background="Gray"
                Margin="12,0,0,0"
-                            ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                           >
                     <Button.CommandParameter>
                         <system:Boolean>False</system:Boolean>
                     </Button.CommandParameter>
@@ -43,7 +44,7 @@
                             Width="202"
                             Background="YellowGreen"
                             materialDesign:ButtonAssist.CornerRadius="14"
-                            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" >
+                           >
                     <Button.CommandParameter>
                         <system:Boolean>True</system:Boolean>
                     </Button.CommandParameter>

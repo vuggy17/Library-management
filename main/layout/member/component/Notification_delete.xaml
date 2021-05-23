@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:main.layout.member.component"
              mc:Ignorable="d" 
-            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:system="clr-namespace:System;assembly=mscorlib"
+               xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"    
             d:DesignHeight="313" d:DesignWidth="967">
     <Border CornerRadius="13" Background="White">
         <StackPanel Orientation="Vertical" Margin="50,38">
@@ -25,8 +27,11 @@
                             Height="66"
                             Width="202"
                             Background="Gray"
-               Margin="12,0,0,0"
-                            ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                       Command="{x:Static wpf:DialogHost.CloseDialogCommand}"       
+               Margin="12,0,0,0">
+                    <Button.CommandParameter>
+                        <system:Boolean>False</system:Boolean>
+                    </Button.CommandParameter>
                     <TextBlock Text="NO" FontSize="28" />
                 </Button>
                 <Button
@@ -36,7 +41,11 @@
                             Height="66"
                             Width="202"
                             Background="Red"
-                            ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                       Command="{x:Static wpf:DialogHost.CloseDialogCommand}"       
+                    >
+                    <Button.CommandParameter>
+                        <system:Boolean>True</system:Boolean>
+                    </Button.CommandParameter>
                     <TextBlock Text="YES" FontSize="28" />
                 </Button>
             </DockPanel>

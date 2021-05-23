@@ -7,71 +7,50 @@
              xmlns:components="clr-namespace:main.layout.HomeAndFeature.components"
              mc:Ignorable="d"
              d:DesignHeight="1080" d:DesignWidth="1920"
-             xmlns:local="clr-namespace:main.layout.HomeAndFeature.components"
              xmlns:memberComponent="clr-namespace:main.layout.member.component"
              >
     <materialDesign:DialogHost
-        Identifier="RootDialog">
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="Background.png" Stretch="None"/>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="536"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="145"/>
-        </Grid.ColumnDefinitions>
-
-        <!--Navigation-->
+        Identifier="MemberDialog">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="460"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <components:HomeNavigationBar Margin="20" />
-            <memberComponent:MemberNavigationBar Grid.Row="1" Margin="20 0 20 20"/>
-        </Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="Background.png" Stretch="None"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="536"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="145"/>
+            </Grid.ColumnDefinitions>
 
-      
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <local:SearchUserID Grid.Row="0" Margin="0,20,0,0"/>
-
-
-            <Grid Grid.Row="1" Margin="0,8,0,8">
-                <DockPanel LastChildFill="False">
-                    <TextBlock DockPanel.Dock="Left" Text="Total active member: xxx/1000 " 
-                               Foreground="White" VerticalAlignment="Bottom" FontSize="18"/>
-                    <Button DockPanel.Dock="Right" Margin="0,0,36,0" FontSize="18"
-                            Padding="12,8,12,8" Height="auto "
-                        Style="{StaticResource MaterialDesignOutlinedButton}"
-                        Command="{Binding RunBlockNotificationCommand}"
-
-                            BorderBrush="White"
-                            Foreground="White"
-                        ToolTip="MaterialDesignOutlinedButton"
-                        Content="Add new member" />
-                </DockPanel>
+            <!--Navigation-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="460"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <components:HomeNavigationBar Margin="20" />
+                <memberComponent:MemberNavigationBar Grid.Row="1" Margin="20 0 20 20"/>
             </Grid>
 
 
-            <memberComponent:Member_list Grid.Row="2"/>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        </Grid>
+                <components:SearchUserID Grid.Row="0" Margin="0,20,0,0"/>
+                <Frame x:Name="frame" Source="/layout/member/component/MemberActiveWraper.xaml" Grid.Row="1" Grid.RowSpan="2" NavigationUIVisibility="Hidden"/>
+            </Grid>
 
-        <!--Icon-->
-        <Grid Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="145"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <components:LibrarianIcon Margin="20"/>
+            <!--Icon-->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="145"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <components:LibrarianIcon Margin="20"/>
+            </Grid>
         </Grid>
-    </Grid>
     </materialDesign:DialogHost>
 </UserControl>

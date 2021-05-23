@@ -174,6 +174,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="layout\member\component\MemberActiveWraper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\MemberBlackListWraper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="layout\member\component\MemberNavigationBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -271,6 +279,12 @@
     </Compile>
     <Compile Include="layout\member\component\add_member.xaml.cs">
       <DependentUpon>add_member.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\MemberActiveWraper.xaml.cs">
+      <DependentUpon>MemberActiveWraper.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\MemberBlackListWraper.xaml.cs">
+      <DependentUpon>MemberBlackListWraper.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\member\component\MemberNavigationBar.xaml.cs">
       <DependentUpon>MemberNavigationBar.xaml</DependentUpon>

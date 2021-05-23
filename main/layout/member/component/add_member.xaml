@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:main.layout.member.component"
+               xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="670" d:DesignWidth="1000"
              >
 
@@ -66,13 +68,15 @@
                 <DockPanel LastChildFill="False" Margin="12,50,12,0">
                     <Button
                             DockPanel.Dock="Left"
-                           Style="{StaticResource MaterialDesignRaisedDarkButton}"
                             materialDesign:ButtonAssist.CornerRadius="14"
                             Height="66"
                             Width="202"
                             Background="Green"
-                           
-                            ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                            Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
+                            >
+                        <Button.CommandParameter>
+                            <system:Boolean>True</system:Boolean>
+                        </Button.CommandParameter>
                         <TextBlock Text="ADD" FontSize="28" />
                         </Button>
                     <Button
@@ -81,9 +85,14 @@
                             Height="66"
                             Width="202"
                             Background="Gray"
-                            ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                            Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
+                            > 
+                        <Button.CommandParameter>
+                            <system:Boolean>False</system:Boolean>
+                        </Button.CommandParameter>
                         <TextBlock Text="CANCEL" FontSize="28" />
-                        </Button>
+                       
+                    </Button>
                     
                 </DockPanel>
             </StackPanel>
