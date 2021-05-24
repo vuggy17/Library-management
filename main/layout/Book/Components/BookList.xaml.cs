@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.viewmodel.features;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace main.layout.Book.Components
         public BookList()
         {
             InitializeComponent();
+            this.DataContext = new BookListViewModel();
         }
     }
 }

@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="861" d:DesignWidth="1324">
     <Grid>
-        <ListView  x:Name="lvBookList">
+        <ListView  x:Name="lvBookList" ItemsSource="{Binding LstBookItem}" Background="Transparent" >
             <ListView.Resources>
                 <Style TargetType="ScrollBar">
-                    <Setter Property="Height" Value="auto"/>
+                    <Setter Property="Height" Value="Auto"/>
                     <Setter Property="MinWidth" Value="0"/>
                     <Setter Property="Width" Value="10"/>
                     <Setter Property="Opacity" Value="1"></Setter>
@@ -18,11 +18,12 @@
             </ListView.Resources>
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
-                    <Setter Property="Height" Value="187"></Setter>
+                    <Setter Property="Height" Value="275"></Setter>
                     <Setter Property="Template">
+                        
                         <Setter.Value>
                             <ControlTemplate TargetType="ListViewItem">
-                                <Grid Height="167" Margin="0 0 20 0" >
+                                <Grid Margin="0 20 0 0" >
                                     <Border Background="White" CornerRadius="20">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
@@ -44,7 +45,7 @@
                                                     <RowDefinition Height="1.5*"/>
                                                 </Grid.RowDefinitions>
                                                 <TextBlock x:Name="txtBookName"
-                                                          Text="Sự im lặng của bầy cừu"
+                                                          Text="{Binding title}"
                                                           FontSize="48"
                                                           FontWeight="Bold"
                                                           FontFamily="Roboto"
