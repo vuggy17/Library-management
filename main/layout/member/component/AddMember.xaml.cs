@@ -16,15 +16,14 @@ using System.Windows.Shapes;
 namespace main.layout.member.component
 {
     /// <summary>
-    /// Interaction logic for add_member.xaml
+    /// Interaction logic for AddMember.xaml
     /// </summary>
-    public partial class add_member : UserControl
+    public partial class AddMember : UserControl
     {
-        public add_member()
+        public AddMember()
         {
             InitializeComponent();
         }
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 

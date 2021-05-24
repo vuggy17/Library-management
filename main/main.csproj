@@ -134,6 +134,9 @@
     <Compile Include="layout\HomeAndFeature\components\BookBorrowRenew.xaml.cs">
       <DependentUpon>BookBorrowRenew.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\member\component\AddMember.xaml.cs">
+      <DependentUpon>AddMember.xaml</DependentUpon>
+    </Compile>
     <Compile Include="viewmodel\BaseViewModel.cs" />
     <Compile Include="viewmodel\features\FeatureNavigationViewModel.cs" />
     <Compile Include="viewmodel\features\ResearveBook.cs" />
@@ -198,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\LoginForm\LoginForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\AddMember.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,9 +307,6 @@
     </Compile>
     <Compile Include="layout\HomeAndFeature\HomeAndFeatureTest.xaml.cs">
       <DependentUpon>HomeAndFeatureTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="layout\member\component\add_member.xaml.cs">
-      <DependentUpon>add_member.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\member\component\MemberActiveWraper.xaml.cs">
       <DependentUpon>MemberActiveWraper.xaml</DependentUpon>
