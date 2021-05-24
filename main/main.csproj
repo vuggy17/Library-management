@@ -163,6 +163,7 @@
       <DependentUpon>AddMember.xaml</DependentUpon>
     </Compile>
     <Compile Include="viewmodel\BaseViewModel.cs" />
+    <Compile Include="viewmodel\features\BookListViewModel.cs" />
     <Compile Include="viewmodel\features\FeatureNavigationViewModel.cs" />
     <Compile Include="viewmodel\features\ResearveBook.cs" />
     <Page Include="layout\HomeAndFeature\components\BookBorrowRenew.xaml">
