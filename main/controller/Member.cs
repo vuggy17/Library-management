@@ -35,7 +35,7 @@ namespace main.controller
         private async void RunAddForm(object o)
         {
             //let's set up a little MVVM, cos that's what the cool kids are doing:
-            var view = new add_member
+            var view = new AddMember
             {
                 DataContext = this
             };

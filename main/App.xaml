@@ -13,8 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
 
            
-            <Style TargetType="Label" 
-                   x:Key="HomeLabel"
+            <Style TargetType="Label" x:Key="HomeLabel"
                    xmlns:sys="clr-namespace:System;assembly=mscorlib" 
                    >
                 <Setter Property="Background" Value="White"></Setter>
@@ -169,38 +168,7 @@
                 </Style.Resources>
             </Style>
 
-            <Style TargetType="Button" x:Key="DeleteButton">
-                <Setter Property="Background" Value="#A72828"/>
-                <Setter Property="FontFamily" Value="Roboto"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="border" 
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="0"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="10"
-                                SnapsToDevicePixels="true">
-                                <ContentPresenter x:Name="contentPresenter"
-                                              Focusable="False"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              Margin="{TemplateBinding Padding}"
-                                              RecognizesAccessKey="True"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsDefaulted" Value="true">
-                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="true">                                                                
-                                    <Setter Property="Cursor" TargetName="border" Value="Hand" ></Setter>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
+          
 
             <Style TargetType="Button" x:Key="DeleteButton">
                 <Setter Property="Background" Value="#A72828"/>

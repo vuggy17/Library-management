@@ -134,6 +134,12 @@
     <Compile Include="layout\HomeAndFeature\components\BookBorrowRenew.xaml.cs">
       <DependentUpon>BookBorrowRenew.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\LoginForm\Components\LoginBoard.xaml.cs">
+      <DependentUpon>LoginBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\LoginForm\LoginForm.xaml.cs">
+      <DependentUpon>LoginForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\member\component\AddMember.xaml.cs">
       <DependentUpon>AddMember.xaml</DependentUpon>
     </Compile>
@@ -427,6 +433,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assests\unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\img_book.png" />
+    <Resource Include="assests\img_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\ic_delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

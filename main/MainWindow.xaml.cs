@@ -19,6 +19,7 @@ using main.model.enums;
 using main.layout.HomeAndFeature;
 using main.layout.Book;
 using main.layout.member;
+using main.layout;
 
 namespace main
 {
@@ -31,8 +32,13 @@ namespace main
         {
             InitializeComponent();
             this.Visibility = Visibility.Hidden;
-            HomeAndFeatureTest homeAndFeatureTest = new HomeAndFeatureTest();
-            homeAndFeatureTest.Show();
+            //HomeAndFeatureTest homeAndFeatureTest = new HomeAndFeatureTest();
+            //homeAndFeatureTest.Show();
+
+            
+
+
+
             //BooksForm bookTest = new BooksForm();
             //bookTest.Show();
 
