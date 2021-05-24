@@ -202,6 +202,54 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="layout\member\component\MemberActiveWraper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\MemberBlackListWraper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\MemberNavigationBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\Member_blacklist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\Member_info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\member_list.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\Notification_block.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\Notification_delete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\notification_success.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\Notification_unblock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\component\Progresbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\Member.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -210,6 +258,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="controller\AnotherComandImplementation.cs" />
+    <Compile Include="controller\Converter.cs" />
+    <Compile Include="controller\Member.cs" />
+    <Compile Include="controller\ViewModelBase.cs" />
     <Compile Include="db\Db.cs" />
     <Compile Include="layout\HomeAndFeature\components\BookBorrowReturn.xaml.cs">
       <DependentUpon>BookBorrowReturn.xaml</DependentUpon>
@@ -250,8 +302,44 @@
     <Compile Include="layout\HomeAndFeature\HomeAndFeatureTest.xaml.cs">
       <DependentUpon>HomeAndFeatureTest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="layout\member.xaml.cs">
-      <DependentUpon>member.xaml</DependentUpon>
+    <Compile Include="layout\member\component\add_member.xaml.cs">
+      <DependentUpon>add_member.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\MemberActiveWraper.xaml.cs">
+      <DependentUpon>MemberActiveWraper.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\MemberBlackListWraper.xaml.cs">
+      <DependentUpon>MemberBlackListWraper.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\MemberNavigationBar.xaml.cs">
+      <DependentUpon>MemberNavigationBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\Member_blacklist.xaml.cs">
+      <DependentUpon>Member_blacklist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\Member_info.xaml.cs">
+      <DependentUpon>Member_info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\member_list.xaml.cs">
+      <DependentUpon>member_list.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\Notification_block.xaml.cs">
+      <DependentUpon>Notification_block.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\Notification_delete.xaml.cs">
+      <DependentUpon>Notification_delete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\notification_success.xaml.cs">
+      <DependentUpon>notification_success.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\Notification_unblock.xaml.cs">
+      <DependentUpon>Notification_unblock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\component\Progresbar.xaml.cs">
+      <DependentUpon>Progresbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\Member.xaml.cs">
+      <DependentUpon>Member.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -294,7 +382,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="layout\member\" />
+    <Resource Include="layout\member\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\img\avt_default.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assests\Background.png" />
@@ -327,6 +418,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\warning_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\unlock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

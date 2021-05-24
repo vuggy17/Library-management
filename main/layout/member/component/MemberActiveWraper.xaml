@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="main.layout.member.component.MemberActiveWraper"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:main.layout.member.component"
+             mc:Ignorable="d" 
+             x:Name="ActiveMemberWraper"
+             d:DesignHeight="{Binding RelativeSource={RelativeSource FindAncestor, 
+    AncestorType={x:Type Grid}},Path=ActualWidth}" d:DesignWidth="{Binding RelativeSource={RelativeSource FindAncestor, 
+    AncestorType={x:Type Grid}},Path=ActualHeight}">
+    <Grid>
+        <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,8,0,8">
+            <DockPanel LastChildFill="False">
+                <TextBlock DockPanel.Dock="Left" Text="Total active member: xxx/1000 " 
+                               Foreground="White" VerticalAlignment="Bottom" FontSize="18"/>
+                <Button DockPanel.Dock="Right" Margin="0,0,36,0" FontSize="18"
+                            Padding="12,8,12,8" Height="auto "
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        Command="{Binding Path=DataContext.RunAddFormCommand,ElementName=ActiveMemberWraper}"
+
+                            BorderBrush="White"
+                            Foreground="White"
+                        ToolTip="MaterialDesignOutlinedButton"
+                        Content="Add new member" />
+            </DockPanel>
+        </Grid>
+        
+        <local:Member_list Grid.Row="1"/>
+    </Grid>
+</UserControl>

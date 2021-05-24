@@ -18,6 +18,7 @@ using main.model;
 using main.model.enums;
 using main.layout.HomeAndFeature;
 using main.layout.Book;
+using main.layout.member;
 
 namespace main
 {
@@ -39,7 +40,7 @@ namespace main
             //Person trang = new Person("trang");
 
             //Account github = new Account(duy);
-            
+
             //Console.WriteLine("account: "+github.info.email.ToString());
 
             //var bookStatus = BookFormat.AUDBOOK.ToString();
