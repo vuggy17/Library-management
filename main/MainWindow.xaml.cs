@@ -20,6 +20,7 @@ using main.layout.HomeAndFeature;
 using main.layout.Book;
 using main.layout.member;
 using main.layout;
+using main.layout.LoginForm;
 
 namespace main
 {
@@ -32,13 +33,12 @@ namespace main
         {
             InitializeComponent();
             this.Visibility = Visibility.Hidden;
-            //HomeAndFeatureTest homeAndFeatureTest = new HomeAndFeatureTest();
-            //homeAndFeatureTest.Show();
-
-            
-
-
-
+            HomeAndFeatureTest homeAndFeatureTest = new HomeAndFeatureTest();
+            homeAndFeatureTest.Show();
+            //LoginForm login = new LoginForm();
+            //login.Show();
+            //BooksForm books = new BooksForm();
+            //books.Show();
             //BooksForm bookTest = new BooksForm();
             //bookTest.Show();
 

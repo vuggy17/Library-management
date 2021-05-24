@@ -202,7 +202,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <!--<Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
@@ -212,7 +212,7 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-            </Style>-->
+            </Style>
 
 
 

@@ -30,8 +30,6 @@ namespace main.layout.HomeAndFeature
             FeatureNavigationViewModel.ChangePage += FeatureNavigation_ChangePage;
             RenewForm.ToggleForm += ToggleForm;
             ReturnBookForm.ToggleForm += ToggleForm;
-
-
         }
 
         private void ToggleForm()

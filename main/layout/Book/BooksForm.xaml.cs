@@ -25,10 +25,6 @@ namespace main.layout.Book
             InitializeComponent();
             List<BookItem> listTest = new List<BookItem>();
             listTest.Add(new BookItem());
-            listTest.Add(new BookItem());
-            listTest.Add(new BookItem());
-            listTest.Add(new BookItem());
-            listTest.Add(new BookItem());
             lstBook.ItemsSource = listTest; 
         }
     }

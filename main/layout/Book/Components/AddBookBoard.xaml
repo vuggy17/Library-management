@@ -19,7 +19,7 @@
                 Style="{DynamicResource HomeButton}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="40"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Image Source="/main;component/assests/Add.png" 

@@ -49,7 +49,9 @@
                         </Grid>
                     </Button>
                 </Grid>
-                <ListView Margin="50 20 50 30 " Grid.Row="1" x:Name="testLv" SelectionMode="Multiple" ItemsSource="{Binding ListBookReserve}">
+                <ListView Margin="50 20 50 30 " Grid.Row="1" x:Name="testLv" 
+                          SelectionMode="Multiple" 
+                          ItemsSource="{Binding ListBookReserve}">
                     <ListView.Resources>
                         <Style TargetType="ScrollBar">
                             <Setter Property="Height" Value="auto"/>
