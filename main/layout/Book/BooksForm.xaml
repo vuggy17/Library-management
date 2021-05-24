@@ -1,0 +1,63 @@
+﻿<Window x:Class="main.layout.Book.BooksForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:main.layout.Book" xmlns:components="clr-namespace:main.layout.HomeAndFeature.components" xmlns:components1="clr-namespace:main.layout.Book.Components"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        
+        Title="BooksForm" Height="1080" Width="1920" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="/main;component/assests/Background.png"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Height="1200"
+               Width="2200" Grid.ColumnSpan="2"></Image>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <components:HomeNavigationBar 
+                Padding="5,20,0,0"></components:HomeNavigationBar>
+            <components1:AddBookBoard Grid.Row="1"                                     
+                                      Padding="5,15,0,15"></components1:AddBookBoard>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+            <components1:SearchByIdTitleAuthorBar Margin="0,0,60,0"
+                                                  Width="1190"
+                                                  Height="96"></components1:SearchByIdTitleAuthorBar>
+                <components:LibrarianIcon Grid.Column="1"
+                                          Height="106"
+                                          Width="106"></components:LibrarianIcon>
+            </Grid>
+            <TextBlock Grid.Row="1"
+                   Text="Total books: 999"
+                   FontSize="30"
+                   Foreground="White"
+                   Padding="40,0,0,0"></TextBlock>
+            <ListView x:Name="lstBook"
+                      Grid.Row="2"
+                      Width="1372"
+                      Padding="40,10,0,10">
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>
