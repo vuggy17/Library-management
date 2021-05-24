@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.layout.HomeAndFeature.form;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,22 @@ namespace main.layout.HomeAndFeature.components
     /// </summary>
     public partial class CheckOutBook : UserControl
     {
+        public List<String> tempList = new List<string>();
         public CheckOutBook()
         {
             InitializeComponent();
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            tempList.Add("");
+            testLv.ItemsSource = tempList;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RenewForm renew = new RenewForm();
+            renew.Show();
         }
     }
 }

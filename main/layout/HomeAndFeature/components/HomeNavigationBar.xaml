@@ -88,6 +88,7 @@
             </Button>
             <Button Width="420"
                     Height="70"
+                    Opacity="0.5"
                 Grid.Row="2" Style="{DynamicResource HomeButton}" Margin="0,0,0,17">
                 <Grid Width="420"
                       Height="70">
@@ -108,6 +109,7 @@
                 </Grid>
             </Button>
             <Button Width="420"
+                    Opacity="0.5"
                     Height="70"
                 Grid.Row="3" 
                     Margin="0,0,0,34"

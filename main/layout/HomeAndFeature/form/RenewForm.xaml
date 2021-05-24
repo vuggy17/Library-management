@@ -7,9 +7,14 @@
         mc:Ignorable="d"
         Title="RenewForm" Height="315" Width="850"
         WindowStartupLocation="CenterScreen"
-        Background="Transparent"
         WindowStyle="None"
+        ResizeMode="NoResize"
         >
+    <Window.Background>
+        <SolidColorBrush Color="White" Opacity="0.3">
+
+        </SolidColorBrush>
+    </Window.Background>
     <Grid>
         <Label Style="{DynamicResource HomeLabel}">
             <Grid Height="315"
@@ -76,7 +81,7 @@
                             FontSize="27"
                             FontFamily="Roboto"
                             Foreground="White"
-                        Grid.Column="2"></Button>
+                        Grid.Column="2" Click="Button_Click"></Button>
                 </Grid>
 
 

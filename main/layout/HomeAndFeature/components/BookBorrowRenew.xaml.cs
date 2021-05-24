@@ -16,13 +16,15 @@ using System.Windows.Shapes;
 
 namespace main.layout.HomeAndFeature.components
 {
+    
     /// <summary>
-    /// Interaction logic for BookBorrowReturn.xaml
+    /// Interaction logic for BookBorrowRenew.xaml
     /// </summary>
-    public partial class BookBorrowReturn : UserControl
+    /// 
+    public partial class BookBorrowRenew : UserControl
     {
         public List<String> tempList = new List<string>();
-        public BookBorrowReturn()
+        public BookBorrowRenew()
         {
             InitializeComponent();
             tempList.Add("");
@@ -30,25 +32,23 @@ namespace main.layout.HomeAndFeature.components
             tempList.Add("");
             tempList.Add("");
             tempList.Add("");
-            ListReturnBook.ItemsSource = tempList;
-
-
+            RenewBookList.ItemsSource = tempList;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ReturnBookForm returnBook = new ReturnBookForm();
-            returnBook.Show();
+            RenewForm renew = new RenewForm();
+            renew.Show();
         }
 
         private void SelectAll_Checked(object sender, RoutedEventArgs e)
         {
-            ListReturnBook.SelectAll();
+            RenewBookList.SelectAll();
         }
 
         private void SelectAll_Unchecked(object sender, RoutedEventArgs e)
         {
-            ListReturnBook.UnselectAll();
+            RenewBookList.UnselectAll();
         }
     }
 }

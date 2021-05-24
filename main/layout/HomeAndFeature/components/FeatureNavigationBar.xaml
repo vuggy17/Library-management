@@ -19,7 +19,10 @@
                 </Grid.RowDefinitions>
 
                 <Button Width="420"
-                    Height="70"
+                         x:Name="ReturnBook"
+                        Opacity="1"
+                       Command="{Binding ReturnBook}"
+                     Height="70"
                      Grid.Row="0" 
                      Style="{DynamicResource HomeButton}"
                         HorizontalContentAlignment="Center"
@@ -34,6 +37,9 @@
                 </Button>
 
                 <Button Width="420"
+                        x:Name="RenewBook"
+                        Opacity="0.5"
+                        Command="{Binding RenewBook}"
                     Height="70"
                      Grid.Row="1" 
                      Style="{DynamicResource HomeButton}"
@@ -48,6 +54,9 @@
                            Foreground="White"/>
                 </Button>
                 <Button Width="420"
+                        Opacity="0.5"
+                        x:Name="ReserveBook"
+                        Command="{Binding ReserveBook}"
                     Height="70"
                      Grid.Row="2" 
                      Style="{DynamicResource HomeButton}"
@@ -62,8 +71,11 @@
                            Foreground="White"/>
                 </Button>
                 <Button Width="420"
+                        Opacity="0.5"
+                        x:Name="CheckOutBook"
                     Height="70"
                      Grid.Row="3" 
+                        Command="{Binding CheckOutBook}"
                      Style="{DynamicResource HomeButton}"
                         HorizontalContentAlignment="Center"
                         VerticalContentAlignment="Center">
