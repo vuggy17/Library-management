@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout
+namespace main.layout.HomeAndFeature.components
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for BookBorrowReturn.xaml
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class BookBorrowReturn : UserControl
     {
-        public UserControl1()
+        public BookBorrowReturn()
         {
             InitializeComponent();
         }

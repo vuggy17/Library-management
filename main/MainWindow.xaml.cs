@@ -16,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using main.model;
 using main.model.enums;
+using main.layout.HomeAndFeature;
+using main.layout.member;
 
 namespace main
 {
@@ -28,14 +30,18 @@ namespace main
         {
             InitializeComponent();
 
-            Person duy = new Person("Duy@alljf.com.vn");
-            Person trang = new Person("trang");
+            //this.Visibility = Visibility.Hidden;
+            //HomeAndFeatureTest homeAndFeatureTest = new HomeAndFeatureTest();
+            //homeAndFeatureTest.Show();
 
-            Account github = new Account(duy);
-            
-            Console.WriteLine("account: "+github.info.email.ToString());
+            //Person duy = new Person("Duy@alljf.com.vn");
+            //Person trang = new Person("trang");
 
-            var bookStatus = BookFormat.AUDBOOK.ToString();
+            //Account github = new Account(duy);
+
+            //Console.WriteLine("account: "+github.info.email.ToString());
+
+            //var bookStatus = BookFormat.AUDBOOK.ToString();
         }
     }
 }

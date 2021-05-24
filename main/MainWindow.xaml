@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:main"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock>hello</TextBlock>
+         xmlns:layout="clr-namespace:main.layout"
+        Title="MainWindow" Height="1080" Width="1920"
+        >
+    <Grid >
+        <layout:Member/>
     </Grid>
 </Window>
