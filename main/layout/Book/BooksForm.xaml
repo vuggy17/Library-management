@@ -53,11 +53,10 @@
                    FontSize="30"
                    Foreground="White"
                    Padding="40,0,0,0"></TextBlock>
-            <ListView x:Name="lstBook"
-                      Grid.Row="2"
-                      Width="1372"
-                      Padding="40,10,0,10">
-            </ListView>
+            <components1:BookList Grid.Row="2"
+                                  Height="861"
+                                  Width="1324">
+            </components1:BookList>
         </Grid>
     </Grid>
 </Window>
