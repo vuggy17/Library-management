@@ -131,6 +131,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="DelegateDefine.cs" />
+    <Compile Include="layout\HomeAndFeature\components\BookBorrowRenew.xaml.cs">
+      <DependentUpon>BookBorrowRenew.xaml</DependentUpon>
+    </Compile>
     <Compile Include="viewmodel\BaseViewModel.cs" />
     <Compile Include="viewmodel\features\FeatureNavigationViewModel.cs" />
     <Compile Include="viewmodel\features\ResearveBook.cs" />
@@ -195,10 +198,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\LoginForm\LoginForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="layout\member.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

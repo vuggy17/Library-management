@@ -202,20 +202,22 @@
                 </Setter>
             </Style>
 
+            <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="15" Background="#00A2FF" BorderThickness="1" Padding="2">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
 
 
         </ResourceDictionary>
-        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="15" Background="#00A2FF" BorderThickness="1" Padding="2">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+
        
     </Application.Resources>
 </Application>
