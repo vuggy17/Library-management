@@ -130,6 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="layout\Book\Components\EditBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="layout\Book\Components\SearchByIdTitleAuthorBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +150,9 @@
     </Compile>
     <Compile Include="layout\Book\Components\BookList.xaml.cs">
       <DependentUpon>BookList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\Book\Components\EditBook.xaml.cs">
+      <DependentUpon>EditBook.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\Book\Components\SearchByIdTitleAuthorBar.xaml.cs">
       <DependentUpon>SearchByIdTitleAuthorBar.xaml</DependentUpon>
