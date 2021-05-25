@@ -53,14 +53,14 @@
                                                           VerticalAlignment="Bottom"></TextBlock>
                                                 <TextBlock Grid.Row="1"
                                                            x:Name="txtAuthor"
-                                                           Text="Author(s): Thomas Harris"
+                                                           Text="{Binding author}"
                                                            FontSize="31"
                                                            FontFamily="Roboto"
                                                            Padding="20,0,0,0"
                                                            VerticalAlignment="Top"></TextBlock>
                                                 <TextBlock Grid.Row="2"
                                                             x:Name="txtPublicDate"
-                                                            Text="Publication date: 04/05/2021"
+                                                            Text="{Binding publisher}"
                                                             FontSize="31"
                                                             FontFamily="Roboto"
                                                             Padding="20,0,0,0"
