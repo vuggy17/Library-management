@@ -45,10 +45,9 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBox Name="Name"
@@ -59,6 +58,7 @@
                          FontWeight="Regular"
                          materialDesign:HintAssist.Hint="Name"
                          materialDesign:HintAssist.FontFamily="Roboto"
+                         materialDesign:BottomDashedLineAdorner.Brush="#0F52BA"
                          ></TextBox>
                 <TextBox Grid.Row="1"
                          Name="Author"
@@ -69,17 +69,86 @@
                          FontWeight="Regular"
                          materialDesign:HintAssist.Hint="Author(s)"
                          materialDesign:HintAssist.FontFamily="Roboto"
+                         materialDesign:BottomDashedLineAdorner.Brush="#0F52BA"
                          ></TextBox>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Price:"
+                    <TextBlock Text="Price: "
+                               FontSize="30"
+                               FontWeight="Bold"
+                               FontFamily="Roboto"
+                               VerticalAlignment="Center"></TextBlock>
+                    <TextBox Grid.Column="1"
+                               Text="10.000 vnđ"
+                               FontFamily="Roboto"
+                               FontSize="30"
+                               FontWeight="Regular"
+                               Style="{DynamicResource MaterialDesignTextBox}"></TextBox>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Publishing date: "
+                               FontSize="30"
+                               FontWeight="Bold"
+                               FontFamily="Roboto"
+                               VerticalAlignment="Center"></TextBlock>
+                    <TextBox Grid.Column="1"
+                               Text="13/07/2001"
+                               FontFamily="Roboto"
+                               FontSize="30"
+                               FontWeight="Regular"></TextBox>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Total copies: "
                                FontSize="30"
                                FontWeight="Bold"
                                FontFamily="Roboto"></TextBlock>
+                    <Button Grid.Column="1"
+                            BorderThickness="0"
+                            Height="55.86"
+                            Width="55.86"
+                            Content="-"
+                            FontSize="35"
+                            FontWeight="Bold"
+                            Foreground="Black"
+                            Background="#D9D7D7"></Button>
+                    <TextBox Grid.Column="2"
+                             Text="36"
+                             HorizontalAlignment="Center"
+                             FontSize="36"></TextBox>
+                    <Button Grid.Column="3"
+                            BorderThickness="0"
+                            Height="55.86"
+                            Width="55.86"
+                            Content="+"
+                            FontSize="35"
+                            FontWeight="Bold"
+                            Foreground="Black"
+                            Background="#D9D7D7"></Button>
                 </Grid>
+                <CheckBox Grid.Row="5"
+                          HorizontalAlignment="Left"
+                          Content="Reference Only"
+                          FontFamily="Roboto"
+                          FontWeight="Bold"
+                          FlowDirection="RightToLeft"
+                          FontSize="15">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="2" ScaleY="2"/>
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
             </Grid>
         </Grid>
     </Border>
