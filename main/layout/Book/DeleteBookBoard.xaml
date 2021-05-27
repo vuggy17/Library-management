@@ -5,8 +5,55 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:main.layout.Book"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="313" d:DesignWidth="1038">
+    <Border Background="White" CornerRadius="45">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.7*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/main;component/assests/Delete.png"
+                       Height="144"
+                       Width="130"></Image>
+                <TextBlock Text="Delete book will delete all copies of it Continue­­­?"
+                           VerticalAlignment="Center"
+                       FontSize="45"
+                       Grid.Column="1"
+                       FontFamily="Roboto"
+                       FontWeight="Bold"
+                       TextWrapping="Wrap"></TextBlock>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Width="202"
+                        Height="66"
+                        Content="DELETE"
+                        FontFamily="Roboto"
+                        FontSize="40"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        HorizontalAlignment="Right"
+                        Style="{DynamicResource HomeButton}"
+                        Background="#A72828"></Button>
+                <Button Grid.Column="1"
+                        Width="202"
+                        Height="66"
+                        Content="CANCEL"
+                        FontFamily="Roboto"
+                        FontSize="40"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Style="{DynamicResource HomeButton}"
+                        Background="#8B8B8B"></Button>
+            </Grid>
+        </Grid>
+    </Border>
 </UserControl>
