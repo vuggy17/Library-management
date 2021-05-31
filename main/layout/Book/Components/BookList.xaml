@@ -91,6 +91,8 @@
                                                     <RowDefinition/>
                                                 </Grid.RowDefinitions>
                                                 <Button Background="#28A745"
+                                                        Visibility="Hidden"
+                                                        x:Name="btnEdit"
                                                         Height="66"
                                                         Width="202"
                                                         Content="EDIT"
@@ -100,6 +102,8 @@
                                                         Style="{DynamicResource ConfirmButton}"
                                                         Margin="0,50,0,0"></Button>
                                                 <Button Grid.Row="1"
+                                                        Visibility="Hidden"
+                                                        x:Name="btnDelete"
                                                         Background="#A72828"
                                                         Height="66"
                                                         Width="202"
@@ -113,10 +117,17 @@
                                         </Grid>
                                     </Border>
                                 </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger  Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="btnEdit" Property="Visibility" Value="Visible"/>
+                                        <Setter TargetName="btnDelete" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
                             </ControlTemplate>
+                           
                         </Setter.Value>
                     </Setter>
-
+          
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>

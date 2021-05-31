@@ -12,7 +12,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-          
+
             <Style TargetType="Label" x:Key="HomeLabel"
                    xmlns:sys="clr-namespace:System;assembly=mscorlib" 
                    >
@@ -23,9 +23,9 @@
                         <Setter Property="CornerRadius"
                                 Value="30"/>
                     </Style>
-                </Style.Resources>                
+                </Style.Resources>
             </Style>
-                      
+
             <Style TargetType="Button" x:Key="HomeButton">
                 <Setter Property="Background" Value="#00a2ff"/>
                 <Setter Property="FontFamily" Value="Roboto"/>
@@ -130,7 +130,20 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            
+                            <Border x:Name="border" 
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="23"
+                                SnapsToDevicePixels="true">
+                                <ContentPresenter x:Name="contentPresenter"
+                                              Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsDefaulted" Value="true">
                                     <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
@@ -155,7 +168,7 @@
                 </Style.Resources>
             </Style>
 
-          
+
 
             <Style TargetType="Button" x:Key="DeleteButton">
                 <Setter Property="Background" Value="#A72828"/>
@@ -181,7 +194,7 @@
                                 <Trigger Property="IsDefaulted" Value="true">
                                     <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                                 </Trigger>
-                                <Trigger Property="IsMouseOver" Value="true">                                                                
+                                <Trigger Property="IsMouseOver" Value="true">
                                     <Setter Property="Cursor" TargetName="border" Value="Hand" ></Setter>
                                 </Trigger>
                             </ControlTemplate.Triggers>
@@ -190,7 +203,6 @@
                 </Setter>
             </Style>
             <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
-                <Setter Property="Background" Value="#A72828"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
@@ -201,10 +213,11 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-           
+
+
 
         </ResourceDictionary>
 
-       
+
     </Application.Resources>
 </Application>
