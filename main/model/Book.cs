@@ -53,9 +53,9 @@ namespace main.model
             set { _pageNum = value; }
         }
         //author id
-        private int _author;
+        private string _author;
 
-        public int author
+        public string author
         {
             get { return _author; }
             set { _author = value; }
@@ -70,7 +70,7 @@ namespace main.model
         #endregion
 
         #region method
-        public Book(int id, string title, string subject, string publisher, string lang, int pageNum, int author, string description) {
+        public Book(int id, string title, string subject, string publisher, string lang, int pageNum, string author, string description) {
             this.id = id;
             this.pageNum = pageNum;
             this.author = author;

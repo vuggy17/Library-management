@@ -1,5 +1,4 @@
-﻿using main.layout.Book.Components;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,19 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.Book
+namespace main.layout.HomeAndFeature.components
 {
     /// <summary>
-    /// Interaction logic for BooksForm.xaml
+    /// Interaction logic for ReturnFullInfor.xaml
     /// </summary>
-    public partial class BooksForm : Window
+    public partial class ReturnFullInfor : UserControl
     {
-        public BooksForm()
+        public ReturnFullInfor()
         {
             InitializeComponent();
-            
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

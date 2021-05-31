@@ -123,7 +123,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="layout\Book\Components\AddBookForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="layout\Book\Components\BookItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\Book\Components\BookList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\Book\Components\EditBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,14 +151,38 @@
     <Compile Include="layout\Book\Components\AddBookBoard.xaml.cs">
       <DependentUpon>AddBookBoard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\Book\Components\AddBookForm.xaml.cs">
+      <DependentUpon>AddBookForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\Book\Components\BookItem.xaml.cs">
       <DependentUpon>BookItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\Book\Components\BookList.xaml.cs">
+      <DependentUpon>BookList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\Book\Components\EditBook.xaml.cs">
+      <DependentUpon>EditBook.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\Book\Components\SearchByIdTitleAuthorBar.xaml.cs">
       <DependentUpon>SearchByIdTitleAuthorBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\Book\DeleteBookBoard.xaml.cs">
+      <DependentUpon>DeleteBookBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\HomeAndFeature\components\BookBorrowRenew.xaml.cs">
       <DependentUpon>BookBorrowRenew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\ChangePasswordBoard.xaml.cs">
+      <DependentUpon>ChangePasswordBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\LibrarianBar.xaml.cs">
+      <DependentUpon>LibrarianBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\LibrarianEdit.xaml.cs">
+      <DependentUpon>LibrarianEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\ReturnFullInfor.xaml.cs">
+      <DependentUpon>ReturnFullInfor.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\LoginForm\Components\LoginBoard.xaml.cs">
       <DependentUpon>LoginBoard.xaml</DependentUpon>
@@ -158,13 +194,22 @@
       <DependentUpon>AddMember.xaml</DependentUpon>
     </Compile>
     <Compile Include="viewmodel\BaseViewModel.cs" />
+    <Compile Include="viewmodel\features\BookListViewModel.cs" />
     <Compile Include="viewmodel\features\FeatureNavigationViewModel.cs" />
     <Compile Include="viewmodel\features\ResearveBook.cs" />
+    <Page Include="layout\Book\DeleteBookBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="layout\HomeAndFeature\components\BookBorrowRenew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\HomeAndFeature\components\BookBorrowReturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\components\ChangePasswordBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,11 +225,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="layout\HomeAndFeature\components\LibrarianBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\components\LibrarianEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="layout\HomeAndFeature\components\LibrarianIcon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\HomeAndFeature\components\ReseviceBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\components\ReturnFullInfor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -457,6 +514,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assests\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\Delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

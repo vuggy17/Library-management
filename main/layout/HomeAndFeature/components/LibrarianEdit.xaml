@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="main.layout.HomeAndFeature.components.LibrarianEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:main.layout.HomeAndFeature.components"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="670" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Border Background="White" CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width=" 1.2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0"
+                        Margin="0,50,0,0"
+                        BorderThickness="4"
+                    CornerRadius="14" BorderBrush="#707070" Height="512" Width="361">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4.5*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Image Source="/main;component/assests/img_user.png" 
+                               Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Height="Auto"
+                               Width="Auto"></Image>
+                        <Button Grid.Row="1"
+                                Height="Auto"
+                                Visibility="Visible"
+                                Content="Change image"
+                                Foreground="Black"
+                                FontSize="45"
+                                FontWeight="Bold"
+                                FontFamily="Roboto"
+                                Opacity="0.7">
+                            <Button.Background>
+                                <LinearGradientBrush  StartPoint="0,1" EndPoint="0,0">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStop Color="#91A7F1" Offset="0.3"></GradientStop>
+                                        <GradientStop Color="Transparent" Offset="1"></GradientStop>
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid Grid.Column="1" Margin="0,80,0,0" Width="440">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Change password"
+                           Foreground="#00A2FF"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           FontFamily="Roboto"
+                           HorizontalAlignment="Right"></TextBlock>
+                <TextBox Grid.Row="1" 
+                        Name="Name"
+                         Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                         Text="123456789"
+                         FontFamily="Roboto"
+                         FontSize="30"
+                         FontWeight="Regular"
+                         materialDesign:HintAssist.Hint="ID"
+                         materialDesign:HintAssist.FontFamily="Roboto"
+                         materialDesign:BottomDashedLineAdorner.Brush="#0F52BA"
+                         ></TextBox>
+                <TextBox Grid.Row="2"
+                         Name="Author"
+                         Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                         Text="Phạm Minh Tân"
+                         FontFamily="Roboto"
+                         FontSize="30"
+                         FontWeight="Regular"
+                         materialDesign:HintAssist.Hint="Full name"
+                         materialDesign:HintAssist.FontFamily="Roboto"
+                         materialDesign:BottomDashedLineAdorner.Brush="#0F52BA"
+                         ></TextBox>
+                <TextBox Grid.Row="3"
+                         Name="Address"
+                         Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                         Text="KTX khu B"
+                         FontFamily="Roboto"
+                         FontSize="30"
+                         FontWeight="Regular"
+                         materialDesign:HintAssist.Hint="Address"
+                         materialDesign:HintAssist.FontFamily="Roboto"
+                         materialDesign:BottomDashedLineAdorner.Brush="#0F52BA"
+                         ></TextBox>
+                <Grid Grid.Row="4" Height="50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Phone: "
+                               FontSize="30"
+                               FontWeight="Bold"
+                               FontFamily="Roboto"
+                               VerticalAlignment="Center"></TextBlock>
+                    <TextBox Grid.Column="1"
+                               Text=""
+                               FontFamily="Roboto"
+                               FontSize="30"
+                               FontWeight="Regular"
+                               Style="{DynamicResource MaterialDesignTextBox}"></TextBox>
+                </Grid>
+                <Grid Grid.Row="5" Height="60">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Email: "
+                               FontSize="30"
+                               FontWeight="Bold"
+                               FontFamily="Roboto"
+                               VerticalAlignment="Center"></TextBlock>
+                    <TextBox Grid.Column="1"
+                               Text=""
+                             VerticalAlignment="Center"
+                               FontFamily="Roboto"
+                               FontSize="30"
+                               FontWeight="Regular"></TextBox>
+                </Grid>
+                
+                <Grid Grid.Row="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="SAVE"
+                            FontSize="40"
+                            FontWeight="Bold"
+                            FontFamily="Roboto"
+                            Foreground="White"
+                            Width="202"
+                            Height="66"
+                            Background="#28A745"
+                            Style="{DynamicResource HomeButton}">
+                    </Button>
+                    <Button Grid.Column="1"
+                            Content="EXIT"
+                            FontSize="40"
+                            FontWeight="Bold"
+                            FontFamily="Roboto"
+                            Foreground="White"
+                            Width="202"
+                            Height="66"
+                            Background="#707070"
+                            Style="{DynamicResource HomeButton}">
+                    </Button>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Border>
+</UserControl>

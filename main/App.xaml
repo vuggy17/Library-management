@@ -12,7 +12,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-           
+          
             <Style TargetType="Label" x:Key="HomeLabel"
                    xmlns:sys="clr-namespace:System;assembly=mscorlib" 
                    >
@@ -130,20 +130,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="border" 
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="0"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="23"
-                                SnapsToDevicePixels="true">
-                                <ContentPresenter x:Name="contentPresenter"
-                                              Focusable="False"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              Margin="{TemplateBinding Padding}"
-                                              RecognizesAccessKey="True"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            </Border>
+                            
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsDefaulted" Value="true">
                                     <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
@@ -203,6 +190,7 @@
                 </Setter>
             </Style>
             <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="#A72828"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
@@ -213,8 +201,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-
-
+           
 
         </ResourceDictionary>
 
