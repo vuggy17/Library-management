@@ -14,8 +14,18 @@
                     <RowDefinition Height="90"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <local:SearchUserID Margin="50 20 70 0"></local:SearchUserID>
-                <Grid Grid.Row="1" Margin="50,0,80,0" >
+                <TextBox    Margin="50 20 70 0"
+                            FontSize="25"
+                            FontFamily="Roboto"                                                   
+                            BorderThickness="1.2"
+                            VerticalContentAlignment="Center"                           
+                            VerticalAlignment="Stretch"
+                            Height="70" BorderBrush="Black" MaxLines="1"                                  
+                            TextWrapping="Wrap"
+                            Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                            Style="{DynamicResource SearchUserId}">                   
+                </TextBox>
+                <Grid Grid.Row="1" Margin="50,0,80,0"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition Width="5*"/>
@@ -23,6 +33,7 @@
                     </Grid.ColumnDefinitions>
                     <Label Style="{DynamicResource Imagelabel}"
                            Width="118"
+                           Visibility="{Binding FullInfoView ,Converter={StaticResource BooleanToVisibilityConverter} ,UpdateSourceTrigger=PropertyChanged}"
                            Height="142" BorderBrush="Black" 
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Center"
@@ -42,8 +53,8 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label Content="Phạm Minh Tân"                              
-                               FontFamily="Roboto"
+                        <Label Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}"                              
+                               FontFamily="Roboto" 
                                FontSize="38"
                                Padding="0 0 4 0"
                                FontWeight="Bold"
@@ -52,7 +63,7 @@
                                >                            
                         </Label>
                         <Label Grid.Row="1"
-                                Content="ID: NJNKJZNJKFNJKLBNDFJB "                              
+                                Content="{Binding ID, UpdateSourceTrigger=PropertyChanged}"                              
                                FontFamily="Roboto"
                                FontSize="25"
                                Padding="0 0 4 0"
@@ -62,7 +73,7 @@
                                >
                         </Label>
                         <Label Grid.Row="2"
-                                Content="Borrowed books: 2/5"                              
+                                Content="{Binding BorrowBook, UpdateSourceTrigger=PropertyChanged}"                              
                                FontFamily="Roboto"
                                FontSize="25"
                                Padding="0 0 4 0"
@@ -72,7 +83,7 @@
                                >
                         </Label>
                         <Label Grid.Row="2"
-                                Content="Over due: 0"                              
+                                Content="{Binding OverDue, UpdateSourceTrigger=PropertyChanged}"                              
                                FontFamily="Roboto"
                                Foreground="Red"
                                FontSize="25"
@@ -85,7 +96,8 @@
                     </Grid>
                     <Label
                                Grid.Column="2"
-                               Content="Full information"                              
+                               Content="Full information"
+                               Visibility="{Binding FullInfoView ,Converter={StaticResource BooleanToVisibilityConverter} ,UpdateSourceTrigger=PropertyChanged}"
                                FontFamily="Roboto"
                                Foreground="#00A2FF"
                                FontSize="25"

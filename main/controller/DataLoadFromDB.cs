@@ -11,17 +11,19 @@ namespace main.controller
 {
     class DataLoadFromDB
     {
-        private DataLoadFromDB dataLoadFromDB;
-        private DataLoadFromDB() { }
+        private static DataLoadFromDB dataLoadFromDB;
+        private DataLoadFromDB() {
+            members = new List<Account>();
+            loadMembersFromDB();
+        }
         private List<Account> members;
 
-        public List<Account> getAllMembers()
+        public static List<Account> getAllMembers()
         {
             if(dataLoadFromDB == null)
             {
                 dataLoadFromDB = new DataLoadFromDB();
             }
-            loadMembersFromDB();
             return dataLoadFromDB.members;
         }
         private void loadMembersFromDB()
