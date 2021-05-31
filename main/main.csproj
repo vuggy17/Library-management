@@ -114,6 +114,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />
     <Page Include="layout\Book\BooksForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -130,6 +131,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="controller\DataLoadFromDB.cs" />
     <Compile Include="DelegateDefine.cs" />
     <Compile Include="layout\Book\BooksForm.xaml.cs">
       <DependentUpon>BooksForm.xaml</DependentUpon>

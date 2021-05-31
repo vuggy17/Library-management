@@ -29,7 +29,6 @@ namespace main.layout.HomeAndFeature.components
             DataContext = featureNavigation;
             FeatureNavigationViewModel.ChangePage += FeatureNavigationViewModel_ChangePage;
         }
-
         private void FeatureNavigationViewModel_ChangePage(string page)
         {
             switch (page)

@@ -49,7 +49,5 @@ namespace main
                 return "open";
             else return "closed";
         }
-       
-
     }
 }

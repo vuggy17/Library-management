@@ -22,6 +22,7 @@
                          x:Name="ReturnBook"
                         Opacity="1"
                        Command="{Binding ReturnBook}"
+                       
                      Height="70"
                      Grid.Row="0" 
                      Style="{DynamicResource HomeButton}"
@@ -37,7 +38,7 @@
                 </Button>
 
                 <Button Width="420"
-                        x:Name="RenewBook"
+                        x:Name="RenewBook"                       
                         Opacity="0.5"
                         Command="{Binding RenewBook}"
                     Height="70"
