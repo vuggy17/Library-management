@@ -30,8 +30,37 @@
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0"
                         Margin="0,50,0,0"
+                        BorderThickness="4"
                     CornerRadius="14" BorderBrush="#707070" Height="512" Width="361">
-                    <Image Source="/main;component/assests/img_book.png"></Image>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4.5*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Image Source="/main;component/assests/img_book.png" 
+                               Grid.Row="0"
+                               Grid.RowSpan="2"
+                               Height="Auto"
+                               Width="Auto"></Image>
+                        <Button Grid.Row="1"
+                                Height="Auto"
+                                Visibility="Visible"
+                                Content="Change image"
+                                Foreground="Black"
+                                FontSize="45"
+                                FontWeight="Bold"
+                                FontFamily="Roboto"
+                                Opacity="0.7">
+                            <Button.Background>
+                                <LinearGradientBrush  StartPoint="0,1" EndPoint="0,0">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStop Color="#91A7F1" Offset="0.3"></GradientStop>
+                                        <GradientStop Color="Transparent" Offset="1"></GradientStop>
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
                 </Border>
                 <TextBlock Grid.Row="1"
                            HorizontalAlignment="Center"

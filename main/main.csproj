@@ -176,6 +176,12 @@
     <Compile Include="layout\HomeAndFeature\components\LibrarianBar.xaml.cs">
       <DependentUpon>LibrarianBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\HomeAndFeature\components\LibrarianEdit.xaml.cs">
+      <DependentUpon>LibrarianEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\HomeAndFeature\components\ReturnFullInfor.xaml.cs">
+      <DependentUpon>ReturnFullInfor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\LoginForm\Components\LoginBoard.xaml.cs">
       <DependentUpon>LoginBoard.xaml</DependentUpon>
     </Compile>
@@ -221,11 +227,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="layout\HomeAndFeature\components\LibrarianEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="layout\HomeAndFeature\components\LibrarianIcon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\HomeAndFeature\components\ReseviceBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\components\ReturnFullInfor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
