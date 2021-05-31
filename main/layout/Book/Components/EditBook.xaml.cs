@@ -18,11 +18,25 @@ namespace main.layout.Book.Components
     /// <summary>
     /// Interaction logic for EditBook.xaml
     /// </summary>
-    public partial class EditBook : UserControl
+    public partial class EditBook : Window
     {
+        public static event ToggleFormDialogNotifyHandler ToggleForm;
         public EditBook()
         {
             InitializeComponent();
+            ToggleForm();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ToggleForm();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ToggleForm();
         }
     }
 }

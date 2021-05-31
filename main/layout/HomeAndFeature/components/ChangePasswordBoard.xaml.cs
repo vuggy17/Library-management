@@ -18,16 +18,25 @@ namespace main.layout.HomeAndFeature.components
     /// <summary>
     /// Interaction logic for ChangePasswordBoard.xaml
     /// </summary>
-    public partial class ChangePasswordBoard : UserControl
+    public partial class ChangePasswordBoard : Window
     {
+        public static event ToggleFormDialogNotifyHandler ToggleForm;
         public ChangePasswordBoard()
         {
             InitializeComponent();
+            ToggleForm();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+            ToggleForm();
+        }
 
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ToggleForm();
         }
     }
 }
