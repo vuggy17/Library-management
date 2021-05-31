@@ -29,5 +29,10 @@ namespace main.layout.HomeAndFeature.components
         {
 
         }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

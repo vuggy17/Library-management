@@ -24,5 +24,10 @@ namespace main.layout.Book
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
