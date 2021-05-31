@@ -25,7 +25,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid Height="670" Width="1000">
     <Border Background="White" CornerRadius="20" >
         <Grid>
             <Grid.ColumnDefinitions>
@@ -71,7 +70,7 @@
                         </Button>
                     </Grid>
                 </Border>
-              
+
             </Grid>
             <Grid Grid.Column="1" Margin="0,80,0,0" Width="440">
                 <Grid.RowDefinitions>
@@ -221,5 +220,4 @@
 
         </Grid>
     </Border>
-    </Grid>
 </Window>

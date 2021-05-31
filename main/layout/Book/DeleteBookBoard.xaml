@@ -5,7 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:main.layout.Book"
              mc:Ignorable="d" 
-             d:DesignHeight="313" d:DesignWidth="1038">
+             Height="313" Width="1038"
+             WindowStartupLocation="CenterScreen"
+             WindowStyle="None"
+             ResizeMode="NoResize">
+    <Window.Background>
+        <SolidColorBrush Color="White" Opacity="0.3">
+        </SolidColorBrush>
+    </Window.Background>
     <Border Background="White" CornerRadius="45">
         <Grid>
             <Grid.RowDefinitions>

@@ -24,6 +24,7 @@ namespace main.layout.Book.Components
         public AddBookForm()
         {
             InitializeComponent();
+            ToggleForm();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

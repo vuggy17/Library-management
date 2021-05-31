@@ -6,7 +6,14 @@
              xmlns:local="clr-namespace:main.layout.HomeAndFeature.components"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="670" d:DesignWidth="1000">
+              Height="670" Width="1000"
+             WindowStartupLocation="CenterScreen"
+             WindowStyle="None"
+             ResizeMode="NoResize">
+    <Window.Background>
+        <SolidColorBrush Color="White" Opacity="0.3">
+        </SolidColorBrush>
+    </Window.Background>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

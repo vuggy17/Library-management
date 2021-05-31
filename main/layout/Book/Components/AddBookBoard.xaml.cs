@@ -28,7 +28,7 @@ namespace main.layout.Book.Components
 
         private void btnAddNewBook_Click(object sender, RoutedEventArgs e)
         {
-            RenewForm addBookForm = new RenewForm();
+           AddBookForm addBookForm = new AddBookForm();
             addBookForm.Show();
         }
     }
