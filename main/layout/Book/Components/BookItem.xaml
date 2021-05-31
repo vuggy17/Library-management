@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:main.layout.Book.Components"
              mc:Ignorable="d" 
              d:DesignHeight="275" d:DesignWidth="1324">
-    <Border Background="White" CornerRadius="20">
+    <Border Background="White" CornerRadius="20" IsMouseCapturedChanged="Border_IsMouseCapturedChanged">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -72,7 +72,8 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Button Background="#28A745"
+                <Button x:Name="btnEdit"
+                        Background="#28A745"
                         Height="66"
                         Width="202"
                         Content="EDIT"
@@ -81,7 +82,8 @@
                         FontWeight="Medium"
                         Style="{DynamicResource ConfirmButton}"
                         Margin="0,50,0,0"></Button>
-                <Button Grid.Row="1"
+                <Button x:Name="btnDelete"
+                        Grid.Row="1"
                         Background="#A72828"
                         Height="66"
                         Width="202"

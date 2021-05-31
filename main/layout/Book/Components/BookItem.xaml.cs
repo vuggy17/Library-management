@@ -24,5 +24,11 @@ namespace main.layout.Book.Components
         {
             InitializeComponent();
         }
+
+        private void Border_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            btnDelete.Visibility = Visibility.Visible;
+            btnEdit.Visibility = Visibility.Visible;
+        }
     }
 }
