@@ -115,6 +115,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />
+    <Compile Include="viewmodel\form\ReturnFullInforViewModel.cs" />
     <Page Include="layout\Book\BooksForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,7 +182,7 @@
     <Compile Include="layout\HomeAndFeature\components\LibrarianEdit.xaml.cs">
       <DependentUpon>LibrarianEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="layout\HomeAndFeature\components\ReturnFullInfor.xaml.cs">
+    <Compile Include="layout\HomeAndFeature\form\ReturnFullInfor.xaml.cs">
       <DependentUpon>ReturnFullInfor.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\LoginForm\Components\LoginBoard.xaml.cs">
@@ -241,7 +242,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\HomeAndFeature\components\ReturnFullInfor.xaml">
+    <Page Include="layout\HomeAndFeature\form\ReturnFullInfor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -64,7 +64,7 @@
                 </Border>
                 <TextBlock Grid.Row="1"
                            HorizontalAlignment="Center"
-                           Text="ID: NJNKJZNJKFNJKLBNDFJB"
+                           Text="{Binding Id}"
                            FontFamily="Roboto"
                            FontSize="25"
                            FontWeight="Bold"></TextBlock>
@@ -81,7 +81,7 @@
                 </Grid.RowDefinitions>
                 <TextBox Name="Name"
                          Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-                         Text="Phạm Minh Tân"
+                         Text="{Binding Name}"
                          IsReadOnly="True"
                          FontFamily="Roboto"
                          FontSize="30"
@@ -93,7 +93,7 @@
                 <TextBox Grid.Row="1"
                          Name="Address"
                          Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-                         Text="KTX khu B"
+                         Text="{Binding Address}"
                          IsReadOnly="True"
                          FontFamily="Roboto"
                          FontSize="30"
@@ -113,7 +113,7 @@
                                FontFamily="Roboto"
                                VerticalAlignment="Center"></TextBlock>
                     <TextBox Grid.Column="1"
-                               Text="09xxxxx600"
+                               Text="{Binding Phone}"
                              IsReadOnly="True"
                                FontFamily="Roboto"
                                FontSize="30"
@@ -131,7 +131,7 @@
                                FontFamily="Roboto"
                                VerticalAlignment="Center"></TextBlock>
                     <TextBox Grid.Column="1"
-                               Text="tanml@gmail.com"
+                               Text="{Binding Email}"
                              IsReadOnly="True"
                              VerticalAlignment="Center"
                                FontFamily="Roboto"
@@ -151,7 +151,7 @@
                                FontWeight="Bold"
                                FontFamily="Roboto"></TextBlock>
                     <TextBlock Grid.Column="1"
-                               Text="3"
+                               Text="{Binding BorrowedBook}"
                                FontSize="36"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
@@ -166,7 +166,7 @@
                                VerticalAlignment="Center">
                     </TextBlock>
                     <TextBlock Grid.Column="3"
-                               Text="0"
+                               Text="{Binding OverDue}"
                                FontSize="36"
                                VerticalAlignment="Center"
                                FontFamily="Roboto"></TextBlock>
@@ -176,6 +176,7 @@
                           Content="Black list"
                           FontFamily="Roboto"
                           FontWeight="Bold"
+                          IsChecked="{Binding BlackList}"
                           FlowDirection="RightToLeft"
                           FontSize="15"
                           Height="30">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using main.model;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using main.viewmodel.form;
 
 namespace main.layout.HomeAndFeature.components
 {
@@ -21,9 +23,11 @@ namespace main.layout.HomeAndFeature.components
     public partial class ReturnFullInfor : Window
 {
         public static event ToggleFormDialogNotifyHandler ToggleForm;
-        public ReturnFullInfor()
+        public ReturnFullInfor(Account targerAccount)
         {
             InitializeComponent();
+            
+            DataContext = new ReturnFullInforViewModel(targerAccount);
             ToggleForm();
         }
 

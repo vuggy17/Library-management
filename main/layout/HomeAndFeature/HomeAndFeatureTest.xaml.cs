@@ -1,4 +1,5 @@
-﻿using main.layout.HomeAndFeature.form;
+﻿using main.layout.HomeAndFeature.components;
+using main.layout.HomeAndFeature.form;
 using main.viewmodel.features;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace main.layout.HomeAndFeature
             FeatureNavigationViewModel.ChangePage += FeatureNavigation_ChangePage;
             RenewForm.ToggleForm += ToggleForm;
             ReturnBookForm.ToggleForm += ToggleForm;
+            ReturnFullInfor.ToggleForm += ToggleForm;
         }
 
         private void ToggleForm()

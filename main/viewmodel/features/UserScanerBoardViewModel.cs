@@ -1,12 +1,15 @@
 ﻿using main.controller;
+using main.layout.HomeAndFeature.components;
 using main.model;
 using main.model.enums;
+using main.viewmodel.form;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace main.viewmodel.features
 {
@@ -27,27 +30,22 @@ namespace main.viewmodel.features
 
         public String OverDue { get; set; }
 
-        private Boolean fullInforView;
 
-        public Boolean FullInfoView {
-            get => fullInforView;
-            set
-            {
-                fullInforView = value;
-                OnPropertyChanged("FullInfoView");
-            }
-       
-        }
+        private Boolean userView;
 
-        private Boolean userImageView;
+        public ICommand SeeFullUserInfo { get; set; }
 
-        public Boolean UserImageView
+        public ICommand CancelMember { get; set; }
+
+
+
+        public Boolean UserView
         {
-            get => userImageView;
+            get => userView;
             set
             {
-                userImageView = value;
-                OnPropertyChanged("UserImageView");
+                userView = value;
+                OnPropertyChanged("UserView");
             }
 
         }
@@ -57,8 +55,20 @@ namespace main.viewmodel.features
         {
             allAccounts = new List<Account>();
             allAccounts = DataLoadFromDB.getAllMembers();
-            FullInfoView = false;
-            UserImageView = false;
+            UserView = false;
+            SeeFullUserInfo = new RelayCommand<object>((p) => { return true; }, (p) => { showFullUserInfor(TargetAccount); });
+            CancelMember = new RelayCommand<object>((p) => { return true; }, (p) => { hideUserInfo(); });
+
+        }
+        private void hideUserInfo()
+        {
+            targetAccount = null;
+            UserView = false;
+        }
+        private void showFullUserInfor(Account account)
+        {
+            ReturnFullInfor returnFullInfor = new ReturnFullInfor(account);
+            returnFullInfor.Show();
         }
 
 
@@ -98,8 +108,7 @@ namespace main.viewmodel.features
             OnPropertyChanged("OverDue");
             //Lấy image user and set here
             searchKeyword = "";
-            FullInfoView = true;
-            userImageView = true;
+            UserView = true;
         }
     }
 }
