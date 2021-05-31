@@ -18,21 +18,21 @@ namespace main.layout.HomeAndFeature.components
     /// <summary>
     /// Interaction logic for ReturnFullInfor.xaml
     /// </summary>
-    public partial class ReturnFullInfor : UserControl
-    {
+    public partial class ReturnFullInfor : Window
+{
+        public static event ToggleFormDialogNotifyHandler ToggleForm;
         public ReturnFullInfor()
         {
             InitializeComponent();
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-
+            ToggleForm();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
+            ToggleForm();
         }
+
+       
     }
 }

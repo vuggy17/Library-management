@@ -18,16 +18,25 @@ namespace main.layout.Book
     /// <summary>
     /// Interaction logic for DeleteBookBoard.xaml
     /// </summary>
-    public partial class DeleteBookBoard : UserControl
+    public partial class DeleteBookBoard : Window
     {
+        public static event ToggleFormDialogNotifyHandler ToggleForm;
         public DeleteBookBoard()
         {
             InitializeComponent();
+            ToggleForm();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+            ToggleForm();
+        }
 
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ToggleForm();
         }
     }
 }

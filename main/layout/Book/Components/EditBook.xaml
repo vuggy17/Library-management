@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="main.layout.Book.Components.EditBook"
+﻿<Window x:Class="main.layout.Book.Components.EditBook"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="670" d:DesignWidth="1000">
-    <UserControl.Resources>
+    <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml"/>
@@ -16,7 +16,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </UserControl.Resources>
+    </Window.Resources>
     <Border Background="White" CornerRadius="20">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -188,6 +188,8 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Button Content="SAVE"
+                            x:Name="btnSave"
+                            Click="btnSave_Click"
                             FontSize="40"
                             FontWeight="Bold"
                             FontFamily="Roboto"
@@ -198,6 +200,8 @@
                             Style="{DynamicResource HomeButton}">
                     </Button>
                     <Button Grid.Column="1"
+                            x:Name="btnExit"
+                            Click="btnExit_Click"
                             Content="EXIT"
                             FontSize="40"
                             FontWeight="Bold"
@@ -213,4 +217,4 @@
             
         </Grid>
     </Border>
-</UserControl>
+</Window>

@@ -18,16 +18,25 @@ namespace main.layout.HomeAndFeature.components
     /// <summary>
     /// Interaction logic for LibrarianEdit.xaml
     /// </summary>
-    public partial class LibrarianEdit : UserControl
+    public partial class LibrarianEdit : Window
     {
+        public static event ToggleFormDialogNotifyHandler ToggleForm;
         public LibrarianEdit()
         {
             InitializeComponent();
+            ToggleForm();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+            ToggleForm();
+        }
 
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ToggleForm();
         }
     }
 }

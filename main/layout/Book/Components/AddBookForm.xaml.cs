@@ -18,11 +18,28 @@ namespace main.layout.Book.Components
     /// <summary>
     /// Interaction logic for AddBookForm.xaml
     /// </summary>
-    public partial class AddBookForm : UserControl
+    public partial class AddBookForm : Window
     {
+        public static event ToggleFormDialogNotifyHandler ToggleForm;
         public AddBookForm()
         {
             InitializeComponent();
+            ToggleForm();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ToggleForm();
+        }
+
+      
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            //add Save logic here
+            this.Close();
+            ToggleForm();
         }
     }
 }
