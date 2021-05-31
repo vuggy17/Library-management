@@ -28,7 +28,7 @@
             <components:HomeNavigationBar 
                 Padding="5,20,0,0"></components:HomeNavigationBar>
             <components1:AddBookBoard Grid.Row="1"                                     
-                                      Padding="5,15,0,15"></components1:AddBookBoard>
+                                      Padding="5,15,0,15" ></components1:AddBookBoard>
         </Grid>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>

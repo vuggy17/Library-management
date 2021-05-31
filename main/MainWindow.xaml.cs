@@ -21,6 +21,8 @@ using main.layout.Book;
 using main.layout.member;
 using main.layout;
 using main.layout.LoginForm;
+using main.layout.Book.Components;
+using main.layout.HomeAndFeature.form;
 
 namespace main
 {
@@ -33,15 +35,18 @@ namespace main
         {
             InitializeComponent();
             this.Visibility = Visibility.Hidden;
-            HomeAndFeatureTest homeAndFeatureTest = new HomeAndFeatureTest();
-            homeAndFeatureTest.Show();
+            //HomeAndFeatureTest homeAndFeatureTest = new HomeAndFeatureTest();
+            //homeAndFeatureTest.Show();
             //LoginForm login = new LoginForm();
             //login.Show();
-            //BooksForm books = new BooksForm();
-            //books.Show();
+            BooksForm books = new BooksForm();
+            books.Show();
             //BooksForm bookTest = new BooksForm();
             //bookTest.Show();
-
+            //AddBookForm addBookForm = new AddBookForm();
+            //addBookForm.Show();
+            //RenewForm renewForm = new RenewForm();
+            //renewForm.Show();
             //Person duy = new Person("Duy@alljf.com.vn");
             //Person trang = new Person("trang");
 

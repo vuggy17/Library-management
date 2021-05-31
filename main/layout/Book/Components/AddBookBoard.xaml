@@ -13,6 +13,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button Height="71" 
+                x:Name="btnAddNewBook"
+                Click="btnAddNewBook_Click"
                 Width="421"
                 Background="#00A2FF"
                 VerticalAlignment="Bottom"

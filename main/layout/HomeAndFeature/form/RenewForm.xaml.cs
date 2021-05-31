@@ -23,7 +23,7 @@ namespace main.layout.HomeAndFeature.form
         public RenewForm()
         {
             InitializeComponent();
-            ToggleForm();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

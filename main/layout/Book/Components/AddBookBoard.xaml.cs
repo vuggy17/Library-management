@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.layout.HomeAndFeature.form;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace main.layout.Book.Components
         public AddBookBoard()
         {
             InitializeComponent();
+        }
+
+        private void btnAddNewBook_Click(object sender, RoutedEventArgs e)
+        {
+            RenewForm addBookForm = new RenewForm();
+            addBookForm.Show();
         }
     }
 }
