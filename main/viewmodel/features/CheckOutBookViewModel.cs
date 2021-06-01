@@ -9,25 +9,19 @@ using System.Threading.Tasks;
 using BookItem = main.model.BookItem;
 using System.Windows.Forms;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using main.layout.HomeAndFeature.form;
 
-namespace main.viewmodel.features
+namespace main.model.features
 {
     class CheckOutBookViewModel: BaseViewModel
     {
         
-        public class BookToShow //Kieu de binding
-        {
-            string id;
-            string name;
-            public string Id { get => id; set { id = value; } }
-            public String Name { get => name; set { name = value; } }
+        public BookToShow SelectedItem { get; set; }
 
-            public BookToShow(string id, string name)
-            {
-                this.Id = id;
-                this.Name = name;
-            }
-        }       
+        public ICommand Delete { get; set; }
+        public ICommand Confirm { get; set; }
+
         private List<BookItem> bookItems;
         private List<Book> books;
         
@@ -44,8 +38,31 @@ namespace main.viewmodel.features
         {
             bookToShows = new ObservableCollection<BookToShow>();
             bookItems = DataLoadFromDB.getBookItems();
-            books = DataLoadFromDB.getBooks();            
-           
+            books = DataLoadFromDB.getBooks(); 
+            Delete = new RelayCommand<object>((p) => { return true; }, (p) => { removeSeletedItem(); });
+            Confirm = new RelayCommand<object>((p) => { return true; }, (p) => { openCheckOutDiagram(); });
+            CheckOutConfirm.ClearInfo += ClearBooksItem;
+
+        }
+
+        private void ClearBooksItem()
+        {
+            BookToShows.Clear();
+        }
+
+        private void openCheckOutDiagram()
+        {
+            if (CurrentMember.GetAccount().id == 0 || bookToShows.Count == 0)
+            {
+                MessageBox.Show("Member and list book can't not place empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            CheckOutConfirm checkOutConfirm = new CheckOutConfirm(CurrentMember.GetAccount(), BookToShows);
+            checkOutConfirm.Show();
+        }
+        private void removeSeletedItem()
+        {           
+                     bookToShows.Remove(SelectedItem);
         }
         private string searchKeyword = "";
         public string SearchKeyword
@@ -64,18 +81,31 @@ namespace main.viewmodel.features
             {
                 if (bookToShows[i].Id == "ID: "+ searchKeyword)
                 {
-                    MessageBox.Show("This book is in list");
+                    MessageBox.Show("This book is in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    searchKeyword = "";
                     return true;
                 }
             }
            
             return false;
         }
+        private bool checkIsReferenceOnly()
+        {
+            if(searchBookItemById(SearchKeyword).isRefOnly == true)
+            {
+                MessageBox.Show("This book is reference only","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                searchKeyword = "";
+                return true;
+            }
+            return false;
+        }
 
         private ObservableCollection<BookToShow> getBookToShow()
-        {
-            if (searchBookItemById(searchKeyword)!=null &&! isExitstInCurrentList())
+        {            
+            
+            if (searchBookItemById(searchKeyword)!=null &&!checkIsReferenceOnly()&&! isExitstInCurrentList())
             {
+
                 if (findBookNameByBookItemId(searchBookItemById(searchKeyword)) != null)
                 {
                     bookToShows.Add(findBookNameByBookItemId(searchBookItemById(searchKeyword)));                   
@@ -83,7 +113,8 @@ namespace main.viewmodel.features
                 }
                 else
                 {
-                    MessageBox.Show("This book no longer availabel");
+                    MessageBox.Show("This book no longer available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    searchKeyword = "";
                 }               
             }
             return bookToShows;

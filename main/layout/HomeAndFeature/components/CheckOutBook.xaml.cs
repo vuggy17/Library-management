@@ -1,5 +1,5 @@
 ﻿using main.layout.HomeAndFeature.form;
-using main.viewmodel.features;
+using main.model.features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +26,6 @@ namespace main.layout.HomeAndFeature.components
         {
             InitializeComponent();
             this.DataContext = new CheckOutBookViewModel();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            RenewForm renew = new RenewForm();
-            renew.Show();
         }
     }
 }

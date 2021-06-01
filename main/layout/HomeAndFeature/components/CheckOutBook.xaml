@@ -10,11 +10,15 @@
         <Label Style="{StaticResource HomeLabel}">
             <Grid Width="1245"
                   Height="720">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="547*"/>
+                    <ColumnDefinition Width="698*"/>
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid>
+                <Grid Grid.ColumnSpan="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="7*"/>
                         <ColumnDefinition Width="2.5*"/>
@@ -29,11 +33,12 @@
                              Height="70" BorderBrush="Black" MaxLines="1"                                  
                              TextWrapping="Wrap"  
                              Style="{DynamicResource SearchBookId}"></TextBox>
-                    <Button Grid.Column="1"
+                    <Button Grid.Column="1"                            
                             Width="260"
                             Height="70"
                             Style="{StaticResource ConfirmButton}"
-                            Margin="20,20,45,0" Click="Button_Click"                            
+                            Margin="20,20,45,0"
+                            Command="{Binding Confirm}"
                             >
                         <Grid Width="260"
                               Height="65
@@ -58,7 +63,11 @@
                         </Grid>
                     </Button>
                 </Grid>
-                <ListView Margin="50 20 50 30 " Grid.Row="1" ItemsSource="{Binding BookToShows, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" >
+                <ListView Margin="50 20 50 30 " 
+                          Grid.Row="1" 
+                          ItemsSource="{Binding BookToShows, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" 
+                          SelectedItem="{Binding SelectedItem}"
+                          >
                     <ListView.Resources>
                         <Style TargetType="ScrollBar">
                             <Setter Property="Height" Value="auto"/>
@@ -76,6 +85,7 @@
                                         <Grid Height="167" Margin="0 0 20 0" >
                                             <Border  BorderThickness="1.5"
                                              Background="White"
+                                                     x:Name="border"
                                              CornerRadius="15"
                                              BorderBrush="Black">
                                                 <Grid Grid.Row="1"  >
@@ -125,6 +135,9 @@
                                                         </Label>
                                                     </Grid>
                                                     <Button Grid.Column="2"
+                                                            x:Name="delete"
+                                                            IsEnabled="False"
+                                                            Command="{Binding RelativeSource = {RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=DataContext.Delete}"
                                                     Style="{DynamicResource DeleteButton}"
                                                     Background="#A72828"                                                   
                                                     Width="70"
@@ -136,7 +149,13 @@
                                                 </Grid>
                                             </Border>
                                         </Grid>
-                                    </ControlTemplate>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="BorderBrush" TargetName="border" Value="Red"/>
+                                                <Setter Property="IsEnabled" TargetName="delete" Value="True"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>                                    
                                 </Setter.Value>
                             </Setter>
 

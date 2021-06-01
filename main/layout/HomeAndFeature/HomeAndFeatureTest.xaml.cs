@@ -1,6 +1,7 @@
 ﻿using main.layout.HomeAndFeature.components;
 using main.layout.HomeAndFeature.form;
-using main.viewmodel.features;
+using main.model.features;
+using main.model.form;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,7 @@ namespace main.layout.HomeAndFeature
             RenewForm.ToggleForm += ToggleForm;
             ReturnBookForm.ToggleForm += ToggleForm;
             ReturnFullInfor.ToggleForm += ToggleForm;
+            CheckOutConfirm.ToggleForm += ToggleForm;
         }
 
         private void ToggleForm()

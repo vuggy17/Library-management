@@ -10,4 +10,7 @@ namespace main
 
     //new form is show --> opacity mainform decrease
     public delegate void ToggleFormDialogNotifyHandler();
+
+    public delegate void ClearInfoNotifyHandler();
+
 }

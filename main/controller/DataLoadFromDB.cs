@@ -65,9 +65,9 @@ namespace main.controller
             bookItems.Add(new BookItem(76543212, false, 76543210));
             bookItems.Add(new BookItem(76543213, false, 76543210));
             bookItems.Add(new BookItem(76543214, false, 76543210));
-            //bookItems.Add(new BookItem(00000001, true, 00000000));
-            //bookItems.Add(new BookItem(00000002, true, 00000000));
-            //bookItems.Add(new BookItem(00000003, true, 00000000));
+            bookItems.Add(new BookItem(10000000, true, 00000000));
+            bookItems.Add(new BookItem(20000000, true, 00000000));
+            bookItems.Add(new BookItem(30000000, true, 00000000));
         }
         
         private void loadMembersFromDB()
