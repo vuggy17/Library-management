@@ -114,6 +114,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="viewmodel\features\CheckOutBookViewModel.cs" />
     <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnFullInforViewModel.cs" />
     <Page Include="layout\Book\BooksForm.xaml">

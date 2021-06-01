@@ -1,4 +1,5 @@
 ﻿using main.layout.HomeAndFeature.form;
+using main.viewmodel.features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,16 +22,10 @@ namespace main.layout.HomeAndFeature.components
     /// </summary>
     public partial class CheckOutBook : UserControl
     {
-        public List<String> tempList = new List<string>();
         public CheckOutBook()
         {
             InitializeComponent();
-            tempList.Add("");
-            tempList.Add("");
-            tempList.Add("");
-            tempList.Add("");
-            tempList.Add("");
-            testLv.ItemsSource = tempList;
+            this.DataContext = new CheckOutBookViewModel();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

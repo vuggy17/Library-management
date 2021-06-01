@@ -15,7 +15,7 @@ namespace main.viewmodel.features
 {
     class UserScanerBoardViewModel: BaseViewModel
     {
-        string searchKeyword = "";
+        
 
         private List<Account> allAccounts;
       
@@ -71,14 +71,14 @@ namespace main.viewmodel.features
             returnFullInfor.Show();
         }
 
-
+        string searchKeyword = "";
         public string SearchKeyword
         {
             get => searchKeyword;
             set
             {               
                 searchKeyword = value;               
-                OnPropertyChanged("SearchKeyword");
+                OnPropertyChanged("SearchKeyword");                
                 if (searchUserById(searchKeyword)) {
                     updateUI();
                 }
