@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.viewmodel.features;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace main.layout.HomeAndFeature.components
     /// </summary>
     public partial class LibrarianBar : UserControl
     {
+        
         public LibrarianBar()
         {
             InitializeComponent();
         }
+      
     }
 }

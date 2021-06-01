@@ -5,14 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:main.layout.HomeAndFeature.components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="450">
-    
-    <Ellipse Grid.Column="1"             
-             >
-        <Ellipse.Fill>
-            <ImageBrush ImageSource="/main;component/assests/librarian_avatar.png" 
+             d:DesignHeight="106" d:DesignWidth="106">
+    <Button Height="106" Width="106" Command="{Binding openLibrarianBar}">
+        <Button.Template>
+            <ControlTemplate TargetType="Button">
+                <Grid>
+                    <Ellipse Stroke="Black"
+                         StrokeThickness="2">
+                        <Ellipse.Fill>
+                           
+                                <ImageBrush ImageSource="/main;component/assests/librarian_avatar.png" 
                                         Stretch="UniformToFill"/>
 
-        </Ellipse.Fill>
-    </Ellipse>
+                           
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                </Grid>
+            </ControlTemplate>
+        </Button.Template>
+    </Button>
 </UserControl>
