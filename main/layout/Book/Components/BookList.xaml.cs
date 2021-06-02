@@ -25,7 +25,7 @@ namespace main.layout.Book.Components
         {
             InitializeComponent();
             this.DataContext = new BookListViewModel();
-           
+            
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -39,5 +39,11 @@ namespace main.layout.Book.Components
             DeleteBookBoard deleteBook = new DeleteBookBoard();
             deleteBook.Show();
         }
+
+        private void AddBook()
+        {
+            
+        }
+
     }
 }

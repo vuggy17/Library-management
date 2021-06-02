@@ -11,11 +11,11 @@ namespace main.viewmodel.features
     {
         public ICommand openLibrarianBar { get; set; }
 
-        public static event ChangePageHandler updatebar;
+        public static event LibrarianBarHandler updatebar;
 
         public LibrarianIconNavigationViewModel()
         {
-            openLibrarianBar = new RelayCommand<object>((p) => { return true; }, (p) => { updatebar("LibrarianBar"); });
+            openLibrarianBar = new RelayCommand<object>((p) => { return true; }, (p) => { updatebar();});
            
         }
     }

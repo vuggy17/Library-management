@@ -114,6 +114,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="controller\NewBook.cs" />
+    <Compile Include="viewmodel\features\AddBookViewModel.cs" />
     <Compile Include="viewmodel\features\LibrarianIconNavigationViewModel.cs" />
     <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnFullInforViewModel.cs" />

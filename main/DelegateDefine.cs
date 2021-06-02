@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,4 +11,8 @@ namespace main
 
     //new form is show --> opacity mainform decrease
     public delegate void ToggleFormDialogNotifyHandler();
+
+    public delegate void LibrarianBarHandler();
+
+    public delegate void AddBookHandler();
 }

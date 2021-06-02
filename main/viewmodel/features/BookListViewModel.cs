@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace main.viewmodel.features
 {
     class BookListViewModel:BaseViewModel
     {
         List<Book> lstBookItem = new List<Book>();
-
+       
         public List<Book> LstBookItem
         {
             get => lstBookItem;
@@ -30,6 +31,7 @@ namespace main.viewmodel.features
                 filter[i].publisher = "Publication date:" + filter[i].publisher;
             }    
             LstBookItem = filter;
+            
         }
     }
 }

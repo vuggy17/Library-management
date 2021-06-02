@@ -1,4 +1,5 @@
 ﻿using main.layout.Book.Components;
+using main.layout.HomeAndFeature.components;
 using main.viewmodel.features;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace main.layout.Book
             AddBookForm.ToggleForm += ToggleForm;
             EditBook.ToggleForm += ToggleForm;
             DeleteBookBoard.ToggleForm += ToggleForm;
+            LibrarianEdit.ToggleForm += ToggleForm;
         }
 
         private void ToggleForm()
@@ -46,17 +48,11 @@ namespace main.layout.Book
             else this.IsEnabled = true;
         }
 
-        private void FeatureNavigationViewModel_ChangePage(string page)
+        private void FeatureNavigationViewModel_ChangePage()
         {
-            switch (page)
-            {
-                case "openLibrarianBar":
-                    if (LibrarianBar.Visibility == Visibility.Hidden)
-                        LibrarianBar.Visibility = Visibility.Visible;
-                    else LibrarianBar.Visibility = Visibility.Hidden;
-                    break;
-             
-            }
+          if (LibrarianBar.Visibility == Visibility.Hidden)
+              LibrarianBar.Visibility = Visibility.Visible;
+          else LibrarianBar.Visibility = Visibility.Hidden;                   
         }
     }
 }

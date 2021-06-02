@@ -1,4 +1,7 @@
-﻿using System;
+﻿using main.controller;
+using main.viewmodel.features;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using main.model;
 
 namespace main.layout.Book.Components
 {
@@ -24,6 +28,8 @@ namespace main.layout.Book.Components
         public AddBookForm()
         {
             InitializeComponent();
+            lbNumber.Content = "0";
+            this.DataContext = new AddBookViewModel();
             ToggleForm();
         }
 
@@ -38,8 +44,35 @@ namespace main.layout.Book.Components
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             //add Save logic here
+            var newBook = NewBook.getInstance(1234, tbAuthor.Text, "none", tbPublishDate.Text, "",0,tbAuthor.Text,"");
             this.Close();
             ToggleForm();
+        }
+
+        private void btnAddImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            var result = openFileDialog.ShowDialog();
+            if (result == false) return;
+            imgBookCover.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            int number = Int32.Parse(lbNumber.Content.ToString());
+            number++;
+            lbNumber.Content = number.ToString();
+        }
+
+        private void btnReduce_Click(object sender, RoutedEventArgs e)
+        {
+            int number = Int32.Parse(lbNumber.Content.ToString());
+            if (number > 0)
+            {
+                number--;
+                lbNumber.Content = number.ToString();
+            }
         }
     }
 }

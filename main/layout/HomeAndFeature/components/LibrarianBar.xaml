@@ -15,24 +15,35 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Edit information"
-                       FontSize="40"
-                       FontFamily="Roboto"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"></TextBlock>
+            <Button Content="Edit information"
+                    x:Name="tbEdit"
+                    FontSize="40"
+                    Height="Auto"
+                    Background="Transparent"
+                    Foreground="Black"
+                    BorderBrush="Transparent"
+                    Click="tbEdit_Click"
+                    FontFamily="Roboto"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"></Button>
             <Border VerticalAlignment="Bottom"
                    HorizontalAlignment="Center"
                    Height="2"
                     Background="#707070"
                    BorderBrush="#707070"
                    Width="338"></Border>
-            <TextBlock Text="LOG OUT"
-                       Grid.Row="1"
-                       FontSize="40"
-                       Foreground="#A72828"
-                       FontFamily="Roboto"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"></TextBlock>
+            <Button Content="LOG OUT"
+                    Height="Auto"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Grid.Row="1"
+                    FontSize="40"
+                    x:Name="tbLogout"
+                    Click="tbLogout_Click"
+                    Foreground="#A72828"
+                    FontFamily="Roboto"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"></Button>
         </Grid>
     </Border>
 </UserControl>
