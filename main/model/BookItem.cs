@@ -32,13 +32,7 @@ namespace main.model
             get { return _dueDate; }
             set { _dueDate = value; }
         }
-        private DateTime _pubdate;
 
-        public DateTime pubDate
-        {
-            get { return _pubdate; }
-            set { _pubdate = value; }
-        }
         private DateTime _purchase;
 
         public DateTime purchase
@@ -67,13 +61,6 @@ namespace main.model
         {
             get { return _price; }
             set { _price = value; }
-        }
-        private BookFormat _type;
-
-        public BookFormat type
-        {
-            get { return _type; }
-            set { _type = value; }
         }
         private LendingStatus _lendingStatus;
 
