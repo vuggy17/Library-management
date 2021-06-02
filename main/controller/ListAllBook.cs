@@ -34,5 +34,18 @@ namespace main.controller
                 instance.Add(newBook);
             }    
         }
+        
+        public static void deleteBookAt(int index)
+        {
+            if (instance != null)
+            {
+                instance.RemoveAt(index);
+            }    
+        }    
+
+        public static void editBookAt(int index, Book newInfo)
+        {
+
+        }
     }
 }

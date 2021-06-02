@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using main.model;
 
 namespace main.layout.Book.Components
 {
@@ -23,17 +24,27 @@ namespace main.layout.Book.Components
     /// </summary>
     public partial class BookList : UserControl
     {
+        private int deleteIndex;
         public BookList()
         {
             InitializeComponent();
             this.DataContext = new BookListViewModel(ListAllBook.getInstance());
             AddBookViewModel.addBook += AddBookViewModel_addBook;
+            DeleteBookViewModel.deleteBook += DeleteBookViewModel_deleteBook;
+        }
+
+        private void DeleteBookViewModel_deleteBook(int index)
+        {
+            ListAllBook.deleteBookAt(deleteIndex); 
+            this.DataContext = null;
+            this.DataContext = new BookListViewModel(ListAllBook.getInstance());
         }
 
         private void AddBookViewModel_addBook()
         {
             this.DataContext = null; 
             this.DataContext = new BookListViewModel(ListAllBook.getInstance());
+            // add to db BookItem as same as the number of book
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -44,6 +55,8 @@ namespace main.layout.Book.Components
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            // delete logic
+            deleteIndex = lvBookList.SelectedIndex;
             DeleteBookBoard deleteBook = new DeleteBookBoard();
             deleteBook.Show();
         }

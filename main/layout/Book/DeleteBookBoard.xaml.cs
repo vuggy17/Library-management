@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.viewmodel.features;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,7 @@ namespace main.layout.Book
         {
             InitializeComponent();
             ToggleForm();
+            this.DataContext = new DeleteBookViewModel();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

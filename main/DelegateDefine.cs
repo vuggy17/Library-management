@@ -16,6 +16,8 @@ namespace main
 
     public delegate void AddBookHandler();
 
+    public delegate void DeleteBookHandler(int index);
+
     public delegate void ClearInfoNotifyHandler();
 
 }

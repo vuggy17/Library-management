@@ -22,7 +22,7 @@
                     <Setter Property="Template">
                         
                         <Setter.Value>
-                            <ControlTemplate TargetType="ListViewItem">
+                            <ControlTemplate TargetType="ListViewItem" >
                                 <Grid Margin="0 20 0 0" >
                                     <Border Background="White" CornerRadius="20">
                                         <Grid>
@@ -60,7 +60,7 @@
                                                            VerticalAlignment="Top"></TextBlock>
                                                 <TextBlock Grid.Row="2"
                                                             x:Name="txtPublicDate"
-                                                            Text="{Binding publisher}"
+                                                            Text="{Binding pubDate}"
                                                             FontSize="31"
                                                             FontFamily="Roboto"
                                                             Padding="20,0,0,0"
@@ -123,7 +123,9 @@
                                     <Trigger  Property="IsMouseOver" Value="True">
                                         <Setter TargetName="btnEdit" Property="Visibility" Value="Visible"/>
                                         <Setter TargetName="btnDelete" Property="Visibility" Value="Visible"/>
+                                        <Setter Property="IsSelected" Value="true"></Setter>
                                     </Trigger>
+                                    
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
                            

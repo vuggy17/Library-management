@@ -117,6 +117,7 @@
     <Compile Include="controller\ListAllBook.cs" />
     <Compile Include="controller\NewBook.cs" />
     <Compile Include="viewmodel\features\AddBookViewModel.cs" />
+    <Compile Include="viewmodel\features\DeleteBookViewModel.cs" />
     <Compile Include="viewmodel\features\LibrarianIconNavigationViewModel.cs" />
     <Compile Include="controller\CurrentMember.cs" />
     <Compile Include="layout\HomeAndFeature\form\CheckOutConfirm.xaml.cs">
