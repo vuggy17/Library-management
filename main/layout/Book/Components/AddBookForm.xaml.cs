@@ -44,7 +44,9 @@ namespace main.layout.Book.Components
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             //add Save logic here
-            var newBook = NewBook.getInstance(1234, tbAuthor.Text, "none", tbPublishDate.Text, "",0,tbAuthor.Text,"");
+            var newBook = NewBook.getInstance(1234, tbName.Text, "nun", tbAuthor.Text, DateTime.Parse(tbPublishDate.Text), Int32.Parse(lbNumber.Content.ToString()) );
+            ListAllBook.addNewBook(newBook);
+            NewBook.resetInstance();
             this.Close();
             ToggleForm();
         }

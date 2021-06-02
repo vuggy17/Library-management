@@ -1,4 +1,6 @@
-﻿using main.model.features;
+﻿using main.controller;
+using main.model.features;
+using main.viewmodel.features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +26,14 @@ namespace main.layout.Book.Components
         public BookList()
         {
             InitializeComponent();
-            this.DataContext = new BookListViewModel();
-            
+            this.DataContext = new BookListViewModel(ListAllBook.getInstance());
+            AddBookViewModel.addBook += AddBookViewModel_addBook;
+        }
+
+        private void AddBookViewModel_addBook()
+        {
+            this.DataContext = null; 
+            this.DataContext = new BookListViewModel(ListAllBook.getInstance());
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -38,11 +46,6 @@ namespace main.layout.Book.Components
         {
             DeleteBookBoard deleteBook = new DeleteBookBoard();
             deleteBook.Show();
-        }
-
-        private void AddBook()
-        {
-            
         }
 
     }
