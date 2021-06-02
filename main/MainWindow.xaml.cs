@@ -34,27 +34,30 @@ namespace main
         public MainWindow()
         {
             InitializeComponent();
-            this.Visibility = Visibility.Hidden;
-            HomeAndFeatureTest homeAndFeatureTest = new HomeAndFeatureTest();
-            homeAndFeatureTest.Show();
+            this.Visibility = Visibility.Collapsed;
+            //HomeAndFeatureTest homeAndFeatureTest = new HomeAndFeatureTest();
+            //homeAndFeatureTest.Show();
             //LoginForm login = new LoginForm();
             //login.Show();
-            //BooksForm books = new BooksForm();
-            //books.Show();
+            BooksForm books = new BooksForm();
+            books.Show();
             //BooksForm bookTest = new BooksForm();
             //bookTest.Show();
             //AddBookForm addBookForm = new AddBookForm();
             //addBookForm.Show();
             //RenewForm renewForm = new RenewForm();
             //renewForm.Show();
-            //Person duy = new Person("Duy@alljf.com.vn");
-            //Person trang = new Person("trang");
 
-            //Account github = new Account(duy);
+            // db test
 
-            //Console.WriteLine("account: "+github.info.email.ToString());
 
-            //var bookStatus = BookFormat.AUDBOOK.ToString();
+            var myaccount = new Account("Phong", "kh", "phong@gmail.com", "phone", 1, "pass", AccountStatus.ACTIVE, new DateTime(1000000), 5);
+            //MessageBox.Show(myaccount.p);
+            //Db.getInstace().createNewAccount(myaccount);
+            //Console.WriteLine( Db.getInstace().getPersonId(myaccount.info.name, myaccount.info.email));
+
+
+
         }
     }
 }

@@ -69,7 +69,7 @@ namespace main.controller
             };
 
             //show the dialog
-            var result = await DialogHost.Show(view, "NotificationDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
+            var result = await DialogHost.Show(view, "MemberDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
 
             //check the result...
             Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
@@ -83,7 +83,7 @@ namespace main.controller
             };
 
             //show the dialog
-            var result = await DialogHost.Show(view, "NotificationDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
+            var result = await DialogHost.Show(view, "MemberDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
 
             //check the result...
             Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
@@ -97,7 +97,7 @@ namespace main.controller
             };
 
             //show the dialog
-            var result = await DialogHost.Show(view, "NotificationDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
+            var result = await DialogHost.Show(view, "MemberDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
 
             //check the result...
             Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));

@@ -114,6 +114,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="cnpmDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cnpmDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="viewmodel\features\CheckOutBookViewModel.cs" />
     <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnFullInforViewModel.cs" />
@@ -454,6 +459,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="cnpmDataSet.xsc">
+      <DependentUpon>cnpmDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="cnpmDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>cnpmDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="cnpmDataSet.xss">
+      <DependentUpon>cnpmDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -519,6 +535,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assests\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
