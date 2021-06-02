@@ -117,7 +117,14 @@
     <Compile Include="controller\NewBook.cs" />
     <Compile Include="viewmodel\features\AddBookViewModel.cs" />
     <Compile Include="viewmodel\features\LibrarianIconNavigationViewModel.cs" />
+    <Compile Include="controller\CurrentMember.cs" />
+    <Compile Include="layout\HomeAndFeature\form\CheckOutConfirm.xaml.cs">
+      <DependentUpon>CheckOutConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="model\BookToShow.cs" />
+    <Compile Include="viewmodel\features\CheckOutBookViewModel.cs" />
     <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />
+    <Compile Include="viewmodel\form\CheckOutConfirmViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnFullInforViewModel.cs" />
     <Page Include="layout\Book\BooksForm.xaml">
       <SubType>Designer</SubType>
@@ -242,6 +249,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\HomeAndFeature\components\ReseviceBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\form\CheckOutConfirm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

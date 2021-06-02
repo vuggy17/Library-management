@@ -1,8 +1,9 @@
 ﻿using main.controller;
 using main.layout.HomeAndFeature.components;
+using main.layout.HomeAndFeature.form;
 using main.model;
 using main.model.enums;
-using main.viewmodel.form;
+using main.model.form;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,16 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace main.viewmodel.features
+namespace main.model.features
 {
     class UserScanerBoardViewModel: BaseViewModel
     {
-        string searchKeyword = "";
+        
 
         private List<Account> allAccounts;
       
         private Account targetAccount;
-        public Account TargetAccount { get => targetAccount; set => targetAccount = value; }
+        public Account TargetAccount { get => targetAccount; set { targetAccount = value; CurrentMember.setAccount(targetAccount); } }
 
         public String Name { get; set; }
 
@@ -58,11 +59,13 @@ namespace main.viewmodel.features
             UserView = false;
             SeeFullUserInfo = new RelayCommand<object>((p) => { return true; }, (p) => { showFullUserInfor(TargetAccount); });
             CancelMember = new RelayCommand<object>((p) => { return true; }, (p) => { hideUserInfo(); });
-
+            CheckOutConfirm.ClearInfo += hideUserInfo;
         }
         private void hideUserInfo()
         {
             targetAccount = null;
+            CurrentMember.setAccount(null);
+
             UserView = false;
         }
         private void showFullUserInfor(Account account)
@@ -71,14 +74,14 @@ namespace main.viewmodel.features
             returnFullInfor.Show();
         }
 
-
+        string searchKeyword = "";
         public string SearchKeyword
         {
             get => searchKeyword;
             set
             {               
                 searchKeyword = value;               
-                OnPropertyChanged("SearchKeyword");
+                OnPropertyChanged("SearchKeyword");                
                 if (searchUserById(searchKeyword)) {
                     updateUI();
                 }
@@ -90,7 +93,7 @@ namespace main.viewmodel.features
             {
                 if(searchKeyId.Trim() == allAccounts[i].id.ToString())
                 {
-                    TargetAccount = allAccounts[i];
+                    TargetAccount = allAccounts[i];                    
                     return true;
                 }
             }

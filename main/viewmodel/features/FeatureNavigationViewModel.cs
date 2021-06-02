@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace main.viewmodel.features
+namespace main.model.features
 {
     class FeatureNavigationViewModel: BaseViewModel
     {

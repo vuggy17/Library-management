@@ -15,4 +15,7 @@ namespace main
     public delegate void LibrarianBarHandler();
 
     public delegate void AddBookHandler();
+
+    public delegate void ClearInfoNotifyHandler();
+
 }

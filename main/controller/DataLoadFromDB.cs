@@ -14,9 +14,32 @@ namespace main.controller
         private static DataLoadFromDB dataLoadFromDB;
         private DataLoadFromDB() {
             members = new List<Account>();
+            bookItems = new List<BookItem>();
+            books = new List<Book>();
             loadMembersFromDB();
+            loadBookItemsFromDB();
+            loadBookFromDB();
         }
         private List<Account> members;
+        private List<BookItem> bookItems; // reference to book by in for
+        private List<Book> books;
+
+        public static List<Book> getBooks()
+        {
+            if (dataLoadFromDB == null)
+            {
+                dataLoadFromDB = new DataLoadFromDB();
+            }
+            return dataLoadFromDB.books;
+        }
+        public static List<BookItem> getBookItems()
+        {
+            if(dataLoadFromDB == null)
+            {
+                dataLoadFromDB = new DataLoadFromDB();
+            }
+            return dataLoadFromDB.bookItems;
+        }
 
         public static List<Account> getAllMembers()
         {
@@ -26,6 +49,27 @@ namespace main.controller
             }
             return dataLoadFromDB.members;
         }
+        private void loadBookFromDB()
+        {
+            books.Add(new Book(12345670, "Rừng NaUy", "Novel", "Haruki Murakami",new DateTime(2021,6,2)));
+            books.Add(new Book(76543210, "Clean code", "Education","Robert C. Martin", new DateTime(2021, 6, 3)));
+            books.Add(new Book(00000000,"Sach chi tham khao","Tào lao","Pham Minh Tan", new DateTime(2021, 6, 3)));
+        }
+        private void loadBookItemsFromDB()
+        {
+            //fake load to test
+            bookItems.Add(new BookItem(12345671, false, 12345670));
+            bookItems.Add(new BookItem(12345672, false, 12345670));
+            bookItems.Add(new BookItem(12345673, false, 12345670));
+            bookItems.Add(new BookItem(76543211, false, 76543210));
+            bookItems.Add(new BookItem(76543212, false, 76543210));
+            bookItems.Add(new BookItem(76543213, false, 76543210));
+            bookItems.Add(new BookItem(76543214, false, 76543210));
+            bookItems.Add(new BookItem(10000000, true, 00000000));
+            bookItems.Add(new BookItem(20000000, true, 00000000));
+            bookItems.Add(new BookItem(30000000, true, 00000000));
+        }
+        
         private void loadMembersFromDB()
         {
             //fake load to test
@@ -35,6 +79,7 @@ namespace main.controller
             members.Add(new Account("Pham Minh Tân3", "Long An", "pmt3@gmail.com", "0343027603", 8266, "123456789", AccountStatus.ACTIVE, new DateTime(2019, 12, 31), 3));
             members.Add(new Account("Pham Minh Tân4", "Long An", "pmt4@gmail.com", "0343027604", 1530, "123456789", AccountStatus.ACTIVE, new DateTime(2019, 12, 31), 4));
         }
+
 
     }
 }
