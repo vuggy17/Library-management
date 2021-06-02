@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 namespace main.model.enums
 {
     //book type
-    public enum BookFormat {
-        HARDCOVER, PPBACK, AUDBOOK, EBOOK, NEWSPP, MAGZINE, JOURL
-    }
     //lending status
     public enum LendingStatus
     {

@@ -16,12 +16,6 @@ namespace main.model.features
 
         public ResearveBookViewModel()
         {
-            List<Book> fillter = new List<Book>();
-            fillter.Add(new Book(1, "Hoàng tử bé", "novel", "13/5/2021", "Tiếng Việt", 230, "", "Sách rất hay"));
-            fillter.Add(new Book(1, "Hoàng tử ổm", "novel", "13/5/2021", "Tiếng Việt", 230, "", "Sách rất hay"));
-            fillter.Add(new Book(1, "Hoàng tử mập", "novel", "13/5/2021", "Tiếng Việt", 230, "", "Sách rất hay"));
-            fillter.Add(new Book(1, "Hoàng tử thông minh", "novel", "13/5/2021", "Tiếng Việt", 230, "", "Sách rất hay"));
-            ListBookReserve = fillter;
         }
     }
 }

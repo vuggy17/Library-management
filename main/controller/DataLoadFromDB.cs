@@ -51,9 +51,9 @@ namespace main.controller
         }
         private void loadBookFromDB()
         {
-            books.Add(new Book(12345670, "Rừng NaUy", "Novel", "Nhà sách cá chép", "Tieng Viet", 250, "Haruki Murakami", "Sách hay"));
-            books.Add(new Book(76543210, "Clean code", "Education", "IT viec", "English", 350, "Robert C. Martin", "Best book for developer"));
-            books.Add(new Book(00000000,"Sach chi tham khao","Tham khao","Test","Tieng Viet",999,"Pham Minh Tan","Stupid book"));
+            books.Add(new Book(12345670, "Rừng NaUy", "Novel", "Haruki Murakami",new DateTime(2021,6,2)));
+            books.Add(new Book(76543210, "Clean code", "Education","Robert C. Martin", new DateTime(2021, 6, 3)));
+            books.Add(new Book(00000000,"Sach chi tham khao","Tào lao","Pham Minh Tan", new DateTime(2021, 6, 3)));
         }
         private void loadBookItemsFromDB()
         {
