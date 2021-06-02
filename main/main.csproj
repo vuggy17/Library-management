@@ -118,6 +118,7 @@
     <Compile Include="layout\HomeAndFeature\form\CheckOutConfirm.xaml.cs">
       <DependentUpon>CheckOutConfirm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="model\BookToReserve.cs" />
     <Compile Include="model\BookToShow.cs" />
     <Compile Include="viewmodel\features\CheckOutBookViewModel.cs" />
     <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />

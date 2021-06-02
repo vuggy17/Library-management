@@ -19,7 +19,16 @@
                         <ColumnDefinition Width="7*"/>
                         <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
-                    <local:SearchBookInfo Margin="50,20,0,0"></local:SearchBookInfo>
+                    <TextBox Margin="50,20,0,0"
+                             FontSize="25"
+                             Text="{Binding SearchKey, UpdateSourceTrigger=PropertyChanged}"
+                             FontFamily="Roboto"                                                   
+                             BorderThickness="1.2"
+                             VerticalContentAlignment="Center"                           
+                             VerticalAlignment="Stretch"
+                             Height="70" BorderBrush="Black" MaxLines="1"                                  
+                             TextWrapping="Wrap"
+                             Style="{DynamicResource SearchBookInfo}"></TextBox>
                     <Button Grid.Column="1"
                             Width="260"
                             Height="70"
