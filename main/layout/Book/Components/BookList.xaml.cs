@@ -33,6 +33,13 @@ namespace main.layout.Book.Components
             AddBookViewModel.addBook += AddBookViewModel_addBook;
             DeleteBookViewModel.deleteBook += DeleteBookViewModel_deleteBook;
             EditBookViewModel.editBook += EditBookViewModel_editBook;
+            SearchByIdTitleAuthorViewModel.Searching += SearchByIdTitleAuthorViewModel_search;
+        }
+
+        private void SearchByIdTitleAuthorViewModel_search()
+        {
+            this.DataContext = null;
+            this.DataContext = new BookListViewModel(SearchByIdTitleAuthorBar.lstBookOnSearch);
         }
 
         private void EditBookViewModel_editBook(int index)

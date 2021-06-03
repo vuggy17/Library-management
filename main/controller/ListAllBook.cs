@@ -10,7 +10,7 @@ namespace main.controller
     class ListAllBook
     {
         private static List<Book> instance;
-        private ListAllBook() { }
+        private ListAllBook() {}
 
         public static List<Book> getInstance()
         {

@@ -26,4 +26,6 @@ namespace main
 
     public delegate void LogoutHandler();
 
+    public delegate void SearchByIdTitleAuthorHandler();
+
 }
