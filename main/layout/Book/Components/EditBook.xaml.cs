@@ -1,4 +1,6 @@
-﻿using System;
+﻿using main.controller;
+using main.viewmodel.features;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,10 +27,15 @@ namespace main.layout.Book.Components
         {
             InitializeComponent();
             ToggleForm();
+            DataContext = new EditBookViewModel();
+            tbName.Text = ListAllBook.getInstance()[BookList.editIndex].title;
+            tbAuthor.Text = ListAllBook.getInstance()[BookList.editIndex].author;
+            tbPubDate.Text = ListAllBook.getInstance()[BookList.editIndex].pubDate.ToShortDateString();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            var newBook = NewBook.getInstance(0, tbName.Text, "nun", tbAuthor.Text, DateTime.Parse(tbPubDate.Text), Int32.Parse(lbNum.Content.ToString()));
             this.Close();
             ToggleForm();
         }

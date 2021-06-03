@@ -200,6 +200,7 @@
                     <Button Content="SAVE"
                             x:Name="btnSave"
                             Click="btnSave_Click"
+                            Command="{Binding editBookCommand}"
                             FontSize="40"
                             FontWeight="Bold"
                             FontFamily="Roboto"

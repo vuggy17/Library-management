@@ -45,7 +45,12 @@ namespace main.controller
 
         public static void editBookAt(int index, Book newInfo)
         {
-
+            if (instance != null)
+            {
+                int BookId = instance[index].id;
+                instance[index] = newInfo;
+                instance[index].id = BookId;
+            }    
         }
     }
 }

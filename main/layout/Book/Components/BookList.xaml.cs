@@ -24,13 +24,23 @@ namespace main.layout.Book.Components
     /// </summary>
     public partial class BookList : UserControl
     {
-        private int deleteIndex;
+        public static int deleteIndex;
+        public static int editIndex;
         public BookList()
         {
             InitializeComponent();
             this.DataContext = new BookListViewModel(ListAllBook.getInstance());
             AddBookViewModel.addBook += AddBookViewModel_addBook;
             DeleteBookViewModel.deleteBook += DeleteBookViewModel_deleteBook;
+            EditBookViewModel.editBook += EditBookViewModel_editBook;
+        }
+
+        private void EditBookViewModel_editBook(int index)
+        {
+            ListAllBook.editBookAt(editIndex, NewBook.getInstanceWithCertain());
+            NewBook.resetInstance();
+            this.DataContext = null;
+            this.DataContext = new BookListViewModel(ListAllBook.getInstance());
         }
 
         private void DeleteBookViewModel_deleteBook(int index)
@@ -49,6 +59,7 @@ namespace main.layout.Book.Components
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            editIndex = lvBookList.SelectedIndex;
             EditBook editBook = new EditBook();
             editBook.Show();
         }

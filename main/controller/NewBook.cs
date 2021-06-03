@@ -21,6 +21,17 @@ namespace main.controller
             return instance;
         }
 
+        public static Book getInstanceWithCertain()
+        {
+            if (instance != null)
+            {
+                return instance;
+            }    
+            else
+            {
+                return null;
+            }    
+        }
         public static void resetInstance()
         {
             instance = null;
