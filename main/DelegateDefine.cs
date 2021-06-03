@@ -22,4 +22,8 @@ namespace main
 
     public delegate void ClearInfoNotifyHandler();
 
+    public delegate void LoginHandler();
+
+    public delegate void LogoutHandler();
+
 }

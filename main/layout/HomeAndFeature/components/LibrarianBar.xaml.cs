@@ -25,17 +25,18 @@ namespace main.layout.HomeAndFeature.components
         public LibrarianBar()
         {
             InitializeComponent();
-            DataContext = new LibrarianIconNavigationViewModel();
-
         }
 
         private void tbLogout_Click(object sender, RoutedEventArgs e)
         {
-            // open Login Form
+            DataContext = null;
+            DataContext = new LogoutViewModel();
         }
 
         private void tbEdit_Click(object sender, RoutedEventArgs e)
         {
+            DataContext = null;
+            DataContext = new LibrarianIconNavigationViewModel();
             LibrarianEdit librarianEdit = new LibrarianEdit();
             librarianEdit.Show();
         }

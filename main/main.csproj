@@ -127,6 +127,8 @@
     </Compile>
     <Compile Include="model\BookToShow.cs" />
     <Compile Include="viewmodel\features\CheckOutBookViewModel.cs" />
+    <Compile Include="viewmodel\features\LoginViewModel.cs" />
+    <Compile Include="viewmodel\features\LogoutViewModel.cs" />
     <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />
     <Compile Include="viewmodel\form\CheckOutConfirmViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnFullInforViewModel.cs" />

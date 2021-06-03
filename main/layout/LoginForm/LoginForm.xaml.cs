@@ -1,4 +1,6 @@
-﻿using System;
+﻿using main.layout.Book;
+using main.viewmodel.features;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,15 @@ namespace main.layout.LoginForm
         public LoginForm()
         {
             InitializeComponent();
+            LoginViewModel.login += LoginViewModel_login;
+        }
+
+        private void LoginViewModel_login()
+        {
+            // Check account here
+            BooksForm booksForm = new BooksForm();
+            booksForm.Show();
+            this.Close();
         }
     }
 }

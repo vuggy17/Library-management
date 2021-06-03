@@ -39,6 +39,7 @@
                     Grid.Row="1"
                     FontSize="40"
                     x:Name="tbLogout"
+                    Command="{Binding logoutCommand}"
                     Click="tbLogout_Click"
                     Foreground="#A72828"
                     FontFamily="Roboto"

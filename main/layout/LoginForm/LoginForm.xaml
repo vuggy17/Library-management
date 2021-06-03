@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:main.layout.LoginForm" 
         xmlns:components="clr-namespace:main.layout.LoginForm.Components"
         mc:Ignorable="d"
-        Title="LoginForm" Height="1080" Width="1920">
+        Title="LoginForm" 
+         WindowStyle="None"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        
+        ResizeMode="NoResize" Height="1080" Width="1920">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
