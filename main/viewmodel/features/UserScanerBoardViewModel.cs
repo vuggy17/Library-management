@@ -60,6 +60,7 @@ namespace main.model.features
             SeeFullUserInfo = new RelayCommand<object>((p) => { return true; }, (p) => { showFullUserInfor(TargetAccount); });
             CancelMember = new RelayCommand<object>((p) => { return true; }, (p) => { hideUserInfo(); });
             CheckOutConfirm.ClearInfo += hideUserInfo;
+            ReserveConfirm.ClearInfo += hideUserInfo;
         }
         private void hideUserInfo()
         {

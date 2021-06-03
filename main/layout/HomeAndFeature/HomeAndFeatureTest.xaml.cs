@@ -34,6 +34,8 @@ namespace main.layout.HomeAndFeature
             ReturnBookForm.ToggleForm += ToggleForm;
             ReturnFullInfor.ToggleForm += ToggleForm;
             CheckOutConfirm.ToggleForm += ToggleForm;
+            ReseverBookForm.ToggleForm += ToggleForm;
+            ReserveConfirm.ToggleForm += ToggleForm;
         }
 
         private void ToggleForm()
@@ -41,10 +43,12 @@ namespace main.layout.HomeAndFeature
             if(this.Opacity == 1)
             {
                 this.Opacity = 0.3;
+               
             }
             else
             {
                 this.Opacity = 1;
+               
             }
         }
 

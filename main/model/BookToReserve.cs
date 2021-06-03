@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,18 @@ using System.Threading.Tasks;
 
 namespace main.model
 {
-    class BookToReserve
+    public class BookToReserve: BaseViewModel
     {
         int availableCopies;
         int count;
+        private int _id;
+
+        public int id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
         private string _title;
 
         public string title
@@ -25,21 +34,67 @@ namespace main.model
             set { _author = value; }
         }
 
+        private string _pubdate;
+
+        public string pubDate
+        {
+            get { return _pubdate; }
+            set { _pubdate = value; }
+        }
         public int AvalableCopies
         {
             get => availableCopies;
         }
-        public int Conunt
+        public int Count
         {
             get => count;
-            set => count = value;
+            set  
+            { 
+                count = value;
+                OnPropertyChanged("Count");
+            }
         }
+        public string ContentButton { get; set; }
+
+        private bool addAble;
+        public bool AddAble
+        {
+            get => addAble;
+            set
+            {
+                addAble = value;
+                if (value == false)
+                {
+                    ContentButton = "Added";                   
+                }
+                else
+                {
+                    ContentButton = "Add";
+                }
+                OnPropertyChanged("ContentButton");
+                OnPropertyChanged("AddAble");
+
+            }
+        }
+
 
         public BookToReserve(Book bookInfo)
         {
-            this.count = 1;
-            getAvailableCopies(bookInfo);
-
+            
+            this.availableCopies= getAvailableCopies(bookInfo);
+            if(this.availableCopies == 0)
+            {
+                this.count = 0;
+            }
+            else
+            {
+                this.count = 1;
+            }
+            this.id = bookInfo.id;
+            this.title = bookInfo.title;
+            this.author = bookInfo.author;
+            this.pubDate = bookInfo.pubDate.ToShortDateString();
+            this.AddAble = true;
         }
         private int getAvailableCopies(Book bookInfo)
         {
@@ -47,9 +102,10 @@ namespace main.model
             if (bookInfo != null)
             {
                 List<BookItem> bookItems = new List<BookItem>();
+                bookItems = DataLoadFromDB.getBookItems();
                 foreach(var bookItem in bookItems)
                 {
-                    if(bookItem.info == bookInfo.id && bookItem.lendingStatus == enums.LendingStatus.AVAI)
+                    if(bookItem.info == bookInfo.id && bookItem.isRefOnly== false)
                     {
                         availableCopies++;
                     }

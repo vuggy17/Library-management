@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,7 @@ namespace main
     public delegate void ToggleFormDialogNotifyHandler();
 
     public delegate void ClearInfoNotifyHandler();
+
+    public delegate void AddItemToReserveHandler(BookToReserve bookToResearve);
 
 }

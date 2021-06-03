@@ -148,6 +148,9 @@
                                 <Trigger Property="IsDefaulted" Value="true">
                                     <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                                 </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Cursor" TargetName="border" Value="Hand" ></Setter>
+                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
@@ -386,7 +389,7 @@
                                                     Source="/assests/ic_search.png" 
                                                    Stretch="None"/>
                                     <Label x:Name="HintText"
-                                        Content="Select book"
+                                        Content="Search by id, author, title"
                                        Grid.Column="1"
                                        FontSize="25"
                                        FontFamily="Roboto"

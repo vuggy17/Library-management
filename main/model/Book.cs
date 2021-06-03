@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace main.model
 {
-    class Book
+    public class Book
     {
         #region properties
         private int _id;

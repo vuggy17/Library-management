@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using main.model.features;
 using main.layout.HomeAndFeature.form;
+using main.viewmodel.features;
 
 namespace main.layout.HomeAndFeature.components
 {
@@ -23,8 +24,8 @@ namespace main.layout.HomeAndFeature.components
     /// </summary>
     public partial class ReseviceBook : UserControl
     {
-
         
+
         public ReseviceBook()
         {
             InitializeComponent();
@@ -34,8 +35,12 @@ namespace main.layout.HomeAndFeature.components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RenewForm renew = new RenewForm();
-            renew.Show();
+            
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

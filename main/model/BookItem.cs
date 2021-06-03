@@ -83,11 +83,12 @@ namespace main.model
         #endregion
 
         //this contructor is use for clone book item from db
-        public BookItem(int id, bool isRefOnly, int info)
+        public BookItem(int id, bool isRefOnly, int info, LendingStatus lending)
         {
             this.id = id;
             this.isRefOnly = isRefOnly;
-            this.info = info;           
+            this.info = info;
+            this.lendingStatus = lending;
         }
 
     }
