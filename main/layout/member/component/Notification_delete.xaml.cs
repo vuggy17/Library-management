@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using main.controller;
 
 namespace main.layout.member.component
 {
@@ -20,9 +21,17 @@ namespace main.layout.member.component
     /// </summary>
     public partial class Notification_delete : UserControl
     {
+        private MemberViewModel memberInstance;
         public Notification_delete()
         {
             InitializeComponent();
+             memberInstance = MemberViewModel.getInstance();
+            this.DataContext = memberInstance;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            memberInstance.deleteMember();
         }
     }
 }

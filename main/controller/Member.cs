@@ -22,6 +22,7 @@ namespace main.controller
         public Converter converter { get; set; }
         public ObservableCollection<Converter> memberList { get; set; }
         public ObservableCollection<Converter> blackList { get; set; }
+        public Account SelectedAccount { get; set; }
 
         public ICommand RunDeleteNotificationCommand => new AnotherCommandImplementation(RunDeleteNotification);
         public ICommand RunBlockNotificationCommand => new AnotherCommandImplementation(RunBlockNotification);
@@ -70,6 +71,7 @@ namespace main.controller
 
             //show the dialog
             var result = await DialogHost.Show(view, "MemberDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
+            Console.WriteLine(SelectedAccount.info.name);
 
             //check the result...
             Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
@@ -140,7 +142,7 @@ namespace main.controller
             Member.navigationFrame.Navigate(uri);
         }
 
-        public static MemberViewModel instance;
+        private static MemberViewModel instance;
         // lock object for multi thread-safe
         private static object syncLock = new object();
         public static MemberViewModel getInstance()
@@ -151,6 +153,10 @@ namespace main.controller
                         instance = new MemberViewModel();
             return instance;
         }
+        public void deleteMember()
+        {
+            memberList.RemoveAt(1);
+        }
 
         public MemberViewModel()
         {
@@ -159,6 +165,47 @@ namespace main.controller
             memberList = new ObservableCollection<Converter>()
             {
                 this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                 this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                  this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                 this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
+
+
             };
 
             blackList = new ObservableCollection<Converter> {
