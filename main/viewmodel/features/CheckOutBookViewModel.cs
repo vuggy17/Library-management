@@ -34,11 +34,13 @@ namespace main.model.features
                 bookToShows = value;            
             }
         }
+        CurrentMember currentMember;
         public CheckOutBookViewModel()
         {
             bookToShows = new ObservableCollection<BookToShow>();
             bookItems = DataLoadFromDB.getBookItems();
-            books = DataLoadFromDB.getBooks(); 
+            books = DataLoadFromDB.getBooks();
+            currentMember = CurrentMember.getInstance();
             Delete = new RelayCommand<object>((p) => { return true; }, (p) => { removeSeletedItem(); });
             Confirm = new RelayCommand<object>((p) => { return true; }, (p) => { openCheckOutDiagram(); });
             CheckOutConfirm.ClearInfo += ClearBooksItem;
@@ -52,12 +54,12 @@ namespace main.model.features
 
         private void openCheckOutDiagram()
         {
-            if (CurrentMember.GetAccount().id == 0 || bookToShows.Count == 0)
+            if (currentMember.GetAccount() == null || bookToShows.Count == 0)
             {
                 MessageBox.Show("Member and list book can't not place empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            CheckOutConfirm checkOutConfirm = new CheckOutConfirm(CurrentMember.GetAccount(), BookToShows);
+            CheckOutConfirm checkOutConfirm = new CheckOutConfirm(currentMember.GetAccount(), BookToShows);
             checkOutConfirm.Show();
         }
         private void removeSeletedItem()
@@ -89,6 +91,17 @@ namespace main.model.features
            
             return false;
         }
+        private bool checkIsReserveByOrder()
+        {
+            //Check if this book is exist in this user reserveList
+            if (searchBookItemById(SearchKeyword).lendingStatus == enums.LendingStatus.RESV)
+            {
+                MessageBox.Show("This book is reserved by order", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                searchKeyword = "";
+                return true;
+            }
+            return false;
+        }
         private bool checkIsReferenceOnly()
         {
             if(searchBookItemById(SearchKeyword).isRefOnly == true)
@@ -103,7 +116,7 @@ namespace main.model.features
         private ObservableCollection<BookToShow> getBookToShow()
         {            
             
-            if (searchBookItemById(searchKeyword)!=null &&!checkIsReferenceOnly()&&! isExitstInCurrentList())
+            if (searchBookItemById(searchKeyword)!=null &&!checkIsReferenceOnly()&&! isExitstInCurrentList()&&!checkIsReserveByOrder())
             {
 
                 if (findBookNameByBookItemId(searchBookItemById(searchKeyword)) != null)

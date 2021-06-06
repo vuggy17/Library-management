@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using main.controller;
 using main.model.enums;
 
 namespace main.model
 {
     // for unique book
-    class BookItem
+    public class BookItem
     {
         #region Properties
         private int _id;
@@ -83,13 +84,24 @@ namespace main.model
         #endregion
 
         //this contructor is use for clone book item from db
-        public BookItem(int id, bool isRefOnly, int info, LendingStatus lending)
+        public BookItem(int id, bool isRefOnly, int info, LendingStatus lending,DateTime dueDate)
         {
             this.id = id;
             this.isRefOnly = isRefOnly;
             this.info = info;
             this.lendingStatus = lending;
+            this.dueDate = dueDate;
         }
-
+        public Book getBookInfor()
+        {
+            foreach (var book in DataLoadFromDB.getBooks())
+            {
+                if(this.info == book.id)
+                {
+                    return book;
+                }
+            }
+            return null;
+        }
     }
 }

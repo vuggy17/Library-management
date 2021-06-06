@@ -21,7 +21,9 @@ namespace main.model.features
         private List<Account> allAccounts;
       
         private Account targetAccount;
-        public Account TargetAccount { get => targetAccount; set { targetAccount = value; CurrentMember.setAccount(targetAccount); } }
+        public Account TargetAccount { get => targetAccount; set { targetAccount = value; currentMember.setAccount(targetAccount); } }
+
+        private CurrentMember currentMember;
 
         public String Name { get; set; }
 
@@ -37,6 +39,8 @@ namespace main.model.features
         public ICommand SeeFullUserInfo { get; set; }
 
         public ICommand CancelMember { get; set; }
+
+        public static event UpdateLendingBookList updateLedingBookList;
 
 
 
@@ -56,6 +60,7 @@ namespace main.model.features
         {
             allAccounts = new List<Account>();
             allAccounts = DataLoadFromDB.getAllMembers();
+            currentMember = CurrentMember.getInstance();
             UserView = false;
             SeeFullUserInfo = new RelayCommand<object>((p) => { return true; }, (p) => { showFullUserInfor(TargetAccount); });
             CancelMember = new RelayCommand<object>((p) => { return true; }, (p) => { hideUserInfo(); });
@@ -65,8 +70,8 @@ namespace main.model.features
         private void hideUserInfo()
         {
             targetAccount = null;
-            CurrentMember.setAccount(null);
-
+            currentMember.setAccount(null);
+            updateLedingBookList(TargetAccount);
             UserView = false;
         }
         private void showFullUserInfor(Account account)
@@ -108,11 +113,13 @@ namespace main.model.features
             OnPropertyChanged("ID");
             BorrowBook = "Borrowed books: " + TargetAccount.totalBookLoan.ToString() + "/5";
             OnPropertyChanged("BorrowBook");
-            OverDue = "Over due: " + 5.ToString();
+            OverDue = "Over due: " + TargetAccount.TotalOverDueBook.ToString();
             OnPropertyChanged("OverDue");
+
             //Lấy image user and set here
             searchKeyword = "";
             UserView = true;
+            updateLedingBookList(TargetAccount);
         }
     }
 }

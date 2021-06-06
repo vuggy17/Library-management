@@ -58,16 +58,16 @@ namespace main.controller
         private void loadBookItemsFromDB()
         {
             //fake load to test
-            bookItems.Add(new BookItem(12345671, false, 12345670,LendingStatus.AVAI));
-            bookItems.Add(new BookItem(12345672, false, 12345670,LendingStatus.LOANED));
-            bookItems.Add(new BookItem(12345673, false, 12345670,LendingStatus.LOANED));
-            bookItems.Add(new BookItem(76543211, false, 76543210,LendingStatus.AVAI));
-            bookItems.Add(new BookItem(76543212, false, 76543210,LendingStatus.AVAI));
-            bookItems.Add(new BookItem(76543213, false, 76543210,LendingStatus.LOANED));
-            bookItems.Add(new BookItem(76543214, false, 76543210,LendingStatus.LOANED));
-            bookItems.Add(new BookItem(10000001, true, 00000001, LendingStatus.AVAI));
-            bookItems.Add(new BookItem(20000001, true, 00000001, LendingStatus.AVAI));
-            bookItems.Add(new BookItem(30000001, true, 00000001, LendingStatus.AVAI));
+            bookItems.Add(new BookItem(12345671, false, 12345670,LendingStatus.AVAI,new DateTime(2021,6,2)));
+            bookItems.Add(new BookItem(12345672, false, 12345670,LendingStatus.LOANED, new DateTime(2021, 6, 2)));
+            bookItems.Add(new BookItem(12345673, false, 12345670,LendingStatus.LOANED, new DateTime(2021, 6, 2)));
+            bookItems.Add(new BookItem(76543211, false, 76543210,LendingStatus.RESV, new DateTime(2021, 6, 2)));
+            bookItems.Add(new BookItem(76543212, false, 76543210,LendingStatus.AVAI, new DateTime(2021, 6, 2)));
+            bookItems.Add(new BookItem(76543213, false, 76543210,LendingStatus.LOANED, new DateTime(2021, 6, 2)));
+            bookItems.Add(new BookItem(76543214, false, 76543210,LendingStatus.LOANED, new DateTime(2021, 6, 2)));
+            bookItems.Add(new BookItem(10000001, true, 00000001, LendingStatus.AVAI, new DateTime(2021, 6, 2)));
+            bookItems.Add(new BookItem(20000001, true, 00000001, LendingStatus.AVAI, new DateTime(2021, 6, 2)));
+            bookItems.Add(new BookItem(30000001, true, 00000001, LendingStatus.AVAI, new DateTime(2021, 6, 2)));
         }
         
         private void loadMembersFromDB()

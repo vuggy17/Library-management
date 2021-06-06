@@ -30,7 +30,7 @@ namespace main.viewmodel.features
         public BookToReserve selectedItem { get; set; }
 
         public ICommand Confirm { get; set; }
-
+        CurrentMember current = CurrentMember.getInstance();
         public ResearveBookViewModel()
         {
             reserveList = new ObservableCollection<BookToReserve>();
@@ -66,12 +66,12 @@ namespace main.viewmodel.features
 
         private void ConfirmResearveList()
         {
-            if (CurrentMember.GetAccount().id == 0 || reserveList.Count == 0)
+            if (current.GetAccount() == null || reserveList.Count == 0)
             {
                 MessageBox.Show("Member and list book can't not place empty", "Error",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
-            ReserveConfirm reserveConfirm = new ReserveConfirm(CurrentMember.GetAccount(), reserveList);
+            ReserveConfirm reserveConfirm = new ReserveConfirm(current.GetAccount(), reserveList);
             reserveConfirm.Show();
         }
 

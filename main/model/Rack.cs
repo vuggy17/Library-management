@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace main.model
 {
     //position of a book
-    class Rack
+   public class Rack
     {
         #region properties
         private int _id;

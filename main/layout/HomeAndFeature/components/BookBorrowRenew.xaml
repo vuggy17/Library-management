@@ -54,8 +54,8 @@
                 <ListView Margin="70 10 50 10 "
                           Name="RenewBookList"
                           Grid.Row="1"
-                          SelectionMode="Multiple"
-                          ItemsSource="{Binding tempList}">
+                          SelectionMode="Multiple"                          
+                          ItemsSource="{Binding LendingBookItems}">
                     <ListView.Resources>
                         <Style TargetType="ScrollBar">
                             <Setter Property="Height" Value="auto"/>
@@ -102,7 +102,7 @@
                                                             <RowDefinition/>
                                                             <RowDefinition/>
                                                         </Grid.RowDefinitions>
-                                                        <Label Content="Sự im lặng của bầy cừu"                              
+                                                        <Label Content="{Binding Name}"                            
                                                        FontFamily="Roboto"
                                                        FontSize="38"
                                                        Padding="0 0 4 0"
@@ -113,7 +113,8 @@
                                                        TextOptions.TextHintingMode="Animated">
                                                         </Label>
                                                         <Label Grid.Row="1"
-                                                       Content="ID: NJNKJZNJKFNJKLBNDFJB "                              
+                                                       Content="{Binding Id}"
+                                                       ContentStringFormat="ID: {0}"
                                                        FontFamily="Roboto"
                                                        FontSize="25"
                                                        Padding="0 0 4 0"
@@ -124,7 +125,8 @@
                                                        TextOptions.TextHintingMode="Animated"                               >
                                                         </Label>
                                                         <Label Grid.Row="2"
-                                                       Content="Over due fees: 0VND"                              
+                                                       Content="{Binding OverDueFee}"   
+                                                       ContentStringFormat="Over due fee: {0} VNĐ"
                                                        FontFamily="Roboto"
                                                        FontSize="25"
                                                        Padding="0 0 4 0"
@@ -136,7 +138,8 @@
                                                        TextOptions.TextHintingMode="Animated">
                                                         </Label>
                                                         <Label Grid.Row="2"
-                                                       Content="Status: Available"                              
+                                                               Content="{Binding lendingStatus}"
+                                                       ContentStringFormat="Status: {0}"                              
                                                        FontFamily="Roboto"
                                                        FontSize="25"
                                                        Padding="0 0 4 0"
@@ -153,7 +156,9 @@
                                                      HorizontalAlignment="Right"
                                                      >
                                                         <CheckBox
+                                                            IsEnabled="False"
                                                    x:Name="isSelected"
+                                                           
                                                    FontFamily="Roboto"
                                                    Foreground="#00A2FF"                                                 
                                                    FontWeight="Regular"
@@ -177,7 +182,7 @@
                     </ListView.ItemContainerStyle>
                 </ListView>
                 <Button Grid.Row="2"
-                        Style="{DynamicResource ConfirmButton}"
+                        Style="{DynamicResource ConfirmButton}"                        
                         Width="223"
                         Height="66"
                        VerticalAlignment="Top"

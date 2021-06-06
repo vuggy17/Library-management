@@ -16,4 +16,6 @@ namespace main
 
     public delegate void AddItemToReserveHandler(BookToReserve bookToResearve);
 
+    public delegate void UpdateLendingBookList(Account account);
+
 }

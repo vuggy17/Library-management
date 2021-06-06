@@ -1,6 +1,9 @@
-﻿using main.model.features;
+﻿using main.model;
+using main.model.features;
+using main.viewmodel.form;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,16 +24,23 @@ namespace main.layout.HomeAndFeature.form
     public partial class RenewForm : Window
     {
         public static event ToggleFormDialogNotifyHandler ToggleForm;
-        public RenewForm()
+        public RenewForm(Account account, ObservableCollection<BookToShow> bookToShows)
         {
             InitializeComponent();
             ToggleForm();
+            DataContext = new RenewBookFormViewModel(account.id.ToString(),bookToShows);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             ToggleForm();
+        }
+
+        private void Confirm_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

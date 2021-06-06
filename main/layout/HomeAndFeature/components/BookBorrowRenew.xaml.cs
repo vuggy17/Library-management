@@ -1,6 +1,11 @@
-﻿using main.layout.HomeAndFeature.form;
+﻿using main.controller;
+using main.layout.HomeAndFeature.form;
+using main.model;
+using main.model.features;
+using main.viewmodel.features;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,22 +28,60 @@ namespace main.layout.HomeAndFeature.components
     /// 
     public partial class BookBorrowRenew : UserControl
     {
-        public List<String> tempList = new List<string>();
+        private ObservableCollection<BookToShow> selectedBooks;
+
+        private CurrentMember currentMember = CurrentMember.getInstance();
         public BookBorrowRenew()
         {
             InitializeComponent();
-            tempList.Add("");
-            tempList.Add("");
-            tempList.Add("");
-            tempList.Add("");
-            tempList.Add("");
-            RenewBookList.ItemsSource = tempList;
+            selectedBooks = new ObservableCollection<BookToShow>();
+            CurrentMember current = CurrentMember.getInstance();
+            DataContext = new RenewBookViewModel(current.GetAccount());
+            UserScanerBoardViewModel.updateLedingBookList += UserScanerBoardViewModel_updateLedingBookList;
+        }
+
+        private void UserScanerBoardViewModel_updateLedingBookList(model.Account account)
+        {
+            DataContext = new RenewBookViewModel(account);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RenewForm renew = new RenewForm();
-            renew.Show();
+            selectedBooks = selectedBooksConvert();            
+            if (selectedBooks.Count != 0 && checkBookCanRenew())
+            {
+                
+                RenewForm renew = new RenewForm(currentMember.GetAccount(),selectedBooks);
+                renew.Show();
+            }
+        }
+        private bool checkBookCanRenew()
+        {
+            foreach (var book in selectedBooks)
+            {
+                if(book.lendingStatus == model.enums.LendingStatus.RESV)
+                {
+                    MessageBox.Show(book.Name + " is reserved by order!","Error",MessageBoxButton.OK,MessageBoxImage.Error);
+                    return false;
+                }
+                if (book.OverDueFee > 0)
+                {
+                    MessageBox.Show(book.Name + " is over due! Please return first!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
+
+            }
+
+            return true;
+        }
+        private ObservableCollection<BookToShow> selectedBooksConvert()
+        {
+            ObservableCollection<BookToShow> bookToShows = new ObservableCollection<BookToShow>();
+            foreach (var selectedItem in RenewBookList.SelectedItems)
+            {
+                bookToShows.Add(selectedItem as BookToShow);
+            }
+            return bookToShows;
         }
 
         private void SelectAll_Checked(object sender, RoutedEventArgs e)

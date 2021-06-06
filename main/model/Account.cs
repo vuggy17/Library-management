@@ -56,6 +56,19 @@ namespace main.model
             get { return _totalBookLoan; }
             set { _totalBookLoan = value; }
         }
+
+        private int totalOverDueBook;
+
+        public int TotalOverDueBook
+        {
+            get => getTotalOverDueBook();
+        }
+        
+        private List<BookItem> lendingBookItems;
+
+        private List<BookItem> reserveBookItems;
+
+
         #endregion
 
         #region method
@@ -67,7 +80,38 @@ namespace main.model
             this.password = password;
             this.status = accountStatus;
             this.DOMemberShip = DOMemberShip;
-            this.totalBookLoan = totalBookLoan;
+            loadLendingBookItems();
+            this.totalBookLoan = lendingBookItems.Count();
+        }
+        public int getTotalOverDueBook()
+        {
+            int count = 0;
+            DateTime dateTime = DateTime.Now.Date;
+            foreach(var book in lendingBookItems)
+            {
+                if(book.dueDate < dateTime)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        public List<BookItem> getLendingBookItems()
+        {
+            if (lendingBookItems == null)
+            {
+                loadLendingBookItems();
+            }
+            return lendingBookItems;
+        }
+        private void loadLendingBookItems()
+        {
+            //Load lending book item
+            lendingBookItems = new List<BookItem>();
+            lendingBookItems.Add(new BookItem(12345671, false, 12345670, LendingStatus.RESV, new DateTime(2021, 6, 3)));
+            lendingBookItems.Add(new BookItem(12345672, false, 12345670, LendingStatus.LOANED, new DateTime(2021, 6, 5)));
+            lendingBookItems.Add(new BookItem(12345673, false, 12345670, LendingStatus.LOANED, new DateTime(2021, 6, 9)));          
+            lendingBookItems.Add(new BookItem(76543212, false, 76543210, LendingStatus.AVAI, new DateTime(2021, 6, 7)));
         }
         public bool resetPassword() { return true; }
         public bool changeInfo(Person input)

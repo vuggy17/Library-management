@@ -1,4 +1,5 @@
 ﻿using main.model;
+using main.model.enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,22 +10,38 @@ namespace main.controller
 {
     class CurrentMember
     {
-        private static Account account;
+        private static CurrentMember instance;
+
+        private Account account;
+
+        
+
         CurrentMember()
         {
-           
+            account = null;
         }
-        public static Account GetAccount()
+        public static CurrentMember getInstance()
         {
-            if (account == null)
+            if(instance == null)
             {
-                account = new Account();
+                instance = new CurrentMember();
             }
-            return account;
+            return instance;
         }
-        public static void setAccount(Account account)
+        public Account GetAccount()
         {
-            CurrentMember.account = account;
+            return instance.account;
+            
         }
+        public void setAccount(Account account)
+        {
+            instance.account = account;
+        }
+        
+
+        
+
+
+
     }
 }
