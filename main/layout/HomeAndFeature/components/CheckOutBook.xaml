@@ -65,6 +65,7 @@
                 </Grid>
                 <ListView Margin="50 20 50 30 " 
                           Grid.Row="1" 
+                          ScrollViewer.CanContentScroll="False"
                           ItemsSource="{Binding BookToShows, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="2" 
                           SelectedItem="{Binding SelectedItem}"
                           >

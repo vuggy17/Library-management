@@ -59,7 +59,7 @@ namespace main.layout.HomeAndFeature.components
         {
             foreach (var book in selectedBooks)
             {
-                if(book.lendingStatus == model.enums.LendingStatus.RESV)
+                if(book.lendingStatus == "Reserved")
                 {
                     MessageBox.Show(book.Name + " is reserved by order!","Error",MessageBoxButton.OK,MessageBoxImage.Error);
                     return false;

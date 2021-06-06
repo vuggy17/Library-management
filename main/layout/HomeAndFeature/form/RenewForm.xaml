@@ -76,7 +76,7 @@
                                FontWeight="Bold"
                                VerticalAlignment="Center"
                                />
-                    <ListView Grid.Row="2" ItemsSource="{Binding ConfirmBooks}">
+                    <ListView Grid.Row="2" ItemsSource="{Binding ConfirmBooks, Mode=OneWay}">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="{x:Type ListViewItem}">
                                 <Setter Property="Template">

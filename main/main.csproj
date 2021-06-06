@@ -129,10 +129,12 @@
     <Compile Include="viewmodel\features\CheckOutBookViewModel.cs" />
     <Compile Include="viewmodel\features\RenewBookViewModel.cs" />
     <Compile Include="viewmodel\features\ResearveBookViewModel.cs" />
+    <Compile Include="viewmodel\features\ReturnBookViewModel.cs" />
     <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />
     <Compile Include="viewmodel\form\CheckOutConfirmViewModel.cs" />
     <Compile Include="viewmodel\form\RenewBookFormViewModel.cs" />
     <Compile Include="viewmodel\form\ReserveConfrimViewModel.cs" />
+    <Compile Include="viewmodel\form\ReturnBookFormViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnFullInforViewModel.cs" />
     <Page Include="layout\Book\BooksForm.xaml">
       <SubType>Designer</SubType>

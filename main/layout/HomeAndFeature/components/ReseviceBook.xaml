@@ -69,6 +69,7 @@
                 </Grid>
                 <ListView Margin="50 20 50 30 " Grid.Row="1" x:Name="testLv" 
                           SelectionMode="Single" 
+                          ScrollViewer.CanContentScroll="False"
                           SelectedIndex="0"
                           ItemsSource="{Binding ReserveList}"
                           SelectedItem="{Binding selectedItem}">

@@ -5,25 +5,23 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace main.viewmodel.form
 {
     class RenewBookFormViewModel:BaseViewModel
     {
         public String Id { get; set; }
-        public ObservableCollection<BookToShow> ConfirmBooks { get; set; }
+        public ObservableCollection<BookToShow> ConfirmBooks { get; }
 
         public RenewBookFormViewModel(string Id, ObservableCollection<BookToShow> confirmBooks)
         {
             this.Id = "Member ID: " + Id;
-            setNewDueDate(confirmBooks);
+            ConfirmBooks = new ObservableCollection<BookToShow>();            
             this.ConfirmBooks = confirmBooks;
-        }
-        private void setNewDueDate(ObservableCollection<BookToShow> confirmBooks)
-        {
-            foreach(var book in confirmBooks)
+            foreach (var book in ConfirmBooks)
             {
-                book.dueDate = book.dueDate.AddDays(10);
+                book._dueDate.AddDays(10);
             }
         }
     }

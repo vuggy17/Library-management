@@ -1,6 +1,11 @@
-﻿using main.layout.HomeAndFeature.form;
+﻿using main.controller;
+using main.layout.HomeAndFeature.form;
+using main.model;
+using main.model.features;
+using main.viewmodel.features;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,16 +26,40 @@ namespace main.layout.HomeAndFeature.components
     /// </summary>
     public partial class BookBorrowReturn : UserControl
     {
-        
+        private ObservableCollection<BookToShow> selectedBooks;
+
+        private CurrentMember currentMember = CurrentMember.getInstance();
         public BookBorrowReturn()
         {
             InitializeComponent();
+            selectedBooks = new ObservableCollection<BookToShow>();
+            CurrentMember current = CurrentMember.getInstance();
+            DataContext = new ReturnBookViewModel(current.GetAccount());
+            UserScanerBoardViewModel.updateLedingBookList += UserScanerBoardViewModel_updateLedingBookList;
+        }
+
+        private void UserScanerBoardViewModel_updateLedingBookList(Account account)
+        {
+            DataContext = new ReturnBookViewModel(account);
+        }
+        private ObservableCollection<BookToShow> selectedBooksConvert()
+        {
+            ObservableCollection<BookToShow> bookToShows = new ObservableCollection<BookToShow>();
+            foreach (var selectedItem in ListReturnBook.SelectedItems)
+            {
+                bookToShows.Add(selectedItem as BookToShow);
+            }
+            return bookToShows;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ReturnBookForm returnBook = new ReturnBookForm();
-            returnBook.Show();
+            selectedBooks = selectedBooksConvert();
+            if (selectedBooks.Count != 0)
+            {
+                ReturnBookForm returnBook = new ReturnBookForm(currentMember.GetAccount(),selectedBooks);
+                returnBook.Show();
+            }
         }
 
         private void SelectAll_Checked(object sender, RoutedEventArgs e)

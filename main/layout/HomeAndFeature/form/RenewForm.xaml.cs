@@ -34,8 +34,10 @@ namespace main.layout.HomeAndFeature.form
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+
             this.Close();
             ToggleForm();
+
         }
 
         private void Confirm_Click(object sender, RoutedEventArgs e)

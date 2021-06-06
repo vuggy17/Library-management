@@ -55,8 +55,9 @@
                 <ListView Margin="70 10 50 10 "
                           Name="ListReturnBook"
                           Grid.Row="1"
+                          ScrollViewer.CanContentScroll="False"
                           SelectionMode="Multiple"
-                          ItemsSource="{Binding tempList}">
+                          ItemsSource="{Binding LendingBookItems}">
                     <ListView.Resources>
                         <Style TargetType="ScrollBar">
                             <Setter Property="Height" Value="auto"/>
@@ -114,7 +115,8 @@
                                                        TextOptions.TextHintingMode="Animated">
                                                         </Label>
                                                         <Label Grid.Row="1"
-                                                       Content="ID: NJNKJZNJKFNJKLBNDFJB "                              
+                                                       Content="{Binding Id}"
+                                                       ContentStringFormat="ID: {0}"                             
                                                        FontFamily="Roboto"
                                                        FontSize="25"
                                                        Padding="0 0 4 0"
@@ -125,7 +127,8 @@
                                                        TextOptions.TextHintingMode="Animated"                               >
                                                         </Label>
                                                         <Label Grid.Row="2"
-                                                       Content="Over due fees: 0VND"                              
+                                                        Content="{Binding OverDueFee}"   
+                                                       ContentStringFormat="Over due fee: {0} VNĐ"                           
                                                        FontFamily="Roboto"
                                                        FontSize="25"
                                                        Padding="0 0 4 0"
@@ -142,7 +145,7 @@
                                                      HorizontalAlignment="Right"
                                                      >
                                                         <CheckBox x:Name="isSeleted"   
-                                                                 
+                                                                 IsEnabled="False"
                                                              FontFamily="Roboto"
                                                              Foreground="#00A2FF"                                                 
                                                              FontWeight="Regular"
