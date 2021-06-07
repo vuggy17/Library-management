@@ -41,6 +41,7 @@ namespace main.layout.HomeAndFeature.components
         private void UserScanerBoardViewModel_updateLedingBookList(Account account)
         {
             DataContext = new ReturnBookViewModel(account);
+            SelectAll.IsChecked = false;
         }
         private ObservableCollection<BookToShow> selectedBooksConvert()
         {

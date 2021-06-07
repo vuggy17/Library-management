@@ -23,6 +23,27 @@ namespace main.model.features
         private Account targetAccount;
         public Account TargetAccount { get => targetAccount; set { targetAccount = value; currentMember.setAccount(targetAccount); } }
 
+        private List<BookItem> reserveBookItems;
+        
+        public bool haveAvailableBookItem
+        {
+            get => checkAvaiBook();
+        }
+        private bool checkAvaiBook()
+        {
+            if (reserveBookItems != null)
+            {
+                foreach(var book in reserveBookItems)
+                {
+                    if (book.lendingStatus == LendingStatus.AVAI||book.lendingStatus ==LendingStatus.RESV)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         private CurrentMember currentMember;
 
         public String Name { get; set; }
@@ -40,7 +61,11 @@ namespace main.model.features
 
         public ICommand CancelMember { get; set; }
 
+        public ICommand getReservedBooks { get; set; }
+
         public static event UpdateLendingBookList updateLedingBookList;
+
+
 
 
 
@@ -64,9 +89,17 @@ namespace main.model.features
             UserView = false;
             SeeFullUserInfo = new RelayCommand<object>((p) => { return true; }, (p) => { showFullUserInfor(TargetAccount); });
             CancelMember = new RelayCommand<object>((p) => { return true; }, (p) => { hideUserInfo(); });
+            getReservedBooks = new RelayCommand<Object>((p) => true, (p) => { showCurrentMemberReservedBooks(); });
             CheckOutConfirm.ClearInfo += hideUserInfo;
             ReserveConfirm.ClearInfo += hideUserInfo;
         }
+
+        private void showCurrentMemberReservedBooks()
+        {
+            CurrentMemberReserverBooks current = new CurrentMemberReserverBooks(TargetAccount.getReservedBookItem());
+            current.Show();
+        }
+
         private void hideUserInfo()
         {
             targetAccount = null;
@@ -105,9 +138,11 @@ namespace main.model.features
             }
             return false;
         }
+
         private void updateUI()
         {
             Name = TargetAccount.info.name;
+
             OnPropertyChanged("Name");
             ID = "ID: " + TargetAccount.id.ToString();
             OnPropertyChanged("ID");
@@ -120,6 +155,8 @@ namespace main.model.features
             searchKeyword = "";
             UserView = true;
             updateLedingBookList(TargetAccount);
+            reserveBookItems = TargetAccount.getReservedBookItem();
+            OnPropertyChanged("haveAvailableBookItem");
         }
     }
 }

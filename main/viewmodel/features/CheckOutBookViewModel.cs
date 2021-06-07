@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using main.layout.HomeAndFeature.form;
+using main.viewmodel.form;
 
 namespace main.model.features
 {
@@ -44,7 +45,13 @@ namespace main.model.features
             Delete = new RelayCommand<object>((p) => { return true; }, (p) => { removeSeletedItem(); });
             Confirm = new RelayCommand<object>((p) => { return true; }, (p) => { openCheckOutDiagram(); });
             CheckOutConfirm.ClearInfo += ClearBooksItem;
+            CurrentMemberReservedBooksViewModel.addToCheckOut += CurrentMemberReservedBooksViewModel_addToCheckOut;
 
+        }
+
+        private void CurrentMemberReservedBooksViewModel_addToCheckOut(BookToShow bookToShow)
+        {
+            bookToShows.Add(bookToShow);
         }
 
         private void ClearBooksItem()

@@ -237,9 +237,8 @@
                                         </Grid>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-
-                                                <Setter Property="IsEnabled" TargetName="add" Value="False"></Setter>
-                                                <Setter Property="IsEnabled" TargetName="remove" Value="False"></Setter>                                                
+                                                <Setter Property="IsSelected" Value="True"></Setter>
+                                                                                              
                                             </Trigger>
                                             <Trigger Property="IsSelected" Value="True">
                                                 <Setter Property="IsEnabled" TargetName="delete" Value="True"></Setter>

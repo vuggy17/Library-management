@@ -118,6 +118,9 @@
     <Compile Include="layout\HomeAndFeature\form\CheckOutConfirm.xaml.cs">
       <DependentUpon>CheckOutConfirm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\HomeAndFeature\form\CurrentMemberReserverBooks.xaml.cs">
+      <DependentUpon>CurrentMemberReserverBooks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\HomeAndFeature\form\ReserveConfirm.xaml.cs">
       <DependentUpon>ReserveConfirm.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,7 @@
     <Compile Include="viewmodel\features\ReturnBookViewModel.cs" />
     <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />
     <Compile Include="viewmodel\form\CheckOutConfirmViewModel.cs" />
+    <Compile Include="viewmodel\form\CurrentMemberReservedBooksViewModel.cs" />
     <Compile Include="viewmodel\form\RenewBookFormViewModel.cs" />
     <Compile Include="viewmodel\form\ReserveConfrimViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnBookFormViewModel.cs" />
@@ -263,6 +267,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\HomeAndFeature\form\CheckOutConfirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\HomeAndFeature\form\CurrentMemberReserverBooks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

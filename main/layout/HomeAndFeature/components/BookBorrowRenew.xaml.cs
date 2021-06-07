@@ -43,6 +43,7 @@ namespace main.layout.HomeAndFeature.components
         private void UserScanerBoardViewModel_updateLedingBookList(model.Account account)
         {
             DataContext = new RenewBookViewModel(account);
+            SelectAll.IsChecked = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

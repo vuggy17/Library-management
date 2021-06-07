@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace main.model
 {
-    public class BookToShow //Kieu de binding
+    public class BookToShow: BaseViewModel //Kieu de binding
     {
         string id;
         string name;
@@ -40,6 +40,28 @@ namespace main.model
             }
             return 0;
         }
+        public string ContentButton { get; set; }
+
+        private bool addAble;
+        public bool AddAble
+        {
+            get => addAble;
+            set
+            {
+                addAble = value;
+                if (value == false)
+                {
+                    ContentButton = "";
+                }
+                else
+                {
+                    ContentButton = "Add to checkout";
+                }
+                OnPropertyChanged("ContentButton");
+                OnPropertyChanged("AddAble");
+
+            }
+        }
 
         public BookToShow(string id, Book info, DateTime dueDate, LendingStatus lendingStatus)
         {
@@ -50,14 +72,18 @@ namespace main.model
             {
                 case LendingStatus.AVAI:
                     this.lendingStatus = "Available";
+                    AddAble = true;
                     break;
                 case LendingStatus.LOANED:
-                    this.lendingStatus = "Loaded";
+                    this.lendingStatus = "Loaned";
+                    AddAble = false;
                     break;
                 case LendingStatus.LOST:
                     this.lendingStatus = "Lost";
+                    AddAble = false;
                     break;
                 case LendingStatus.RESV:
+                    AddAble = true;
                     this.lendingStatus = "Reserved";
                     break;
             }         

@@ -53,11 +53,11 @@ namespace main.model
 
         public int totalBookLoan
         {
-            get { return _totalBookLoan; }
+            get { return getLendingBookItems().Count; }
             set { _totalBookLoan = value; }
         }
 
-        private int totalOverDueBook;
+        
 
         public int TotalOverDueBook
         {
@@ -79,10 +79,9 @@ namespace main.model
             this.id = accountId;
             this.password = password;
             this.status = accountStatus;
-            this.DOMemberShip = DOMemberShip;
-            loadLendingBookItems();
-            this.totalBookLoan = lendingBookItems.Count();
+            this.DOMemberShip = DOMemberShip;           
         }
+
         public int getTotalOverDueBook()
         {
             int count = 0;
@@ -98,11 +97,22 @@ namespace main.model
         }
         public List<BookItem> getLendingBookItems()
         {
-            if (lendingBookItems == null)
-            {
-                loadLendingBookItems();
-            }
+            loadLendingBookItems();
             return lendingBookItems;
+        }
+        public List<BookItem> getReservedBookItem()
+        {
+            loadReservedBookItem();
+            return reserveBookItems;
+        }
+        private void loadReservedBookItem()
+        {
+            //Load reserved book item in db
+            reserveBookItems = new List<BookItem>();
+            reserveBookItems.Add(new BookItem(12345671, false, 12345670, LendingStatus.RESV, new DateTime(2021, 6, 3)));
+            reserveBookItems.Add(new BookItem(12345672, false, 12345670, LendingStatus.LOANED, new DateTime(2021, 6, 5)));
+            reserveBookItems.Add(new BookItem(12345673, false, 12345670, LendingStatus.AVAI, new DateTime(2021, 6, 9)));
+            reserveBookItems.Add(new BookItem(76543212, false, 76543210, LendingStatus.LOST, new DateTime(2021, 6, 7)));
         }
         private void loadLendingBookItems()
         {
@@ -111,7 +121,7 @@ namespace main.model
             lendingBookItems.Add(new BookItem(12345671, false, 12345670, LendingStatus.RESV, new DateTime(2021, 6, 3)));
             lendingBookItems.Add(new BookItem(12345672, false, 12345670, LendingStatus.LOANED, new DateTime(2021, 6, 5)));
             lendingBookItems.Add(new BookItem(12345673, false, 12345670, LendingStatus.LOANED, new DateTime(2021, 6, 9)));          
-            lendingBookItems.Add(new BookItem(76543212, false, 76543210, LendingStatus.AVAI, new DateTime(2021, 6, 7)));
+            lendingBookItems.Add(new BookItem(76543212, false, 76543210, LendingStatus.LOANED, new DateTime(2021, 6, 7)));
         }
         public bool resetPassword() { return true; }
         public bool changeInfo(Person input)

@@ -69,7 +69,13 @@ namespace main.model.features
         {
             foreach (var book in allBooks)
             {
-                allbookToReserves.Add(new BookToReserve(book));
+                BookToReserve reservedBook = new BookToReserve(book);
+                if(reservedBook.Count != 0)
+                {
+                    allbookToReserves.Add(reservedBook);
+                }
+                
+
             }
             foreach (var alreadyBook in alreadyAddBookToReserves)
             {
@@ -83,6 +89,7 @@ namespace main.model.features
                 }
             }
         }
+
         private void addToReseverList()
         {          
             if(selectedItem.AvalableCopies > 0)

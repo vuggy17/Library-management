@@ -36,6 +36,7 @@ namespace main.layout.HomeAndFeature
             CheckOutConfirm.ToggleForm += ToggleForm;
             ReseverBookForm.ToggleForm += ToggleForm;
             ReserveConfirm.ToggleForm += ToggleForm;
+            CurrentMemberReserverBooks.ToggleForm += ToggleForm;
         }
 
         private void ToggleForm()

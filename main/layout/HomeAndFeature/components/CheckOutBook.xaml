@@ -155,6 +155,9 @@
                                                 <Setter Property="BorderBrush" TargetName="border" Value="Red"/>
                                                 <Setter Property="IsEnabled" TargetName="delete" Value="True"/>
                                             </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="IsSelected" Value="True"></Setter>
+                                            </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>                                    
                                 </Setter.Value>

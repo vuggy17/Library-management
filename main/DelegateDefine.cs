@@ -18,4 +18,6 @@ namespace main
 
     public delegate void UpdateLendingBookList(Account account);
 
+    public delegate void AddReadyReservedBookToCheckOut(BookToShow bookToShow);
+
 }
