@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using main.model;
 
+
 namespace main.layout.Book.Components
 {
     /// <summary>
@@ -43,10 +44,8 @@ namespace main.layout.Book.Components
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            //add Save logic here
-            var newBook = NewBook.getInstance(1234, tbName.Text, "nun", tbAuthor.Text, DateTime.Parse(tbPublishDate.Text), Int32.Parse(lbNumber.Content.ToString()) );
-            ListAllBook.addNewBook(newBook);
-            NewBook.resetInstance();
+
+            ListAllBook.addNewBook(new model.Book(12345670, "Rừng NaUy", "Novel", "Haruki Murakami", new DateTime(2021, 6, 2)));           
             this.Close();
             ToggleForm();
         }

@@ -29,7 +29,7 @@ namespace main.layout.Book.Components
         public BookList()
         {
             InitializeComponent();
-            this.DataContext = new BookListViewModel(ListAllBook.getInstance());
+            this.DataContext = new BookListViewModel(DataLoadFromDB.getBooks());
             AddBookViewModel.addBook += AddBookViewModel_addBook;
             DeleteBookViewModel.deleteBook += DeleteBookViewModel_deleteBook;
             EditBookViewModel.editBook += EditBookViewModel_editBook;

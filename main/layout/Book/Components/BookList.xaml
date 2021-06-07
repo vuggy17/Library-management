@@ -31,8 +31,9 @@
                                                 <ColumnDefinition Width="3*"/>
                                                 <ColumnDefinition Width="1.5*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Source="/main;component/assests/Book image.png"
-                                                    Height="272"
+                                            <Image Source="/assests/img_book.png" 
+
+                                                Height="272"
                                                     Width="173"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center">
