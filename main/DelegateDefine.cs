@@ -12,7 +12,21 @@ namespace main
     //new form is show --> opacity mainform decrease
     public delegate void ToggleFormDialogNotifyHandler();
 
+    public delegate void LibrarianBarHandler();
+
+    public delegate void AddBookHandler();
+
+    public delegate void DeleteBookHandler(int index);
+
+    public delegate void EditBookHandler(int index);
+
     public delegate void ClearInfoNotifyHandler();
+
+    public delegate void LoginHandler();
+
+    public delegate void LogoutHandler();
+
+    public delegate void SearchByIdTitleAuthorHandler();
 
     public delegate void AddItemToReserveHandler(BookToReserve bookToResearve);
 

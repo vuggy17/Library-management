@@ -1,4 +1,6 @@
-﻿using System;
+﻿using main.layout.Book;
+using main.viewmodel.features;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace main.layout.LoginForm.Components
         public LoginBoard()
         {
             InitializeComponent();
+            this.DataContext = new LoginViewModel();
         }
         public class TemplateConverter : IMultiValueConverter
         {

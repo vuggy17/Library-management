@@ -43,6 +43,7 @@
                 <Button Width="202"
                         x:Name="btnDelete"
                         Click="btnDelete_Click"
+                        Command="{Binding deleteBookCommand}"
                         Height="66"
                         Content="DELETE"
                         FontFamily="Roboto"

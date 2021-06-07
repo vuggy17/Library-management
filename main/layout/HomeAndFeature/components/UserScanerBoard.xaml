@@ -101,6 +101,8 @@
                                Grid.Column="2"
                                 Command="{Binding SeeFullUserInfo}"
                                Content="Full information"
+                        x:Name="btnFullInfor"
+                        Click="btnFullInfor_Click"
                                FontFamily="Roboto"
                                BorderThickness="0"
                                Background="White"

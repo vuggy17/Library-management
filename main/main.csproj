@@ -114,6 +114,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="controller\ListAllBook.cs" />
+    <Compile Include="controller\NewBook.cs" />
+    <Compile Include="controller\SelectedIndex.cs" />
+    <Compile Include="viewmodel\features\AddBookViewModel.cs" />
+    <Compile Include="viewmodel\features\DeleteBookViewModel.cs" />
+    <Compile Include="viewmodel\features\EditBookViewModel.cs" />
+    <Compile Include="viewmodel\features\LibrarianIconNavigationViewModel.cs" />
     <Compile Include="controller\CurrentMember.cs" />
     <Compile Include="layout\HomeAndFeature\form\CheckOutConfirm.xaml.cs">
       <DependentUpon>CheckOutConfirm.xaml</DependentUpon>
@@ -130,6 +137,9 @@
     <Compile Include="model\BookToReserve.cs" />
     <Compile Include="model\BookToShow.cs" />
     <Compile Include="viewmodel\features\CheckOutBookViewModel.cs" />
+    <Compile Include="viewmodel\features\LoginViewModel.cs" />
+    <Compile Include="viewmodel\features\LogoutViewModel.cs" />
+    <Compile Include="viewmodel\features\SearchByIdTitleAuthorViewModel.cs" />
     <Compile Include="viewmodel\features\RenewBookViewModel.cs" />
     <Compile Include="viewmodel\features\ResearveBookViewModel.cs" />
     <Compile Include="viewmodel\features\ReturnBookViewModel.cs" />

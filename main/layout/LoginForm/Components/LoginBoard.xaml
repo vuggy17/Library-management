@@ -60,6 +60,7 @@
                      Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"></PasswordBox>
             <Button Grid.Row="5"
                     Content="Login"
+                    Command='{Binding loginCommand}'
                     FontFamily="Roboto"
                     Foreground="White"
                     FontSize="20"

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using main.controller;
+using main.viewmodel.features;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,35 @@ namespace main.layout.Book.Components
     /// </summary>
     public partial class SearchByIdTitleAuthorBar : UserControl
     {
+        public static List<main.model.Book> lstBookOnSearch = new List<model.Book>();
         public SearchByIdTitleAuthorBar()
         {
             InitializeComponent();
+            this.DataContext = new SearchByIdTitleAuthorViewModel();
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchBar.Text != null)
+            {
+                lstBookOnSearch = null;
+                lstBookOnSearch = new List<model.Book>();
+                String currentSearch = SearchBar.Text;
+                List<main.model.Book> listAllBook = ListAllBook.getInstance();
+                for (int i = 0; i < listAllBook.Count; i++)
+                {
+                    if (listAllBook[i].author.Contains(currentSearch) || listAllBook[i].title.Contains(currentSearch) || listAllBook[i].id.ToString().Contains(currentSearch))
+                    {
+                        lstBookOnSearch.Add(listAllBook[i]);
+                    }
+                }
+            }
+            else
+            {
+                lstBookOnSearch = null;
+                lstBookOnSearch = new List<main.model.Book>();
+                lstBookOnSearch = ListAllBook.getInstance();
+            }    
         }
     }
 }

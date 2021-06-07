@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.viewmodel.features;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,15 @@ namespace main.layout.HomeAndFeature.components
     /// <summary>
     /// Interaction logic for LibrarianIcon.xaml
     /// </summary>
+
     public partial class LibrarianIcon : UserControl
     {
+        LibrarianIconNavigationViewModel librarianIconNavigationViewModel;
         public LibrarianIcon()
         {
             InitializeComponent();
+            librarianIconNavigationViewModel = new LibrarianIconNavigationViewModel();
+            DataContext = librarianIconNavigationViewModel;
         }
     }
 }

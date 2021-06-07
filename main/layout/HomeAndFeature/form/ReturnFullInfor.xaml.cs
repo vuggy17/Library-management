@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Win32;
 using main.model.form;
 
 namespace main.layout.HomeAndFeature.components
@@ -37,6 +39,13 @@ namespace main.layout.HomeAndFeature.components
             ToggleForm();
         }
 
-       
+        private void btnChangeImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            var result = openFileDialog.ShowDialog();
+            if (result == false) return;
+            imgAvatar.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+        }
     }
 }
