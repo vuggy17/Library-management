@@ -90,11 +90,19 @@ namespace main.viewmodel.Books
 
         private void deleteBookItem(Book book)
         {
-            allBooks.Remove(book);
-            dataLoadFromDB.deleteBook(book);
-            OnPropertyChanged("FilterList");
-            OnPropertyChanged("TotalBook");            
-            //update database here
+            if (book.TotalCopies == book.AvalableCopies )
+            {
+                allBooks.Remove(book);
+                dataLoadFromDB.deleteBook(book);
+                OnPropertyChanged("FilterList");
+                OnPropertyChanged("TotalBook");
+            }
+            else
+            {
+                MessageBox.Show("Delete book only available when all of it's item had return", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+                      
+            
         }
 
         private ObservableCollection<Book> filterByInfo()

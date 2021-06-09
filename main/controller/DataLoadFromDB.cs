@@ -49,6 +49,10 @@ namespace main.controller
         public void deleteBook(Book book)
         {
             books.Remove(book);
+            foreach (var bookItem in book.getAllBookItems())
+            {
+                deleteBookItems(bookItem);
+            }
             //xử lý db
         }
         public void deleteBookItems(BookItem bookItem)
