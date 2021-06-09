@@ -108,6 +108,7 @@ namespace main.viewmodel.Books
         private ObservableCollection<Book> filterByInfo()
         {
             ObservableCollection<Book> filterList = new ObservableCollection<Book>();
+            allBooks = dataLoadFromDB.getBooks();
 
             foreach (var book in allBooks)
             {

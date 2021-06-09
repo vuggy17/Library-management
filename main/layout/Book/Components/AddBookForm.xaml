@@ -119,6 +119,7 @@
                                VerticalAlignment="Center"></TextBlock>
                     <TextBox Grid.Column="1"
                              x:Name="tbPrice"
+                             InputScope="Number"
                                Text=""
                                FontFamily="Roboto"
                                FontSize="30"

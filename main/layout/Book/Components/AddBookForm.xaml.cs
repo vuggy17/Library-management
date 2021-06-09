@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using main.model;
 using main.controller;
 using main.layout.Book.Forms;
+using System.Text.RegularExpressions;
 
 namespace main.layout.Book.Components
 {
@@ -46,28 +47,42 @@ namespace main.layout.Book.Components
             ToggleForm();
         }
 
-      
 
+        private static readonly Regex _regex = new Regex("[^0-9-]+"); //regex that matches disallowed text
+        private bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if(tbPrice.Text !="")
+            if(tbPrice.Text !=""&& tbName.Text!="" && tbAuthor.Text!="" && datePicker.SelectedDate != null)
             {
-                model.Book newBook = new model.Book(13720010, tbName.Text, "", tbAuthor.Text, datePicker.SelectedDate.Value, Double.Parse(tbPrice.Text));
-                data.addNewBook(newBook);
-                int numOfCopies = int.Parse(lbNumber.Content.ToString());
-                int autoID = newBook.id;
-                for (int i=0; i < numOfCopies; i++)
+                if (IsTextAllowed(tbPrice.Text) && Double.Parse(tbPrice.Text) > 1000 && Double.Parse(tbPrice.Text)<1000000000)
                 {
-                    autoID += 1;
-                    data.addNewBookItem(new main.model.BookItem(autoID, newBook.id,model.enums.LendingStatus.AVAI, new DateTime()));
+                    model.Book newBook = new model.Book(13720010, tbName.Text, "", tbAuthor.Text, datePicker.SelectedDate.Value, Double.Parse(tbPrice.Text));
+                    data.addNewBook(newBook);
+                    int numOfCopies = int.Parse(lbNumber.Content.ToString());
+                    int autoID = newBook.id;
+                    for (int i = 0; i < numOfCopies; i++)
+                    {
+                        autoID += 1;
+                        data.addNewBookItem(new main.model.BookItem(autoID, newBook.id, model.enums.LendingStatus.AVAI, new DateTime()));
+                    }
+                    AddBookSuccessForm add = new AddBookSuccessForm(newBook);
+                    add.Show();
+                    update();
+                    this.Close();
+                    ToggleForm();
                 }
-                
-                AddBookSuccessForm add = new AddBookSuccessForm(newBook);
-                add.Show();
-                update();
-                this.Close();
-                ToggleForm();
-            }            
+                else
+                {
+                    MessageBox.Show("Price must be a number between 1.000đ - 1.000.000.000đ", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }               
+            }
+            else
+            {
+                MessageBox.Show("Some field is empy","Error", MessageBoxButton.OK,MessageBoxImage.Error);
+            }
 
            
         }
