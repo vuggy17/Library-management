@@ -73,7 +73,14 @@ namespace main.model
             set { _price = value; }
         }
         #endregion
-
+        public Book( Book book) {
+            this.id = book.id;
+            this.price = book.price;
+            this.author = book.author;
+            this.title = book.title;
+            this.subject = book.subject;
+            this.pubDate = book.pubDate;
+        }
         #region method
         public Book(int id, string title, string subject, string author, DateTime pubDate, double price) {
 

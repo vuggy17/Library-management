@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:main.layout.Book.Components"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="600" Width="1000"
+             Height="600" Width="900"
              WindowStartupLocation="CenterScreen"
              WindowStyle="None"
              ResizeMode="NoResize">
@@ -38,7 +38,7 @@
                 <Border Grid.Row="0"
                         Margin="0,50,0,0"
                         BorderThickness="4"
-                    CornerRadius="14" BorderBrush="#707070" Height="480" Width="361">
+                    CornerRadius="14" BorderBrush="#707070" Height="470" Width="350">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="4.5*"/>
@@ -46,6 +46,7 @@
                         </Grid.RowDefinitions>
                         <Image Source="/main;component/assests/img_book.png" 
                                Grid.Row="0"
+                               Stretch="UniformToFill"
                                Grid.RowSpan="2"
                                Height="Auto"
                                Width="Auto"></Image>
@@ -136,17 +137,28 @@
                                FontWeight="Bold"
                                FontFamily="Roboto"
                                VerticalAlignment="Center"></TextBlock>
-                    <Label Grid.Column="1"
-                             x:Name="tbPubDate"
-                              Content="{Binding Path=bookToShow.PubDateToShow, Mode=OneWay}"
-                               VerticalAlignment="Center"
-                               FontFamily="Roboto"
-                               FontSize="30"
-                               FontWeight="Regular"></Label>
+                    <DatePicker Grid.Column="1"                                
+                                Height="50"   
+                                SelectedDate="{Binding Path=bookToShow.pubDate}"
+                                 Focusable="False"                                  
+                                FontSize="30"                                
+                                IsTodayHighlighted="True"                               
+                                Name="datePicker"                               
+                                VerticalAlignment="Center" Width="auto" >
+                    </DatePicker>
+                    <Grid Grid.Column="1"   
+                          Background="White"
+                          Panel.ZIndex="1"                          
+                          Opacity="0.1"
+                                Height="50"       
+                                IsEnabled="False"
+                         
+                          Margin="0 0 15 0"
+                                VerticalAlignment="Center" Width="auto" >
+                    </Grid>
                 </Grid>
                 <Grid Grid.Row="4" Margin="0,0,0,0" Height="80">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="80"/>
                         <ColumnDefinition Width="Auto"/>
@@ -156,63 +168,70 @@
                                FontSize="30"
                                FontWeight="Bold"
                                FontFamily="Roboto"></TextBlock>
-                    <Button Grid.Column="1"
-                            BorderThickness="0"
-                            Height="55.86"
-                            Width="55.86"
-                            Command="{Binding RemoveBookItems}"
-                            Content="-"
-                            FontSize="35"
-                            FontWeight="Bold"
-                            Foreground="Black"
-                            Background="#D9D7D7"></Button>
-                    <Label Grid.Column="2"
+                    <Label Grid.Column="1"
                            x:Name="lbNum"
                              Content="{Binding TotalCopies, UpdateSourceTrigger=PropertyChanged}"
                            VerticalAlignment="Center"
-                             HorizontalAlignment="Center"
-                             FontSize="36"></Label>
-                    <Button Grid.Column="3"
-                            Command="{Binding AddNewBookItem}"
-                            BorderThickness="0"
-                            Height="55.86"
-                            Width="55.86"
-                            Content="+"
-                            FontSize="35"
-                            FontWeight="Bold"
-                            Foreground="Black"
-                            Background="#D9D7D7"></Button>
+                             HorizontalAlignment="Left"
+                             FontSize="30"></Label>
+                    <Button   
+                              Style="{DynamicResource DeleteButton}"
+                               Grid.Column="2"
+                                Command="{Binding editBookItem}"
+                               Content="Edit bookitems"
+                               FontStyle="Normal"
+                               x:Name="btnFullInfor"
+                       
+                               FontFamily="Roboto"
+                               BorderThickness="0"
+                               Background="White"
+                               Foreground="#00A2FF"
+                               FontSize="25"
+                               Padding="0 0 4 0"
+                               FontWeight="Regular"
+                               VerticalAlignment="Center"
+                               VerticalContentAlignment="Center" 
+                                HorizontalAlignment="Right" 
+                                TextOptions.TextHintingMode="Animated" 
+                            
+                               >
+
+                    </Button>
                 </Grid>
                 <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.7*"/>
                     </Grid.ColumnDefinitions>
                     <Button Content="SAVE"
                             x:Name="btnSave"
                             Click="btnSave_Click"
-                            Command="{Binding editBookCommand}"
-                            FontSize="40"
+                            Command="{Binding saveCommand}"
+                            FontSize="25"
                             FontWeight="Bold"
                             FontFamily="Roboto"
                             Foreground="White"
-                            Width="202"
+                            Width="150"
+                            Margin="0 0 0 10"
                             Height="66"
                             Background="#28A745"
-                            Style="{DynamicResource HomeButton}">
+                            Style="{DynamicResource HomeButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                     </Button>
-                    <Button Grid.Column="1"
-                            x:Name="btnExit"
+                    <Button x:Name="btnExit"
                             Click="btnExit_Click"
+                            Grid.Column="1"
+                             Margin="0 0 0 10"
                             Content="EXIT"
-                            FontSize="40"
+                            FontSize="25"
                             FontWeight="Bold"
                             FontFamily="Roboto"
                             Foreground="White"
-                            Width="202"
+                            Width="150"
                             Height="66"
                             Background="#707070"
-                            Style="{DynamicResource HomeButton}">
+                            Style="{DynamicResource HomeButton}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom">
                     </Button>
                 </Grid>
             </Grid>

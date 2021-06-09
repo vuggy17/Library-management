@@ -2,6 +2,7 @@
 using main.layout.Book;
 using main.layout.Book.Components;
 using main.model;
+using main.viewmodel.features;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -58,13 +59,14 @@ namespace main.viewmodel.Books
             Delete = new RelayCommand<Object>((p) => true, (p) => { deleteBookFormShow(SelectedItem); });
             Edit = new RelayCommand<Object>((p) => true, (p) => { editBookFormShow(SelectedItem); });
             filterList = new ObservableCollection<Book>();
-            AddBookForm.update += AddBookForm_update;
+            AddBookForm.update += update;
             DeleteBookViewModel.deleteBook += deleteBookItem;
+            EditBookViewModel.update += update;
 
 
         }
 
-        private void AddBookForm_update()
+        private void update()
         {
             OnPropertyChanged("FilterList");
             OnPropertyChanged("TotalBook");

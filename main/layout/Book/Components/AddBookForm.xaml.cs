@@ -59,20 +59,27 @@ namespace main.layout.Book.Components
             {
                 if (IsTextAllowed(tbPrice.Text) && Double.Parse(tbPrice.Text) > 1000 && Double.Parse(tbPrice.Text)<1000000000)
                 {
-                    model.Book newBook = new model.Book(13720010, tbName.Text, "", tbAuthor.Text, datePicker.SelectedDate.Value, Double.Parse(tbPrice.Text));
-                    data.addNewBook(newBook);
-                    int numOfCopies = int.Parse(lbNumber.Content.ToString());
-                    int autoID = newBook.id;
-                    for (int i = 0; i < numOfCopies; i++)
+                    if(datePicker.SelectedDate.Value <= DateTime.Now.Date)
                     {
-                        autoID += 1;
-                        data.addNewBookItem(new main.model.BookItem(autoID, newBook.id, model.enums.LendingStatus.AVAI, new DateTime()));
+                        model.Book newBook = new model.Book(13720010, tbName.Text, "", tbAuthor.Text, datePicker.SelectedDate.Value, Double.Parse(tbPrice.Text));
+                        data.addNewBook(newBook);
+                        int numOfCopies = int.Parse(lbNumber.Content.ToString());
+                        int autoID = newBook.id;
+                        for (int i = 0; i < numOfCopies; i++)
+                        {
+                            autoID += 1;
+                            data.addNewBookItem(new main.model.BookItem(autoID, newBook.id, model.enums.LendingStatus.AVAI, new DateTime()));
+                        }
+                        AddBookSuccessForm add = new AddBookSuccessForm(newBook);
+                        add.Show();
+                        update();
+                        this.Close();
+                        ToggleForm();
                     }
-                    AddBookSuccessForm add = new AddBookSuccessForm(newBook);
-                    add.Show();
-                    update();
-                    this.Close();
-                    ToggleForm();
+                    else
+                    {
+                        MessageBox.Show("Pulishing date is in future!!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {

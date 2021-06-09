@@ -1,0 +1,189 @@
+﻿<Window x:Class="main.layout.Book.Forms.EditBookItemForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:main.layout.Book.Forms"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="EditBookItemForm" Height="600" Width="800">
+    <Window.Background>
+        <SolidColorBrush Color="White" Opacity="0.3">
+
+        </SolidColorBrush>
+    </Window.Background>
+    <Grid>
+        <Border Background="White" CornerRadius="36">
+            <Grid Height="600"
+                  Width="800" 
+                  Margin="20 20 20 20"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Width="110"
+                           Height="122"
+                           Style="{DynamicResource Imagelabel}"
+                           >
+                        <Label.Background>
+                            <ImageBrush ImageSource="/assests/editBook.png">
+
+                            </ImageBrush>
+                        </Label.Background>
+                    </Label>
+                    <Grid Grid.Column="1" Margin="0 30">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Content="EDIT BOOK ITEMS"
+                               FontSize="40"
+                               FontWeight="Bold"
+                               VerticalAlignment="Bottom"
+                               />
+                        <Label Grid.Row="1"
+                                Content="{Binding Id}"
+                               ContentStringFormat="ID: {0}"
+                               FontSize="27"
+                               FontWeight="Bold"                              
+                               VerticalAlignment="Top"
+                               />
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Margin="40 0 40 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.4*"></RowDefinition>
+                        <RowDefinition Height="2*" ></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="{Binding TotalItems}"
+                           ContentStringFormat="Total book items: {0}"
+                           Grid.Row="0"
+                               FontSize="25"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"
+                               />
+                    <ListView Grid.Row="1" ItemsSource="{Binding ListBookItems}"
+                              SelectionMode="Single"
+                              SelectedItem="{Binding SelectedItem}">
+                        <ListView.Resources>
+                            <Style TargetType="ScrollBar">
+                                <Setter Property="Height" Value="Auto"/>
+                                <Setter Property="MinWidth" Value="0"/>
+                                <Setter Property="Width" Value="10"/>
+                                <Setter Property="Opacity" Value="0.3"></Setter>
+                            </Style>
+                        </ListView.Resources>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListViewItem">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Content="+"
+                                                       Grid.Column="0"
+                                                       Padding="30 0 0 2"
+                                                       FontSize="25"                                       
+                                                       VerticalAlignment="Center"
+                                                        />
+                                                <Label Content="{Binding id}"
+                                                       ContentStringFormat="ID: {0}"
+                                                       Grid.Column="1"
+                                                       FontSize="25"                                       
+                                                       VerticalAlignment="Center"
+                                                         />
+                                                <Label Grid.Column="2" 
+                                                       Content="{Binding lendingStatus}"
+                                                       ContentStringFormat=": {0}"
+                                                       FontSize="25"                                       
+                                                       VerticalAlignment="Center"
+                                                         />
+                                                <Button Grid.Column="3"
+                                                        Margin="8"
+                                                        Command="{Binding RelativeSource = {RelativeSource FindAncestor, AncestorType={x:Type ListView}}, Path=DataContext.Delete}"
+                                                        FontSize="20"
+                                                        Padding="0 0 0 5"
+                                                        Foreground="White"
+                                                        Style="{DynamicResource DeleteButton}"
+                                                        Content="x">
+
+                                                </Button>
+
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="IsSelected" Value="True"></Setter>
+                                            </Trigger>
+
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+
+                </Grid>
+
+                <Grid Grid.Row="2" Margin="0 0 30 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition Width="1.2*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0"                        
+                         Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                         Text="{Binding NumOfCopy, UpdateSourceTrigger=PropertyChanged}"
+                         FontFamily="Roboto"
+                         FontSize="30"                         
+                         FontWeight="Regular"
+                         materialDesign:HintAssist.Hint="Nums of copy"
+                         materialDesign:HintAssist.FontFamily="Roboto"
+                         materialDesign:BottomDashedLineAdorner.Brush="#0F52BA" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                    <Button Style="{DynamicResource ConfirmButton}"
+                            Margin="10 10 0 30"
+                            Background="DeepSkyBlue"
+                            Width="250"
+                            Command="{Binding AddItems}"
+                            Height="66"     
+                            Content="{Binding NumOfCopy, UpdateSourceTrigger=PropertyChanged}"
+                            ContentStringFormat="ADD {0} ITEM(S)"
+                            FontSize="27"
+                            FontFamily="Roboto"
+                            Foreground="White"
+                           
+                        Grid.Column="1"></Button>
+                    <Button Style="{DynamicResource ConfirmButton}"
+                            Margin="10 10 0 30"
+                            Width="200"
+                            Height="66"
+                            Click="Confirm_Click"
+                            Content="OK"
+                            FontSize="27"
+                            FontFamily="Roboto"
+                            Foreground="White"
+                           
+                        Grid.Column="2"></Button>
+                </Grid>
+
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

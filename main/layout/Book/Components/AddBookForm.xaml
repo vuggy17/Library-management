@@ -46,7 +46,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Image x:Name="imgBookCover"
-                               Source="/main;component/assests/img_book.png" 
+                               Source="/main;component/assests/addBook.jpg" 
                                Grid.Row="0"
                                Grid.RowSpan="2"
                                Height="Auto"
@@ -147,7 +147,7 @@
                                 VerticalAlignment="Center" Width="auto" >              
                     </DatePicker>
                     <Grid Grid.Column="1"   
-                          Background="SkyBlue"
+                          Background="White"
                           Panel.ZIndex="1"
                           
                           Opacity="0.1"

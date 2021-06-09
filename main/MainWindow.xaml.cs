@@ -51,6 +51,7 @@ namespace main
             EditBook.ToggleForm += ToggleForm;
             CurrentMemberReserverBooks.ToggleForm += ToggleForm;
             AddBookSuccessForm.ToggleForm += ToggleForm;
+           
             HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;
         }
         private void HomeNavigationViewModel_ChangePage(string page)

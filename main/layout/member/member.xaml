@@ -39,7 +39,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <components:SearchUserID Grid.Row="0" Margin="0,20,0,0"/>
+                <!--<components:SearchUserID Grid.Row="0" Margin="0,20,0,0"/>-->
                 <Frame x:Name="frame" Source="/layout/member/component/MemberActiveWraper.xaml" Grid.Row="1" Grid.RowSpan="2" NavigationUIVisibility="Hidden"/>
             </Grid>
 

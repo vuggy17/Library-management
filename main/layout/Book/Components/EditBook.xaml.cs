@@ -1,4 +1,5 @@
 ﻿using main.controller;
+using main.layout.Book.Forms;
 using main.viewmodel.features;
 using System;
 using System.Collections.Generic;
@@ -23,11 +24,27 @@ namespace main.layout.Book.Components
     public partial class EditBook : Window
     {
         public static event ToggleFormDialogNotifyHandler ToggleForm;
+
         public EditBook(model.Book book)
         {
             InitializeComponent();
             ToggleForm();
             DataContext = new EditBookViewModel(book);
+            EditBookItemForm.ToggleForm += EditBookItemForm_ToggleForm; ;
+        }
+
+        private void EditBookItemForm_ToggleForm()
+        {
+            if (this.Opacity == 1)
+            {
+                this.Opacity = 0.3;
+
+            }
+            else
+            {
+                this.Opacity = 1;
+
+            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

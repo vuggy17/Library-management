@@ -36,15 +36,16 @@
                    FontSize="30"                     
                    Foreground="White"
                    Padding="40,5,0,0"></Label>
-
+        <!--ItemsSource="{Binding FilterList, UpdateSourceTrigger=PropertyChanged}"-->
         <ListView  Grid.Row="3"
                    x:Name="lvBookList" 
                    SelectionMode="Single"
                    SelectedItem="{Binding SelectedItem}"
-                   ItemsSource="{Binding FilterList, UpdateSourceTrigger=PropertyChanged}"
+                  ItemsSource="{Binding FilterList, UpdateSourceTrigger=PropertyChanged}"
                    ScrollViewer.CanContentScroll="False"
                    Background="Transparent"
                    Margin="0 0 0 20">
+           
             <ListView.Resources>
                 <Style TargetType="ScrollBar">
                     <Setter Property="Height" Value="Auto"/>
@@ -97,7 +98,12 @@
                                                            FontFamily="Roboto"
                                                            Padding="20,0,0,0"
                                                            VerticalAlignment="Top"></Label>
-                                                <Label Grid.Row="2"
+                                                <Grid Grid.Row="2">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0"
                                                             x:Name="txtPublicDate"
                                                             Content="{Binding PubDateToShow}"
                                                             ContentStringFormat="Publication date: {0}"
@@ -105,6 +111,16 @@
                                                             FontFamily="Roboto"
                                                             Padding="20,0,0,0"
                                                             VerticalAlignment="Top"></Label>
+                                                    <Label Grid.Column="1"                                                            
+                                                            Content="{Binding price}"
+                                                            ContentStringFormat="Price: {0} VNĐ"
+                                                            FontSize="25"
+                                                            FontFamily="Roboto"
+                                                            Padding="20,0,0,0"
+                                                            VerticalAlignment="Top"></Label>
+                                                </Grid>
+                                                
+
                                                 <Grid Grid.Row="3">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition/>

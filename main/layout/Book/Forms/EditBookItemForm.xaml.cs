@@ -1,5 +1,4 @@
-﻿using main.layout.Book;
-using main.viewmodel.features;
+﻿using main.viewmodel.form;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,25 +13,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace main.layout.LoginForm
+namespace main.layout.Book.Forms
 {
     /// <summary>
-    /// Interaction logic for LoginForm.xaml
+    /// Interaction logic for EditBookItemForm.xaml
     /// </summary>
-    public partial class LoginForm : Window
+    public partial class EditBookItemForm : Window
     {
-        public LoginForm()
+        public static event ToggleFormDialogNotifyHandler ToggleForm;
+        public EditBookItemForm(model.Book book)
         {
             InitializeComponent();
-            LoginViewModel.login += LoginViewModel_login;
+            DataContext = new EditBookItemViewModel(book);
+            ToggleForm();
         }
-
-        private void LoginViewModel_login()
+        private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-            // Check account here
-            //BooksForm booksForm = new BooksForm();
-            //booksForm.Show();
+
             this.Close();
+            ToggleForm();
         }
     }
 }

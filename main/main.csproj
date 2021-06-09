@@ -122,6 +122,9 @@
     <Compile Include="layout\Book\Forms\AddBookSuccessForm.xaml.cs">
       <DependentUpon>AddBookSuccessForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\Book\Forms\EditBookItemForm.xaml.cs">
+      <DependentUpon>EditBookItemForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\HomeAndFeature\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -155,15 +158,12 @@
     <Compile Include="viewmodel\form\AddBookSuccessViewModel.cs" />
     <Compile Include="viewmodel\form\CheckOutConfirmViewModel.cs" />
     <Compile Include="viewmodel\form\CurrentMemberReservedBooksViewModel.cs" />
+    <Compile Include="viewmodel\form\EditBookItemViewModel.cs" />
     <Compile Include="viewmodel\form\RenewBookFormViewModel.cs" />
     <Compile Include="viewmodel\form\ReserveConfrimViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnBookFormViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnFullInforViewModel.cs" />
     <Compile Include="viewmodel\Home\HomeNavigationViewModel.cs" />
-    <Page Include="layout\Book\BooksForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="layout\Book\BooksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,44 +176,20 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\Book\Components\BookItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="layout\Book\Components\BookList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="layout\Book\Components\EditBook.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="layout\Book\Components\SearchByIdTitleAuthorBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="controller\DataLoadFromDB.cs" />
     <Compile Include="DelegateDefine.cs" />
-    <Compile Include="layout\Book\BooksForm.xaml.cs">
-      <DependentUpon>BooksForm.xaml</DependentUpon>
-    </Compile>
     <Compile Include="layout\Book\Components\AddBookBoard.xaml.cs">
       <DependentUpon>AddBookBoard.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\Book\Components\AddBookForm.xaml.cs">
       <DependentUpon>AddBookForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="layout\Book\Components\BookItem.xaml.cs">
-      <DependentUpon>BookItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="layout\Book\Components\BookList.xaml.cs">
-      <DependentUpon>BookList.xaml</DependentUpon>
-    </Compile>
     <Compile Include="layout\Book\Components\EditBook.xaml.cs">
       <DependentUpon>EditBook.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="layout\Book\Components\SearchByIdTitleAuthorBar.xaml.cs">
-      <DependentUpon>SearchByIdTitleAuthorBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\Book\DeleteBookBoard.xaml.cs">
       <DependentUpon>DeleteBookBoard.xaml</DependentUpon>
@@ -251,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\Book\Forms\AddBookSuccessForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\Book\Forms\EditBookItemForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -318,14 +298,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\HomeAndFeature\components\SearchBookInfo.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="layout\HomeAndFeature\components\SearchUserID.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="layout\HomeAndFeature\components\UserScanerBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -335,10 +307,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\HomeAndFeature\form\ReturnBookForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="layout\HomeAndFeature\HomeAndFeatureTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -440,12 +408,6 @@
     <Compile Include="layout\HomeAndFeature\components\SearchBookID.xaml.cs">
       <DependentUpon>SearchBookID.xaml</DependentUpon>
     </Compile>
-    <Compile Include="layout\HomeAndFeature\components\SearchBookInfo.xaml.cs">
-      <DependentUpon>SearchBookInfo.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="layout\HomeAndFeature\components\SearchUserID.xaml.cs">
-      <DependentUpon>SearchUserID.xaml</DependentUpon>
-    </Compile>
     <Compile Include="layout\HomeAndFeature\components\UserScanerBoard.xaml.cs">
       <DependentUpon>UserScanerBoard.xaml</DependentUpon>
     </Compile>
@@ -454,9 +416,6 @@
     </Compile>
     <Compile Include="layout\HomeAndFeature\form\ReturnBookForm.xaml.cs">
       <DependentUpon>ReturnBookForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="layout\HomeAndFeature\HomeAndFeatureTest.xaml.cs">
-      <DependentUpon>HomeAndFeatureTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\member\component\MemberActiveWraper.xaml.cs">
       <DependentUpon>MemberActiveWraper.xaml</DependentUpon>
@@ -594,7 +553,12 @@
   <ItemGroup>
     <Resource Include="assests\Book image.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="assests\addBook.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\editBook.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
