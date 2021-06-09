@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.viewmodel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,30 @@ namespace main.layout.HomeAndFeature.components
         public HomeNavigationBar()
         {
             InitializeComponent();
+            DataContext = new HomeNavigationViewModel();
+            HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;
         }
 
+        private void HomeNavigationViewModel_ChangePage(string page)
+        {
+            switch (page)
+            {
+                case "Home":
+                    Home.Opacity = 1;
+                    Books.Opacity = 0.5;
+                    Members.Opacity = 0.5;
+                    break;
+                case "Books":
+                    Home.Opacity = 0.5;
+                    Books.Opacity = 1;
+                    Members.Opacity = 0.5;
+                    break;
+                case "Members":
+                    Home.Opacity = 0.5;
+                    Books.Opacity = 0.5;
+                    Members.Opacity = 1;
+                    break;
+            }
+        }
     }
 }

@@ -90,11 +90,16 @@ namespace main.model
             this.isRefOnly = isRefOnly;
             this.info = info;
             this.lendingStatus = lending;
-            this.dueDate = dueDate;
+            if(lending != LendingStatus.AVAI && lending != LendingStatus.LOST)
+            {
+                this.dueDate = dueDate;
+            }
+            
         }
+        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
         public Book getBookInfor()
         {
-            foreach (var book in DataLoadFromDB.getBooks())
+            foreach (var book in dataLoadFromDB.getBooks())
             {
                 if(this.info == book.id)
                 {

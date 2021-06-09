@@ -96,13 +96,14 @@ namespace main.model
             this.pubDate = bookInfo.pubDate.ToShortDateString();
             this.AddAble = true;
         }
+        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
         private int getAvailableCopies(Book bookInfo)
         {
             int availableCopies = 0;
             if (bookInfo != null)
             {
                 List<BookItem> bookItems = new List<BookItem>();
-                bookItems = DataLoadFromDB.getBookItems();
+                bookItems = dataLoadFromDB.getBookItems();
                 foreach(var bookItem in bookItems)
                 {
                     if(bookItem.info == bookInfo.id && bookItem.isRefOnly== false)

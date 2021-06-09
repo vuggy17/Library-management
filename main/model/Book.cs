@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,15 +47,68 @@ namespace main.model
             get { return _pubdate; }
             set { _pubdate = value; }
         }
+        public string PubDateToShow
+        {
+            get => _pubdate.ToShortDateString();            
+        }
+        public int AvalableCopies
+        {
+            get => getAvailableCopies(id);
+        }
+
+        public int TotalCopies
+        {
+            get => getTotalCopies(id);
+        }
+        private double _price;
+
+        public double price
+        {
+            get { return _price; }
+            set { _price = value; }
+        }
         #endregion
 
         #region method
-        public Book(int id, string title, string subject, string author, DateTime pubDate) {
-            this.id = id;          
+        public Book(int id, string title, string subject, string author, DateTime pubDate, double price) {
+
+            this.price = price;
+            this.id = id;
+           
             this.author = author;
             this.title = title;
             this.subject = subject;
             this.pubDate = pubDate;
+        }
+        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+        private int getTotalCopies(int id)
+        {
+            int totalCopies = 0;
+            List<BookItem> bookItems = new List<BookItem>();
+            bookItems = dataLoadFromDB.getBookItems();
+            foreach (var bookItem in bookItems)
+            {
+                if (bookItem.info == id)
+                {
+                    totalCopies++;
+                }
+            }
+            return totalCopies;
+        }
+
+        private int getAvailableCopies(int id)
+        {
+            int availableCopies = 0;
+                List<BookItem> bookItems = new List<BookItem>();
+                bookItems = dataLoadFromDB.getBookItems();
+            foreach (var bookItem in bookItems)
+            {
+                if (bookItem.info == id && bookItem.lendingStatus == enums.LendingStatus.AVAI)
+                {
+                    availableCopies++;
+                }
+            }
+            return availableCopies;
         }
 
         #endregion

@@ -23,6 +23,9 @@ using main.layout;
 using main.layout.LoginForm;
 using main.layout.Book.Components;
 using main.layout.HomeAndFeature.form;
+using main.model.features;
+using main.layout.HomeAndFeature.components;
+using main.viewmodel;
 
 namespace main
 {
@@ -31,31 +34,53 @@ namespace main
     /// </summary>
     public partial class MainWindow : Window
     {
+        HomeNavigationViewModel homePageViewModel = new HomeNavigationViewModel();
         public MainWindow()
         {
             InitializeComponent();
-            this.Visibility = Visibility.Hidden;
+            HomePage.DataContext = homePageViewModel;
+            RenewForm.ToggleForm += ToggleForm;
+            ReturnBookForm.ToggleForm += ToggleForm;
+            ReturnFullInfor.ToggleForm += ToggleForm;
+            CheckOutConfirm.ToggleForm += ToggleForm;
+            ReseverBookForm.ToggleForm += ToggleForm;
+            ReserveConfirm.ToggleForm += ToggleForm;
+            AddBookForm.ToggleForm += ToggleForm;
+            DeleteBookBoard.ToggleForm += ToggleForm;
+            EditBook.ToggleForm += ToggleForm;
+            CurrentMemberReserverBooks.ToggleForm += ToggleForm;
+            HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;
+        }
+        private void HomeNavigationViewModel_ChangePage(string page)
+        {
+            switch (page)
+            {
+                case "Home":
+                    HomePage.Visibility = Visibility.Visible;
+                    FeatureNavigation.Visibility = Visibility.Visible;
+                    BooksAddBoard.Visibility = Visibility.Hidden;
+                    break;
+                case "Books":
+                    BooksAddBoard.Visibility = Visibility.Visible;
+                    HomePage.Visibility = Visibility.Hidden;
+                    FeatureNavigation.Visibility = Visibility.Hidden;
+                    break;
+                    
+            }
+        }
+        private void ToggleForm()
+        {
+            if (this.Opacity == 1)
+            {
+                this.Opacity = 0.3;
 
-           // HomeAndFeatureTest homeAndFeatureTest = new HomeAndFeatureTest();
-            //homeAndFeatureTest.Show();
-            //LoginForm login = new LoginForm();
-            //login.Show();
-            BooksForm books = new BooksForm();
-            books.Show();
-            //BooksForm bookTest = new BooksForm();
-            //bookTest.Show();
-            //AddBookForm addBookForm = new AddBookForm();
-            //addBookForm.Show();
-            //RenewForm renewForm = new RenewForm();
-            //renewForm.Show();
-            //Person duy = new Person("Duy@alljf.com.vn");
-            //Person trang = new Person("trang");
+            }
+            else
+            {
+                this.Opacity = 1;
 
-            //Account github = new Account(duy);
-
-            //Console.WriteLine("account: "+github.info.email.ToString());
-
-            //var bookStatus = BookFormat.AUDBOOK.ToString();
+            }
         }
     }
 }
+

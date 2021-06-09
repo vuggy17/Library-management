@@ -69,12 +69,13 @@
                         </Button>
                     </Grid>
                 </Border>
-                <TextBlock Grid.Row="1"
+                <Label Grid.Row="1"
                            HorizontalAlignment="Center"
-                           Text="ID: NJNKJZNJKFNJKLBNDFJB"
+                           Content="{Binding Path=bookToShow.id}"
+                           ContentStringFormat="ID: {0}"
                            FontFamily="Roboto"
                            FontSize="25"
-                           FontWeight="Bold"></TextBlock>
+                           FontWeight="Bold"></Label>
             </Grid>
             <Grid Grid.Column="1" Margin="0,80,0,0" Width="440">
                 <Grid.RowDefinitions>
@@ -88,7 +89,7 @@
                 </Grid.RowDefinitions>
                 <TextBox Name="tbName"
                          Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-                         Text="Sự im lặng của bầy cừu"
+                         Text="{Binding Path=bookToShow.title}"
                          FontFamily="Roboto"
                          FontSize="30"
                          FontWeight="Regular"
@@ -99,7 +100,7 @@
                 <TextBox Grid.Row="1"
                          Name="tbAuthor"
                          Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-                         Text="Thomas Harris"
+                         Text="{Binding Path=bookToShow.author}"
                          FontFamily="Roboto"
                          FontSize="30"
                          FontWeight="Regular"
@@ -112,18 +113,18 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Price: "
+                    <TextBlock Text="Price: "                               
                                FontSize="30"
                                FontWeight="Bold"
                                FontFamily="Roboto"
                                VerticalAlignment="Center"></TextBlock>
-                    <TextBox Grid.Column="1"
+                    <TextBox Grid.Column="1"                          
                              x:Name="tbPrice"
-                               Text="10.000 vnđ"
+                               Text="{Binding Path=bookToShow.price}"                               
                                FontFamily="Roboto"
                                FontSize="30"
                                FontWeight="Regular"
-                               Style="{DynamicResource MaterialDesignTextBox}"></TextBox>
+                               ></TextBox>
                 </Grid>
                 <Grid Grid.Row="3" Height="60">
                     <Grid.ColumnDefinitions>
@@ -135,13 +136,13 @@
                                FontWeight="Bold"
                                FontFamily="Roboto"
                                VerticalAlignment="Center"></TextBlock>
-                    <TextBox Grid.Column="1"
+                    <Label Grid.Column="1"
                              x:Name="tbPubDate"
-                               Text="13/07/2001"
+                              Content="{Binding Path=bookToShow.PubDateToShow, Mode=OneWay}"
                                VerticalAlignment="Center"
                                FontFamily="Roboto"
                                FontSize="30"
-                               FontWeight="Regular"></TextBox>
+                               FontWeight="Regular"></Label>
                 </Grid>
                 <Grid Grid.Row="4" Margin="0,0,0,0" Height="80">
                     <Grid.ColumnDefinitions>
@@ -159,6 +160,7 @@
                             BorderThickness="0"
                             Height="55.86"
                             Width="55.86"
+                            Command="{Binding RemoveBookItems}"
                             Content="-"
                             FontSize="35"
                             FontWeight="Bold"
@@ -166,11 +168,12 @@
                             Background="#D9D7D7"></Button>
                     <Label Grid.Column="2"
                            x:Name="lbNum"
-                             Content="36"
+                             Content="{Binding Path=bookToShow.TotalCopies}"
                            VerticalAlignment="Center"
                              HorizontalAlignment="Center"
                              FontSize="36"></Label>
                     <Button Grid.Column="3"
+                            Command="{Binding AddNewBookItem}"
                             BorderThickness="0"
                             Height="55.86"
                             Width="55.86"

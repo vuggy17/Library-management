@@ -51,11 +51,11 @@ namespace main.model.features
 
 
 
-
+        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
         public ResearveBookFormViewModel(ObservableCollection<BookToReserve> alreadyAddBookToReserves)
         {
             allBooks = new List<Book>();
-            allBooks = DataLoadFromDB.getBooks();
+            allBooks = dataLoadFromDB.getBooks();
             allbookToReserves = new ObservableCollection<BookToReserve>();
             searchKey = "";
             filterList = new ObservableCollection<BookToReserve>();

@@ -79,12 +79,12 @@ namespace main.model.features
             }
 
         }
-
+        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
 
         public UserScanerBoardViewModel()
         {
             allAccounts = new List<Account>();
-            allAccounts = DataLoadFromDB.getAllMembers();
+            allAccounts = dataLoadFromDB.getAllMembers();
             currentMember = CurrentMember.getInstance();
             UserView = false;
             SeeFullUserInfo = new RelayCommand<object>((p) => { return true; }, (p) => { showFullUserInfor(TargetAccount); });

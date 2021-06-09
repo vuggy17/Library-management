@@ -26,13 +26,14 @@ namespace main.layout.Book.Components
     {
         public static int deleteIndex;
         public static int editIndex;
+        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
         public BookList()
         {
             InitializeComponent();
-            this.DataContext = new BookListViewModel(DataLoadFromDB.getBooks());
+            this.DataContext = new BookListViewModel(dataLoadFromDB.getBooks());
             AddBookViewModel.addBook += AddBookViewModel_addBook;
-            DeleteBookViewModel.deleteBook += DeleteBookViewModel_deleteBook;
-            EditBookViewModel.editBook += EditBookViewModel_editBook;
+          //  DeleteBookViewModel.deleteBook += DeleteBookViewModel_deleteBook;
+            //EditBookViewModel.editBook += EditBookViewModel_editBook;
             SearchByIdTitleAuthorViewModel.Searching += SearchByIdTitleAuthorViewModel_search;
         }
 
@@ -44,8 +45,8 @@ namespace main.layout.Book.Components
 
         private void EditBookViewModel_editBook(int index)
         {
-            ListAllBook.editBookAt(editIndex, NewBook.getInstanceWithCertain());
-            NewBook.resetInstance();
+            //ListAllBook.editBookAt(editIndex, NewBook.getInstanceWithCertain());
+            //NewBook.resetInstance();
             this.DataContext = null;
             this.DataContext = new BookListViewModel(ListAllBook.getInstance());
         }
@@ -66,17 +67,17 @@ namespace main.layout.Book.Components
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            editIndex = lvBookList.SelectedIndex;
-            EditBook editBook = new EditBook();
-            editBook.Show();
+            //editIndex = lvBookList.SelectedIndex;
+            //EditBook editBook = new EditBook();
+            //editBook.Show();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             // delete logic
             deleteIndex = lvBookList.SelectedIndex;
-            DeleteBookBoard deleteBook = new DeleteBookBoard();
-            deleteBook.Show();
+            //DeleteBookBoard deleteBook = new DeleteBookBoard();
+            //deleteBook.Show();
         }
 
     }

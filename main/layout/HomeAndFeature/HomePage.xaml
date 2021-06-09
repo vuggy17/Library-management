@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="main.layout.HomeAndFeature.HomePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:main.layout.HomeAndFeature"
+             xmlns:components="clr-namespace:main.layout.HomeAndFeature.components"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1240">
+
+    <!--Feature-->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="340"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <components:UserScanerBoard Margin="0 20"></components:UserScanerBoard>
+            <components:ReseviceBook x:Name="ReserveBookList" Visibility="Hidden"  Grid.Row="1" Margin="0,0,0,20" ></components:ReseviceBook>
+            <components:BookBorrowRenew  x:Name="RenewBookList" Visibility="Hidden"  Grid.Row="1" Margin="0,0,0,20"></components:BookBorrowRenew>
+            <components:CheckOutBook x:Name="CheckOutBookList" Visibility="Hidden"  Grid.Row="1" Margin="0,0,0,20"></components:CheckOutBook>
+            <components:BookBorrowReturn x:Name="ReturnBookList" Visibility="Visible"  Grid.Row="1" Margin="0,0,0,20"></components:BookBorrowReturn>
+        </Grid>
+</UserControl>

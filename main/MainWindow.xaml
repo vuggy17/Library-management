@@ -3,9 +3,51 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:components="clr-namespace:main.layout.HomeAndFeature.components"
+        xmlns:page="clr-namespace:main.layout.HomeAndFeature"
+         xmlns:bookComponents="clr-namespace:main.layout.Book.Components"
+        xmlns:book="clr-namespace:main.layout.Book"
         xmlns:local="clr-namespace:main"
-        xmlns:layout="clr-namespace:main.layout"
+       
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920">
-   
+        Title="MainWindow" Height="1080" Width="1920"
+        WindowStartupLocation="CenterScreen"       
+        WindowState="Maximized"
+        WindowStyle="None">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/assests/Background.png" Stretch="None"/>               
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="536"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="145"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Navigation-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="460"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <components:HomeNavigationBar Margin="20" />
+            <components:FeatureNavigationBar x:Name="FeatureNavigation" Grid.Row="1" Margin="20 0 20 20"/>
+            <bookComponents:AddBookBoard x:Name="BooksAddBoard" Grid.Row="1" Margin="20 0 20 20"></bookComponents:AddBookBoard>
+        </Grid>
+
+        <!--Feature-->
+        <Grid Grid.Column="1">
+            <book:BooksPage></book:BooksPage>
+            <page:HomePage Visibility="Hidden" x:Name="HomePage"></page:HomePage>
+        </Grid>
+
+        <!--Icon-->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="145"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <components:LibrarianIcon Margin="20"/>
+        </Grid>
+    </Grid>
 </Window>

@@ -45,7 +45,7 @@ namespace main.layout.Book.Components
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 
-            ListAllBook.addNewBook(new model.Book(12345670, "Rừng NaUy", "Novel", "Haruki Murakami", new DateTime(2021, 6, 2)));           
+            
             this.Close();
             ToggleForm();
         }

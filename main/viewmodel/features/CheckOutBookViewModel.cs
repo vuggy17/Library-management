@@ -39,8 +39,9 @@ namespace main.model.features
         public CheckOutBookViewModel()
         {
             bookToShows = new ObservableCollection<BookToShow>();
-            bookItems = DataLoadFromDB.getBookItems();
-            books = DataLoadFromDB.getBooks();
+            DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+            bookItems = dataLoadFromDB.getBookItems();
+            books = dataLoadFromDB.getBooks();
             currentMember = CurrentMember.getInstance();
             Delete = new RelayCommand<object>((p) => { return true; }, (p) => { removeSeletedItem(); });
             Confirm = new RelayCommand<object>((p) => { return true; }, (p) => { openCheckOutDiagram(); });

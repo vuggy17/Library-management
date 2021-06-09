@@ -67,6 +67,8 @@
             </Grid>
             <Button Width="420"
                     Height="70"
+                    Command="{Binding Home}"
+                    x:Name="Home"
                 Grid.Row="1" Style="{DynamicResource HomeButton}">
                 <Grid Width="420"
                       Height="70">
@@ -88,6 +90,8 @@
             </Button>
             <Button Width="420"
                     Height="70"
+                    Command="{Binding Books}"
+                    x:Name="Books"
                     Opacity="0.5"
                 Grid.Row="2" Style="{DynamicResource HomeButton}" Margin="0,0,0,17">
                 <Grid Width="420"
@@ -101,7 +105,7 @@
                            Margin="20 5 0 7"
                            />
                     <Label Grid.Column="1"
-                           Content="Book"
+                           Content="Books"
                            Padding="10 7 0 0"
                            FontSize="40"
                            FontFamily="Roboto"
@@ -110,6 +114,8 @@
             </Button>
             <Button Width="420"
                     Opacity="0.5"
+                    x:Name="Members"
+                    Command="{Binding Members}"
                     Height="70"
                 Grid.Row="3" 
                     Margin="0,0,0,34"
@@ -125,7 +131,7 @@
                            Margin="20 5 0 7"
                            />
                     <Label Grid.Column="1"
-                           Content="Member"
+                           Content="Members"
                            Padding="10 7 0 0"
                            FontSize="40"
                            FontFamily="Roboto"

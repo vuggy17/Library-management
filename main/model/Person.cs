@@ -77,6 +77,7 @@ namespace main.model
         #region input check
         public bool validateEmail(string email)
         {
+            
             var regex = new Regex(@"^((\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)\s*[;]{0,1}\s*)+$");
             return regex.Match(email).Success;
         }

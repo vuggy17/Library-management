@@ -16,9 +16,9 @@ namespace main
 
     public delegate void AddBookHandler();
 
-    public delegate void DeleteBookHandler(int index);
+    public delegate void DeleteBookHandler(Book book);
 
-    public delegate void EditBookHandler(int index);
+    public delegate void EditBookHandler(Book book);
 
     public delegate void ClearInfoNotifyHandler();
 
