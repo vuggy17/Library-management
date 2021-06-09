@@ -16,7 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using main.model;
-
+using main.controller;
+using main.layout.Book.Forms;
 
 namespace main.layout.Book.Components
 {
@@ -26,16 +27,21 @@ namespace main.layout.Book.Components
     public partial class AddBookForm : Window
     {
         public static event ToggleFormDialogNotifyHandler ToggleForm;
+        private DataLoadFromDB data = DataLoadFromDB.getIntance();
+        public static event updateBookListHandeler update;
+
+
+        
         public AddBookForm()
         {
             InitializeComponent();
-            lbNumber.Content = "0";
-            this.DataContext = new AddBookViewModel();
+            lbNumber.Content = "0";          
             ToggleForm();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
+
             this.Close();
             ToggleForm();
         }
@@ -44,10 +50,26 @@ namespace main.layout.Book.Components
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            if(tbPrice.Text !="")
+            {
+                model.Book newBook = new model.Book(13720010, tbName.Text, "", tbAuthor.Text, datePicker.SelectedDate.Value, Double.Parse(tbPrice.Text));
+                data.addNewBook(newBook);
+                int numOfCopies = int.Parse(lbNumber.Content.ToString());
+                int autoID = newBook.id;
+                for (int i=0; i < numOfCopies; i++)
+                {
+                    autoID += 1;
+                    data.addNewBookItem(new main.model.BookItem(autoID, newBook.id,model.enums.LendingStatus.AVAI, new DateTime()));
+                }
+                
+                AddBookSuccessForm add = new AddBookSuccessForm(newBook);
+                add.Show();
+                update();
+                this.Close();
+                ToggleForm();
+            }            
 
-            
-            this.Close();
-            ToggleForm();
+           
         }
 
         private void btnAddImage_Click(object sender, RoutedEventArgs e)
@@ -57,6 +79,7 @@ namespace main.layout.Book.Components
             var result = openFileDialog.ShowDialog();
             if (result == false) return;
             imgBookCover.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            //Luu lai duong dan push len db
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

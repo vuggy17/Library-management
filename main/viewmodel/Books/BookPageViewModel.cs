@@ -58,10 +58,18 @@ namespace main.viewmodel.Books
             Delete = new RelayCommand<Object>((p) => true, (p) => { deleteBookFormShow(SelectedItem); });
             Edit = new RelayCommand<Object>((p) => true, (p) => { editBookFormShow(SelectedItem); });
             filterList = new ObservableCollection<Book>();
+            AddBookForm.update += AddBookForm_update;
             DeleteBookViewModel.deleteBook += deleteBookItem;
 
 
         }
+
+        private void AddBookForm_update()
+        {
+            OnPropertyChanged("FilterList");
+            OnPropertyChanged("TotalBook");
+        }
+
         private void editBookItem(Book book)
         {
             
@@ -83,6 +91,7 @@ namespace main.viewmodel.Books
         private void deleteBookItem(Book book)
         {
             allBooks.Remove(book);
+            dataLoadFromDB.deleteBook(book);
             OnPropertyChanged("FilterList");
             OnPropertyChanged("TotalBook");            
             //update database here

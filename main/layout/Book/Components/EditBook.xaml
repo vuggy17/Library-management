@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:main.layout.Book.Components"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="670" Width="1000"
+             Height="600" Width="1000"
              WindowStartupLocation="CenterScreen"
              WindowStyle="None"
              ResizeMode="NoResize">
@@ -38,7 +38,7 @@
                 <Border Grid.Row="0"
                         Margin="0,50,0,0"
                         BorderThickness="4"
-                    CornerRadius="14" BorderBrush="#707070" Height="512" Width="361">
+                    CornerRadius="14" BorderBrush="#707070" Height="480" Width="361">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="4.5*"/>
@@ -168,7 +168,7 @@
                             Background="#D9D7D7"></Button>
                     <Label Grid.Column="2"
                            x:Name="lbNum"
-                             Content="{Binding Path=bookToShow.TotalCopies}"
+                             Content="{Binding TotalCopies, UpdateSourceTrigger=PropertyChanged}"
                            VerticalAlignment="Center"
                              HorizontalAlignment="Center"
                              FontSize="36"></Label>
@@ -183,18 +183,6 @@
                             Foreground="Black"
                             Background="#D9D7D7"></Button>
                 </Grid>
-                <CheckBox Grid.Row="5"
-                          HorizontalAlignment="Left"
-                          Content="Reference Only"
-                          FontFamily="Roboto"
-                          FontWeight="Bold"
-                          FlowDirection="RightToLeft"
-                          FontSize="15"
-                          Height="30">
-                    <CheckBox.LayoutTransform>
-                        <ScaleTransform ScaleX="2" ScaleY="2"/>
-                    </CheckBox.LayoutTransform>
-                </CheckBox>
                 <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>

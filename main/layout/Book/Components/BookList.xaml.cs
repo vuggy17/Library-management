@@ -31,7 +31,7 @@ namespace main.layout.Book.Components
         {
             InitializeComponent();
             this.DataContext = new BookListViewModel(dataLoadFromDB.getBooks());
-            AddBookViewModel.addBook += AddBookViewModel_addBook;
+            //AddBookViewModel.addBook += AddBookViewModel_addBook;
           //  DeleteBookViewModel.deleteBook += DeleteBookViewModel_deleteBook;
             //EditBookViewModel.editBook += EditBookViewModel_editBook;
             SearchByIdTitleAuthorViewModel.Searching += SearchByIdTitleAuthorViewModel_search;

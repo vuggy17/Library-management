@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              Title="AddBookForm"
-             Height="670" Width="1000"
+             Height="600" Width="1000"
              WindowStartupLocation="CenterScreen"
              WindowStyle="None"
              ResizeMode="NoResize">
@@ -39,7 +39,7 @@
                 <Border Grid.Row="0"
                         Margin="0,50,0,0"
                         BorderThickness="4"
-                    CornerRadius="14" BorderBrush="#707070" Height="512" Width="361">
+                    CornerRadius="14" BorderBrush="#707070" Height="475" Width="361">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="4.5*"/>
@@ -118,6 +118,7 @@
                                FontFamily="Roboto"
                                VerticalAlignment="Center"></TextBlock>
                     <TextBox Grid.Column="1"
+                             x:Name="tbPrice"
                                Text=""
                                FontFamily="Roboto"
                                FontSize="30"
@@ -135,13 +136,27 @@
                                FontWeight="Bold"
                                FontFamily="Roboto"
                                VerticalAlignment="Center"></TextBlock>
-                    <TextBox Grid.Column="1"
-                             x:Name="tbPublishDate"
-                               Text=""
-                             VerticalAlignment="Center"
-                               FontFamily="Roboto"
-                               FontSize="30"
-                               FontWeight="Regular"></TextBox>
+
+                    <DatePicker Grid.Column="1"                                
+                                Height="50"               
+                                 Focusable="False"
+                                FontSize="30"                                
+                                IsTodayHighlighted="True"                               
+                                Name="datePicker"                               
+                                VerticalAlignment="Center" Width="auto" >              
+                    </DatePicker>
+                    <Grid Grid.Column="1"   
+                          Background="SkyBlue"
+                          Panel.ZIndex="1"
+                          
+                          Opacity="0.1"
+                                Height="50"       
+                                IsEnabled="False"
+                         
+                          Margin="0 0 15 0"
+                                VerticalAlignment="Center" Width="auto" >
+                    </Grid>
+
                 </Grid>
                 <Grid Grid.Row="4" Margin="0,0,0,0" Height="80">
                     <Grid.ColumnDefinitions>
@@ -168,7 +183,7 @@
                             Background="#D9D7D7"></Button>
                     <Label x:Name="lbNumber"
                            Grid.Column="2"
-                           Content="36"
+                           Content="0"
                            VerticalAlignment="Center"
                              HorizontalAlignment="Center"
                              FontSize="36"></Label>
@@ -184,48 +199,38 @@
                             Foreground="Black"
                             Background="#D9D7D7"></Button>
                 </Grid>
-                <CheckBox Grid.Row="5"
-                          HorizontalAlignment="Left"
-                          Content="Reference Only"
-                          FontFamily="Roboto"
-                          FontWeight="Bold"
-                          FlowDirection="RightToLeft"
-                          FontSize="15"
-                          Height="30">
-                    <CheckBox.LayoutTransform>
-                        <ScaleTransform ScaleX="2" ScaleY="2"/>
-                    </CheckBox.LayoutTransform>
-                </CheckBox>
                 <Grid Grid.Row="6">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.7*"/>
                     </Grid.ColumnDefinitions>
                     <Button Content="SAVE"
                             x:Name="btnSave"
                             Click="btnSave_Click"
                             Command="{Binding addBookCommand}"
-                            FontSize="40"
+                            FontSize="25"
                             FontWeight="Bold"
                             FontFamily="Roboto"
                             Foreground="White"
-                            Width="202"
+                            Width="150"
+                            Margin="0 0 0 10"
                             Height="66"
                             Background="#28A745"
-                            Style="{DynamicResource HomeButton}">
+                            Style="{DynamicResource HomeButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                     </Button>
                     <Button x:Name="btnExit"
                             Click="btnExit_Click"
                             Grid.Column="1"
+                             Margin="0 0 0 10"
                             Content="EXIT"
-                            FontSize="40"
+                            FontSize="25"
                             FontWeight="Bold"
                             FontFamily="Roboto"
                             Foreground="White"
-                            Width="202"
+                            Width="150"
                             Height="66"
                             Background="#707070"
-                            Style="{DynamicResource HomeButton}">
+                            Style="{DynamicResource HomeButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                     </Button>
                 </Grid>
             </Grid>

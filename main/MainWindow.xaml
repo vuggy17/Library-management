@@ -32,13 +32,13 @@
             </Grid.RowDefinitions>
             <components:HomeNavigationBar Margin="20" />
             <components:FeatureNavigationBar x:Name="FeatureNavigation" Grid.Row="1" Margin="20 0 20 20"/>
-            <bookComponents:AddBookBoard x:Name="BooksAddBoard" Grid.Row="1" Margin="20 0 20 20"></bookComponents:AddBookBoard>
+            <bookComponents:AddBookBoard x:Name="BooksAddBoard" Visibility="Hidden" Grid.Row="1" Margin="20 0 20 20"></bookComponents:AddBookBoard>
         </Grid>
 
         <!--Feature-->
         <Grid Grid.Column="1">
-            <book:BooksPage></book:BooksPage>
-            <page:HomePage Visibility="Hidden" x:Name="HomePage"></page:HomePage>
+            <book:BooksPage x:Name="BookPage" Visibility="Hidden"></book:BooksPage>
+            <page:HomePage  x:Name="HomePage"></page:HomePage>
         </Grid>
 
         <!--Icon-->

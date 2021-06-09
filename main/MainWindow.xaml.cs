@@ -26,6 +26,7 @@ using main.layout.HomeAndFeature.form;
 using main.model.features;
 using main.layout.HomeAndFeature.components;
 using main.viewmodel;
+using main.layout.Book.Forms;
 
 namespace main
 {
@@ -49,6 +50,7 @@ namespace main
             DeleteBookBoard.ToggleForm += ToggleForm;
             EditBook.ToggleForm += ToggleForm;
             CurrentMemberReserverBooks.ToggleForm += ToggleForm;
+            AddBookSuccessForm.ToggleForm += ToggleForm;
             HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;
         }
         private void HomeNavigationViewModel_ChangePage(string page)
@@ -56,11 +58,14 @@ namespace main
             switch (page)
             {
                 case "Home":
+                    
                     HomePage.Visibility = Visibility.Visible;
                     FeatureNavigation.Visibility = Visibility.Visible;
                     BooksAddBoard.Visibility = Visibility.Hidden;
+                    BookPage.Visibility = Visibility.Hidden;
                     break;
                 case "Books":
+                    BookPage.Visibility = Visibility.Visible;
                     BooksAddBoard.Visibility = Visibility.Visible;
                     HomePage.Visibility = Visibility.Hidden;
                     FeatureNavigation.Visibility = Visibility.Hidden;

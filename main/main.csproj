@@ -119,11 +119,13 @@
     <Compile Include="layout\Book\BooksPage.xaml.cs">
       <DependentUpon>BooksPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\Book\Forms\AddBookSuccessForm.xaml.cs">
+      <DependentUpon>AddBookSuccessForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\HomeAndFeature\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="viewmodel\Books\BookPageViewModel.cs" />
-    <Compile Include="viewmodel\features\AddBookViewModel.cs" />
     <Compile Include="viewmodel\Books\DeleteBookViewModel.cs" />
     <Compile Include="viewmodel\Books\EditBookViewModel.cs" />
     <Compile Include="viewmodel\features\LibrarianIconNavigationViewModel.cs" />
@@ -150,6 +152,7 @@
     <Compile Include="viewmodel\features\ResearveBookViewModel.cs" />
     <Compile Include="viewmodel\features\ReturnBookViewModel.cs" />
     <Compile Include="viewmodel\features\UserScanerBoardViewModel.cs" />
+    <Compile Include="viewmodel\form\AddBookSuccessViewModel.cs" />
     <Compile Include="viewmodel\form\CheckOutConfirmViewModel.cs" />
     <Compile Include="viewmodel\form\CurrentMemberReservedBooksViewModel.cs" />
     <Compile Include="viewmodel\form\RenewBookFormViewModel.cs" />
@@ -244,6 +247,10 @@
     <Compile Include="viewmodel\features\FeatureNavigationViewModel.cs" />
     <Compile Include="viewmodel\features\ResearveBookFormViewModel.cs" />
     <Page Include="layout\Book\DeleteBookBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\Book\Forms\AddBookSuccessForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

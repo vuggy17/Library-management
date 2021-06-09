@@ -21,11 +21,6 @@ namespace main.model
         }
         private bool _isRefOnly;
 
-        public bool isRefOnly
-        {
-            get { return _isRefOnly; }
-            set { _isRefOnly = value; }
-        }
         private DateTime _dueDate;
 
         public DateTime dueDate
@@ -84,10 +79,9 @@ namespace main.model
         #endregion
 
         //this contructor is use for clone book item from db
-        public BookItem(int id, bool isRefOnly, int info, LendingStatus lending,DateTime dueDate)
+        public BookItem(int id, int info, LendingStatus lending,DateTime dueDate)
         {
             this.id = id;
-            this.isRefOnly = isRefOnly;
             this.info = info;
             this.lendingStatus = lending;
             if(lending != LendingStatus.AVAI && lending != LendingStatus.LOST)
@@ -101,7 +95,7 @@ namespace main.model
         {
             foreach (var book in dataLoadFromDB.getBooks())
             {
-                if(this.info == book.id)
+                if (this.info == book.id)
                 {
                     return book;
                 }

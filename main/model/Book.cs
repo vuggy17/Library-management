@@ -55,10 +55,15 @@ namespace main.model
         {
             get => getAvailableCopies(id);
         }
+        private int _totalCopies;
 
         public int TotalCopies
         {
             get => getTotalCopies(id);
+            set
+            {
+                _totalCopies = value;
+            }
         }
         private double _price;
 
@@ -109,6 +114,19 @@ namespace main.model
                 }
             }
             return availableCopies;
+        }
+        public List<BookItem> getAllBookItems()
+        {
+
+            List<BookItem> bookItems = new List<BookItem>();            
+            foreach (var bookItem in dataLoadFromDB.getBookItems())
+            {
+                if (bookItem.info == id)
+                {
+                    bookItems.Add(bookItem);
+                }
+            }
+            return bookItems;
         }
 
         #endregion

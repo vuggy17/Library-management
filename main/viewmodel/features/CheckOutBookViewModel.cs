@@ -25,7 +25,8 @@ namespace main.model.features
 
         private List<BookItem> bookItems;
         private List<Book> books;
-        
+        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+
         private ObservableCollection<BookToShow> bookToShows;
         public ObservableCollection<BookToShow> BookToShows
         {
@@ -39,9 +40,9 @@ namespace main.model.features
         public CheckOutBookViewModel()
         {
             bookToShows = new ObservableCollection<BookToShow>();
-            DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
-            bookItems = dataLoadFromDB.getBookItems();
-            books = dataLoadFromDB.getBooks();
+            
+            
+           
             currentMember = CurrentMember.getInstance();
             Delete = new RelayCommand<object>((p) => { return true; }, (p) => { removeSeletedItem(); });
             Confirm = new RelayCommand<object>((p) => { return true; }, (p) => { openCheckOutDiagram(); });
@@ -110,21 +111,11 @@ namespace main.model.features
             }
             return false;
         }
-        private bool checkIsReferenceOnly()
-        {
-            if(searchBookItemById(SearchKeyword).isRefOnly == true)
-            {
-                MessageBox.Show("This book is reference only","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                searchKeyword = "";
-                return true;
-            }
-            return false;
-        }
 
         private ObservableCollection<BookToShow> getBookToShow()
         {            
             
-            if (searchBookItemById(searchKeyword)!=null &&!checkIsReferenceOnly()&&! isExitstInCurrentList()&&!checkIsReserveByOrder())
+            if (searchBookItemById(searchKeyword)!=null &&! isExitstInCurrentList()&&!checkIsReserveByOrder())
             {
 
                 if (findBookNameByBookItemId(searchBookItemById(searchKeyword)) != null)
@@ -142,7 +133,7 @@ namespace main.model.features
         }
         private BookToShow findBookNameByBookItemId(BookItem bookItem)
         {
-            
+            bookItems = dataLoadFromDB.getBookItems();
             for (int i = 0; i < books.Count; i++)
             {
                 if(bookItem.info == books[i].id)
@@ -157,7 +148,9 @@ namespace main.model.features
 
         private BookItem searchBookItemById(string searchKeyword)
         {
-            for(int i=0; i < bookItems.Count; i++)
+            books = dataLoadFromDB.getBooks();
+            bookItems = dataLoadFromDB.getBookItems();
+            for (int i=0; i < bookItems.Count; i++)
             {
                 if(searchKeyword.Trim() == bookItems[i].id.ToString())
                 {                   

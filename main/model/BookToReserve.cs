@@ -106,7 +106,7 @@ namespace main.model
                 bookItems = dataLoadFromDB.getBookItems();
                 foreach(var bookItem in bookItems)
                 {
-                    if(bookItem.info == bookInfo.id && bookItem.isRefOnly== false)
+                    if(bookItem.info == bookInfo.id)
                     {
                         availableCopies++;
                     }
