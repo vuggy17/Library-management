@@ -1,4 +1,5 @@
-﻿using main.model.enums;
+﻿using main.model;
+using main.model.enums;
 using System;
 using System.Windows.Media.Imaging;
 
@@ -98,6 +99,22 @@ namespace main.controller
             {
                 this.imgSrc = LoadImage(imgSrc);
             }            
+            return this;
+        }
+        public Converter buildWithAccount(Account account,string imgSrc)
+        {
+            this.id = account.id;
+            this.name = account.info.name;
+            this.address = account.info.address;
+            this.email = account.info.email;
+            this.phone = account.info.phone;
+            this.status = account.status;
+            this.bookNumber = account.totalBookLoan;
+            this.overDue = account.TotalOverDueBook;
+            if (imgSrc != "")
+            {
+                this.imgSrc = LoadImage(imgSrc);
+            }
             return this;
         }
         

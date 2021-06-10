@@ -104,7 +104,7 @@ namespace main.model
         {
             //Load reserved book item in db
             reserveBookItems = new List<BookItem>();
-            reserveBookItems.Add(new BookItem(12345671, 12345670, LendingStatus.RESV, new DateTime(2021, 6, 3)));
+            reserveBookItems.Add(new BookItem(12345671, 12345670, LendingStatus.RESV, new DateTime(2021, 6, 20)));
             reserveBookItems.Add(new BookItem(12345672, 12345670, LendingStatus.LOANED, new DateTime(2021, 6, 5)));
             reserveBookItems.Add(new BookItem(12345673, 12345670, LendingStatus.AVAI, new DateTime(2021, 6, 9)));
             reserveBookItems.Add(new BookItem(76543212, 76543210, LendingStatus.LOST, new DateTime(2021, 6, 7)));
@@ -113,9 +113,9 @@ namespace main.model
         {
             //Load lending book item
             lendingBookItems = new List<BookItem>();
-            lendingBookItems.Add(new BookItem(12345671, 12345670, LendingStatus.RESV, new DateTime(2021, 6, 3)));
+            lendingBookItems.Add(new BookItem(12345671, 12345670, LendingStatus.RESV, new DateTime(2021, 6, 20)));
             lendingBookItems.Add(new BookItem(12345672, 12345670, LendingStatus.LOANED, new DateTime(2021, 6, 5)));
-            lendingBookItems.Add(new BookItem(12345673, 12345670, LendingStatus.LOANED, new DateTime(2021, 6, 9)));          
+            lendingBookItems.Add(new BookItem(12345673, 12345670, LendingStatus.LOANED, new DateTime(2021, 6, 29)));          
             lendingBookItems.Add(new BookItem(76543212, 76543210, LendingStatus.LOANED, new DateTime(2021, 6, 7)));
         }
         public bool resetPassword() { return true; }

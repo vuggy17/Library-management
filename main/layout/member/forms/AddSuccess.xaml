@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:main.layout.member.forms"
         mc:Ignorable="d"
-        Title="AddSuccess" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        WindowStyle="None"
+         Topmost="True"
+        ResizeMode="NoResize"         
+        Title="BlockConfirm" Height="300" Width="800">
+    <Window.Background>
+        <SolidColorBrush Color="White" Opacity="0.3">
+        </SolidColorBrush>
+    </Window.Background>
     <Grid>
-        
+        <Border CornerRadius="26" Background="White">
+            <StackPanel Orientation="Vertical" Margin="40,40">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/main;component/assests/img_confirm.png" Width="144" Height="130"/>
+
+                    <StackPanel Orientation="Vertical" Margin="30 0 0 0">
+                        <TextBlock FontWeight="SemiBold" FontSize="32" Text="Add member success." HorizontalAlignment="Stretch"/>
+                        <Label x:Name="tbID" FontSize="32" ContentStringFormat="Memeber ID: {0}" />
+                    </StackPanel>
+                </StackPanel>
+                <DockPanel LastChildFill="False" Margin="0,20,0,0">
+                    
+                    <Button
+                            DockPanel.Dock="Right"
+                           Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                            materialDesign:ButtonAssist.CornerRadius="14"
+                            Height="66"
+                            Width="202"
+                            Background="Green"
+                           
+                            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
+                        <TextBlock Text="OK" FontSize="28" />
+                    </Button>
+
+                </DockPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

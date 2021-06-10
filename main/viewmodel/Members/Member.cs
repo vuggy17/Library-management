@@ -16,10 +16,11 @@ using main.layout;
 using System.Windows;
 using main.viewmodel.Members;
 using main.layout.member.forms;
+using System.Reflection;
 
 namespace main.controller
 {
-    public class MemberViewModel : ViewModelBase
+    public class MemberViewModel : BaseViewModel
     {
         DataLoadFromDB data = DataLoadFromDB.getIntance();
         private void updateMember()
@@ -86,7 +87,7 @@ namespace main.controller
         public ICommand RunDeleteNotificationCommand => new RelayCommand<object>((p) => { return true; }, (p) => { RunDeleteNotification(); });
         public ICommand RunBlockNotificationCommand => new RelayCommand<object>((p) => { return true; }, (p) => { RunBlockNotification(); });
         public ICommand RunUnBlockNotificationCommand => new RelayCommand<object>((p) => { return true; }, (p) => { RunUnBlockNotification(); });
-        public ICommand RunEditFormCommand => new AnotherCommandImplementation(RunEditForm);
+        public ICommand RunEditFormCommand => new RelayCommand<object>((p) => { return true; }, (p) => { RunEditForm(); });
         public ICommand RunAddFormCommand => new RelayCommand<object>((p) => { return true; }, (p) => { RunAddForm(); });
 
 
@@ -96,19 +97,10 @@ namespace main.controller
             AddNewMemberForm add = new AddNewMemberForm();
             add.Show();            
         }
-        private async void RunEditForm(object o)
+        private void RunEditForm()
         {
-            //let's set up a little MVVM, cos that's what the cool kids are doing:
-            var view = new Member_info
-            {
-                DataContext = this
-            };
-
-            //show the dialog
-            var result = await DialogHost.Show(view, "MemberDialog", EditFormExtendedOpenedEventHandler, ExtendedClosingEventHandler);
-
-            //check the result...
-            Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+            EditForm editForm = new EditForm();
+            editForm.Show();
         }
         private void RunDeleteNotification()
         {
@@ -125,33 +117,6 @@ namespace main.controller
             BlockConfirm blockConfirm = new BlockConfirm();
             blockConfirm.Show();
         }
-
-        private void EditFormExtendedOpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
-        {
-            // làm gì đó để lấy được data từ selected item rồi ném vào đây cho nó xử lí
-        }
-        private void ExtendedOpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
-            => Debug.WriteLine("You could intercept the open and affect the dialog using eventArgs.Session.");
-
-        private void ExtendedClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
-        {
-            if (eventArgs.Parameter is bool parameter &&
-                parameter == false) return;
-
-            //OK, lets cancel the close...
-            eventArgs.Cancel();
-
-            //...now, lets update the "session" with some new content!
-            eventArgs.Session.UpdateContent(new Progresbar());
-            //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
-
-            //lets run a fake operation for 1 seconds then close this baby.
-            Task.Delay(TimeSpan.FromSeconds(1))
-                .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
-                    TaskScheduler.FromCurrentSynchronizationContext());
-        }
-
-
 
         private static MemberViewModel instance;
         
@@ -175,7 +140,7 @@ namespace main.controller
             foreach (var member in data.getAllMembers())
             {
                 if( member.status == AccountStatus.ACTIVE)
-                memberList.Add( new Converter().build(member.id,member.info.name, member.info.address,member.info.email,member.info.phone,member.status,member.totalBookLoan,""));
+                memberList.Add( new Converter().buildWithAccount(member,""));
             }
             return memberList;
         }
@@ -185,20 +150,77 @@ namespace main.controller
             foreach (var member in data.getAllMembers())
             {
                 if (member.status == AccountStatus.BLACKLISTED)
-                    memberList.Add(new Converter().build(member.id,member.info.name, member.info.address, member.info.email, member.info.phone, member.status, member.totalBookLoan, ""));
+                    memberList.Add(new Converter().buildWithAccount(member, ""));
             }
             return memberList;
         }
 
         public MemberViewModel()
-        {            
+        {
+            listToFindMember = new ObservableCollection<Converter>();
+            listToFindMember = memberList;
+            
             MemberNavigationViewModel.ChangePage += MemberNavigationViewModel_ChangePage;
             AddNewMemberForm.updateMember += updateMember;
             BlockConfirm.updateMember += updateMember;
             UnBlockConfirm.updateMember += updateMember;
             DeleteConfirn.updateMember += updateMember;
+            EditForm.updateMember += updateMember;
         }
+        private string searchKeyword = "";
+        public string SearchKeyword
+        {
+            get => searchKeyword;
+            set
+            {
+                searchKeyword = value;
+                OnPropertyChanged("SearchKeyword");
+                OnPropertyChanged("FilterList");
+            }
+        }
+        private ObservableCollection<Converter> listToFindMember;
+        private ObservableCollection<Converter> filterList;
 
+        public ObservableCollection<Converter> FilterList
+        {
+            get => filterByInfo();
+            set => filterList = value;
+        }
+        private ObservableCollection<Converter> filterByInfo()
+        {
+            MessageBox.Show("AGugu");
+           
+            ObservableCollection<Converter> filterList = new ObservableCollection<Converter>();
+
+            foreach (var member in listToFindMember)
+            {
+
+                foreach (PropertyInfo prop in member.GetType().GetProperties())
+                {
+                    var type = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+
+                    if (type == typeof(string) || type == typeof(int) || type == typeof(DateTime))
+                    {
+                        var member_field = prop.GetValue(member, null);
+                        if (member_field != null)
+                        {
+                            String member_data = member_field.ToString().Trim().ToLower();
+                            String keyWord = searchKeyword.ToLower();
+                            if (member_data != null && keyWord != null)
+                            {
+                                if (member_data.Contains(keyWord))
+                                {
+                                    filterList.Add(member);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+            return filterList;
+        }
 
 
         private void MemberNavigationViewModel_ChangePage(string page)
@@ -215,12 +237,15 @@ namespace main.controller
         }
         private void SwitchToBlackList()
         {
+            listToFindMember = blackList;          
+            
             Uri uri = new Uri("/layout/member/component/MemberBlackListWraper.xaml", UriKind.Relative);
             Member.navigationFrame.Navigate(uri);
         }
 
         private void SwitchToActiveList()
         {
+            listToFindMember = memberList;            
             Uri uri = new Uri("/layout/member/component/MemberActiveWraper.xaml", UriKind.Relative);
             Member.navigationFrame.Navigate(uri);
         }

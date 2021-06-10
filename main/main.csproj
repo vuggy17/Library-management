@@ -143,6 +143,9 @@
     <Compile Include="layout\member\forms\DeleteConfirn.xaml.cs">
       <DependentUpon>DeleteConfirn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\member\forms\EditForm.xaml.cs">
+      <DependentUpon>EditForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="layout\member\forms\UnBlockConfirm.xaml.cs">
       <DependentUpon>UnBlockConfirm.xaml</DependentUpon>
     </Compile>
@@ -362,10 +365,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\member\component\notification_success.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="layout\member\component\Progresbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -383,6 +382,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\member\forms\DeleteConfirn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\forms\EditForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -454,9 +457,6 @@
     </Compile>
     <Compile Include="layout\member\component\member_list.xaml.cs">
       <DependentUpon>member_list.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="layout\member\component\notification_success.xaml.cs">
-      <DependentUpon>notification_success.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\member\component\Progresbar.xaml.cs">
       <DependentUpon>Progresbar.xaml</DependentUpon>

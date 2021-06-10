@@ -58,6 +58,8 @@ namespace main
             BlockConfirm.ToggleForm += ToggleForm;
             UnBlockConfirm.ToggleForm += ToggleForm;
             DeleteConfirn.ToggleForm += ToggleForm;
+            AddSuccess.ToggleForm += ToggleForm;
+            EditForm.ToggleForm += ToggleForm;
 
 
             HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;

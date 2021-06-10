@@ -19,9 +19,18 @@ namespace main.layout.member.forms
     /// </summary>
     public partial class AddSuccess : Window
     {
-        public AddSuccess()
+        public static event ToggleFormDialogNotifyHandler ToggleForm;
+        public AddSuccess(int ID)
         {
             InitializeComponent();
+            tbID.Content = ID.ToString();           
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            ToggleForm();
+
         }
     }
 }

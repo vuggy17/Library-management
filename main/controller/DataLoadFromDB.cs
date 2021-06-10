@@ -89,15 +89,17 @@ namespace main.controller
             return null;
 
         }
-        public void updateMember(Account value)
+        public Account updateMember(Account value)
         {
             for (int i = 0; i < members.Count; i++)
             {
                 if (members[i].id == value.id)
                 {
                     members[i] = value;
+                    return members[i];
                 }
             }
+            return null;
             //xử lý db
         }
 
