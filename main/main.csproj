@@ -134,6 +134,18 @@
     <Compile Include="layout\member\forms\AddNewMemberForm.xaml.cs">
       <DependentUpon>AddNewMemberForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\member\forms\AddSuccess.xaml.cs">
+      <DependentUpon>AddSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\forms\BlockConfirm.xaml.cs">
+      <DependentUpon>BlockConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\forms\DeleteConfirn.xaml.cs">
+      <DependentUpon>DeleteConfirn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="layout\member\forms\UnBlockConfirm.xaml.cs">
+      <DependentUpon>UnBlockConfirm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="viewmodel\Books\BookPageViewModel.cs" />
     <Compile Include="viewmodel\Books\DeleteBookViewModel.cs" />
     <Compile Include="viewmodel\Books\EditBookViewModel.cs" />
@@ -350,19 +362,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\member\component\Notification_block.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="layout\member\component\Notification_delete.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="layout\member\component\notification_success.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="layout\member\component\Notification_unblock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -371,6 +371,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\member\forms\AddNewMemberForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\forms\AddSuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\forms\BlockConfirm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\forms\DeleteConfirn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\forms\UnBlockConfirm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -439,17 +455,8 @@
     <Compile Include="layout\member\component\member_list.xaml.cs">
       <DependentUpon>member_list.xaml</DependentUpon>
     </Compile>
-    <Compile Include="layout\member\component\Notification_block.xaml.cs">
-      <DependentUpon>Notification_block.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="layout\member\component\Notification_delete.xaml.cs">
-      <DependentUpon>Notification_delete.xaml</DependentUpon>
-    </Compile>
     <Compile Include="layout\member\component\notification_success.xaml.cs">
       <DependentUpon>notification_success.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="layout\member\component\Notification_unblock.xaml.cs">
-      <DependentUpon>Notification_unblock.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\member\component\Progresbar.xaml.cs">
       <DependentUpon>Progresbar.xaml</DependentUpon>

@@ -11,85 +11,107 @@
              Background="Transparent">
     <materialDesign:DialogHost
         Identifier="NotificationDialog" >
-        <ListView x:Name="memberListv" ItemsSource="{Binding blackList}" BorderBrush="{x:Null}" ScrollViewer.CanContentScroll="False"   ClipToBounds="True" Foreground="{x:Null}" SelectedItem="{Binding SelectedAccount}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
+        <ListView x:Name="memberListv" ItemsSource="{Binding blackList}"  SelectedItem="{Binding SelectedItem}" SelectionMode="Single" BorderBrush="{x:Null}" ScrollViewer.CanContentScroll="False"   ClipToBounds="True" Foreground="{x:Null}" >
+            <ListView.Resources>
+                <Style TargetType="ScrollBar">
 
-                    <Border Background="White" CornerRadius="10" Height="180">
-                        <Grid Background="Transparent">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1000"/>
-                                <ColumnDefinition Width="215"/>
-                            </Grid.ColumnDefinitions>
+                    <Setter Property="Height" Value="auto"/>
+                    <Setter Property="MinWidth" Value="0"/>
+                    <Setter Property="Width" Value="10"/>
+                    <Setter Property="Opacity" Value="0.5"></Setter>
+                </Style>
+            </ListView.Resources>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Height" Value="187"></Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Grid Height="190" Margin="30,0,30,0"  >
+                                    <Border Background="White" Margin="0 5 0 0 " CornerRadius="10" Height="180">
+                                        <Grid Background="Transparent" Margin="40 0 0 0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="900"/>
+                                                <ColumnDefinition Width="215"/>
+                                            </Grid.ColumnDefinitions>
+                                            <!--Source="{Binding imgSrc}"-->
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.Column="0">
+                                                <Image Height="100" Width="100" Source="/resource/img/avt_default.png" 
+                                 Margin="14,0,24,0"/>
 
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.Column="0">
-
-                                <Image Height="100" Width="100" Source="/resource/img/avt_default.png"  Margin="14,0,24,0"/>
-
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                    <StackPanel.Resources>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="FontSize" Value="18"/>
-                                        </Style>
-                                    </StackPanel.Resources>
-
-
-                                    <TextBlock Text="{Binding name}"  Foreground="#DD000000"  FontWeight="Bold" FontSize="24" />
-
-
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock   Foreground="#DD000000"  Text="Address: "/>
-                                        <TextBlock   Foreground="#DD000000"  Text="{Binding address}"/>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock   Foreground="#DD000000"  Text="Email: "/>
-                                        <TextBlock   Foreground="#DD000000"  Text="{Binding email}"/>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock   Foreground="#DD000000"  Text="               Phone: "/>
-                                            <TextBlock   Foreground="#DD000000"  Text="{Binding phone}"/>
-                                        </StackPanel>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock   Foreground="#DD000000"  Text="Book borrowed: "/>
-                                        <TextBlock   Foreground="#DD000000"  Text="{Binding bookNumber}"/>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock   Foreground="#DD000000"  Text="           Overdue: "/>
-                                            <TextBlock   Foreground="#DD000000"  Text="{Binding overDue}"/>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </StackPanel>
-
-                            </StackPanel>
+                                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="TextBlock">
+                                                            <Setter Property="FontSize" Value="18"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
 
 
-                            <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center" Height="auto" Margin="0,12,0,12" x:Name="buttonBlock" Visibility="Hidden">
-                                <Button Background="#cc3300" Width="140" Height="auto" Padding="10" BorderThickness="0" FontSize="24" FontWeight="DemiBold"  Margin="0,0,0,8"   Command="{Binding Path=DataContext.RunDeleteNotificationCommand, ElementName=memberListv }" >
-                                    <TextBlock
+                                                    <TextBlock Text="{Binding name}" FontWeight="Bold" FontSize="24" Foreground="#DD000000" />
+
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Foreground="#DD000000"  Text="Address: " />
+                                                        <TextBlock Foreground="#DD000000"  Text="{Binding address}"/>
+                                                    </StackPanel>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Foreground="#DD000000"  Text="Email: "/>
+                                                        <TextBlock Foreground="#DD000000"  Text="{Binding email}"/>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Foreground="#DD000000"  Text="               Phone: "/>
+                                                            <TextBlock Foreground="#DD000000"  Text="{Binding phone}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Foreground="#DD000000"  Text="Book borrowed: "/>
+                                                        <TextBlock Foreground="#DD000000"  Text="{Binding bookNumber}"/>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Foreground="#DD000000"  Text="           Overdue: "/>
+                                                            <TextBlock Foreground="#DD000000"  Text="{Binding overDue}"/>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                </StackPanel>
+
+                                            </StackPanel>
+
+
+                                            <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center" Height="auto" Margin="0,12,0,12" x:Name="buttonBlock" Visibility="Hidden">
+                                                <Button Background="#cc3300" Width="140" Height="auto" Padding="10" BorderThickness="0" FontSize="24" FontWeight="DemiBold"  Margin="0,0,0,8"   Command="{Binding Path=DataContext.RunDeleteNotificationCommand, ElementName=memberListv }" >
+                                                    <TextBlock
                                       FontWeight="DemiBold" 
                                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                       Text="Delete" />
-                                </Button>
-                                <Button Background="Black" Width="140" Height="auto" Padding="10" BorderThickness="0" FontSize="24" FontWeight="DemiBold"  Margin="0,0,0,0"
+                                                </Button>
+                                                <Button Background="Black" Width="140" Height="auto" Padding="10" BorderThickness="0" FontSize="24" FontWeight="DemiBold"  Margin="0,0,0,0"
                                       Command="{Binding Path=DataContext.RunUnBlockNotificationCommand , ElementName=memberListv }" 
                               >
-                                    <TextBlock
+                                                    <TextBlock
                                      FontWeight="DemiBold" 
                                       Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
                                       Text="Unblock" />
-                                </Button>
-                            </StackPanel>
-                        </Grid>
-                    </Border>
-                    <DataTemplate.Triggers>
-                        <Trigger Property="IsMouseOver"  Value="True">
-                            <Setter TargetName="buttonBlock" Property="Visibility" Value="Visible"/>
-                        </Trigger>
-                    </DataTemplate.Triggers>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+                                                </Button>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="IsSelected" Value="True"></Setter>
+                                        <Setter Property="Visibility" TargetName="buttonBlock" Value="Visible"></Setter>
+
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                </Style>
+            </ListView.ItemContainerStyle>
+           
 
         </ListView>
     </materialDesign:DialogHost>
 </UserControl>
+

@@ -65,11 +65,27 @@ namespace main.controller
                 _blackList = value;
             }
         }
-        public Account SelectedAccount { get; set; }
+        public int SelectedAccountID { get; set; }
 
-        public ICommand RunDeleteNotificationCommand => new AnotherCommandImplementation(RunDeleteNotification);
-        public ICommand RunBlockNotificationCommand => new AnotherCommandImplementation(RunBlockNotification);
-        public ICommand RunUnBlockNotificationCommand => new AnotherCommandImplementation(RunUnBlockNotification);
+        private Converter selectedItem;
+        public Converter SelectedItem 
+        {
+            get => selectedItem;
+            set
+            {
+                selectedItem = value;
+                if (selectedItem != null)
+                {
+                    SelectedAccountID = selectedItem.id;
+                }          
+
+            }
+        }
+        
+
+        public ICommand RunDeleteNotificationCommand => new RelayCommand<object>((p) => { return true; }, (p) => { RunDeleteNotification(); });
+        public ICommand RunBlockNotificationCommand => new RelayCommand<object>((p) => { return true; }, (p) => { RunBlockNotification(); });
+        public ICommand RunUnBlockNotificationCommand => new RelayCommand<object>((p) => { return true; }, (p) => { RunUnBlockNotification(); });
         public ICommand RunEditFormCommand => new AnotherCommandImplementation(RunEditForm);
         public ICommand RunAddFormCommand => new RelayCommand<object>((p) => { return true; }, (p) => { RunAddForm(); });
 
@@ -94,48 +110,20 @@ namespace main.controller
             //check the result...
             Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
         }
-        private async void RunDeleteNotification(object o)
+        private void RunDeleteNotification()
         {
-            //let's set up a little MVVM, cos that's what the cool kids are doing:
-            var view = new Notification_delete
-            {
-                DataContext = this
-            };
-
-            //show the dialog
-            var result = await DialogHost.Show(view, "MemberDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
-            Console.WriteLine(SelectedAccount.info.name);
-
-            //check the result...
-            Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+            DeleteConfirn deleteConfirn = new DeleteConfirn();
+            deleteConfirn.Show();
         }
-        private async void RunUnBlockNotification(object o)
+        private void RunUnBlockNotification()
         {
-            //let's set up a little MVVM, cos that's what the cool kids are doing:
-            var view = new Notification_unblock
-            {
-                DataContext = this
-            };
-
-            //show the dialog
-            var result = await DialogHost.Show(view, "MemberDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
-
-            //check the result...
-            Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+            UnBlockConfirm unBlockConfirm = new UnBlockConfirm();
+            unBlockConfirm.Show();
         }
-        private async void RunBlockNotification(object o)
+        private void RunBlockNotification()
         {
-            //let's set up a little MVVM, cos that's what the cool kids are doing:
-            var view = new Notification_block
-            {
-                DataContext = this
-            };
-
-            //show the dialog
-            var result = await DialogHost.Show(view, "MemberDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
-
-            //check the result...
-            Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+            BlockConfirm blockConfirm = new BlockConfirm();
+            blockConfirm.Show();
         }
 
         private void EditFormExtendedOpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
@@ -166,7 +154,7 @@ namespace main.controller
 
 
         private static MemberViewModel instance;
-        // lock object for multi thread-safe
+        
         private static object syncLock = new object();
         public static MemberViewModel getInstance()
         {
@@ -187,7 +175,7 @@ namespace main.controller
             foreach (var member in data.getAllMembers())
             {
                 if( member.status == AccountStatus.ACTIVE)
-                memberList.Add( new Converter().build(member.info.name, member.info.address,member.info.email,member.info.phone,member.status,member.totalBookLoan,""));
+                memberList.Add( new Converter().build(member.id,member.info.name, member.info.address,member.info.email,member.info.phone,member.status,member.totalBookLoan,""));
             }
             return memberList;
         }
@@ -197,7 +185,7 @@ namespace main.controller
             foreach (var member in data.getAllMembers())
             {
                 if (member.status == AccountStatus.BLACKLISTED)
-                    memberList.Add(new Converter().build(member.info.name, member.info.address, member.info.email, member.info.phone, member.status, member.totalBookLoan, ""));
+                    memberList.Add(new Converter().build(member.id,member.info.name, member.info.address, member.info.email, member.info.phone, member.status, member.totalBookLoan, ""));
             }
             return memberList;
         }
@@ -206,6 +194,9 @@ namespace main.controller
         {            
             MemberNavigationViewModel.ChangePage += MemberNavigationViewModel_ChangePage;
             AddNewMemberForm.updateMember += updateMember;
+            BlockConfirm.updateMember += updateMember;
+            UnBlockConfirm.updateMember += updateMember;
+            DeleteConfirn.updateMember += updateMember;
         }
 
 

@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.member.component
+namespace main.layout.member.forms
 {
     /// <summary>
-    /// Interaction logic for Notification_unblock.xaml
+    /// Interaction logic for AddSuccess.xaml
     /// </summary>
-    public partial class Notification_unblock : UserControl
+    public partial class AddSuccess : Window
     {
-        public Notification_unblock()
+        public AddSuccess()
         {
             InitializeComponent();
         }

@@ -20,7 +20,7 @@ namespace main.model
             get { return _id; }
             set { _id = value; }
         }
-        private bool _isRefOnly;
+        
 
         private DateTime _dueDate;
 

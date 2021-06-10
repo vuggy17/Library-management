@@ -77,6 +77,18 @@ namespace main.controller
             }
             //xử lý db
         }
+        public Account findMemberByID(int id)
+        {
+            foreach (var member in members)
+            {
+                if(member.id == id)
+                {
+                    return member;
+                }
+            }
+            return null;
+
+        }
         public void updateMember(Account value)
         {
             for (int i = 0; i < members.Count; i++)

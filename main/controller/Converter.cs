@@ -69,6 +69,13 @@ namespace main.controller
             get { return _imgSrc; }
             set { _imgSrc = value; }
         }
+        private int _id;
+        public int id
+        {
+            get => _id;
+            set => _id = value;
+        }
+
 
 
 
@@ -77,8 +84,9 @@ namespace main.controller
         public Converter()
         {
         }
-        public Converter build(string name, string addr, string mail, string phone, AccountStatus status, int totB, string imgSrc)
+        public Converter build(int id, string name, string addr, string mail, string phone, AccountStatus status, int totB, string imgSrc)
         {
+            this.id = id;
             this.name = name;
             this.address = addr;
             this.email = mail;

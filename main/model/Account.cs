@@ -19,7 +19,7 @@ namespace main.model
             get { return _id; }
             set { _id = value; }
         }
-        private string _password;
+       
 
         private AccountStatus _status;
 

@@ -55,6 +55,9 @@ namespace main
             AddBookSuccessForm.ToggleForm += ToggleForm;
 
             AddNewMemberForm.ToggleForm += ToggleForm;
+            BlockConfirm.ToggleForm += ToggleForm;
+            UnBlockConfirm.ToggleForm += ToggleForm;
+            DeleteConfirn.ToggleForm += ToggleForm;
 
 
             HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;

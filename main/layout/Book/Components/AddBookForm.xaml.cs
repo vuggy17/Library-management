@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using main.model;
-using main.controller;
+
 using main.layout.Book.Forms;
 using System.Text.RegularExpressions;
 
