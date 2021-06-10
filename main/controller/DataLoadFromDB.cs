@@ -134,11 +134,13 @@ namespace main.controller
         private void loadMembersFromDB()
         {
             //fake load to test
-            members.Add(new Account("Pham Minh Tân","Long An","pmt@gmail.com","0343027600", 1307,"123456789", AccountStatus.ACTIVE, new DateTime(2019,12,31),0));
-            members.Add(new Account("Pham Minh Tân 1", "Long An", "pmt1@gmail.com", "0343027601",1412 , "123456789", AccountStatus.ACTIVE, new DateTime(2019, 12, 31), 1));
-            members.Add(new Account("Pham Minh Tân 2", "Long An", "pmt2@gmail.com", "0343027602", 1111, "123456789", AccountStatus.ACTIVE, new DateTime(2019, 12, 31), 2));
-            members.Add(new Account("Pham Minh Tân 3", "Long An", "pmt3@gmail.com", "0343027603", 8266, "123456789", AccountStatus.ACTIVE, new DateTime(2019, 12, 31), 3));
-            members.Add(new Account("Pham Minh Tân 4", "Long An", "pmt4@gmail.com", "0343027604", 1530, "123456789", AccountStatus.ACTIVE, new DateTime(2019, 12, 31), 4));
+            members.Add(new Account("Pham Minh Tân","Long An","pmt@gmail.com","0343027600", 1307, AccountStatus.ACTIVE, new DateTime(2019,12,31),0));
+            members.Add(new Account("Pham Minh Tân 1", "Long An", "pmt1@gmail.com", "0343027601",1412 , AccountStatus.ACTIVE, new DateTime(2019, 12, 31), 1));
+            members.Add(new Account("Pham Minh Tân 2", "Long An", "pmt2@gmail.com", "0343027602", 1111, AccountStatus.ACTIVE, new DateTime(2019, 12, 31), 2));
+            members.Add(new Account("Pham Minh Tân 3", "Long An", "pmt3@gmail.com", "0343027603", 8266, AccountStatus.ACTIVE, new DateTime(2019, 12, 31), 3));
+            members.Add(new Account("Pham Minh Tân 4", "Long An", "pmt4@gmail.com", "0343027604", 1530, AccountStatus.ACTIVE, new DateTime(2019, 12, 31), 4));
+            members.Add(new Account("Pham Minh Tân 5", "Long An", "pmt3@gmail.com", "0343027603", 2583, AccountStatus.BLACKLISTED, new DateTime(2019, 12, 31), 3));
+            members.Add(new Account("Pham Minh Tân 6", "Long An", "pmt4@gmail.com", "0343027604", 1609, AccountStatus.BLACKLISTED, new DateTime(2019, 12, 31), 4));
         }
 
 

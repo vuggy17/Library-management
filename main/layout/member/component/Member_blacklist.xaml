@@ -24,7 +24,7 @@
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.Column="0">
 
-                                <Image Height="100" Width="100" Source="{Binding imgSrc}" Margin="14,0,24,0"/>
+                                <Image Height="100" Width="100" Source="/resource/img/avt_default.png"  Margin="14,0,24,0"/>
 
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <StackPanel.Resources>

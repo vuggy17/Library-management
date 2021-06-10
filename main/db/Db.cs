@@ -87,7 +87,7 @@ namespace main
                 MessageBox.Show("User Profile not exist");
                 return;
             }
-            var command = $"INSERT INTO `ACCOUNT` ( `PASSWORD`, `STATUS`, `PERSON`, `TOTALBOOKCHECKOUT`) VALUES( '{account.password}' , '{account.status}', '{personId}', '{account.totalBookLoan}')";
+            var command = $"INSERT INTO `ACCOUNT` ( `PASSWORD`, `STATUS`, `PERSON`, `TOTALBOOKCHECKOUT`) VALUES(  '{account.status}', '{personId}', '{account.totalBookLoan}')";
 
             executeCommand(command);
             closeConnection();

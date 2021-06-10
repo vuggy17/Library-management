@@ -15,28 +15,70 @@ using MaterialDesignThemes.Wpf;
 using main.layout;
 using System.Windows;
 using main.viewmodel.Members;
+using main.layout.member.forms;
 
 namespace main.controller
 {
     public class MemberViewModel : ViewModelBase
     {
-        public Converter converter { get; set; }
-        public ObservableCollection<Converter> memberList { get; set; }
-        public ObservableCollection<Converter> blackList { get; set; }
+        DataLoadFromDB data = DataLoadFromDB.getIntance();
+        private void updateMember()
+        {
+            OnPropertyChanged("memberList");
+            OnPropertyChanged("blackList");
+            OnPropertyChanged("TotalBlackListMember");
+            OnPropertyChanged("TotalMember");
+            OnPropertyChanged("TotalActiveMember");
+
+
+        }
+        public int TotalBlackListMember
+        {
+            get => blackList.Count;
+        }
+        public int TotalMember
+        {
+            get => data.getAllMembers().Count;
+        }
+        public int TotalActiveMember
+        {
+            get => memberList.Count;
+        }
+
+
+        private ObservableCollection<Converter> _memberList;
+        public ObservableCollection<Converter> memberList 
+        {
+            get => getAllAciveMember();
+            set
+            {
+                _memberList = value;
+            }
+        }
+        private ObservableCollection<Converter> _blackList;
+
+        public ObservableCollection<Converter> blackList 
+        {
+            get => getAllBlackListMember();
+            set
+            {
+                _blackList = value;
+            }
+        }
         public Account SelectedAccount { get; set; }
 
         public ICommand RunDeleteNotificationCommand => new AnotherCommandImplementation(RunDeleteNotification);
         public ICommand RunBlockNotificationCommand => new AnotherCommandImplementation(RunBlockNotification);
         public ICommand RunUnBlockNotificationCommand => new AnotherCommandImplementation(RunUnBlockNotification);
         public ICommand RunEditFormCommand => new AnotherCommandImplementation(RunEditForm);
-        public ICommand RunAddFormCommand => new AnotherCommandImplementation(RunAddForm);
+        public ICommand RunAddFormCommand => new RelayCommand<object>((p) => { return true; }, (p) => { RunAddForm(); });
 
-      
 
-        private async void RunAddForm(object o)
+
+        private void RunAddForm()
         {
-            AddMember add = new AddMember();
-            
+            AddNewMemberForm add = new AddNewMemberForm();
+            add.Show();            
         }
         private async void RunEditForm(object o)
         {
@@ -139,64 +181,35 @@ namespace main.controller
             memberList.RemoveAt(1);
         }
 
+        private ObservableCollection<Converter> getAllAciveMember()
+        {
+            var memberList = new ObservableCollection<Converter>();
+            foreach (var member in data.getAllMembers())
+            {
+                if( member.status == AccountStatus.ACTIVE)
+                memberList.Add( new Converter().build(member.info.name, member.info.address,member.info.email,member.info.phone,member.status,member.totalBookLoan,""));
+            }
+            return memberList;
+        }
+        private ObservableCollection<Converter> getAllBlackListMember()
+        {
+            var memberList = new ObservableCollection<Converter>();
+            foreach (var member in data.getAllMembers())
+            {
+                if (member.status == AccountStatus.BLACKLISTED)
+                    memberList.Add(new Converter().build(member.info.name, member.info.address, member.info.email, member.info.phone, member.status, member.totalBookLoan, ""));
+            }
+            return memberList;
+        }
 
         public MemberViewModel()
-        {
-            converter = new Converter();
-
-            memberList = new ObservableCollection<Converter>()
-            {
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                 this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                  this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                 this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-                this.converter.build("hi", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.ACTIVE, 5, "../resource/img/avt_default.png"),
-
-
-            };
-
-            blackList = new ObservableCollection<Converter> {
-                this.converter.build("Blac listed", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.BLACKLISTED, 5, "../resource/img/avt_default.png"),
-            };
+        {            
             MemberNavigationViewModel.ChangePage += MemberNavigationViewModel_ChangePage;
-
-
+            AddNewMemberForm.updateMember += updateMember;
         }
+
+
+
         private void MemberNavigationViewModel_ChangePage(string page)
         {
             switch (page)

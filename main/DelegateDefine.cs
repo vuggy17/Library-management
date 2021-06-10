@@ -18,6 +18,8 @@ namespace main
 
     public delegate void updateBookListHandeler();
 
+    public delegate void updateMemberListHandeler();
+
     public delegate void DeleteBookHandler(Book book);
 
     public delegate void EditBookHandler(Book book);

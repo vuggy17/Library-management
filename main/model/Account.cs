@@ -21,11 +21,6 @@ namespace main.model
         }
         private string _password;
 
-        public string password
-        {
-            get { return _password; }
-            set { _password = value; }
-        }
         private AccountStatus _status;
 
         public AccountStatus status
@@ -73,11 +68,11 @@ namespace main.model
 
         #region method
         public Account() { }
-        public Account(string name, string address, string email, string phone, int accountId, string password, AccountStatus accountStatus, DateTime DOMemberShip, int totalBookLoan)
+        public Account(string name, string address, string email, string phone, int accountId, AccountStatus accountStatus, DateTime DOMemberShip, int totalBookLoan)
         {
             this.info = new Person(name, address, email, phone);
             this.id = accountId;
-            this.password = password;
+           
             this.status = accountStatus;
             this.DOMemberShip = DOMemberShip;           
         }

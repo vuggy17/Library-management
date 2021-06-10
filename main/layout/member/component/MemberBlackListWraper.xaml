@@ -13,12 +13,12 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,8,0,8">
-            <TextBlock  Text="Total blacklist member: xx/1000 " 
-                               Foreground="White" 
-                        VerticalAlignment="Bottom" 
-                        FontSize="18"/>
-        </Grid>
+        <DockPanel Grid.Row="0" Margin="0,8,0,8">
+            <Label DockPanel.Dock="Left" ContentStringFormat="Total block member: {0} " Content="{Binding TotalBlackListMember}" 
+                               Foreground="White" VerticalAlignment="Bottom" FontSize="18"/>
+            <Label DockPanel.Dock="Left" Content="{Binding TotalMember}"  ContentStringFormat="/ {0}"
+                               Foreground="White" VerticalAlignment="Bottom" FontSize="18"/>
+        </DockPanel>
 
         <local:Member_blacklist Grid.Row="1"/>
     </Grid>

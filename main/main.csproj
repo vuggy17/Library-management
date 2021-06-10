@@ -131,6 +131,9 @@
     <Compile Include="layout\HomeAndFeature\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="layout\member\forms\AddNewMemberForm.xaml.cs">
+      <DependentUpon>AddNewMemberForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="viewmodel\Books\BookPageViewModel.cs" />
     <Compile Include="viewmodel\Books\DeleteBookViewModel.cs" />
     <Compile Include="viewmodel\Books\EditBookViewModel.cs" />
@@ -218,9 +221,6 @@
     </Compile>
     <Compile Include="layout\LoginForm\LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="layout\member\component\AddMember.xaml.cs">
-      <DependentUpon>AddMember.xaml</DependentUpon>
     </Compile>
     <Compile Include="viewmodel\BaseViewModel.cs" />
     <Compile Include="viewmodel\features\BookListViewModel.cs" />
@@ -326,10 +326,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\member\component\AddMember.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="layout\member\component\MemberActiveWraper.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -371,6 +367,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="layout\member\component\Progresbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="layout\member\forms\AddNewMemberForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -577,9 +577,7 @@
   <ItemGroup>
     <Resource Include="assests\addMember.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="layout\member\forms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

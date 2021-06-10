@@ -86,9 +86,15 @@ namespace main.controller
             this.status = status;
             this.bookNumber = totB;
             this.overDue = 0;
-            this.imgSrc = LoadImage(imgSrc);
+            if(imgSrc != "")
+            {
+                this.imgSrc = LoadImage(imgSrc);
+            }            
             return this;
         }
+        
+        
+
         private BitmapImage LoadImage(string filename)
         {
             return new BitmapImage(new Uri("pack://application:,,,/" + filename));

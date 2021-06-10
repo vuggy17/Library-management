@@ -28,6 +28,7 @@ using main.layout.HomeAndFeature.components;
 using main.viewmodel;
 using main.layout.Book.Forms;
 using main.controller;
+using main.layout.member.forms;
 
 namespace main
 {
@@ -52,7 +53,10 @@ namespace main
             EditBook.ToggleForm += ToggleForm;
             CurrentMemberReserverBooks.ToggleForm += ToggleForm;
             AddBookSuccessForm.ToggleForm += ToggleForm;
-           
+
+            AddNewMemberForm.ToggleForm += ToggleForm;
+
+
             HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;
             this.DataContext = new MemberViewModel();
         }

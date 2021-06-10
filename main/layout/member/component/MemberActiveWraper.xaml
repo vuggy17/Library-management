@@ -16,7 +16,9 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="0,8,0,8">
             <DockPanel LastChildFill="False">
-                <TextBlock DockPanel.Dock="Left" Text="Total active member: xxx/1000 " 
+                <Label DockPanel.Dock="Left" ContentStringFormat="Total active member: {0} " Content="{Binding TotalActiveMember}" 
+                               Foreground="White" VerticalAlignment="Bottom" FontSize="18"/>
+                <Label DockPanel.Dock="Left" Content="{Binding TotalMember}"  ContentStringFormat="/ {0}"
                                Foreground="White" VerticalAlignment="Bottom" FontSize="18"/>
                 <Button DockPanel.Dock="Right" Margin="0,0,36,0" FontSize="18"
                             Padding="12,8,12,8" Height="auto "
