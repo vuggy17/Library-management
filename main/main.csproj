@@ -119,8 +119,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>cnpmDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="controller\ListAllBook.cs" />
-    <Compile Include="controller\SelectedIndex.cs" />
     <Compile Include="layout\Book\BooksPage.xaml.cs">
       <DependentUpon>BooksPage.xaml</DependentUpon>
     </Compile>
@@ -169,6 +167,7 @@
     <Compile Include="viewmodel\form\ReturnBookFormViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnFullInforViewModel.cs" />
     <Compile Include="viewmodel\Home\HomeNavigationViewModel.cs" />
+    <Compile Include="viewmodel\Members\MemberNavigationViewModel.cs" />
     <Page Include="layout\Book\BooksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -389,7 +388,7 @@
     </Compile>
     <Compile Include="controller\AnotherComandImplementation.cs" />
     <Compile Include="controller\Converter.cs" />
-    <Compile Include="controller\Member.cs" />
+    <Compile Include="viewmodel\Members\Member.cs" />
     <Compile Include="controller\ViewModelBase.cs" />
     <Compile Include="db\Db.cs" />
     <Compile Include="layout\HomeAndFeature\components\BookBorrowReturn.xaml.cs">
@@ -574,6 +573,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assests\editBook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assests\addMember.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="layout\member\forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

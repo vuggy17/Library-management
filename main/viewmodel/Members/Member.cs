@@ -14,6 +14,7 @@ using main.model.enums;
 using MaterialDesignThemes.Wpf;
 using main.layout;
 using System.Windows;
+using main.viewmodel.Members;
 
 namespace main.controller
 {
@@ -30,22 +31,12 @@ namespace main.controller
         public ICommand RunEditFormCommand => new AnotherCommandImplementation(RunEditForm);
         public ICommand RunAddFormCommand => new AnotherCommandImplementation(RunAddForm);
 
-        public ICommand SwichToBlackListCommand => new AnotherCommandImplementation(SwitchToBlackList);
-        public ICommand SwichToActiveListCommand => new AnotherCommandImplementation(SwitchToActiveList);
+      
 
         private async void RunAddForm(object o)
         {
-            //let's set up a little MVVM, cos that's what the cool kids are doing:
-            var view = new AddMember
-            {
-                DataContext = this
-            };
-
-            //show the dialog
-            var result = await DialogHost.Show(view, "MemberDialog", ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
-
-            //check the result...
-            Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+            AddMember add = new AddMember();
+            
         }
         private async void RunEditForm(object o)
         {
@@ -130,17 +121,7 @@ namespace main.controller
                     TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        private void SwitchToBlackList(object o)
-        {
-            Uri uri = new Uri("/layout/member/component/MemberBlackListWraper.xaml", UriKind.Relative);
-            Member.navigationFrame.Navigate(uri);
-        }
 
-        private void SwitchToActiveList(object o)
-        {
-            Uri uri = new Uri("/layout/member/component/MemberActiveWraper.xaml", UriKind.Relative);
-            Member.navigationFrame.Navigate(uri);
-        }
 
         private static MemberViewModel instance;
         // lock object for multi thread-safe
@@ -157,6 +138,7 @@ namespace main.controller
         {
             memberList.RemoveAt(1);
         }
+
 
         public MemberViewModel()
         {
@@ -211,7 +193,32 @@ namespace main.controller
             blackList = new ObservableCollection<Converter> {
                 this.converter.build("Blac listed", "khanh hoa", " example@gmail.com", "08969256174", AccountStatus.BLACKLISTED, 5, "../resource/img/avt_default.png"),
             };
+            MemberNavigationViewModel.ChangePage += MemberNavigationViewModel_ChangePage;
 
+
+        }
+        private void MemberNavigationViewModel_ChangePage(string page)
+        {
+            switch (page)
+            {
+                case "ActiveList":
+                    SwitchToActiveList();
+                    break;
+                case "BlackList":
+                    SwitchToBlackList();
+                    break;
+            }
+        }
+        private void SwitchToBlackList()
+        {
+            Uri uri = new Uri("/layout/member/component/MemberBlackListWraper.xaml", UriKind.Relative);
+            Member.navigationFrame.Navigate(uri);
+        }
+
+        private void SwitchToActiveList()
+        {
+            Uri uri = new Uri("/layout/member/component/MemberActiveWraper.xaml", UriKind.Relative);
+            Member.navigationFrame.Navigate(uri);
         }
     }
 }

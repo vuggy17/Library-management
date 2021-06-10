@@ -15,7 +15,9 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="0,8,0,8">
             <TextBlock  Text="Total blacklist member: xx/1000 " 
-                               Foreground="White" VerticalAlignment="Bottom" FontSize="18"/>
+                               Foreground="White" 
+                        VerticalAlignment="Bottom" 
+                        FontSize="18"/>
         </Grid>
 
         <local:Member_blacklist Grid.Row="1"/>

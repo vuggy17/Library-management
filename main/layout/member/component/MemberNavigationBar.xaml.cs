@@ -1,4 +1,5 @@
 ﻿using main.controller;
+using main.viewmodel.Members;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,19 +25,23 @@ namespace main.layout.member.component
         public MemberNavigationBar()
         {
             InitializeComponent();
+            DataContext = new MemberNavigationViewModel();
+            MemberNavigationViewModel.ChangePage += MemberNavigationViewModel_ChangePage;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void MemberNavigationViewModel_ChangePage(string page)
         {
-            
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-       
-
-
+            switch (page)
+            {
+                case "ActiveList":
+                    ActiveList.Opacity = 1;
+                    BlackList.Opacity = 0.5;
+                    break;
+                case "BlackList":
+                    ActiveList.Opacity = 0.5;
+                    BlackList.Opacity = 1;
+                    break;
+            }
         }
     }
 }

@@ -11,7 +11,7 @@
              Background="Transparent">
     <materialDesign:DialogHost
         Identifier="NotificationDialog" >
-        <ListView x:Name="memberListv" ItemsSource="{Binding memberList}" BorderBrush="{x:Null}" ScrollViewer.CanContentScroll="False"   ClipToBounds="True" Foreground="{x:Null}" SelectedItem="{Binding SelectedAccount}">
+        <ListView x:Name="memberListv" ItemsSource="{Binding blackList}" BorderBrush="{x:Null}" ScrollViewer.CanContentScroll="False"   ClipToBounds="True" Foreground="{x:Null}" SelectedItem="{Binding SelectedAccount}">
             <ListView.ItemTemplate>
                 <DataTemplate>
 

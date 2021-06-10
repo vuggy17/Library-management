@@ -30,8 +30,6 @@ namespace main.layout.member.component
             InitializeComponent();
             var memberViewModel = MemberViewModel.getInstance();
             memberListv.DataContext = memberViewModel;
-         ;
-
         }
       
     }

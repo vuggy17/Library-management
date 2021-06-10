@@ -9,6 +9,7 @@
              Height="600" Width="900"
              WindowStartupLocation="CenterScreen"
              WindowStyle="None"
+             Topmost="True"
              ResizeMode="NoResize">
     <Window.Background>
         <SolidColorBrush Color="White" Opacity="0.3">

@@ -32,8 +32,8 @@
         <Label Grid.Row="1"
                    Content="{Binding TotalBook, UpdateSourceTrigger=PropertyChanged}"
                    ContentStringFormat="Total books: {0}"
-                   FontWeight="Bold"
-                   FontSize="30"                     
+                   
+                   FontSize="20"                     
                    Foreground="White"
                    Padding="40,5,0,0"></Label>
         <!--ItemsSource="{Binding FilterList, UpdateSourceTrigger=PropertyChanged}"-->

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:main.layout.Book.Components"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="604" d:DesignWidth="496">
     <Border Background="White" CornerRadius="40">
@@ -16,21 +17,24 @@
                 x:Name="btnAddNewBook"
                 Click="btnAddNewBook_Click"
                 Width="421"
-                Background="#00A2FF"
+                
                 VerticalAlignment="Bottom"
-                Style="{DynamicResource HomeButton}">
+                materialDesign:ButtonAssist.CornerRadius="23"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Background="#00a2ff"                    
+                    BorderBrush="#00a2ff">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Image Source="/main;component/assests/Add.png" 
-                       Width="40"
-                       Height="40"></Image>
+                       Width="35"
+                       Height="35"></Image>
                 <TextBlock Grid.Column="1"
                            Text="Add new book"
                           Foreground="White"
-                           FontSize="40"
+                           FontSize="35"
                            Padding="20,0,0,0"></TextBlock>
             </Grid>
         </Button>

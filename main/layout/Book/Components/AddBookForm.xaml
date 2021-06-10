@@ -8,9 +8,10 @@
              mc:Ignorable="d" 
              Title="AddBookForm"
              Height="600" Width="1000"
+             
              WindowStartupLocation="CenterScreen"
              WindowStyle="None"
-             ResizeMode="NoResize">
+             ResizeMode="NoResize" Topmost="True">
     <Window.Background>
         <SolidColorBrush Color="White" Opacity="0.3">
         </SolidColorBrush>

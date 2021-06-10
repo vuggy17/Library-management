@@ -6,7 +6,9 @@
          xmlns:components="clr-namespace:main.layout.HomeAndFeature.components"
         xmlns:page="clr-namespace:main.layout.HomeAndFeature"
          xmlns:bookComponents="clr-namespace:main.layout.Book.Components"
+         xmlns:memberComponents="clr-namespace:main.layout.member.component"
         xmlns:book="clr-namespace:main.layout.Book"
+        xmlns:member="clr-namespace:main.layout"
         xmlns:local="clr-namespace:main"
        
         mc:Ignorable="d"
@@ -33,12 +35,15 @@
             <components:HomeNavigationBar Margin="20" />
             <components:FeatureNavigationBar x:Name="FeatureNavigation" Grid.Row="1" Margin="20 0 20 20"/>
             <bookComponents:AddBookBoard x:Name="BooksAddBoard" Visibility="Hidden" Grid.Row="1" Margin="20 0 20 20"></bookComponents:AddBookBoard>
+            <memberComponents:MemberNavigationBar Visibility="Hidden" x:Name="MemberNavigation" Grid.Row="1" Margin="20 0 20 20" ></memberComponents:MemberNavigationBar>
         </Grid>
 
         <!--Feature-->
-        <Grid Grid.Column="1">
-            <book:BooksPage x:Name="BookPage" Visibility="Hidden"></book:BooksPage>
+        <Grid Grid.Column="1">            
             <page:HomePage  x:Name="HomePage"></page:HomePage>
+            <book:BooksPage x:Name="BookPage" Visibility="Hidden"></book:BooksPage>
+            <member:Member x:Name="MemberPage" Visibility="Hidden"></member:Member>
+            
         </Grid>
 
         <!--Icon-->

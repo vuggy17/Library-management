@@ -6,51 +6,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:components="clr-namespace:main.layout.HomeAndFeature.components"
              mc:Ignorable="d"
-             d:DesignHeight="1080" d:DesignWidth="1920"
+             d:DesignHeight="1080" d:DesignWidth="1240"
              xmlns:memberComponent="clr-namespace:main.layout.member.component"
              >
     <materialDesign:DialogHost
-        Identifier="MemberDialog">
-        <Grid>
-            <Grid.Background>
-                <ImageBrush ImageSource="Background.png" Stretch="None"/>
-            </Grid.Background>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="536"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="145"/>
-            </Grid.ColumnDefinitions>
-
-            <!--Navigation-->
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="460"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <components:HomeNavigationBar Margin="20" />
-                <memberComponent:MemberNavigationBar Grid.Row="1" Margin="20 0 20 20"/>
-            </Grid>
-
-
+        Identifier="MemberDialog">           
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-
-                <!--<components:SearchUserID Grid.Row="0" Margin="0,20,0,0"/>-->
+                
+                <TextBox    Margin="0 20 0 0"
+                            FontSize="25"
+                            FontFamily="Roboto"                                                   
+                            BorderThickness="1.2"
+                            VerticalContentAlignment="Center"                           
+                            VerticalAlignment="Stretch"
+                            Height="70" BorderBrush="Black" MaxLines="1"                                  
+                            TextWrapping="Wrap"
+                            Text="{Binding SearchKeyword, UpdateSourceTrigger=PropertyChanged}"
+                            Style="{DynamicResource SearchUserInfo}"></TextBox>
                 <Frame x:Name="frame" Source="/layout/member/component/MemberActiveWraper.xaml" Grid.Row="1" Grid.RowSpan="2" NavigationUIVisibility="Hidden"/>
-            </Grid>
-
-            <!--Icon-->
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="145"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <components:LibrarianIcon Margin="20"/>
-            </Grid>
-        </Grid>
+            </Grid>      
     </materialDesign:DialogHost>
 </UserControl>

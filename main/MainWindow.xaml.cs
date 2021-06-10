@@ -27,6 +27,7 @@ using main.model.features;
 using main.layout.HomeAndFeature.components;
 using main.viewmodel;
 using main.layout.Book.Forms;
+using main.controller;
 
 namespace main
 {
@@ -53,6 +54,7 @@ namespace main
             AddBookSuccessForm.ToggleForm += ToggleForm;
            
             HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;
+            this.DataContext = new MemberViewModel();
         }
         private void HomeNavigationViewModel_ChangePage(string page)
         {
@@ -64,14 +66,26 @@ namespace main
                     FeatureNavigation.Visibility = Visibility.Visible;
                     BooksAddBoard.Visibility = Visibility.Hidden;
                     BookPage.Visibility = Visibility.Hidden;
+                    MemberNavigation.Visibility = Visibility.Hidden;
+                    MemberPage.Visibility = Visibility.Hidden;
                     break;
                 case "Books":
                     BookPage.Visibility = Visibility.Visible;
                     BooksAddBoard.Visibility = Visibility.Visible;
                     HomePage.Visibility = Visibility.Hidden;
                     FeatureNavigation.Visibility = Visibility.Hidden;
+                    MemberNavigation.Visibility = Visibility.Hidden;
+                    MemberPage.Visibility = Visibility.Hidden;
                     break;
-                    
+                case "Members":
+                    MemberNavigation.Visibility = Visibility.Visible;
+                    MemberPage.Visibility = Visibility.Visible;
+                    BooksAddBoard.Visibility = Visibility.Hidden;
+                    BookPage.Visibility = Visibility.Hidden;
+                    HomePage.Visibility = Visibility.Hidden;
+                    FeatureNavigation.Visibility = Visibility.Hidden;
+                    break;
+
             }
         }
         private void ToggleForm()
@@ -79,11 +93,15 @@ namespace main
             if (this.Opacity == 1)
             {
                 this.Opacity = 0.3;
+                this.IsEnabled = false;
+               
 
             }
             else
             {
                 this.Opacity = 1;
+                this.IsEnabled = true;
+               
 
             }
         }

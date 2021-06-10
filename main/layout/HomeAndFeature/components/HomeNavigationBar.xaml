@@ -8,6 +8,7 @@
              xmlns:Resource="clr-namespace:main.layout.HomeAndFeature"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              x:Class="main.layout.HomeAndFeature.components.HomeNavigationBar"
+    
              mc:Ignorable="d" 
              d:DesignHeight="420" d:DesignWidth="496">
 
@@ -67,9 +68,14 @@
             </Grid>
             <Button Width="420"
                     Height="70"
+                    
                     Command="{Binding Home}"
+                    materialDesign:ButtonAssist.CornerRadius="23"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                        Background="#00a2ff"                    
+                    BorderBrush="#00a2ff"
                     x:Name="Home"
-                Grid.Row="1" Style="{DynamicResource HomeButton}">
+                Grid.Row="1">
                 <Grid Width="420"
                       Height="70">
                     <Grid.ColumnDefinitions>
@@ -82,8 +88,8 @@
                            />
                     <Label Grid.Column="1"
                            Content="Home"
-                           Padding="10 7 0 0"
-                           FontSize="40"
+                           Padding="10 10 0 0"
+                           FontSize="35"
                            FontFamily="Roboto"
                            Foreground="White"/>
                 </Grid>
@@ -93,7 +99,12 @@
                     Command="{Binding Books}"
                     x:Name="Books"
                     Opacity="0.5"
-                Grid.Row="2" Style="{DynamicResource HomeButton}" Margin="0,0,0,17">
+                Grid.Row="2" 
+                    materialDesign:ButtonAssist.CornerRadius="23"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Background="#00a2ff"                    
+                    BorderBrush="#00a2ff"
+                    Margin="0,0,0,17">
                 <Grid Width="420"
                       Height="70">
                     <Grid.ColumnDefinitions>
@@ -106,8 +117,8 @@
                            />
                     <Label Grid.Column="1"
                            Content="Books"
-                           Padding="10 7 0 0"
-                           FontSize="40"
+                           Padding="10 10 0 0"
+                           FontSize="35"
                            FontFamily="Roboto"
                            Foreground="White"/>
                 </Grid>
@@ -119,7 +130,11 @@
                     Height="70"
                 Grid.Row="3" 
                     Margin="0,0,0,34"
-                      Style="{DynamicResource HomeButton}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                      materialDesign:ButtonAssist.CornerRadius="23"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Background="#00a2ff"                    
+                    BorderBrush="#00a2ff"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid Width="420"
                       Height="70">
                     <Grid.ColumnDefinitions>
@@ -132,8 +147,8 @@
                            />
                     <Label Grid.Column="1"
                            Content="Members"
-                           Padding="10 7 0 0"
-                           FontSize="40"
+                           Padding="10 10 0 0"
+                          FontSize="35"
                            FontFamily="Roboto"
                            Foreground="White" Margin="0,0,0,17"/>
                 </Grid>

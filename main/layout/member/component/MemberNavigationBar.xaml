@@ -17,12 +17,13 @@
                     <RowDefinition Height="90"/>
                 </Grid.RowDefinitions>
 
-                <Button Width="420"
-                       
-                Command="{Binding Path=DataContext.SwichToActiveListCommand,ElementName=Navigation}"
-                       
+                <Button Width="420"              
+                       Command="{Binding ActiveList}"
                     Height="70"
                      Grid.Row="0" 
+                        BorderThickness="0"
+                        Name="ActiveList"
+                        Opacity="1"
                        materialDesign:ButtonAssist.CornerRadius="23"
                         materialDesign:ShadowAssist.ShadowDepth="Depth2"
                         Background="#00a2ff"
@@ -38,8 +39,11 @@
                 </Button>
 
                 <Button Width="420"
-                    Command="{Binding Path=DataContext.SwichToBlackListCommand,ElementName=Navigation}"
+                        BorderThickness="0"
+                        Command="{Binding BlackList}"
+                        Opacity="0.5"
                     Height="70"
+                        Name="BlackList"
                      Grid.Row="1" 
                         Background="#00a2ff"
                     materialDesign:ButtonAssist.CornerRadius="23"
