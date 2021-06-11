@@ -106,7 +106,7 @@ namespace main.model
                     AddAble = false;
                     break;
                 case LendingStatus.RESV:
-                    AddAble = true;
+                    AddAble = false;
                     this.lendingStatus = "Reserved";
                     break;
                 case LendingStatus.RENEWED:

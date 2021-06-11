@@ -35,7 +35,7 @@ namespace main.model.features
             {
                 foreach(var book in reserveBookItems)
                 {
-                    if (book.lendingStatus == LendingStatus.AVAI||book.lendingStatus ==LendingStatus.RESV)
+                    if (book.lendingStatus == LendingStatus.AVAI||book.lendingStatus ==LendingStatus.READY)
                     {
                         return true;
                     }
