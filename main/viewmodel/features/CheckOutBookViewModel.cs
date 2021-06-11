@@ -107,13 +107,16 @@ namespace main.model.features
         }
         private bool checkInReserverBook()
         {
-            foreach (var bookItem in currentMember.GetAccount().getReservedBookItem())
+            if(currentMember.GetAccount() != null)
             {
-                if(bookItem.id == searchBookItemById(SearchKeyword).id)
+                foreach (var bookItem in currentMember.GetAccount().getReservedBookItem())
                 {
-                    return true;
+                    if (bookItem.id == searchBookItemById(SearchKeyword).id)
+                    {
+                        return true;
+                    }
                 }
-            }
+            }            
             return false;
         }
         private bool checkIsReserveByOrder()
@@ -128,7 +131,17 @@ namespace main.model.features
             }
             return false;
         }
-
+        bool checkExist()
+        {
+            foreach (var book in bookToShows)
+            {
+                if(book.Id == findBookNameByBookItemId(searchBookItemById(searchKeyword)).Id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         private ObservableCollection<BookToShow> getBookToShow()
         {            
             
@@ -137,9 +150,19 @@ namespace main.model.features
 
                 if (findBookNameByBookItemId(searchBookItemById(searchKeyword)) != null)
                 {
-
-                    bookToShows.Add(findBookNameByBookItemId(searchBookItemById(searchKeyword)));                   
-                    searchKeyword = "";
+                    if (!checkExist())
+                    {
+                        bookToShows.Add(findBookNameByBookItemId(searchBookItemById(searchKeyword)));
+                        searchKeyword = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("This book was already added in list!!!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        searchKeyword = "";
+                    }
+                   
+                    
+                    
                 }
                 else
                 {
@@ -171,7 +194,6 @@ namespace main.model.features
                 MessageBox.Show("This book was loaned by someone!!!","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
-
             return true;
         }
         private BookItem searchBookItemById(string searchKeyword)
