@@ -109,6 +109,14 @@ namespace main.model
                     AddAble = true;
                     this.lendingStatus = "Reserved";
                     break;
+                case LendingStatus.RENEWED:
+                    AddAble = false;
+                    this.lendingStatus = "Renewed";
+                    break;
+                case LendingStatus.READY:
+                    AddAble = true;
+                    this.lendingStatus = "Ready";
+                    break;
             }         
         }
         public BookItem toBookItem()

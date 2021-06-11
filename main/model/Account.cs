@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using main.controller;
 using main.model.enums;
 
 namespace main.model
@@ -94,7 +95,7 @@ namespace main.model
         }
         public List<BookItem> getLendingBookItems()
         {
-            
+            updateLendingInfo();
             return lendingBookItems;
         }
         public void addNewBookToLendingList(BookItem book)
@@ -116,13 +117,65 @@ namespace main.model
                 }
             }
         }
+        private DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+        private void updateLendingInfo()
+        {
+            
+            for(int i =0; i< lendingBookItems.Count; i++)
+            {
+                foreach(var book in dataLoadFromDB.getBookItems())
+                {
+                    if(lendingBookItems[i].id == book.id)
+                    {
+                        lendingBookItems[i] = book;
+                    }
+                }
+            }
+        }
+        private void updateReservingInfo()
+        {
+
+            for (int i = 0; i < reserveBookItems.Count; i++)
+            {
+                foreach (var book in dataLoadFromDB.getBookItems())
+                {
+                    if (reserveBookItems[i].id == book.id)
+                    {
+                        reserveBookItems[i] = book;
+                    }
+                }
+            }
+        }
+        public void updateBookToLendingBookList(BookItem book)
+        {
+            for(int i=0; i< lendingBookItems.Count; i++)
+            {
+                if(lendingBookItems[i].id == book.id)
+                {
+                    lendingBookItems[i] = book;
+                    return;
+                }
+            }
+        }
         public void removeBookToReserveBookList(BookItem book)
         {
-            reserveBookItems.Remove(book);
+            if(reserveBookItems.Count != 0)
+            {
+                foreach (var bookItem in reserveBookItems)
+                {
+                    if (bookItem.id == book.id)
+                    {
+                        reserveBookItems.Remove(bookItem);
+                        return;
+                    }
+                }
+            }  
+            
         }
         
         public List<BookItem> getReservedBookItem()
-        {          
+        {
+            updateReservingInfo();
             return reserveBookItems;
         }
         public void loadReservedBookItem()

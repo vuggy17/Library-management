@@ -95,7 +95,7 @@ namespace main.model
             }
             if(lending != LendingStatus.AVAI && lending != LendingStatus.LOST)
             {
-                this.dueDate = (DateTime)dueDate;
+                this.dueDate = dueDate;
             }
             
         }

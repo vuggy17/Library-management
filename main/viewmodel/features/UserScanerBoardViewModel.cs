@@ -93,6 +93,7 @@ namespace main.model.features
             CheckOutConfirm.ClearInfo += hideUserInfo;
             ReserveConfirm.ClearInfo += hideUserInfo;
             ReturnBookForm.returnUpdateMember += updateUI;
+            RenewForm.returnUpdateMember += updateUI;
         }
 
         private void showCurrentMemberReservedBooks()

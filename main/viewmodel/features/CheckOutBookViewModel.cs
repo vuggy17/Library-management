@@ -105,10 +105,22 @@ namespace main.model.features
            
             return false;
         }
+        private bool checkInReserverBook()
+        {
+            foreach (var bookItem in currentMember.GetAccount().getReservedBookItem())
+            {
+                if(bookItem.id == searchBookItemById(SearchKeyword).id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         private bool checkIsReserveByOrder()
         {
+
             //Check if this book is exist in this user reserveList
-            if (searchBookItemById(SearchKeyword).lendingStatus == enums.LendingStatus.RESV)
+            if (searchBookItemById(SearchKeyword).lendingStatus == enums.LendingStatus.RESV ||( searchBookItemById(SearchKeyword).lendingStatus == enums.LendingStatus.READY && !checkInReserverBook()))
             {
                 MessageBox.Show("This book is reserved by order", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 searchKeyword = "";
@@ -156,9 +168,10 @@ namespace main.model.features
         {
             if(searchBookItemById(searchKeyword)!=null && searchBookItemById(searchKeyword).lendingStatus == enums.LendingStatus.LOANED)
             {
-                MessageBox.Show("This book was loaded by someone!!!","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("This book was loaned by someone!!!","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
+
             return true;
         }
         private BookItem searchBookItemById(string searchKeyword)

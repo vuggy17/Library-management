@@ -76,11 +76,11 @@ namespace main.model
 
             }
         }
-
+        private Book info;
 
         public BookToReserve(Book bookInfo)
         {
-            
+            this.info = bookInfo;
             this.availableCopies= getAvailableCopies(bookInfo);
             if(this.availableCopies == 0)
             {
@@ -96,6 +96,10 @@ namespace main.model
             this.pubDate = bookInfo.pubDate.ToShortDateString();
             this.AddAble = true;
         }
+        public Book toBook()
+        {
+            return new Book(info);
+        }
         DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
         private int getAvailableCopies(Book bookInfo)
         {
@@ -106,7 +110,7 @@ namespace main.model
                 bookItems = dataLoadFromDB.getBookItems();
                 foreach(var bookItem in bookItems)
                 {
-                    if(bookItem.info == bookInfo.id)
+                    if(bookItem.info == bookInfo.id && bookItem.lendingStatus != enums.LendingStatus.READY && bookItem.lendingStatus != enums.LendingStatus.RESV)
                     {
                         availableCopies++;
                     }

@@ -34,13 +34,19 @@ namespace main.viewmodel.form
                         book.lendingStatus = "Ready";
                         break;
                     case "Reserved":
-                        book.lendingStatus = "Ready";
+                        book.lendingStatus = "Waiting";
                         break;
                     case "Loaned":
                         book.lendingStatus = "Waiting";
                         break;
                     case "Lost":
                         book.lendingStatus = "Error";
+                        break;
+                    case "Renewed":
+                        book.lendingStatus = "Waiting";
+                        break;
+                    case "Ready":
+                        book.lendingStatus = "Ready";
                         break;
                 }
             }
@@ -61,7 +67,7 @@ namespace main.viewmodel.form
             if(dialogResult == MessageBoxResult.OK)
             {
                 ConfirmBooks.Remove(temp);
-              //  CurrentMember currentMember = CurrentMember.getInstance();          
+                   
                
                 
             }
@@ -76,7 +82,7 @@ namespace main.viewmodel.form
              ObservableCollection<BookToShow> result = new ObservableCollection<BookToShow>();
              foreach (var book in bookItems)
              {               
-                 result.Add(new BookToShow(book.id, book.getBookInfor(), (DateTime)book.dueDate, book.lendingStatus));
+                 result.Add(new BookToShow(book.id, book.getBookInfor(), book.dueDate, book.lendingStatus));
              }
              return result;            
         }

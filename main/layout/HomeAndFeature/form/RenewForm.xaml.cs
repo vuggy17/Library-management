@@ -1,4 +1,5 @@
-﻿using main.model;
+﻿using main.controller;
+using main.model;
 using main.model.features;
 using main.viewmodel.form;
 using System;
@@ -23,12 +24,24 @@ namespace main.layout.HomeAndFeature.form
     /// </summary>
     public partial class RenewForm : Window
     {
+
         public static event ToggleFormDialogNotifyHandler ToggleForm;
-        public RenewForm(Account account, ObservableCollection<BookToShow> bookToShows)
+
+        public static event updateBookListHandeler returnUpdateBook;
+
+        public static event updateMemberListHandeler returnUpdateMember;
+
+        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+
+        private Account account;
+        private ObservableCollection<BookToShow> renewBookList;
+        public RenewForm(Account account, ObservableCollection<BookToShow> renewBookList)
         {
             InitializeComponent();
             ToggleForm();
-            DataContext = new RenewBookFormViewModel(account.id.ToString(),bookToShows);
+            this.account = account;
+            this.renewBookList = renewBookList;
+            DataContext = new RenewBookFormViewModel(account.id.ToString(), renewBookList);
         }
 
 
@@ -39,10 +52,37 @@ namespace main.layout.HomeAndFeature.form
             ToggleForm();
 
         }
+        private void updateDueDateInLendingList(Account account, ObservableCollection<BookToShow> renewBookList)
+        {
+            foreach (var book in renewBookList)
+            {
+                BookItem bookItem = book.toBookItem();                        
+                if(bookItem.bordate != null)
+                {
+                    DateTime dateTime = (DateTime)bookItem.dueDate;
+                    bookItem.dueDate = dateTime.AddDays(10);
+                    
+                }
+                bookItem.lendingStatus = model.enums.LendingStatus.RENEWED;
+                
+                if (dataLoadFromDB.updateBookItem(bookItem) != null)
+                {                   
+                    returnUpdateBook();
+                    returnUpdateMember();
+                }
+                else
+                {
+                    MessageBox.Show("Unknow error");
+                }
+
+            }
+        }
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-
+            updateDueDateInLendingList(account, renewBookList);
+            this.Close();
+            ToggleForm();
         }
     }
 }

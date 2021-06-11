@@ -10,7 +10,7 @@ namespace main.model.enums
     //lending status
     public enum LendingStatus
     {
-        AVAI,RESV,LOANED,LOST
+        AVAI,RESV,LOANED,LOST,RENEWED,READY
     }
     //reservation status
     public enum ReservationStatus

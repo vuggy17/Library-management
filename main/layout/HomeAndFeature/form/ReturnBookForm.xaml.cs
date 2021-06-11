@@ -41,6 +41,7 @@ namespace main.layout.HomeAndFeature.form
             this.returnBookList = returnBookList;
             DataContext = new ReturnBookFormViewModel(account.id.ToString(), returnBookList);
         }
+
         private void removeBookToLendingList(Account account, ObservableCollection<BookToShow> CheckOutBookList)
         {
             foreach (var book in CheckOutBookList)
@@ -50,11 +51,16 @@ namespace main.layout.HomeAndFeature.form
                 if (bookItem.lendingStatus != model.enums.LendingStatus.RESV)
                 {
                     bookItem.lendingStatus = model.enums.LendingStatus.AVAI;
-                }                
+                }
+                else
+                {
+                    bookItem.lendingStatus = model.enums.LendingStatus.READY;
+                }               
                 bookItem.bordate = null;
                 bookItem.dueDate = null;
                 if (dataLoadFromDB.updateBookItem(bookItem) != null)
-                {                   
+                {
+                   
                     returnUpdateBook();
                     returnUpdateMember();
                 }

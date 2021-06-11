@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace main.viewmodel.features
@@ -37,6 +38,7 @@ namespace main.viewmodel.features
         private void ReturnBookForm_returnUpdateBook()
         {
             OnPropertyChanged("LendingBookItems");
+            
         }
 
         private ObservableCollection<BookToShow> convertBookItemToShow(Account account)

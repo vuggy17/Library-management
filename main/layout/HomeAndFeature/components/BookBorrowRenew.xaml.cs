@@ -70,6 +70,11 @@ namespace main.layout.HomeAndFeature.components
                     MessageBox.Show(book.Name + " is over due! Please return first!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return false;
                 }
+                if(book.lendingStatus == "Renewed")
+                {
+                    MessageBox.Show(book.Name + " is already renewed one time!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
 
             }
 
