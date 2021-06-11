@@ -146,7 +146,7 @@ namespace main.model.features
                 if(bookItem.info == books[i].id)
                 {
                    
-                    return new BookToShow(bookItem.id, books[i],bookItem.dueDate,bookItem.lendingStatus);
+                    return new BookToShow(bookItem.id, books[i], null,bookItem.lendingStatus);
                     
                 }
             }

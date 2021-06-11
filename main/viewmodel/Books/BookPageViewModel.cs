@@ -64,6 +64,7 @@ namespace main.viewmodel.Books
             DeleteBookViewModel.deleteBook += deleteBookItem;
             EditBookViewModel.update += update;
             CheckOutConfirm.checkOutUpdateBook += update;
+            ReturnBookForm.returnUpdateBook += update;
 
 
         }

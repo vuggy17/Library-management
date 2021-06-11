@@ -76,7 +76,7 @@ namespace main.viewmodel.form
              ObservableCollection<BookToShow> result = new ObservableCollection<BookToShow>();
              foreach (var book in bookItems)
              {               
-                 result.Add(new BookToShow(book.id, book.getBookInfor(), book.dueDate, book.lendingStatus));
+                 result.Add(new BookToShow(book.id, book.getBookInfor(), (DateTime)book.dueDate, book.lendingStatus));
              }
              return result;            
         }

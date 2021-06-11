@@ -1,4 +1,5 @@
-﻿using main.model;
+﻿using main.layout.HomeAndFeature.form;
+using main.model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,27 +16,42 @@ namespace main.viewmodel.features
 
         public ObservableCollection<BookToShow> LendingBookItems
         {
-            get => lendingBookItems;
+            get => getLendingBookItems();
         }
         public ICommand Return { get; set; }
+
+        private Account account; 
         public ReturnBookViewModel(Account account)
         {
             lendingBookItems = new ObservableCollection<BookToShow>();
-            if (account != null)
-            {
-                lendingBookItems = convertBookItemToShow(account);
-            }
+            ReturnBookForm.returnUpdateBook += ReturnBookForm_returnUpdateBook;
+            this.account = account;
+          
 
+        }
+        private ObservableCollection<BookToShow> getLendingBookItems()
+        {
+            return convertBookItemToShow(account);
+        }
+
+        private void ReturnBookForm_returnUpdateBook()
+        {
+            OnPropertyChanged("LendingBookItems");
         }
 
         private ObservableCollection<BookToShow> convertBookItemToShow(Account account)
         {
-            ObservableCollection<BookToShow> bookToShows = new ObservableCollection<BookToShow>();
-            foreach (var bookItem in account.getLendingBookItems())
+            if (account != null)
             {
-                bookToShows.Add(new BookToShow(bookItem.id, bookItem.getBookInfor(), bookItem.dueDate, bookItem.lendingStatus));
+                ObservableCollection<BookToShow> bookToShows = new ObservableCollection<BookToShow>();
+                foreach (var bookItem in account.getLendingBookItems())
+                {
+                    bookToShows.Add(new BookToShow(bookItem.id, bookItem.getBookInfor(), (DateTime)bookItem.dueDate, bookItem.lendingStatus));
+                }
+                return bookToShows;
             }
-            return bookToShows;
+            return new ObservableCollection<BookToShow>();
+
         }
 
     }

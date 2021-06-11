@@ -167,6 +167,7 @@ namespace main.controller
             DeleteConfirn.updateMember += updateMember;
             EditForm.updateMember += updateMember;
             CheckOutConfirm.checkOutUpdateMember += updateMember;
+            ReturnBookForm.returnUpdateMember += updateMember;
         }
         private string searchKeyword = "";
         public string SearchKeyword

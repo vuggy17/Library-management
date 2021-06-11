@@ -22,9 +22,9 @@ namespace main.model
         }
         
 
-        private DateTime _dueDate;
+        private DateTime? _dueDate;
 
-        public DateTime dueDate
+        public DateTime? dueDate
         {
             get { return _dueDate; }
             set { _dueDate = value; }
@@ -38,9 +38,9 @@ namespace main.model
             set { _purchase = value; }
         }
 
-        private DateTime _bordate;
+        private DateTime? _bordate;
 
-        public DateTime bordate
+        public DateTime? bordate
         {
             get { return _bordate; }
             set { _bordate = value; }

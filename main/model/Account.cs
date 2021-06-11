@@ -107,7 +107,14 @@ namespace main.model
         }
         public void removeBookToLendingBookList(BookItem book)
         {
-            lendingBookItems.Remove(book);
+            foreach(var bookItem in lendingBookItems)
+            {
+                if (bookItem.id == book.id)
+                {
+                    lendingBookItems.Remove(bookItem);
+                    return;
+                }
+            }
         }
         public void removeBookToReserveBookList(BookItem book)
         {

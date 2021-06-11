@@ -16,11 +16,22 @@ namespace main.model
 
         public double OverDueFee { get => cacurelateOverDueFee(); }
 
-        public DateTime _dueDate { get; set; }
+        public DateTime? _dueDate { get; set; }
 
         public string dueDate
         {
-            get { return _dueDate.ToShortDateString(); }  
+            get { 
+                if(_dueDate != null)
+                {
+                    DateTime date = (DateTime)_dueDate;
+                    return date.ToShortDateString();
+                }
+                else
+                {
+                    return "";
+                }
+               
+            }  
         }
         private string _lendingStatus;
 
@@ -34,9 +45,10 @@ namespace main.model
         {
             DateTime toDay = new DateTime();
             toDay = DateTime.Today;
-            if(toDay > _dueDate)
+            if(toDay > _dueDate && _dueDate !=null)
             {
-                return (toDay - _dueDate).TotalDays * 5000.0;
+                DateTime date = (DateTime)_dueDate;
+                return (toDay - date).TotalDays * 5000.0;
             }
             return 0;
         }
@@ -66,12 +78,17 @@ namespace main.model
         private int _id;
         private LendingStatus _lendingStatusInfo;
 
-        public BookToShow(int id, Book info, DateTime dueDate, LendingStatus lendingStatus)
+        public BookToShow(int id, Book info, DateTime? dueDate, LendingStatus lendingStatus)
         {
             this.Id = id.ToString();
             this._id = id;
             this.Name = info.title;
-            this._dueDate = dueDate.Date;
+            if (dueDate != null)
+            {
+                this._dueDate = dueDate;
+            }
+
+
             this.info = info;
             this._lendingStatusInfo = lendingStatus;
             switch (lendingStatus)

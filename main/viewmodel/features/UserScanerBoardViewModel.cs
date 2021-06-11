@@ -92,6 +92,7 @@ namespace main.model.features
             getReservedBooks = new RelayCommand<Object>((p) => true, (p) => { showCurrentMemberReservedBooks(); });
             CheckOutConfirm.ClearInfo += hideUserInfo;
             ReserveConfirm.ClearInfo += hideUserInfo;
+            ReturnBookForm.returnUpdateMember += updateUI;
         }
 
         private void showCurrentMemberReservedBooks()

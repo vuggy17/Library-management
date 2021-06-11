@@ -1,4 +1,5 @@
-﻿using main.model;
+﻿using main.controller;
+using main.model;
 using main.viewmodel.form;
 using System;
 using System.Collections.Generic;
@@ -23,13 +24,48 @@ namespace main.layout.HomeAndFeature.form
     public partial class ReturnBookForm : Window
     {
         public static event ToggleFormDialogNotifyHandler ToggleForm;
-        public ReturnBookForm(Account account, ObservableCollection<BookToShow> bookToShows)
+
+        public static event updateBookListHandeler returnUpdateBook;
+
+        public static event updateMemberListHandeler returnUpdateMember;
+
+        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+
+        private Account account;
+        private ObservableCollection<BookToShow> returnBookList;
+        public ReturnBookForm(Account account, ObservableCollection<BookToShow> returnBookList)
         {
             InitializeComponent();
             ToggleForm();
-            DataContext = new ReturnBookFormViewModel(account.id.ToString(), bookToShows);
+            this.account = account;
+            this.returnBookList = returnBookList;
+            DataContext = new ReturnBookFormViewModel(account.id.ToString(), returnBookList);
         }
+        private void removeBookToLendingList(Account account, ObservableCollection<BookToShow> CheckOutBookList)
+        {
+            foreach (var book in CheckOutBookList)
+            {
+                BookItem bookItem = book.toBookItem();
+                account.removeBookToLendingBookList(bookItem);
+                if (bookItem.lendingStatus != model.enums.LendingStatus.RESV)
+                {
+                    bookItem.lendingStatus = model.enums.LendingStatus.AVAI;
+                }                
+                bookItem.bordate = null;
+                bookItem.dueDate = null;
+                if (dataLoadFromDB.updateBookItem(bookItem) != null)
+                {                   
+                    returnUpdateBook();
+                    returnUpdateMember();
+                }
+                else
+                {
+                    MessageBox.Show("Unknow error");
+                }
 
+
+            }
+        }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
@@ -39,7 +75,9 @@ namespace main.layout.HomeAndFeature.form
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-
+            removeBookToLendingList(account, returnBookList);
+            this.Close();
+            ToggleForm();
         }
     }
 }

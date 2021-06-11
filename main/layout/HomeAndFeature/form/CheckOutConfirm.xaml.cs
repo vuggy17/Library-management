@@ -52,7 +52,8 @@ namespace main.layout.HomeAndFeature.form
                 BookItem bookItem = book.toBookItem();
                 bookItem.lendingStatus = model.enums.LendingStatus.LOANED;
                 bookItem.bordate = DateTime.Now;
-                bookItem.dueDate = bookItem.bordate.AddDays(10);
+                DateTime dateTime = (DateTime)bookItem.bordate;
+                bookItem.dueDate = dateTime.AddDays(10);
                 if (dataLoadFromDB.updateBookItem(bookItem) != null)
                 {
                     account.addNewBookToLendingList(bookItem);
