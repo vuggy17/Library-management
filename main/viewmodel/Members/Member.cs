@@ -24,7 +24,7 @@ namespace main.controller
     {
         DataLoadFromDB data = DataLoadFromDB.getIntance();
         private void updateMember()
-        {
+        {            
             OnPropertyChanged("memberList");
             OnPropertyChanged("blackList");
             OnPropertyChanged("TotalBlackListMember");
@@ -50,7 +50,7 @@ namespace main.controller
         private ObservableCollection<Converter> _memberList;
         public ObservableCollection<Converter> memberList 
         {
-            get => getAllAciveMember();
+            get => filterByInfo(getAllAciveMember());
             set
             {
                 _memberList = value;
@@ -60,7 +60,7 @@ namespace main.controller
 
         public ObservableCollection<Converter> blackList 
         {
-            get => getAllBlackListMember();
+            get => filterByInfo(getAllBlackListMember());
             set
             {
                 _blackList = value;
@@ -157,8 +157,7 @@ namespace main.controller
 
         public MemberViewModel()
         {
-            listToFindMember = new ObservableCollection<Converter>();
-            listToFindMember = memberList;
+
             
             MemberNavigationViewModel.ChangePage += MemberNavigationViewModel_ChangePage;
             AddNewMemberForm.updateMember += updateMember;
@@ -174,22 +173,19 @@ namespace main.controller
             set
             {
                 searchKeyword = value;
-                OnPropertyChanged("SearchKeyword");
-                OnPropertyChanged("FilterList");
+                            
+                OnPropertyChanged("memberList");
+                OnPropertyChanged("blackList");
             }
         }
-        private ObservableCollection<Converter> listToFindMember;
-        private ObservableCollection<Converter> filterList;
+       
+        
 
-        public ObservableCollection<Converter> FilterList
+       
+        private ObservableCollection<Converter> filterByInfo(ObservableCollection<Converter> listToFindMember)
         {
-            get => filterByInfo();
-            set => filterList = value;
-        }
-        private ObservableCollection<Converter> filterByInfo()
-        {
-            MessageBox.Show("AGugu");
-           
+            
+
             ObservableCollection<Converter> filterList = new ObservableCollection<Converter>();
 
             foreach (var member in listToFindMember)
@@ -209,7 +205,7 @@ namespace main.controller
                             if (member_data != null && keyWord != null)
                             {
                                 if (member_data.Contains(keyWord))
-                                {
+                                {                                    
                                     filterList.Add(member);
                                     break;
                                 }
@@ -237,15 +233,14 @@ namespace main.controller
         }
         private void SwitchToBlackList()
         {
-            listToFindMember = blackList;          
-            
+                       
             Uri uri = new Uri("/layout/member/component/MemberBlackListWraper.xaml", UriKind.Relative);
             Member.navigationFrame.Navigate(uri);
         }
 
         private void SwitchToActiveList()
         {
-            listToFindMember = memberList;            
+                     
             Uri uri = new Uri("/layout/member/component/MemberActiveWraper.xaml", UriKind.Relative);
             Member.navigationFrame.Navigate(uri);
         }

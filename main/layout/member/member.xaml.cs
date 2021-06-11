@@ -42,7 +42,7 @@ namespace main.layout
         public Member()
         {
             InitializeComponent();
-            this.DataContext = new MemberViewModel();
+            this.DataContext = MemberViewModel.getInstance();
             navigationFrame = frame;
         }
 

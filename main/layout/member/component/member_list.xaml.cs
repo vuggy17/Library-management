@@ -28,8 +28,7 @@ namespace main.layout.member.component
         public Member_list()
         {
             InitializeComponent();
-            var memberViewModel = MemberViewModel.getInstance();
-            memberListv.DataContext = memberViewModel;
+            DataContext = MemberViewModel.getInstance();          
         }
       
     }

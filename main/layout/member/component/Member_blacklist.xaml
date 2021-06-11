@@ -11,7 +11,7 @@
              Background="Transparent">
     <materialDesign:DialogHost
         Identifier="NotificationDialog" >
-        <ListView x:Name="memberListv" ItemsSource="{Binding FilterList, UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding SelectedItem}" SelectionMode="Single" BorderBrush="{x:Null}" ScrollViewer.CanContentScroll="False"   ClipToBounds="True" Foreground="{x:Null}" >
+        <ListView x:Name="memberListv" ItemsSource="{Binding blackList, UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding SelectedItem}" SelectionMode="Single" BorderBrush="{x:Null}" ScrollViewer.CanContentScroll="False"   ClipToBounds="True" Foreground="{x:Null}" >
             <ListView.Resources>
                 <Style TargetType="ScrollBar">
 
