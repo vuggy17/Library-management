@@ -17,6 +17,7 @@ using System.Windows;
 using main.viewmodel.Members;
 using main.layout.member.forms;
 using System.Reflection;
+using main.layout.HomeAndFeature.form;
 
 namespace main.controller
 {
@@ -165,6 +166,7 @@ namespace main.controller
             UnBlockConfirm.updateMember += updateMember;
             DeleteConfirn.updateMember += updateMember;
             EditForm.updateMember += updateMember;
+            CheckOutConfirm.checkOutUpdateMember += updateMember;
         }
         private string searchKeyword = "";
         public string SearchKeyword

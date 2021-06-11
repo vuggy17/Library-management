@@ -1,6 +1,7 @@
 ﻿using main.controller;
 using main.layout.Book;
 using main.layout.Book.Components;
+using main.layout.HomeAndFeature.form;
 using main.model;
 using main.viewmodel.features;
 using System;
@@ -62,6 +63,7 @@ namespace main.viewmodel.Books
             AddBookForm.update += update;
             DeleteBookViewModel.deleteBook += deleteBookItem;
             EditBookViewModel.update += update;
+            CheckOutConfirm.checkOutUpdateBook += update;
 
 
         }

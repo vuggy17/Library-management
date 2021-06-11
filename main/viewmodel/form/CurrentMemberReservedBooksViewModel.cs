@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using main.controller;
 using System.Windows.Input;
 using MessageBox = System.Windows.MessageBox;
 
@@ -60,6 +61,9 @@ namespace main.viewmodel.form
             if(dialogResult == MessageBoxResult.OK)
             {
                 ConfirmBooks.Remove(temp);
+              //  CurrentMember currentMember = CurrentMember.getInstance();          
+               
+                
             }
             else
             {
@@ -72,7 +76,7 @@ namespace main.viewmodel.form
              ObservableCollection<BookToShow> result = new ObservableCollection<BookToShow>();
              foreach (var book in bookItems)
              {               
-                 result.Add(new BookToShow(book.id.ToString(), book.getBookInfor(), book.dueDate, book.lendingStatus));
+                 result.Add(new BookToShow(book.id, book.getBookInfor(), book.dueDate, book.lendingStatus));
              }
              return result;            
         }

@@ -102,6 +102,18 @@ namespace main.controller
             return null;
             //xử lý db
         }
+        public BookItem updateBookItem(BookItem value)
+        {
+            for (int i = 0; i < bookItems.Count; i++)
+            {
+                if (bookItems[i].id == value.id)
+                {
+                    bookItems[i] = value;
+                    return bookItems[i];
+                }
+            }
+            return null;
+        }
 
         public List<Book> getBooks()
         {
@@ -130,19 +142,19 @@ namespace main.controller
         private void loadBookItemsFromDB()
         {
             //fake load to test
-            bookItems.Add(new BookItem(12345671, 12345670,LendingStatus.AVAI,new DateTime(2021,6,2)));
-            bookItems.Add(new BookItem(12345672, 12345670,LendingStatus.LOANED, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(12345673, 12345670,LendingStatus.LOANED, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(76543211, 76543210,LendingStatus.RESV, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(76543212, 76543210,LendingStatus.AVAI, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(76543213, 76543210,LendingStatus.LOANED, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(76543214, 76543210,LendingStatus.AVAI, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(10000001, 00000001, LendingStatus.AVAI, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(20000001, 00000001, LendingStatus.AVAI, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(30000001, 00000001, LendingStatus.AVAI, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(10000001, 76543218, LendingStatus.AVAI, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(20000001, 76543219, LendingStatus.AVAI, new DateTime(2021, 6, 2)));
-            bookItems.Add(new BookItem(30000001, 76543220, LendingStatus.AVAI, new DateTime(2021, 6, 2)));
+            bookItems.Add(new BookItem(12345671, 12345670,LendingStatus.AVAI,null));
+            bookItems.Add(new BookItem(12345672, 12345670,LendingStatus.AVAI, null));
+            bookItems.Add(new BookItem(12345673, 12345670,LendingStatus.AVAI, null));
+            bookItems.Add(new BookItem(76543211, 76543210,LendingStatus.AVAI, null));
+            bookItems.Add(new BookItem(76543212, 76543210,LendingStatus.AVAI, null));
+            bookItems.Add(new BookItem(76543213, 76543210,LendingStatus.AVAI, null));
+            bookItems.Add(new BookItem(76543214, 76543210,LendingStatus.AVAI, null));
+            bookItems.Add(new BookItem(10000001, 00000001, LendingStatus.AVAI,null));
+            bookItems.Add(new BookItem(20000001, 00000001, LendingStatus.AVAI,null));
+            bookItems.Add(new BookItem(30000001, 00000001, LendingStatus.AVAI,null));
+            bookItems.Add(new BookItem(10000001, 76543218, LendingStatus.AVAI,null));
+            bookItems.Add(new BookItem(20000001, 76543219, LendingStatus.AVAI,null));
+            bookItems.Add(new BookItem(30000001, 76543220, LendingStatus.AVAI,null));
         }
         
         private void loadMembersFromDB()

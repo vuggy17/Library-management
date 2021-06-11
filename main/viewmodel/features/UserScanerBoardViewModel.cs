@@ -154,6 +154,8 @@ namespace main.model.features
             //Lấy image user and set here
             searchKeyword = "";
             UserView = true;
+            TargetAccount.loadLendingBookItems();
+            TargetAccount.loadReservedBookItem();
             updateLedingBookList(TargetAccount);
             reserveBookItems = TargetAccount.getReservedBookItem();
             OnPropertyChanged("haveAvailableBookItem");

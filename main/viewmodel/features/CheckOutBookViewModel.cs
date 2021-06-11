@@ -68,6 +68,11 @@ namespace main.model.features
                 MessageBox.Show("Member and list book can't not place empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (currentMember.GetAccount().getLendingBookItems().Count + bookToShows.Count > 5)
+            {
+                MessageBox.Show("Member can only borrow 5 books one time!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             CheckOutConfirm checkOutConfirm = new CheckOutConfirm(currentMember.GetAccount(), BookToShows);
             checkOutConfirm.Show();
         }
@@ -115,11 +120,12 @@ namespace main.model.features
         private ObservableCollection<BookToShow> getBookToShow()
         {            
             
-            if (searchBookItemById(searchKeyword)!=null &&! isExitstInCurrentList()&&!checkIsReserveByOrder())
+            if (searchBookItemById(searchKeyword)!=null &&! isExitstInCurrentList()&&!checkIsReserveByOrder()&&checkValidBook())
             {
 
                 if (findBookNameByBookItemId(searchBookItemById(searchKeyword)) != null)
                 {
+
                     bookToShows.Add(findBookNameByBookItemId(searchBookItemById(searchKeyword)));                   
                     searchKeyword = "";
                 }
@@ -131,6 +137,7 @@ namespace main.model.features
             }
             return bookToShows;
         }
+
         private BookToShow findBookNameByBookItemId(BookItem bookItem)
         {
             bookItems = dataLoadFromDB.getBookItems();
@@ -139,13 +146,21 @@ namespace main.model.features
                 if(bookItem.info == books[i].id)
                 {
                    
-                    return new BookToShow("ID: " + bookItem.id.ToString(), books[i].title);
+                    return new BookToShow(bookItem.id, books[i],bookItem.dueDate,bookItem.lendingStatus);
                     
                 }
             }
             return null;
         }
-
+        private bool checkValidBook()
+        {
+            if(searchBookItemById(searchKeyword)!=null && searchBookItemById(searchKeyword).lendingStatus == enums.LendingStatus.LOANED)
+            {
+                MessageBox.Show("This book was loaded by someone!!!","error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
         private BookItem searchBookItemById(string searchKeyword)
         {
             books = dataLoadFromDB.getBooks();

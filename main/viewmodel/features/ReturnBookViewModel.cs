@@ -33,7 +33,7 @@ namespace main.viewmodel.features
             ObservableCollection<BookToShow> bookToShows = new ObservableCollection<BookToShow>();
             foreach (var bookItem in account.getLendingBookItems())
             {
-                bookToShows.Add(new BookToShow(bookItem.id.ToString(), bookItem.getBookInfor(), bookItem.dueDate, bookItem.lendingStatus));
+                bookToShows.Add(new BookToShow(bookItem.id, bookItem.getBookInfor(), bookItem.dueDate, bookItem.lendingStatus));
             }
             return bookToShows;
         }

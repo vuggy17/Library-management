@@ -75,7 +75,7 @@ namespace main.model
             set { _place = value; }
         }
 
-
+        public Book BookInfo;
 
         #endregion
         private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
@@ -84,14 +84,18 @@ namespace main.model
             return !_regex.IsMatch(text);
         }
         //this contructor is use for clone book item from db
-        public BookItem(int id, int info, LendingStatus lending,DateTime dueDate)
+        public BookItem(int id, int info, LendingStatus lending,DateTime? dueDate)
         {
             this.id = id;
             this.info = info;
             this.lendingStatus = lending;
+            if (getBookInfor() != null)
+            {
+                BookInfo = getBookInfor();
+            }
             if(lending != LendingStatus.AVAI && lending != LendingStatus.LOST)
             {
-                this.dueDate = dueDate;
+                this.dueDate = (DateTime)dueDate;
             }
             
         }

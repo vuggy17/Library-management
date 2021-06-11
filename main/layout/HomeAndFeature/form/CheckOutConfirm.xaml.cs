@@ -1,4 +1,5 @@
-﻿using main.model;
+﻿using main.controller;
+using main.model;
 using main.model.features;
 using main.model.form;
 using System;
@@ -26,11 +27,45 @@ namespace main.layout.HomeAndFeature.form
         public static event ToggleFormDialogNotifyHandler ToggleForm;
 
         public static event ClearInfoNotifyHandler ClearInfo;
-        public CheckOutConfirm(Account account, ObservableCollection<BookToShow> bookToShows)
+
+        public static event updateBookListHandeler checkOutUpdateBook;
+
+        public static event updateMemberListHandeler checkOutUpdateMember;
+
+        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+
+        private Account account;
+        private ObservableCollection<BookToShow> CheckOutBookList;
+        public CheckOutConfirm(Account account, ObservableCollection<BookToShow> CheckOutBookList)
         {
             InitializeComponent();
-            this.DataContext = new CheckOutConfirmViewModel(account.id.ToString(), bookToShows);
+            this.account = account;
+            this.CheckOutBookList = CheckOutBookList;
+            this.DataContext = new CheckOutConfirmViewModel(account.id.ToString(), CheckOutBookList);
             ToggleForm();
+        }
+       
+        private void addBookToLendingList(Account account, ObservableCollection<BookToShow> CheckOutBookList)
+        {
+            foreach(var book in CheckOutBookList)
+            {
+                BookItem bookItem = book.toBookItem();
+                bookItem.lendingStatus = model.enums.LendingStatus.LOANED;
+                bookItem.bordate = DateTime.Now;
+                bookItem.dueDate = bookItem.bordate.AddDays(10);
+                if (dataLoadFromDB.updateBookItem(bookItem) != null)
+                {
+                    account.addNewBookToLendingList(bookItem);
+                    checkOutUpdateBook();
+                    checkOutUpdateMember();
+                }
+                else
+                {
+                    MessageBox.Show("Unknow error");
+                }  
+                
+                
+            }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
@@ -39,6 +74,7 @@ namespace main.layout.HomeAndFeature.form
         }
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
+            addBookToLendingList(account, CheckOutBookList);
             ClearInfo();
             this.Close();
             ToggleForm();

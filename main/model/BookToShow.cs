@@ -62,12 +62,18 @@ namespace main.model
 
             }
         }
+        private Book info;
+        private int _id;
+        private LendingStatus _lendingStatusInfo;
 
-        public BookToShow(string id, Book info, DateTime dueDate, LendingStatus lendingStatus)
+        public BookToShow(int id, Book info, DateTime dueDate, LendingStatus lendingStatus)
         {
-            this.Id = id;
+            this.Id = id.ToString();
+            this._id = id;
             this.Name = info.title;
             this._dueDate = dueDate.Date;
+            this.info = info;
+            this._lendingStatusInfo = lendingStatus;
             switch (lendingStatus)
             {
                 case LendingStatus.AVAI:
@@ -87,6 +93,10 @@ namespace main.model
                     this.lendingStatus = "Reserved";
                     break;
             }         
+        }
+        public BookItem toBookItem()
+        {
+            return new BookItem(this._id, this.info.id, this._lendingStatusInfo, this._dueDate);
         }
         public BookToShow(string id, string name)
         {
