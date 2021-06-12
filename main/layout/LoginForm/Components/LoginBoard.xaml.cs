@@ -119,11 +119,7 @@ namespace main.layout.LoginForm.Components
         private List<Staff> LoadAllStaffAccount()
         {
             List<Staff> loadAllStaff = new List<Staff>();
-            //Load list Staff
-            loadAllStaff.Add(new Staff(new Person("Admin 1", "Long An","tan.lk16.cla@gmail.com","0343027600"), 1234, "123456781"));
-            loadAllStaff.Add(new Staff(new Person("Admin 2", "Long An", "tan.lk16.cla@gmail.com", "0343027600"), 2345, "123456782"));
-            loadAllStaff.Add(new Staff(new Person("Admin 3", "Long An", "tan.lk16.cla@gmail.com", "0343027600"), 4567, "123456783"));
-            loadAllStaff.Add(new Staff(new Person("Admin 4", "Long An", "tan.lk16.cla@gmail.com", "0343027600"), 5678, "123456784"));
+            loadAllStaff = Db.getInstace().getAllStaffs();
             return loadAllStaff;
         }
         

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace main.model
 {
-    class Staff
+    public class Staff
     {
         #region properties
         #region id 

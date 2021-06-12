@@ -1,4 +1,5 @@
 ﻿using main.layout.Book;
+using main.layout.HomeAndFeature.components;
 using main.layout.LoginForm.Components;
 using main.viewmodel.features;
 using System;
@@ -18,17 +19,20 @@ using System.Windows.Shapes;
 namespace main.layout.LoginForm
 {
     /// <summary>
-    /// Interaction logic for LoginForm.xaml
+    /// Interaction logic for loginForm.xaml
     /// </summary>
-    public partial class LoginForm : Window
+    public partial class loginForm : Window
     {
         
-        public LoginForm()
+        public loginForm()
         {
             InitializeComponent();
-            LoginBoard.loginSuccess += LoginBoard_loginSuccess;
+            LoginBoard.loginSuccess += LoginBoard_loginSuccess;         
+            
 
         }
+
+        
 
         private void LoginBoard_loginSuccess()
         {

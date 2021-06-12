@@ -61,7 +61,7 @@ namespace main.layout.Book.Components
                 {
                     if(datePicker.SelectedDate.Value <= DateTime.Now.Date)
                     {
-                        model.Book newBook = new model.Book(13720010, tbName.Text, "", tbAuthor.Text, datePicker.SelectedDate.Value, Double.Parse(tbPrice.Text));
+                        model.Book newBook = new model.Book(13720010, tbName.Text, tbAuthor.Text, datePicker.SelectedDate.Value, Double.Parse(tbPrice.Text));
                         data.addNewBook(newBook);
                         int numOfCopies = int.Parse(lbNumber.Content.ToString());
                         int autoID = newBook.id;

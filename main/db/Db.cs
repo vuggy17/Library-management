@@ -16,7 +16,7 @@ namespace main
         private Db() { }
         private static Db _instance;
         private MySqlConnection connection { get; set; }
-        private const string connectionString = "server=localhost;user id=cnpm;database=cnpm;port=3306;password=pass";
+        private const string connectionString = "server=localhost;user id=root;database=cnpm;port=3306;password=pass";
         public static Db getInstace()
         {
             if (_instance == null)
@@ -52,101 +52,117 @@ namespace main
                 this.connection.Close();
         }
 
-        public bool isUserExits(string id, string password)
+        public Person getInfoByAccountID(int PersonId)
         {
-            try
-            {
-                using (var conn = new MySqlConnection(connectionString))
-                {
-                    conn.Open();
-
-                    using (var cmd = conn.CreateCommand())
-                    {
-                        cmd.CommandText = "select * from ACCOUNT where ID= @ID";
-                        cmd.Parameters.AddWithValue("@ID", id);
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            return reader.HasRows ? true : false;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            return false;
-
-        }
-        public void createNewAccount(Account account)
-        {
-            // tim id cua person trong account, xong roi add new account theo id cua person tim dc, neu khong co person thi bao loi
-            var personId = getPersonId(account.info.name, account.info.email);
-            if (personId == "-1")
-            {
-                MessageBox.Show("User Profile not exist");
-                return;
-            }
-            var command = $"INSERT INTO `ACCOUNT` ( `PASSWORD`, `STATUS`, `PERSON`, `TOTALBOOKCHECKOUT`) VALUES(  '{account.status}', '{personId}', '{account.totalBookLoan}')";
-
-            executeCommand(command);
-            closeConnection();
-
-        }
-
-        // lay info cua user theo name va email, neu ton tai tra id, khong ton tai tra -1
-        public string getPersonId(string name, string email)
-        {
-            var personId = "-1";
-            var command = $"SELECT `ID` FROM `PERSON` WHERE `NAME`= '{name}' AND `EMAIL`='{email}'";
+            string command = "select * from PERSON where ID = "+PersonId.ToString();
             var reader = executeCommand(command);
-
             while (reader.Read())
             {
-                personId = reader[0].ToString();
+                return new Person(reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString());
             }
-
             closeConnection();
-            return personId;
+            return null;
+            
         }
-
-        public bool editPersonInfo(string name, string email)
+        private model.enums.AccountStatus castTypeAccount(string value )
         {
-
-            return true;
-        }
-        public void dropPersonInfo(Person person)
-        {
-            var command = $"DELETE FROM `PERSON` WHERE NAME='{person.name}' EMAIL='{person.email}'";
-            executeCommand(command);
-            closeConnection();
-        }
-
-
-        // fix command
-        public bool editAccoutInfo(Account account)
-        {
-            var isSuccess = false;
-            var personId = getPersonId(account.info.name, account.info.email);
-            if (personId == "-1")
+            switch (value)
             {
-                MessageBox.Show("Invalid user");
-                return false;
+                case "ACTIVE":
+                    return model.enums.AccountStatus.ACTIVE;
+                case "BLACKLISTED":
+                    return model.enums.AccountStatus.BLACKLISTED;
+                default:
+                    return model.enums.AccountStatus.NONE;
             }
-            var command = $"UPDATE `ACCOUNT` SET `STATUS`='{account.status}',`PERSON`='{personId}',`TOTALBOOKCHECKOUT`='{account.totalBookLoan}' WHERE  ";
+        }
+        private model.enums.LendingStatus castTypeLendingBookItem(string value)
+        {
+            switch (value)
+            {
+                case "AVAI":
+                    return model.enums.LendingStatus.AVAI;
+                case "LOANED":
+                    return model.enums.LendingStatus.LOANED;
+                case "LOST":
+                    return model.enums.LendingStatus.LOST;
+                case "READY":
+                    return model.enums.LendingStatus.READY;
+                case "RENEWED":
+                    return model.enums.LendingStatus.RENEWED;
+                case "RESV":
+                    return model.enums.LendingStatus.RESV;
+                default:
+                    return model.enums.LendingStatus.AVAI;
+            }
+        }
+        public List<Account> getAllAccount()
+        {
+            List<Account> accounts = new List<Account>();
+            string command = "select * from ACCOUNT";
             var reader = executeCommand(command);
-            isSuccess = reader.HasRows ? true : false;
+            while (reader.Read())
+            {
+                
+                Person info = getInfoByAccountID((int)reader[2]);
+                if(info != null)
+                {
+                    accounts.Add(new Account(info.name, info.address, info.email, info.phone, (int)reader[0], castTypeAccount(reader[1].ToString()), (DateTime)reader[3], (int)reader[4]));
+                }
+                
+            }
             closeConnection();
-            return isSuccess;
+            return accounts;
+        }
+        public List<Staff> getAllStaffs()
+        {
+            List<Staff> staff = new List<Staff>();
+            string command = "select * from STAFF";
+            var reader = executeCommand(command);
+            while (reader.Read())
+            {
+
+                Person info = getInfoByAccountID((int)reader[1]);
+                if (info != null)
+                {
+                    staff.Add(new Staff(info, (int)reader[0], reader[2].ToString()));
+                }
+
+            }
+            closeConnection();
+            return staff;
+        }
+        public List<Book> getAllBooks()
+        {
+            List<Book> books = new List<Book>();
+            string command = "select * from BOOK";
+            var reader = executeCommand(command);
+            while (reader.Read())
+            {
+                books.Add(new Book((int)reader[0], reader[1].ToString(), reader[2].ToString(), (DateTime)reader[3], (double)reader[4]));
+            }
+            closeConnection();
+            return books;
+        }
+        public List<BookItem> getAllBookItems()
+        {
+            List<BookItem> bookItems = new List<BookItem>();
+            string command = "select * from BOOKITEM";
+            var reader = executeCommand(command);
+            while (reader.Read())
+            {
+                if(reader[3].GetType()!=typeof(DBNull))
+                {
+                    DateTime dateTime = (DateTime)reader[3];
+                    bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString()), dateTime));
+                }
+                else
+                {
+                    bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString()), null));
+                }                
+            }
+            closeConnection();
+            return bookItems;
         }
     }
 }
-//using (var reader = cmd.ExecuteReader())
-//{
-//    int i = 0;
-//    while (reader.Read())
-//    {
-
-//        Console.WriteLine(reader[i++]);
-//    }
-//}

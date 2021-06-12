@@ -47,8 +47,10 @@ namespace main
         public MainWindow()
         {
             InitializeComponent();
-            LoginForm login = new LoginForm();            
-            login.ShowDialog();
+
+           
+            loginForm login = new loginForm();            
+            login.ShowDialog();           
             if (login.DialogResult == true)
             {
                 data.getAllMembers();

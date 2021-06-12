@@ -67,8 +67,20 @@ namespace main.viewmodel.form
             if(dialogResult == MessageBoxResult.OK)
             {
                 ConfirmBooks.Remove(temp);
-                   
-               
+                BookItem tempBookItem = temp.toBookItem();
+                CurrentMember current = CurrentMember.getInstance();
+                current.GetAccount().removeBookToReserveBookList(tempBookItem);                  
+               if(tempBookItem.lendingStatus == model.enums.LendingStatus.RESV)
+                {
+                    tempBookItem.lendingStatus = model.enums.LendingStatus.LOANED;
+                }
+               if(tempBookItem.lendingStatus == model.enums.LendingStatus.READY)
+                {
+                    tempBookItem.lendingStatus = model.enums.LendingStatus.AVAI;
+                }
+                DataLoadFromDB data = DataLoadFromDB.getIntance();
+                data.updateBookItem(tempBookItem);
+
                 
             }
             else

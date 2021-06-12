@@ -476,7 +476,6 @@
     <Compile Include="model\BookItem.cs" />
     <Compile Include="model\Enums.cs" />
     <Compile Include="model\Person.cs" />
-    <Compile Include="model\Rack.cs" />
     <Compile Include="model\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -31,6 +31,7 @@ namespace main.layout.HomeAndFeature.components
         private void tbLogout_Click(object sender, RoutedEventArgs e)
         {
             logout();
+            
         }
 
         private void tbEdit_Click(object sender, RoutedEventArgs e)

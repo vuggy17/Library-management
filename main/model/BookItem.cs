@@ -67,13 +67,7 @@ namespace main.model
             set { _lendingStatus = value; }
         }
 
-        private Rack _place;
-
-        public Rack place
-        {
-            get { return _place; }
-            set { _place = value; }
-        }
+       
 
         public Book BookInfo;
 

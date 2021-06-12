@@ -82,11 +82,10 @@ namespace main.model
             this.pubDate = book.pubDate;
         }
         #region method
-        public Book(int id, string title, string subject, string author, DateTime pubDate, double price) {
+        public Book(int id, string title, string author, DateTime pubDate, double price) {
 
             this.price = price;
-            this.id = id;
-           
+            this.id = id;           
             this.author = author;
             this.title = title;
             this.subject = subject;
