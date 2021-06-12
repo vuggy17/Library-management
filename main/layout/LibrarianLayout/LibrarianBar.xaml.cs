@@ -21,6 +21,7 @@ namespace main.layout.HomeAndFeature.components
     /// </summary>
     public partial class LibrarianBar : UserControl
     {
+        public static event LogoutHandler logout;
         
         public LibrarianBar()
         {
@@ -29,14 +30,11 @@ namespace main.layout.HomeAndFeature.components
 
         private void tbLogout_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = null;
-            DataContext = new LogoutViewModel();
+            logout();
         }
 
         private void tbEdit_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = null;
-            DataContext = new LibrarianIconNavigationViewModel();
+        {            
             LibrarianEdit librarianEdit = new LibrarianEdit();
             librarianEdit.Show();
         }

@@ -43,7 +43,7 @@ namespace main
     {
         HomeNavigationViewModel homePageViewModel = new HomeNavigationViewModel();
 
-        
+        DataLoadFromDB data = DataLoadFromDB.getIntance();
         public MainWindow()
         {
             InitializeComponent();
@@ -51,7 +51,9 @@ namespace main
             login.ShowDialog();
             if (login.DialogResult == true)
             {
-               //load du lieu ve
+                data.getAllMembers();
+                data.getBookItems();
+                data.getBooks();
             };
 
             HomePage.DataContext = homePageViewModel;
@@ -75,13 +77,19 @@ namespace main
             EditForm.ToggleForm += ToggleForm;
 
             LibrarianEdit.ToggleForm += ToggleForm;
-
+           
             LibrarianIconNavigationViewModel.updatebar += LibrarianIconNavigationViewModel_updatebar;
-
+            LibrarianBar.logout += LibrarianBar_logout;
 
 
             HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;
             this.DataContext = new MemberViewModel();
+        }
+
+        private void LibrarianBar_logout()
+        {
+            System.Windows.Forms.Application.Restart();
+
         }
 
         private void LibrarianIconNavigationViewModel_updatebar()

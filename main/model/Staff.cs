@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace main.model
 {
-    class Staff:Account
+    class Staff
     {
         #region properties
         #region id 
@@ -25,7 +25,12 @@ namespace main.model
         public string password
         {
             get => _password;
-            set => _password = value;
+            set
+            {
+                _password = value; 
+                //update ondb
+            }
+
         }
         private Person _info;
         public Person info

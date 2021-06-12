@@ -9,6 +9,8 @@
              Height="670" Width="1000"
              WindowStartupLocation="CenterScreen"
              WindowStyle="None"
+            Topmost="True"
+       
              ResizeMode="NoResize">
     <Window.Background>
         <SolidColorBrush Color="White" Opacity="0.3">
@@ -80,16 +82,21 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Change password"
+                <Button Content="Change password"
                            Foreground="#00A2FF"
                            FontSize="20"
+                       Background="Transparent"
+                    BorderBrush="Transparent"
+                        Click="Button_Click"
                            FontWeight="Bold"
                            FontFamily="Roboto"
-                           HorizontalAlignment="Right"></TextBlock>
+                           HorizontalAlignment="Right" VerticalAlignment="Top"></Button>
                 <TextBox Grid.Row="1" 
-                        Name="Name"
+                         
+                            Name="id"
                          Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
                          Text="123456789"
+                         IsEnabled="False"
                          FontFamily="Roboto"
                          FontSize="30"
                          FontWeight="Regular"
@@ -98,7 +105,7 @@
                          materialDesign:BottomDashedLineAdorner.Brush="#0F52BA"
                          ></TextBox>
                 <TextBox Grid.Row="2"
-                         Name="Author"
+                         Name="name"
                          Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
                          Text="Phạm Minh Tân"
                          FontFamily="Roboto"
@@ -109,7 +116,7 @@
                          materialDesign:BottomDashedLineAdorner.Brush="#0F52BA"
                          ></TextBox>
                 <TextBox Grid.Row="3"
-                         Name="Address"
+                         Name="address"
                          Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
                          Text="KTX khu B"
                          FontFamily="Roboto"
@@ -131,6 +138,7 @@
                                VerticalAlignment="Center"></TextBlock>
                     <TextBox Grid.Column="1"
                                Text=""
+                             Name="phone"
                                FontFamily="Roboto"
                                FontSize="30"
                                FontWeight="Regular"
@@ -151,6 +159,7 @@
                              VerticalAlignment="Center"
                                FontFamily="Roboto"
                                FontSize="30"
+                            Name="email"
                                FontWeight="Regular"></TextBox>
                 </Grid>
                 

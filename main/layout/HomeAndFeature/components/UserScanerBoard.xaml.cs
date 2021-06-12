@@ -27,10 +27,6 @@ namespace main.layout.HomeAndFeature.components
             this.DataContext = new UserScanerBoardViewModel();
         }
 
-        private void btnFullInfor_Click(object sender, RoutedEventArgs e)
-        {
-            //ReturnFullInfor returnFullInfor = new ReturnFullInfor();
-            //returnFullInfor.Show();
-        }
+      
     }
 }

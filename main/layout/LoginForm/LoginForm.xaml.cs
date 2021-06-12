@@ -28,7 +28,6 @@ namespace main.layout.LoginForm
             InitializeComponent();
             LoginBoard.loginSuccess += LoginBoard_loginSuccess;
 
-
         }
 
         private void LoginBoard_loginSuccess()

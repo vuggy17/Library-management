@@ -1,4 +1,6 @@
-﻿using System;
+﻿using main.controller;
+using main.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,16 +23,51 @@ namespace main.layout.HomeAndFeature.components
     public partial class ChangePasswordBoard : Window
     {
         public static event ToggleFormDialogNotifyHandler ToggleForm;
+        Staff currentStaff = CurrentStaff.getIntance();
         public ChangePasswordBoard()
         {
             InitializeComponent();
             ToggleForm();
         }
-
+        private bool checkPass()
+        {
+            if(pass.Password == currentStaff.password)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Wrong password!!!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }            
+        }
+       private bool checkConfrimPass()
+        {
+            if(newPass.Password.Length <8)
+            {
+                MessageBox.Show("Password is atleast 8 character", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            if(newPass.Password == newPassConfirm.Password)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Confrim not the same!!!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            ToggleForm();
+            if(checkPass() && checkConfrimPass())
+            {
+                currentStaff.password = newPass.Password;
+
+                this.Close();
+                ToggleForm();
+            }
+            
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
