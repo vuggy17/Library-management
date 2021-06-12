@@ -191,8 +191,7 @@ namespace main.model
         public bool resetPassword() { return true; }
         public bool changeInfo(Person input)
         {
-            this.info.modifyInfo(input);
-            Console.WriteLine(this.info.name);
+            this.info.modifyInfo(input);          
             return true;
         }
         #endregion

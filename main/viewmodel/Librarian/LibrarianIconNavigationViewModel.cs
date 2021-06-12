@@ -1,4 +1,5 @@
-﻿using main.model;
+﻿using main.layout.HomeAndFeature.components;
+using main.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace main.viewmodel.features
         {
             openLibrarianBar = new RelayCommand<object>((p) => { return true; }, (p) => { updatebar();});
            
-        }
+        }       
     }
     
 }

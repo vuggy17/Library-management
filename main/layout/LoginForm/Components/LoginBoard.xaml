@@ -47,6 +47,7 @@
                        Padding="60,0,0,0"></TextBlock>
             <TextBox Grid.Row="3"
                      Height="90"
+                     x:Name="email"
                      Width="525"
                      FontSize="24"
                      FontFamily="Roboto"
@@ -54,20 +55,21 @@
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
             <PasswordBox Grid.Row="4"
                      Height="90"
+                         x:Name="password"
                      Width="525"
                      materialDesign:HintAssist.Hint="Password"
                      FontSize="24"
                      Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"></PasswordBox>
+            <TextBlock x:Name="error" Grid.Row="6" FontSize="30" Foreground="Red" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Error"></TextBlock>
             <Button Grid.Row="5"
-                    Content="Login"
-                    Command='{Binding loginCommand}'
+                    Content="Login"                  
                     FontFamily="Roboto"
                     Foreground="White"
                     FontSize="20"
                     Height="70"
                     Width="411"
                     Background="#00A2FF"
-                    Style="{DynamicResource RoundedButtonStyle}">
+                    Style="{DynamicResource RoundedButtonStyle}" Click="Button_Click">
             </Button>
             <TextBlock Text="Forgot password? Please contact with your manager"
                        Grid.Row="6"

@@ -29,18 +29,31 @@ using main.viewmodel;
 using main.layout.Book.Forms;
 using main.controller;
 using main.layout.member.forms;
+using main.viewmodel.features;
 
 namespace main
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
+  
     public partial class MainWindow : Window
     {
         HomeNavigationViewModel homePageViewModel = new HomeNavigationViewModel();
+
+        
         public MainWindow()
         {
             InitializeComponent();
+            LoginForm login = new LoginForm();            
+            login.ShowDialog();
+            if (login.DialogResult == true)
+            {
+               //load du lieu ve
+            };
+
             HomePage.DataContext = homePageViewModel;
             RenewForm.ToggleForm += ToggleForm;
             ReturnBookForm.ToggleForm += ToggleForm;
@@ -61,10 +74,28 @@ namespace main
             AddSuccess.ToggleForm += ToggleForm;
             EditForm.ToggleForm += ToggleForm;
 
+            LibrarianEdit.ToggleForm += ToggleForm;
+
+            LibrarianIconNavigationViewModel.updatebar += LibrarianIconNavigationViewModel_updatebar;
+
+
 
             HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;
             this.DataContext = new MemberViewModel();
         }
+
+        private void LibrarianIconNavigationViewModel_updatebar()
+        {
+           if(libradianBar.Visibility == Visibility.Visible)
+            {
+                libradianBar.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                libradianBar.Visibility = Visibility.Visible;
+            }
+        }
+
         private void HomeNavigationViewModel_ChangePage(string page)
         {
             switch (page)

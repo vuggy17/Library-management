@@ -9,45 +9,50 @@ namespace main.model
     class Staff:Account
     {
         #region properties
-        #region id
-        //dung dung vo :v
-        //private int _id;
-
-        //public int id
-        //{
-        //    get { return _id; }
-        //    set { _id = value; }
-        //}
-        //private int _info;
-
-        //public int info
-        //{
-        //    get { return _info; }
-        //    set { _info = value; }
-        //} 
+        #region id 
         #endregion
-        private Account _account;
 
-        public Account account
+        private int _id;
+
+        public int id
         {
-            get { return _account; }
-            set { _account = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
-        private bool _idAdmin;
+        private string _password;
 
-        public bool isAdmin
+        public string password
         {
-            get { return _idAdmin; }
-            set { _idAdmin = value; }
+            get => _password;
+            set => _password = value;
         }
+        private Person _info;
+        public Person info
+        {
+            get { return _info; }
+            set { _info = value; }
+        }        
         #endregion
 
         #region method
-        public Staff(bool isAdmin, Account accountInfo)
+        public Staff(Person accountInfo, int id, string password)
         {
-            this.account = accountInfo;
-            this.isAdmin = isAdmin;
+            if(accountInfo != null)
+            {
+                this.info = accountInfo;
+            }
+            this.id = id;
+            this.password = password;           
+        }
+        public Staff()
+        {
+
+        }
+        public bool ChangeInfo(Person input)
+        {
+            this.info.modifyInfo(input);
+            return true;
         }
         public bool addMember() { return true; }
         public bool deleteMember() { return true; }

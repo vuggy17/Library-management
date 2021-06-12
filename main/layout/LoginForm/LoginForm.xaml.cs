@@ -1,4 +1,5 @@
 ﻿using main.layout.Book;
+using main.layout.LoginForm.Components;
 using main.viewmodel.features;
 using System;
 using System.Collections.Generic;
@@ -21,18 +22,28 @@ namespace main.layout.LoginForm
     /// </summary>
     public partial class LoginForm : Window
     {
+        
         public LoginForm()
         {
             InitializeComponent();
-            LoginViewModel.login += LoginViewModel_login;
+            LoginBoard.loginSuccess += LoginBoard_loginSuccess;
+
+
         }
 
-        private void LoginViewModel_login()
+        private void LoginBoard_loginSuccess()
         {
-            // Check account here
-            //BooksForm booksForm = new BooksForm();
-            //booksForm.Show();
+            this.DialogResult = true;
             this.Close();
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            if(this.DialogResult != true)
+            {
+                Application.Current.Shutdown();
+            }
+            
         }
     }
 }

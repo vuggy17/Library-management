@@ -119,6 +119,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>cnpmDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="controller\CurrentStaff.cs" />
     <Compile Include="layout\Book\BooksPage.xaml.cs">
       <DependentUpon>BooksPage.xaml</DependentUpon>
     </Compile>
@@ -152,7 +153,7 @@
     <Compile Include="viewmodel\Books\BookPageViewModel.cs" />
     <Compile Include="viewmodel\Books\DeleteBookViewModel.cs" />
     <Compile Include="viewmodel\Books\EditBookViewModel.cs" />
-    <Compile Include="viewmodel\features\LibrarianIconNavigationViewModel.cs" />
+    <Compile Include="viewmodel\Librarian\LibrarianIconNavigationViewModel.cs" />
     <Compile Include="controller\CurrentMember.cs" />
     <Compile Include="layout\HomeAndFeature\form\CheckOutConfirm.xaml.cs">
       <DependentUpon>CheckOutConfirm.xaml</DependentUpon>
@@ -169,7 +170,6 @@
     <Compile Include="model\BookToReserve.cs" />
     <Compile Include="model\BookToShow.cs" />
     <Compile Include="viewmodel\features\CheckOutBookViewModel.cs" />
-    <Compile Include="viewmodel\features\LoginViewModel.cs" />
     <Compile Include="viewmodel\features\LogoutViewModel.cs" />
     <Compile Include="viewmodel\features\SearchByIdTitleAuthorViewModel.cs" />
     <Compile Include="viewmodel\features\RenewBookViewModel.cs" />
@@ -222,10 +222,10 @@
     <Compile Include="layout\HomeAndFeature\components\ChangePasswordBoard.xaml.cs">
       <DependentUpon>ChangePasswordBoard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="layout\HomeAndFeature\components\LibrarianBar.xaml.cs">
+    <Compile Include="layout\LibrarianLayout\LibrarianBar.xaml.cs">
       <DependentUpon>LibrarianBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="layout\HomeAndFeature\components\LibrarianEdit.xaml.cs">
+    <Compile Include="layout\LibrarianLayout\LibrarianEdit.xaml.cs">
       <DependentUpon>LibrarianEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\HomeAndFeature\form\ReturnFullInfor.xaml.cs">
@@ -277,15 +277,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\HomeAndFeature\components\LibrarianBar.xaml">
+    <Page Include="layout\LibrarianLayout\LibrarianBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\HomeAndFeature\components\LibrarianEdit.xaml">
+    <Page Include="layout\LibrarianLayout\LibrarianEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="layout\HomeAndFeature\components\LibrarianIcon.xaml">
+    <Page Include="layout\LibrarianLayout\LibrarianIcon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -422,7 +422,7 @@
     <Compile Include="layout\HomeAndFeature\components\HomeNavigationBar.xaml.cs">
       <DependentUpon>HomeNavigationBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="layout\HomeAndFeature\components\LibrarianIcon.xaml.cs">
+    <Compile Include="layout\LibrarianLayout\LibrarianIcon.xaml.cs">
       <DependentUpon>LibrarianIcon.xaml</DependentUpon>
     </Compile>
     <Compile Include="layout\HomeAndFeature\components\ReseviceBook.xaml.cs">

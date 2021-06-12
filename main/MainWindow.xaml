@@ -53,6 +53,8 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <components:LibrarianIcon Margin="20"/>
+            
         </Grid>
+        <components:LibrarianBar x:Name="libradianBar" Visibility="Hidden" Grid.Column="1" Height="225" Width="385" Grid.ColumnSpan="2" Margin="910,145,80,705" ></components:LibrarianBar>
     </Grid>
 </Window>
