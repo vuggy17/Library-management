@@ -31,6 +31,10 @@ namespace main.layout.HomeAndFeature.components
             
             DataContext = new ReturnFullInforViewModel(targerAccount);
             ToggleForm();
+            if(targerAccount.status == model.enums.AccountStatus.BLACKLISTED)
+            {
+                blackListCheck.IsChecked = true;
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -39,13 +43,6 @@ namespace main.layout.HomeAndFeature.components
             ToggleForm();
         }
 
-        private void btnChangeImage_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
-            var result = openFileDialog.ShowDialog();
-            if (result == false) return;
-            imgAvatar.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-        }
+       
     }
 }

@@ -38,9 +38,11 @@ namespace main.layout.member.forms
             {
                 if (IsValidEmail(tbEmail.Text) && isVietnamesePhoneNumber(tbPhone.Text) && isValidName(tbName.Text))
                 {
-                    int updateAccountID = int.Parse(lbId.Content.ToString());
-                    Account newAccountToUpdate = new Account(tbName.Text, tbAddress.Text, tbEmail.Text, tbPhone.Text,updateAccountID , model.enums.AccountStatus.ACTIVE, data.findMemberByID(updateAccountID).DOMemberShip, 0);
-                    if (data.updateMember(newAccountToUpdate) != null)
+                    int updateAccountID = int.Parse(lbId.Content.ToString());                   
+                    Person newInfo = new Person(tbName.Text, tbAddress.Text, tbEmail.Text, tbPhone.Text);
+                    Account updateAccount= data.findMemberByID(updateAccountID);
+                    newInfo.id = updateAccount.info.id;
+                    if (data.updateMemberInfo(newInfo) != null)
                     {
                         MessageBox.Show("Update Success", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                     }

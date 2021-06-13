@@ -11,13 +11,13 @@ namespace main.model
     {
         #region properties
         // dung dung vo :v
-        //private int _id;
+        private int _id;
 
-        //public int id
-        //{
-        //    get { return id; }
-        //    set { id = value; }
-        //}
+        public int id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
         private string _name;
 
         public string name
@@ -38,10 +38,8 @@ namespace main.model
         public string email
         {
             get { return _email; }
-            set { 
-                if(validateEmail(value))
-                    _email = value; 
-                //else thow err
+            set {
+                _email = value;
             }
         }
         private string _phone;
@@ -60,6 +58,11 @@ namespace main.model
             this.email = email;
             this.phone = phone;
         }
+        public Person buildWithID(int id)
+        {
+            this.id = id;
+            return this;
+        }
         public Person(Person source)
         {
             this.address = source.address;
@@ -75,12 +78,7 @@ namespace main.model
         }
 
         #region input check
-        public bool validateEmail(string email)
-        {
-            
-            var regex = new Regex(@"^((\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)\s*[;]{0,1}\s*)+$");
-            return regex.Match(email).Success;
-        }
+        
         #endregion
 
         //test region

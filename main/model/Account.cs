@@ -69,17 +69,21 @@ namespace main.model
 
         #region method
         public Account() { }
-        public Account(string name, string address, string email, string phone, int accountId, AccountStatus accountStatus, DateTime DOMemberShip, int totalBookLoan)
+        public Account(string name, string address, string email, string phone, AccountStatus accountStatus, DateTime DOMemberShip, int totalBookLoan)
         {
             lendingBookItems = new List<BookItem>();
             reserveBookItems = new List<BookItem>();
             this.info = new Person(name, address, email, phone);
-            this.id = accountId;
+            
            
             this.status = accountStatus;
             this.DOMemberShip = DOMemberShip;           
         }
-
+        public Account buildWithId(int id)
+        {
+            this.id = id;
+            return this;
+        }
         public int getTotalOverDueBook()
         {
             int count = 0;

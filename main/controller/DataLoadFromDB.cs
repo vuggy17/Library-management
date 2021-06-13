@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace main.controller
 {
@@ -34,49 +36,110 @@ namespace main.controller
         }
         public void addNewBookItem(BookItem bookItem)
         {
-            bookItems.Add(bookItem);
-            //xử lý db
+            if(db.addBookItem(bookItem) == true)
+            {
+                bookItems.Add(bookItem);
+            }
+            else
+            {
+                MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }           
+           
         }
         public void addNewBook(Book book)
-        {
-            books.Add(book);
-            //xử lý db
+        {            
+            book.buildWithID(db.addBook(book));
+            if(book.id != -1)
+            {
+                books.Add(book);
+            }
+            else
+            {
+                MessageBox.Show("System error, please wait a minute then try again","Error",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
         }
         public void addNewMember(Account member)
         {
-            members.Add(member);
-            //xử lý db
+            member.id=db.addNewAccount(member);
+            if(member.id != -1)
+            {
+                members.Add(member);
+            }
+            else
+            {
+                MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+
         }
         public void deleteBook(Book book)
-        {
-            books.Remove(book);
+        {            
             foreach (var bookItem in book.getAllBookItems())
             {
                 deleteBookItems(bookItem);
             }
-            //xử lý db
+            if (db.dropBook(book))
+            {
+                books.Remove(book);
+            }
+            else
+            {
+                MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
         public void deleteBookItems(BookItem bookItem)
         {
-            bookItems.Remove(bookItem);
-            //xử lý db
+            if (db.dropBookItem(bookItem))
+            {
+                bookItems.Remove(bookItem);
+            }
+            else
+            {
+                MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+
         }
         public void deleteMember(Account member)
         {
-            members.Remove(member);
-            //xử lý db
+            if (db.dropAccount(member))
+            {
+                
+                if (db.dropPerson(member.info))
+                {
+                    members.Remove(member);
+                }
+                else
+                {
+                    MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
+            
         }
+
         public void updateBook(Book value)
         {
             for( int i=0; i< books.Count; i++)
             {
                 if(books[i].id == value.id)
                 {
-                    books[i] = value;
+                    if (db.updateBook(value))
+                    {
+                        books[i] = value;
+                    }
+                    else
+                    {
+                        MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }                   
                    
                 }
-            }
-            //xử lý db
+            }            
         }
         public Account findMemberByID(int id)
         {
@@ -96,24 +159,61 @@ namespace main.controller
             {
                 if (members[i].id == value.id)
                 {
-                    members[i] = value;
-                    return members[i];
+                    if (db.updateAccount(value))
+                    {
+                        members[i] = value;
+                        return members[i];
+                    }
+                    else
+                    {
+                        MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                 }
             }
             return null;
-            //xử lý db
+           
         }
+        public Account updateMemberInfo(Person value)
+        {
+            for (int i = 0; i < members.Count; i++)
+            {
+                if (members[i].info.id == value.id)
+                {                  
+                    if (db.updateInfo(value))
+                    {
+                        members[i].info = value;
+                        return members[i];
+                    }
+                    else
+                    {
+                        MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+            return null;
+
+        }
+
         public BookItem updateBookItem(BookItem value)
         {
             for (int i = 0; i < bookItems.Count; i++)
             {
                 if (bookItems[i].id == value.id)
                 {
-                    bookItems[i] = value;
-                    return bookItems[i];
+                    if (db.updateBookItem(value))
+                    {
+                        bookItems[i] = value;
+                        return bookItems[i];
+                    }
+                    else
+                    {
+                        MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
                 }
             }
-            return null;
+            return null;            
         }
 
         public List<Book> getBooks()

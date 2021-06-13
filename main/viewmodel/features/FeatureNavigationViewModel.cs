@@ -1,4 +1,5 @@
-﻿using System;
+﻿using main.controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,22 @@ namespace main.model.features
         public FeatureNavigationViewModel()
         {        
             
-            ReturnBook = new RelayCommand<object>((p) => { return true; }, (p) => { ChangePage("ReturnBook"); });
-            RenewBook = new RelayCommand<object>((p) => { return true; }, (p) => { ChangePage("RenewBook"); });
-            ReserveBook = new RelayCommand<object>((p) => { return true; }, (p) => { ChangePage("ReserveBook"); });
-            CheckOutBook = new RelayCommand<object>((p) => { return true; }, (p) => { ChangePage("CheckOutBook"); });            
+            ReturnBook = new RelayCommand<object>((p) => { return true; }, (p) => { ChangePage("ReturnBook");  });
+            RenewBook = new RelayCommand<object>((p) => { return true; }, (p) => { if (!checkBlaskList()) { ChangePage("RenewBook"); } });
+            ReserveBook = new RelayCommand<object>((p) => { return true; }, (p) => { if (!checkBlaskList()) { ChangePage("ReserveBook"); } });
+            CheckOutBook = new RelayCommand<object>((p) => { return true; }, (p) => { if (!checkBlaskList()) { ChangePage("CheckOutBook"); } });            
+        }
+        private bool checkBlaskList()
+        {
+            if(CurrentMember.getInstance().GetAccount().status == enums.AccountStatus.BLACKLISTED)
+            {
+                MessageBox.Show("Blacklist member can only return book!","Warning",MessageBoxButton.OK,MessageBoxImage.Warning);
+                return true;
+            }
+            else
+            {                
+                return false;
+            }
         }
      
     }

@@ -27,6 +27,10 @@ namespace main.layout.HomeAndFeature.components
             this.DataContext = new UserScanerBoardViewModel();
         }
 
-      
+
+        private void searchBar_LostFocus(object sender, RoutedEventArgs e)
+        {
+            searchBar.Text = "";
+        }
     }
 }

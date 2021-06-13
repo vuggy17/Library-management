@@ -26,9 +26,8 @@ namespace main.model.form
             Address = account.info.address;
             Phone = account.info.phone;
             Email = account.info.email;
-            BorrowedBook = account.totalBookLoan.ToString();
-            //fake data OverDue
-            OverDue = 2.ToString();
+            BorrowedBook = account.totalBookLoan.ToString();            
+            OverDue = account.TotalOverDueBook.ToString();
             if(account.status == AccountStatus.BLACKLISTED)
             {
                 BlackList = true;

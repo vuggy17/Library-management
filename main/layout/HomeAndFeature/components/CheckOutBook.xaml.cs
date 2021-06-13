@@ -27,5 +27,10 @@ namespace main.layout.HomeAndFeature.components
             InitializeComponent();
             this.DataContext = new CheckOutBookViewModel();
         }
+
+        private void seachBar_LostFocus(object sender, RoutedEventArgs e)
+        {
+            seachBar.Text = "";
+        }
     }
 }

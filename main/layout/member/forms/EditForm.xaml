@@ -148,12 +148,7 @@ Text="{Binding SelectedItem.email, Mode=OneWay}"
                     </DockPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
-                        <TextBlock Text="Blacklisted" FontSize="22" Margin="0,0,12,0"/>
-                        <CheckBox x:Name="MemberInfo_checkbox" IsEnabled="False" IsChecked="False" >
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2" />
-                            </CheckBox.LayoutTransform>
-                        </CheckBox>
+                        
                     </StackPanel>
 
                     <DockPanel LastChildFill="False" Margin="35,50,12,0">

@@ -82,14 +82,18 @@ namespace main.model
             this.pubDate = book.pubDate;
         }
         #region method
-        public Book(int id, string title, string author, DateTime pubDate, double price) {
+        public Book(string title, string author, DateTime pubDate, double price) {
 
-            this.price = price;
-            this.id = id;           
+            this.price = price;                
             this.author = author;
             this.title = title;
             this.subject = subject;
             this.pubDate = pubDate;
+        }
+        public Book buildWithID(int id)
+        {
+            this.id = id;
+            return this;
         }
         DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
         private int getTotalCopies(int id)

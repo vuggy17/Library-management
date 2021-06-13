@@ -24,6 +24,8 @@
                         <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox Margin="50,20,0,0" 
+                             x:Name="seachBar"
+                             LostFocus="seachBar_LostFocus"
                              FontSize="25"
                              FontFamily="Roboto"                                                   
                              BorderThickness="1.2"

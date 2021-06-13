@@ -73,7 +73,7 @@ namespace main.viewmodel.form
         }
         private void addItemToListBook(Book book)
         {
-            int id = book.id;
+            int id = book.id*1000;
             for (int i = 0; i < NumOfCopy; i++)
             {
                 id++;

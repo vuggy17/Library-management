@@ -125,6 +125,11 @@ namespace main.model.features
                 OnPropertyChanged("SearchKeyword");                
                 if (searchUserById(searchKeyword)) {
                     updateUI();
+                    if(TargetAccount.status == AccountStatus.BLACKLISTED)
+                    {
+                        MessageBox.Show("This is blacklist member!!", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    
                 }
             }
         }
@@ -144,7 +149,6 @@ namespace main.model.features
         private void updateUI()
         {
             Name = TargetAccount.info.name;
-
             OnPropertyChanged("Name");
             ID = "ID: " + TargetAccount.id.ToString();
             OnPropertyChanged("ID");
@@ -153,8 +157,7 @@ namespace main.model.features
             OverDue = "Over due: " + TargetAccount.TotalOverDueBook.ToString();
             OnPropertyChanged("OverDue");
 
-            //Lấy image user and set here
-            searchKeyword = "";
+            //Lấy image user and set here           
             UserView = true;
             TargetAccount.loadLendingBookItems();
             TargetAccount.loadReservedBookItem();

@@ -39,10 +39,9 @@ namespace main.layout.member.forms
             if(tbName.Text != "" && tbAddress.Text!="" && tbEmail.Text!=""&&tbPhone.Text != "")
             {
                 if (IsValidEmail(tbEmail.Text) && isVietnamesePhoneNumber(tbPhone.Text) && isValidName(tbName.Text))
-                {
-                    int ranID = 1234;
+                {                    
                     DateTime date = DateTime.Now;
-                    Account newAccountToAdd = new Account(tbName.Text, tbAddress.Text, tbEmail.Text, tbPhone.Text, ranID, model.enums.AccountStatus.ACTIVE, date, 0);
+                    Account newAccountToAdd = new Account(tbName.Text, tbAddress.Text, tbEmail.Text, tbPhone.Text, model.enums.AccountStatus.ACTIVE, date, 0);
                     data.addNewMember(newAccountToAdd);
                     updateMember();                   
                     AddSuccess addSuccess = new AddSuccess(newAccountToAdd.id);

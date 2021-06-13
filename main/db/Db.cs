@@ -32,11 +32,13 @@ namespace main
             try
             {
                 connection = new MySqlConnection(connectionString);
-                connection.Open();
+                connection.Open();           
 
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = command;
                 reader = cmd.ExecuteReader();
+                
+                
             }
             catch (Exception ex)
             {
@@ -54,17 +56,17 @@ namespace main
 
         public Person getInfoByAccountID(int PersonId)
         {
-            string command = "select * from PERSON where ID = "+PersonId.ToString();
+            string command = "select * from PERSON where ID = " + PersonId.ToString();
             var reader = executeCommand(command);
             while (reader.Read())
             {
-                return new Person(reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString());
+                return new Person(reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString()).buildWithID((int)reader[0]);
             }
             closeConnection();
             return null;
-            
+
         }
-        private model.enums.AccountStatus castTypeAccount(string value )
+        private model.enums.AccountStatus castTypeAccount(string value)
         {
             switch (value)
             {
@@ -103,13 +105,15 @@ namespace main
             var reader = executeCommand(command);
             while (reader.Read())
             {
-                
+
                 Person info = getInfoByAccountID((int)reader[2]);
-                if(info != null)
+                if (info != null)
                 {
-                    accounts.Add(new Account(info.name, info.address, info.email, info.phone, (int)reader[0], castTypeAccount(reader[1].ToString()), (DateTime)reader[3], (int)reader[4]));
+                    Account account = new Account(info.name, info.address, info.email, info.phone, castTypeAccount(reader[1].ToString()), (DateTime)reader[3], (int)reader[4]).buildWithId((int)reader[0]);
+                    account.info.id = info.id;
+                    accounts.Add(account);
                 }
-                
+
             }
             closeConnection();
             return accounts;
@@ -139,7 +143,8 @@ namespace main
             var reader = executeCommand(command);
             while (reader.Read())
             {
-                books.Add(new Book((int)reader[0], reader[1].ToString(), reader[2].ToString(), (DateTime)reader[3], (double)reader[4]));
+               
+                books.Add(new Book(reader[1].ToString(), reader[2].ToString(), (DateTime)reader[3], (double)reader[4]).buildWithID((int)reader[0]));
             }
             closeConnection();
             return books;
@@ -151,7 +156,7 @@ namespace main
             var reader = executeCommand(command);
             while (reader.Read())
             {
-                if(reader[3].GetType()!=typeof(DBNull))
+                if (reader[3].GetType() != typeof(DBNull))
                 {
                     DateTime dateTime = (DateTime)reader[3];
                     bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString()), dateTime));
@@ -159,10 +164,182 @@ namespace main
                 else
                 {
                     bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString()), null));
-                }                
+                }
             }
             closeConnection();
             return bookItems;
+        }
+        public int addBook(Book book)
+        {
+            int lastInsertID = -1;
+            string command = $"INSERT INTO `BOOK`( `TITLE`, `AUTHOR`, `PUBDATE`, `PRICE`) VALUES ('{book.title}','{book.author}','{book.pubDate.Year}-{book.pubDate.Month}-{book.pubDate.Day}','{book.price}')";
+            try
+            {
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand(command, connection);
+                cmd.ExecuteNonQuery();
+                lastInsertID = int.Parse(cmd.LastInsertedId.ToString());
+                connection.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }            
+            return lastInsertID;            
+        }
+        public bool addBookItem(BookItem bookItem)
+        {
+            string command = $"INSERT INTO `BOOKITEM`(`ID`,`STATUS`, `BOOKINFO`) VALUES ('{bookItem.id}','{bookItem.lendingStatus}','{bookItem.info}')";
+            var reader = executeCommand(command);
+            if(reader != null)
+            {
+                closeConnection();
+                return true;
+            }
+            else
+            {
+                closeConnection();
+                return false;
+            }
+            
+        }
+        private int addNewPersonInfo(Person info)
+        {
+            int lastInsertID = -1;
+            string command = $"INSERT INTO `PERSON`(`NAME`, `ADDRESS`, `EMAIL`, `PHONE`) VALUES ('{info.name}','{info.address}','{info.email}','{info.phone}')";
+            try
+            {
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand(command, connection);
+                cmd.ExecuteNonQuery();
+                lastInsertID = int.Parse(cmd.LastInsertedId.ToString());
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            return lastInsertID;
+        }
+        public int addNewAccount(Account account)
+        {
+            int lastInsertID = -1;
+            int infoId = addNewPersonInfo(account.info);
+            account.info.id = infoId;
+            string command = $"INSERT INTO `ACCOUNT`(`STATUS`, `PERSON`, `TOTALBOOKCHECKOUT`) VALUES ('{account.status}','{infoId}','{account.totalBookLoan}')";
+            try
+            {
+                connection = new MySqlConnection(connectionString);
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand(command, connection);
+                cmd.ExecuteNonQuery();
+                lastInsertID = int.Parse(cmd.LastInsertedId.ToString());                
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            return lastInsertID;
+        }
+       public bool dropBook(Book book)
+       {
+            bool result = false;
+            string command = $"DELETE FROM `BOOK` WHERE ID = {book.id}";
+            var reader = executeCommand(command);
+            if (reader != null)
+            {
+                result = true;
+            }
+            return result;
+        }
+        public bool dropBookItem(BookItem bookItem)
+        {
+            bool result = false;
+            string command = $"DELETE FROM `BOOKITEM` WHERE ID = {bookItem.id}";
+            var reader = executeCommand(command);
+            if(reader != null)
+            {
+                result = true;
+            }
+            return result;
+        }
+        public bool dropAccount(Account account)
+        {
+            bool result = false;
+            string command = $"DELETE FROM `ACCOUNT` WHERE ID = {account.id}";
+            var reader = executeCommand(command);
+            if (reader != null)
+            {
+                result = true;
+            }
+            return result;
+        }
+        public bool dropPerson(Person person)
+        {
+            bool result = false;
+            string command = $"DELETE FROM `PERSON` WHERE ID = {person.id}";
+            var reader = executeCommand(command);
+            if (reader != null)
+            {
+                result = true;
+            }
+            return result;
+        }
+       public bool updateBook(Book book)
+        {
+            bool result = false;
+            string command = $"UPDATE `BOOK` SET `TITLE`='{book.title}',`AUTHOR`='{book.author}',`PUBDATE`='{book.pubDate.Year}-{book.pubDate.Month}-{book.pubDate.Day}',`PRICE`='{book.price}' WHERE ID = '{book.id}'";
+            var reader = executeCommand(command);
+            if (reader != null)
+            {
+                result = true;
+            }
+            return result;
+        }
+        public bool updateBookItem(BookItem bookItem)
+        {
+            bool result = false;
+            string command = "";
+            if(bookItem.dueDate != null)
+            {
+                DateTime dateTime = (DateTime)bookItem.dueDate;
+                command = $"UPDATE `BOOKITEM` SET `STATUS`='{bookItem.lendingStatus}',`DUEDATE`='{dateTime.Year}-{dateTime.Month}-{dateTime.Day}' WHERE ID = '{bookItem.id}'";
+            }
+            else
+            {
+                command = $"UPDATE `BOOKITEM` SET `STATUS`='{bookItem.lendingStatus}',`DUEDATE`='NULL' WHERE ID = '{bookItem.id}'";
+            }            
+            var reader = executeCommand(command);
+            if (reader != null)
+            {
+                result = true;
+            }
+            return result;
+        }
+        public bool updateInfo(Person info)
+        {
+            bool result = false;
+            string command = $"UPDATE `PERSON` SET `NAME`='{info.name}',`ADDRESS`='{info.address}',`EMAIL`='{info.email}',`PHONE`='{info.phone}' WHERE ID = '{info.id}'";
+            var reader = executeCommand(command);
+            if (reader != null)
+            {
+                result = true;
+            }
+            return result;
+        }
+        public bool updateAccount(Account account)
+        {
+            bool result = false;
+            string command = $"UPDATE `ACCOUNT` SET `STATUS`='{account.status}',`TOTALBOOKCHECKOUT`='{account.totalBookLoan}' WHERE ID ='{account.id}'";
+            var reader = executeCommand(command);
+            if (reader != null)
+            {
+                result = true;
+            }
+            return result;
         }
     }
 }

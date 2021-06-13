@@ -15,7 +15,9 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBox    Margin="50 20 70 0"
+                            LostFocus="searchBar_LostFocus"
                             FontSize="25"
+                            Name="searchBar"
                             FontFamily="Roboto"                                                   
                             BorderThickness="1.2"
                             VerticalContentAlignment="Center"                           
