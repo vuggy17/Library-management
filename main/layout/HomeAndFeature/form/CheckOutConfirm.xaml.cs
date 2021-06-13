@@ -57,6 +57,7 @@ namespace main.layout.HomeAndFeature.form
                 if (dataLoadFromDB.updateBookItem(bookItem) != null)
                 {
                     account.addNewBookToLendingList(bookItem);
+                    
                     account.removeBookToReserveBookList(bookItem);
                     checkOutUpdateBook();
                     checkOutUpdateMember();

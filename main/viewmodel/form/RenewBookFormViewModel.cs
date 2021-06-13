@@ -20,12 +20,12 @@ namespace main.viewmodel.form
             ConfirmBooks = new ObservableCollection<BookToShow>();            
             this.ConfirmBooks = confirmBooks;
             foreach (var book in ConfirmBooks)
-            {
+            {                
                 if (book._dueDate != null)
                 {
                     DateTime dateTime = (DateTime)book._dueDate;
-                    dateTime.AddDays(10);
-                    book._dueDate = dateTime;
+                    book._dueDate = dateTime.AddDays(10);
+                   
                 }
                
             }

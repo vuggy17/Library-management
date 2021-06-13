@@ -29,6 +29,10 @@ namespace main.model.features
         }
         private bool checkBlaskList()
         {
+            if(CurrentMember.getInstance().GetAccount() == null)
+            {
+                return false;
+            }
             if(CurrentMember.getInstance().GetAccount().status == enums.AccountStatus.BLACKLISTED)
             {
                 MessageBox.Show("Blacklist member can only return book!","Warning",MessageBoxButton.OK,MessageBoxImage.Warning);

@@ -68,7 +68,7 @@ namespace main.layout.Book.Components
                         for (int i = 0; i < numOfCopies; i++)
                         {
                             autoID += 1;
-                            data.addNewBookItem(new main.model.BookItem(autoID, newBook.id, model.enums.LendingStatus.AVAI, new DateTime()));
+                            data.addNewBookItem(new main.model.BookItem(autoID, newBook.id, model.enums.LendingStatus.AVAI));
                         }
                         AddBookSuccessForm add = new AddBookSuccessForm(newBook);
                         add.Show();

@@ -79,9 +79,7 @@ namespace main.viewmodel.form
                     tempBookItem.lendingStatus = model.enums.LendingStatus.AVAI;
                 }
                 DataLoadFromDB data = DataLoadFromDB.getIntance();
-                data.updateBookItem(tempBookItem);
-
-                
+                data.updateBookItem(tempBookItem);                
             }
             else
             {

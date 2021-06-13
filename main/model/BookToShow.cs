@@ -121,7 +121,8 @@ namespace main.model
         }
         public BookItem toBookItem()
         {
-            return new BookItem(this._id, this.info.id, this._lendingStatusInfo, this._dueDate);
+            
+            return new BookItem(this._id, this.info.id, this._lendingStatusInfo);
         }
         public BookToShow(string id, string name)
         {

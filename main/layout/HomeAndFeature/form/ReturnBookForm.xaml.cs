@@ -60,7 +60,7 @@ namespace main.layout.HomeAndFeature.form
                 bookItem.dueDate = null;
                 if (dataLoadFromDB.updateBookItem(bookItem) != null)
                 {
-                   
+                    
                     returnUpdateBook();
                     returnUpdateMember();
                 }

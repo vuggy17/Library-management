@@ -56,17 +56,20 @@ namespace main.layout.HomeAndFeature.form
         {
             foreach (var book in renewBookList)
             {
-                BookItem bookItem = book.toBookItem();                        
-                if(bookItem.bordate != null)
+                BookItem bookItem = dataLoadFromDB.findBookItemByID(int.Parse(book.Id));
+
+                if (bookItem.dueDate != null)
                 {
                     DateTime dateTime = (DateTime)bookItem.dueDate;
                     bookItem.dueDate = dateTime.AddDays(10);
                     
                 }
                 bookItem.lendingStatus = model.enums.LendingStatus.RENEWED;
+               
                 
                 if (dataLoadFromDB.updateBookItem(bookItem) != null)
-                {                   
+                {
+                    Db.getInstace().updateLendingRenew(CurrentMember.getInstance().GetAccount(),bookItem);
                     returnUpdateBook();
                     returnUpdateMember();
                 }

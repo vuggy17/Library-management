@@ -73,7 +73,7 @@ namespace main.layout.LoginForm.Components
                         {
                             error.Text = "Login success";
                             error.Foreground = Brushes.Green;
-                            CurrentStaff.setCurrentStaff(loginStaff);
+                            CurrentStaff.setCurrentStaff(loginStaff);                           
                             loginSuccess();                           
                             
                         }

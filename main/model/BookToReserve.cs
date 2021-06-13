@@ -110,7 +110,7 @@ namespace main.model
                 bookItems = dataLoadFromDB.getBookItems();
                 foreach(var bookItem in bookItems)
                 {
-                    if(bookItem.info == bookInfo.id && bookItem.lendingStatus != enums.LendingStatus.READY && bookItem.lendingStatus != enums.LendingStatus.RESV)
+                    if(bookItem.info == bookInfo.id && (bookItem.lendingStatus == enums.LendingStatus.LOANED || bookItem.lendingStatus == enums.LendingStatus.RENEWED))
                     {
                         availableCopies++;
                     }

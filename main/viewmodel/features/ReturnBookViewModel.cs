@@ -45,7 +45,7 @@ namespace main.viewmodel.features
         {
             if (account != null)
             {
-                ObservableCollection<BookToShow> bookToShows = new ObservableCollection<BookToShow>();
+                ObservableCollection<BookToShow> bookToShows = new ObservableCollection<BookToShow>();                
                 foreach (var bookItem in account.getLendingBookItems())
                 {
                     bookToShows.Add(new BookToShow(bookItem.id, bookItem.getBookInfor(), (DateTime)bookItem.dueDate, bookItem.lendingStatus));

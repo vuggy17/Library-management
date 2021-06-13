@@ -48,7 +48,7 @@ namespace main.layout.HomeAndFeature.form
             var bookItems = new List<BookItem>();
             foreach (var bookItem in book.getAllBookItems())
             {
-                if(bookItem.lendingStatus != model.enums.LendingStatus.RESV)
+                if(bookItem.lendingStatus == model.enums.LendingStatus.LOANED || bookItem.lendingStatus ==model.enums.LendingStatus.RENEWED)
                 {
                     bookItems.Add(bookItem);
                 }

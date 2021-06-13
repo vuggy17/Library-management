@@ -78,7 +78,7 @@ namespace main.model
             return !_regex.IsMatch(text);
         }
         //this contructor is use for clone book item from db
-        public BookItem(int id, int info, LendingStatus lending,DateTime? dueDate)
+        public BookItem(int id, int info, LendingStatus lending)
         {
             this.id = id;
             this.info = info;
@@ -87,11 +87,14 @@ namespace main.model
             {
                 BookInfo = getBookInfor();
             }
-            if(lending != LendingStatus.AVAI && lending != LendingStatus.LOST)
-            {
-                this.dueDate = dueDate;
-            }
+           
             
+        }
+        public BookItem (int id, DateTime bordate, DateTime dueDate)
+        {
+            this.id = id;
+            this.bordate = bordate;
+            this.dueDate = dueDate;
         }
         DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
         public Book getBookInfor()

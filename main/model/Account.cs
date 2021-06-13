@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using main.controller;
 using main.model.enums;
 
@@ -14,6 +15,7 @@ namespace main.model
         const int MAX_LENDING_DAY = 10;
         const int MAX_BOOK_LOAN = 5;
         private int _id;
+        Db db = Db.getInstace();
 
         public int id
         {
@@ -27,7 +29,11 @@ namespace main.model
         public AccountStatus status
         {
             get { return _status; }
-            set { _status = value; }
+            set 
+            { 
+                _status = value;
+                db.updateAccount(this);
+            }
         }
         // as person in database
         private Person _info;
@@ -50,7 +56,11 @@ namespace main.model
         public int totalBookLoan
         {
             get { return getLendingBookItems().Count; }
-            set { _totalBookLoan = value; }
+            set 
+            {
+                _totalBookLoan = value;
+                db.updateAccount(this);
+            }
         }
 
         
@@ -59,10 +69,12 @@ namespace main.model
         {
             get => getTotalOverDueBook();
         }
-        
+
         private List<BookItem> lendingBookItems;
 
+
         private List<BookItem> reserveBookItems;
+        
 
 
         #endregion
@@ -99,12 +111,22 @@ namespace main.model
         }
         public List<BookItem> getLendingBookItems()
         {
-            updateLendingInfo();
+            loadLendingBookItems();
             return lendingBookItems;
         }
         public void addNewBookToLendingList(BookItem book)
         {
-            lendingBookItems.Add(book);
+            if (db.addNewBookToLendingList(this, book, CurrentStaff.getIntance()))
+            {
+                lendingBookItems.Add(book);
+                db.updateAccount(this);
+            }
+            else
+            {
+                MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+           
+
         }
         public void addNewBookToReservedBookList(BookItem book)
         {
@@ -112,14 +134,24 @@ namespace main.model
         }
         public void removeBookToLendingBookList(BookItem book)
         {
-            foreach(var bookItem in lendingBookItems)
+            if( db.updateLending(this, book))
             {
-                if (bookItem.id == book.id)
+                foreach (var bookItem in lendingBookItems)
                 {
-                    lendingBookItems.Remove(bookItem);
-                    return;
+                    if (bookItem.id == book.id)
+                    {
+                        lendingBookItems.Remove(bookItem);
+                        db.updateAccount(this);
+                        return;
+                    }
                 }
+                
             }
+            else
+            {
+                MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
         private DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
         private void updateLendingInfo()
@@ -187,10 +219,19 @@ namespace main.model
             //Load reserved book item in db
                        
         }
+        
         public void loadLendingBookItems()
         {
-            //Load lending book item
-              
+            List<BookItem> lendingBooksID = db.loadLendingBookList(this);
+            lendingBookItems = new List<BookItem>();
+            foreach (var value in lendingBooksID)
+            {
+                BookItem temp = dataLoadFromDB.findBookItemByID(value.id);
+                temp.bordate = value.bordate;
+                temp.dueDate = value.dueDate;
+                lendingBookItems.Add(temp);    
+                
+            }    
         }
         public bool resetPassword() { return true; }
        

@@ -125,7 +125,6 @@ namespace main
             var reader = executeCommand(command);
             while (reader.Read())
             {
-
                 Person info = getInfoByAccountID((int)reader[1]);
                 if (info != null)
                 {
@@ -156,15 +155,10 @@ namespace main
             var reader = executeCommand(command);
             while (reader.Read())
             {
-                if (reader[3].GetType() != typeof(DBNull))
-                {
-                    DateTime dateTime = (DateTime)reader[3];
-                    bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString()), dateTime));
-                }
-                else
-                {
-                    bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString()), null));
-                }
+
+                   
+                    bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString())));
+
             }
             closeConnection();
             return bookItems;
@@ -253,6 +247,7 @@ namespace main
             {
                 result = true;
             }
+            closeConnection();
             return result;
         }
         public bool dropBookItem(BookItem bookItem)
@@ -264,6 +259,7 @@ namespace main
             {
                 result = true;
             }
+            closeConnection();
             return result;
         }
         public bool dropAccount(Account account)
@@ -275,6 +271,7 @@ namespace main
             {
                 result = true;
             }
+            closeConnection();
             return result;
         }
         public bool dropPerson(Person person)
@@ -286,6 +283,7 @@ namespace main
             {
                 result = true;
             }
+            closeConnection();
             return result;
         }
        public bool updateBook(Book book)
@@ -297,26 +295,19 @@ namespace main
             {
                 result = true;
             }
+            closeConnection();
             return result;
         }
         public bool updateBookItem(BookItem bookItem)
         {
-            bool result = false;
-            string command = "";
-            if(bookItem.dueDate != null)
-            {
-                DateTime dateTime = (DateTime)bookItem.dueDate;
-                command = $"UPDATE `BOOKITEM` SET `STATUS`='{bookItem.lendingStatus}',`DUEDATE`='{dateTime.Year}-{dateTime.Month}-{dateTime.Day}' WHERE ID = '{bookItem.id}'";
-            }
-            else
-            {
-                command = $"UPDATE `BOOKITEM` SET `STATUS`='{bookItem.lendingStatus}',`DUEDATE`='NULL' WHERE ID = '{bookItem.id}'";
-            }            
+            bool result = false;          
+            string command = $"UPDATE `BOOKITEM` SET `STATUS`='{bookItem.lendingStatus}' WHERE ID = '{bookItem.id}'";                 
             var reader = executeCommand(command);
             if (reader != null)
             {
                 result = true;
             }
+            closeConnection();
             return result;
         }
         public bool updateInfo(Person info)
@@ -328,6 +319,7 @@ namespace main
             {
                 result = true;
             }
+            closeConnection();
             return result;
         }
         public bool updateAccount(Account account)
@@ -339,7 +331,73 @@ namespace main
             {
                 result = true;
             }
+            closeConnection();
             return result;
         }
+        public bool addNewBookToLendingList(Account account, BookItem item, Staff staff)
+        {
+            bool result = false;
+            DateTime dateTime = DateTime.Now.AddDays(10);
+            string cmd = $"INSERT INTO `LENDINGDETAIL`(`MEMBER_ID`, `BID`, `DUEDATE`, `STAFF_ID`) VALUES ('{account.id}','{item.id}','{dateTime.Year}-{dateTime.Month}-{dateTime.Day}','{staff.id}')";           
+            var reader = executeCommand(cmd);
+            if (reader != null)
+            {
+                result = true;
+            }
+            closeConnection();
+            return result;
+        }
+        public List<BookItem> loadLendingBookList(Account account)
+        {
+            List<BookItem> lendingBookList = new List<BookItem>();
+            
+            string command = $"select * from `LENDINGDETAIL` where MEMBER_ID = '{account.id}'";
+            var reader = executeCommand(command);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    if(reader[4].GetType() == typeof(DBNull))
+                    {
+                        if (reader[3].GetType() != typeof(DBNull))
+                        {
+
+                            lendingBookList.Add(new BookItem((int)reader[1], (DateTime)reader[2], (DateTime)reader[3]));
+                        }
+                        
+                    }                   
+                    
+                }
+            }
+            closeConnection();
+            return lendingBookList;           
+        }
+        public bool updateLendingRenew(Account account, BookItem item)
+        {
+            bool result = false;
+            DateTime date = (DateTime)item.dueDate;
+            string command = $"UPDATE `LENDINGDETAIL` SET `DUEDATE`='{date.Year}-{date.Month}-{date.Day}' WHERE MEMBER_ID = '{account.id}' and BID = '{item.id}' and RETURNDATE is null";
+            var reader = executeCommand(command);
+            if (reader != null)
+            {
+                result = true;
+            }
+            closeConnection();
+            return result;
+        }
+        public bool updateLending(Account account, BookItem item)
+        {
+            bool result = false;
+            DateTime date = DateTime.Now;
+            string command = $"UPDATE `LENDINGDETAIL` SET `RETURNDATE`='{date.Year}-{date.Month}-{date.Day}' WHERE MEMBER_ID = '{account.id}' and BID = '{item.id}' and RETURNDATE is null";
+            var reader = executeCommand(command);
+            if (reader != null)
+            {
+                result = true;
+            }
+            closeConnection();
+            return result;
+        }
+
     }
 }

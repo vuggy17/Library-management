@@ -48,15 +48,15 @@ namespace main
         {
             InitializeComponent();
 
-           
-            //loginForm login = new loginForm();            
-            //login.ShowDialog();           
-            //if (login.DialogResult == true)
-            //{
-            //    data.getAllMembers();
-            //    data.getBookItems();
-            //    data.getBooks();
-            //};
+
+            loginForm login = new loginForm();
+            login.ShowDialog();
+            if (login.DialogResult == true)
+            {
+                data.getAllMembers();
+                data.getBookItems();
+                data.getBooks();
+            };
             data.getAllMembers();
             data.getBookItems();
             data.getBooks();

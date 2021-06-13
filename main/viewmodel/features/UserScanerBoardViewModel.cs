@@ -159,8 +159,8 @@ namespace main.model.features
 
             //Lấy image user and set here           
             UserView = true;
-            TargetAccount.loadLendingBookItems();
-            TargetAccount.loadReservedBookItem();
+            TargetAccount.getLendingBookItems();
+            TargetAccount.getReservedBookItem();
             updateLedingBookList(TargetAccount);
             reserveBookItems = TargetAccount.getReservedBookItem();
             OnPropertyChanged("haveAvailableBookItem");

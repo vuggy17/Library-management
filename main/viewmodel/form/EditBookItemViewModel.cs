@@ -79,7 +79,7 @@ namespace main.viewmodel.form
                 id++;
                 if (!checkIfIdExist(book, id))
                 {
-                    data.addNewBookItem(new BookItem(id, book.id, model.enums.LendingStatus.AVAI, new DateTime()));
+                    data.addNewBookItem(new BookItem(id, book.id, model.enums.LendingStatus.AVAI));
                     ListBookItems = getBookItemsToShow(book);
                     TotalItems = ListBookItems.Count;
                     OnPropertyChanged("TotalItems");

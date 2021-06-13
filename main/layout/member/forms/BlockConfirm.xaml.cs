@@ -35,7 +35,7 @@ namespace main.layout.member.forms
             model.Account account = data.findMemberByID(int.Parse(ID.Content.ToString()));
             if (account != null)
             {
-                account.status = model.enums.AccountStatus.BLACKLISTED;
+                account.status = model.enums.AccountStatus.BLACKLISTED;                
                 updateMember();
                 this.Close();
                 ToggleForm();

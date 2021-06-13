@@ -151,7 +151,17 @@ namespace main.controller
                 }
             }
             return null;
-
+        }
+        public BookItem findBookItemByID(int id)
+        {
+            foreach (var bookItem in bookItems)
+            {
+                if (bookItem.id == id)
+                {
+                    return bookItem;
+                }
+            }
+            return null;
         }
         public Account updateMember(Account value)
         {
