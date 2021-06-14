@@ -7,6 +7,8 @@ using System.Windows;
 using MySql.Data.MySqlClient;
 using main.model;
 using System.Globalization;
+using System.IO;
+using System.Data.SqlClient;
 
 namespace main
 {
@@ -449,6 +451,63 @@ namespace main
             closeConnection();
             return result;
         }
+        public bool updateHinhAnh(Person person)
+        {
+            bool result = false;
+            string cmd = $"";
+            var reader = executeCommand(cmd);
+            if (reader != null)
+            {
+                result = true;
+            }
+            closeConnection();
+            return result;
+        }
+        public bool updateHinhAnhSach(Book book)
+        {
+            bool result = false;
+            string cmd = $"";
+            var reader = executeCommand(cmd);
+            if (reader != null)
+            {
+                result = true;
+            }
+            closeConnection();
+            return result;
+        }
+        public void insertImageData(Person person, string imageName)
+        {
+            try
+            {
+                if (imageName != "")
+                {
+                    MessageBox.Show(imageName);
+                    //Initialize a file stream to read the image file
+                    FileStream fs = new FileStream(imageName, FileMode.Open, FileAccess.Read);
 
+                    //Initialize a byte array with size of stream
+                    byte[] imgByteArr = new byte[fs.Length];
+
+                    //Read data from the file stream and put into the byte array
+                    fs.Read(imgByteArr, 0, Convert.ToInt32(fs.Length));
+
+                    //Close a file stream
+                    fs.Close();
+                    
+                    string cmd = $"UPDATE `PERSON` SET `IMAGE`='{imgByteArr}' WHERE ID = {person.id}";
+                    var reader = executeCommand(cmd);
+                    if (reader != null)
+                    {
+                        MessageBox.Show("add success");
+                    }
+                    closeConnection();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

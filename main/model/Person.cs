@@ -49,6 +49,11 @@ namespace main.model
             get { return _phone; }
             set { _phone = value; }
         }
+        public string imgSource {
+            get;
+            set;
+        }
+
         #endregion
 
         public Person(string name, string address, string email, string phone)
@@ -61,6 +66,11 @@ namespace main.model
         public Person buildWithID(int id)
         {
             this.id = id;
+            return this;
+        }
+        public Person buildWithImage(string imgSrc)
+        {
+            this.imgSource = imgSrc;
             return this;
         }
         public Person(Person source)

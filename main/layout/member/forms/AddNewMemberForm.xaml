@@ -32,7 +32,8 @@
                         <RowDefinition Height="4.5*"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Image x:Name="imgBookCover"
+                    
+                    <Image x:Name="imgBookCover"                           
                                Source="/main;component/assests/addMember.jpg" 
                                Grid.Row="0"
                                Grid.RowSpan="2"
@@ -48,7 +49,7 @@
                                 FontSize="45"
                                 FontWeight="Bold"
                                 FontFamily="Roboto"
-                                Opacity="0.7">
+                                Opacity="0.7" Click="btnAddImage_Click">
                         <Button.Background>
                             <LinearGradientBrush  StartPoint="0,1" EndPoint="0,0">
                                 <LinearGradientBrush.GradientStops>

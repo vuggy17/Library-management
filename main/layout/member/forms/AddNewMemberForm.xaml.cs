@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -9,12 +10,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using main.controller;
 using main.model;
+using MessageBox = System.Windows.MessageBox;
 
 namespace main.layout.member.forms
 {
@@ -33,7 +36,7 @@ namespace main.layout.member.forms
             InitializeComponent();
             ToggleForm();
         }
-
+        string imageName;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if(tbName.Text != "" && tbAddress.Text!="" && tbEmail.Text!=""&&tbPhone.Text != "")
@@ -42,7 +45,9 @@ namespace main.layout.member.forms
                 {                    
                     DateTime date = DateTime.Now;
                     Account newAccountToAdd = new Account(tbName.Text, tbAddress.Text, tbEmail.Text, tbPhone.Text, model.enums.AccountStatus.ACTIVE, date, 0);
+                    newAccountToAdd.info.imgSource = imageName;
                     data.addNewMember(newAccountToAdd);
+                    
                     updateMember();                   
                     AddSuccess addSuccess = new AddSuccess(newAccountToAdd.id);
                     addSuccess.Show();
@@ -85,7 +90,7 @@ namespace main.layout.member.forms
         private bool isVietnamesePhoneNumber(string number)
         {
             Regex _regex = new Regex("(03|05|07|08|09)+([0-9])");
-            if (!_regex.IsMatch(number)){
+            if (!_regex.IsMatch(number) && number.Length == 10){
                 MessageBox.Show("Phone Number Error!", "error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -96,5 +101,20 @@ namespace main.layout.member.forms
             this.Close();
             ToggleForm();
         }
+
+        private void btnAddImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            if (open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ImageSourceConverter isc = new ImageSourceConverter();
+                imageName = open.FileName;
+                imgBookCover.SetValue(Image.SourceProperty,isc.ConvertFromString(imageName));
+
+            }            
+        }
+        
+
     }
 }
