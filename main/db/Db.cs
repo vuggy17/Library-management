@@ -385,12 +385,63 @@ namespace main
             closeConnection();
             return result;
         }
-        public bool updateLending(Account account, BookItem item)
+        public bool RemoveLending(Account account, BookItem item)
         {
             bool result = false;
             DateTime date = DateTime.Now;
             string command = $"UPDATE `LENDINGDETAIL` SET `RETURNDATE`='{date.Year}-{date.Month}-{date.Day}' WHERE MEMBER_ID = '{account.id}' and BID = '{item.id}' and RETURNDATE is null";
             var reader = executeCommand(command);
+            if (reader != null)
+            {
+                result = true;
+            }
+            closeConnection();
+            return result;
+        }
+        public bool addNewBookToReserveList(Account account, BookItem item)
+        {
+            bool result = false;           
+            string cmd = $"INSERT INTO `BOOKRESERVATION`(`STATUS`, `BOOKID`, `MEMBER_ID`) VALUES ('WAITING','{item.id}','{account.id}')";
+            var reader = executeCommand(cmd);
+            if (reader != null)
+            {
+                result = true;
+            }
+            closeConnection();
+            return result;
+        }
+        public List<int> loadReserveList(Account account)
+        {
+            List<int> idListReseved = new List<int>();
+            string cmd = $"SELECT * FROM `BOOKRESERVATION` WHERE MEMBER_ID ='{account.id}' and STATUS = 'WAITING'";
+            var reader = executeCommand(cmd);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    idListReseved.Add((int)reader[3]);
+                }
+            }            
+            closeConnection();
+            return idListReseved;
+        }
+        public bool updateReserveList(Account account, BookItem book, string status)
+        {
+            bool result = false;
+            string cmd = $"UPDATE `BOOKRESERVATION` SET `STATUS`='{status}' WHERE MEMBER_ID ='{account.id}' and BOOKID ='{book.id}' and STATUS = 'WAITING'";
+            var reader = executeCommand(cmd);
+            if (reader != null)
+            {
+                result = true;
+            }
+            closeConnection();
+            return result;
+        }
+        public bool updatePassword(Staff staff)
+        {
+            bool result = false;
+            string cmd = $"UPDATE `STAFF` SET `PASSWORD`='{staff.password}' WHERE ID = '{staff.id}'";
+            var reader = executeCommand(cmd);
             if (reader != null)
             {
                 result = true;

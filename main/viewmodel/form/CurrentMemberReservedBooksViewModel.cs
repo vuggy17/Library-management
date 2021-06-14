@@ -63,23 +63,15 @@ namespace main.viewmodel.form
         private void removeSeletedItem()
         {
             BookToShow temp = SelectedItem;
+            DataLoadFromDB data = DataLoadFromDB.getIntance();
             MessageBoxResult dialogResult = MessageBox.Show("Ensure that you want to delete this item from member reserved list! It can't be undo", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
             if(dialogResult == MessageBoxResult.OK)
             {
                 ConfirmBooks.Remove(temp);
-                BookItem tempBookItem = temp.toBookItem();
+                BookItem tempBookItem = data.findBookItemByID(int.Parse(temp.Id));
                 CurrentMember current = CurrentMember.getInstance();
-                current.GetAccount().removeBookToReserveBookList(tempBookItem);                  
-               if(tempBookItem.lendingStatus == model.enums.LendingStatus.RESV)
-                {
-                    tempBookItem.lendingStatus = model.enums.LendingStatus.LOANED;
-                }
-               if(tempBookItem.lendingStatus == model.enums.LendingStatus.READY)
-                {
-                    tempBookItem.lendingStatus = model.enums.LendingStatus.AVAI;
-                }
-                DataLoadFromDB data = DataLoadFromDB.getIntance();
-                data.updateBookItem(tempBookItem);                
+                current.GetAccount().removeBookToReserveBookList(tempBookItem, "CANCELED");
+                            
             }
             else
             {

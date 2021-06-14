@@ -38,5 +38,7 @@ namespace main
 
     public delegate void AddReadyReservedBookToCheckOut(BookToShow bookToShow);
 
+    public delegate void ResetInfoScan();
+
 
 }

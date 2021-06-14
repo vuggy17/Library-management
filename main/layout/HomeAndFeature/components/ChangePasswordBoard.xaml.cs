@@ -63,7 +63,7 @@ namespace main.layout.HomeAndFeature.components
             if(checkPass() && checkConfrimPass())
             {
                 currentStaff.password = newPass.Password;
-
+                currentStaff.changePassWord();
                 this.Close();
                 ToggleForm();
             }

@@ -47,6 +47,7 @@ namespace main.model.features
             Delete = new RelayCommand<object>((p) => { return true; }, (p) => { removeSeletedItem(); });
             Confirm = new RelayCommand<object>((p) => { return true; }, (p) => { openCheckOutDiagram(); });
             CheckOutConfirm.ClearInfo += ClearBooksItem;
+            MainWindow.resetInfoScan += ClearBooksItem;
             CurrentMemberReservedBooksViewModel.addToCheckOut += CurrentMemberReservedBooksViewModel_addToCheckOut;
 
         }
@@ -148,7 +149,7 @@ namespace main.model.features
             if (searchBookItemById(searchKeyword)!=null &&! isExitstInCurrentList()&&!checkIsReserveByOrder()&&checkValidBook())
             {
 
-                if (findBookNameByBookItemId(searchBookItemById(searchKeyword)) != null)
+                if (findBookNameByBookItemId(searchBookItemById(searchKeyword)) != null && searchBookItemById(searchKeyword).lendingStatus != enums.LendingStatus.LOST)
                 {
                     if (!checkExist())
                     {

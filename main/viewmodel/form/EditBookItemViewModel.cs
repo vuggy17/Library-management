@@ -116,7 +116,7 @@ namespace main.viewmodel.form
 
         private void removeSeletedItem()
         {
-            if(SelectedItem.lendingStatus == model.enums.LendingStatus.AVAI)
+            if(SelectedItem.lendingStatus == model.enums.LendingStatus.AVAI || SelectedItem.lendingStatus == model.enums.LendingStatus.LOST)
             {
                 BookItem ItemToDelete = SelectedItem;
                 MessageBoxResult dialogResult = MessageBox.Show("Ensure that you want to delete this items! It can't be recover", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
@@ -135,7 +135,7 @@ namespace main.viewmodel.form
             }
             else
             {
-                MessageBox.Show("You can only remove book returned to library", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("You can only remove book returned to library or lost", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }

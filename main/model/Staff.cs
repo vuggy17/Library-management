@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace main.model
 {
@@ -57,8 +58,17 @@ namespace main.model
         public bool ChangeInfo(Person input)
         {
             this.info.modifyInfo(input);
+            Db.getInstace().updateInfo(info);
             return true;
         }       
+        public void changePassWord()
+        {
+            if (!Db.getInstace().updatePassword(this))
+            {
+                MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
 
         #endregion
     }

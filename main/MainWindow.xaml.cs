@@ -44,6 +44,8 @@ namespace main
         HomeNavigationViewModel homePageViewModel = new HomeNavigationViewModel();
 
         DataLoadFromDB data = DataLoadFromDB.getIntance();
+
+        public static event ResetInfoScan resetInfoScan;
         public MainWindow()
         {
             InitializeComponent();
@@ -120,6 +122,7 @@ namespace main
                     BookPage.Visibility = Visibility.Hidden;
                     MemberNavigation.Visibility = Visibility.Hidden;
                     MemberPage.Visibility = Visibility.Hidden;
+
                     break;
                 case "Books":
                     BookPage.Visibility = Visibility.Visible;
@@ -128,6 +131,7 @@ namespace main
                     FeatureNavigation.Visibility = Visibility.Hidden;
                     MemberNavigation.Visibility = Visibility.Hidden;
                     MemberPage.Visibility = Visibility.Hidden;
+                    resetInfoScan();
                     break;
                 case "Members":
                     MemberNavigation.Visibility = Visibility.Visible;
@@ -136,6 +140,7 @@ namespace main
                     BookPage.Visibility = Visibility.Hidden;
                     HomePage.Visibility = Visibility.Hidden;
                     FeatureNavigation.Visibility = Visibility.Hidden;
+                    resetInfoScan();
                     break;
 
             }

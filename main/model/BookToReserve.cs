@@ -110,7 +110,7 @@ namespace main.model
                 bookItems = dataLoadFromDB.getBookItems();
                 foreach(var bookItem in bookItems)
                 {
-                    if(bookItem.info == bookInfo.id && (bookItem.lendingStatus == enums.LendingStatus.LOANED || bookItem.lendingStatus == enums.LendingStatus.RENEWED))
+                    if(bookItem.info == bookInfo.id && (bookItem.lendingStatus == enums.LendingStatus.LOANED || bookItem.lendingStatus == enums.LendingStatus.RENEWED) )
                     {
                         availableCopies++;
                     }
@@ -118,5 +118,6 @@ namespace main.model
             }
             return availableCopies;
         }
+        
     }
 }

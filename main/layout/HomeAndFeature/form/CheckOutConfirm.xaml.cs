@@ -49,23 +49,26 @@ namespace main.layout.HomeAndFeature.form
         {
             foreach(var book in CheckOutBookList)
             {
-                BookItem bookItem = book.toBookItem();
+                BookItem bookItem = dataLoadFromDB.findBookItemByID(int.Parse(book.Id));
                 bookItem.lendingStatus = model.enums.LendingStatus.LOANED;
                 bookItem.bordate = DateTime.Now;
                 DateTime dateTime = (DateTime)bookItem.bordate;
                 bookItem.dueDate = dateTime.AddDays(10);
-                if (dataLoadFromDB.updateBookItem(bookItem) != null)
+                if (account.addNewBookToLendingList(bookItem) && account.removeBookToReserveBookList(bookItem, "COMPLETED"))
                 {
-                    account.addNewBookToLendingList(bookItem);
-                    
-                    account.removeBookToReserveBookList(bookItem);
-                    checkOutUpdateBook();
-                    checkOutUpdateMember();
+                    if (dataLoadFromDB.updateBookItem(bookItem) != null)
+                    {
+                        
+                        checkOutUpdateBook();
+                        checkOutUpdateMember();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unknow error");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Unknow error");
-                }  
+                
+                 
                 
                 
             }

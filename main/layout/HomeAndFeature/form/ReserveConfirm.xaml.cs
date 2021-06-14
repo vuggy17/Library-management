@@ -48,7 +48,7 @@ namespace main.layout.HomeAndFeature.form
             var bookItems = new List<BookItem>();
             foreach (var bookItem in book.getAllBookItems())
             {
-                if(bookItem.lendingStatus == model.enums.LendingStatus.LOANED || bookItem.lendingStatus ==model.enums.LendingStatus.RENEWED)
+                if((bookItem.lendingStatus == model.enums.LendingStatus.LOANED || bookItem.lendingStatus ==model.enums.LendingStatus.RENEWED ) && !isInLendingBookList(bookItem))
                 {
                     bookItems.Add(bookItem);
                 }
@@ -61,25 +61,66 @@ namespace main.layout.HomeAndFeature.form
             foreach (var Reservedbook in reservedList)
             {
                 model.Book book = Reservedbook.toBook();
-               for(int i = 0; i< Reservedbook.Count; i++)
+                if(Reservedbook.Count > getReserverableList(book).Count)
                 {
-                    var bookItem = getReserverableList(book)[i];
-                                       
-                    bookItems.Add(bookItem);
+                    MessageBoxResult result = MessageBox.Show($"You can only reserve '{getReserverableList(book).Count}' of '{book.title}! Do you want to continue?'","Warning",MessageBoxButton.YesNo,MessageBoxImage.Warning);
+                    if(result == MessageBoxResult.Yes)
+                    {
+                        for (int i = 0; i < getReserverableList(book).Count; i++)
+                        {
+                            var bookItem = getReserverableList(book)[i];
+                            bookItems.Add(bookItem);
+                            
+
+                        }
+                    }                    
                 }
+                else
+                {
+                    for (int i = 0; i < Reservedbook.Count; i++)
+                    {
+                        var bookItem = getReserverableList(book)[i];
+                        bookItems.Add(bookItem);
+                    }
+                }             
 
             }
+           
             return bookItems;
         }
-
+        private bool isInLendingBookList(BookItem item)
+        {
+            Account account = CurrentMember.getInstance().GetAccount();
+            if (account != null)
+            {
+                foreach (var bookItem in account.getLendingBookItems())
+                {
+                    if(item.id == bookItem.id)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var bookItem in getListReservedItem())
-            {
-                bookItem.lendingStatus = model.enums.LendingStatus.RESV;
-                dataLoadFromDB.updateBookItem(bookItem);
-                account.addNewBookToReservedBookList(bookItem);
-            }
+
+                foreach (var bookItem in getListReservedItem())
+                {
+                    bookItem.lendingStatus = model.enums.LendingStatus.RESV;
+                    if (!isInLendingBookList(bookItem))
+                    {
+                        if (account.addNewBookToReservedBookList(bookItem))
+                        {
+                            dataLoadFromDB.updateBookItem(bookItem);
+                        }
+                    }                   
+
+                }
+            
+            
+
             ClearInfo();
             this.Close();
             ToggleForm();

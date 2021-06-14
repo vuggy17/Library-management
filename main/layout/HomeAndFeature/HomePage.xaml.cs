@@ -30,8 +30,8 @@ namespace main.layout.HomeAndFeature
         {
             InitializeComponent();
             featureNavigation = new FeatureNavigationViewModel();
-            FeatureNavigationViewModel.ChangePage += FeatureNavigation_ChangePage;            
-
+            FeatureNavigationViewModel.ChangePage += FeatureNavigation_ChangePage;
+            UserScanerBoardViewModel.changePage += FeatureNavigation_ChangePage;
         }
 
         private void FeatureNavigation_ChangePage(string page)

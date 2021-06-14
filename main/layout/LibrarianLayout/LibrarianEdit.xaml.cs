@@ -28,8 +28,7 @@ namespace main.layout.HomeAndFeature.components
         public LibrarianEdit()
         {
             InitializeComponent();
-            ToggleForm();
-            
+            ToggleForm();            
             id.Text = currentStaff.id.ToString();
             name.Text = currentStaff.info.name;
             address.Text = currentStaff.info.address;

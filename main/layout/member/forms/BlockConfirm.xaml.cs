@@ -35,7 +35,11 @@ namespace main.layout.member.forms
             model.Account account = data.findMemberByID(int.Parse(ID.Content.ToString()));
             if (account != null)
             {
-                account.status = model.enums.AccountStatus.BLACKLISTED;                
+                account.status = model.enums.AccountStatus.BLACKLISTED;
+                while (account.getReservedBookItem().Count > 0)
+                {
+                    account.removeBookToReserveBookList(account.getReservedBookItem()[0], "CANCELED");
+                }
                 updateMember();
                 this.Close();
                 ToggleForm();

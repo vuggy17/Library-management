@@ -16,6 +16,7 @@ namespace main.model
         const int MAX_BOOK_LOAN = 5;
         private int _id;
         Db db = Db.getInstace();
+        DataLoadFromDB data = DataLoadFromDB.getIntance();
 
         public int id
         {
@@ -114,27 +115,38 @@ namespace main.model
             loadLendingBookItems();
             return lendingBookItems;
         }
-        public void addNewBookToLendingList(BookItem book)
+        public bool addNewBookToLendingList(BookItem book)
         {
             if (db.addNewBookToLendingList(this, book, CurrentStaff.getIntance()))
             {
                 lendingBookItems.Add(book);
                 db.updateAccount(this);
+                return true;
             }
             else
             {
                 MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
             }
            
 
         }
-        public void addNewBookToReservedBookList(BookItem book)
+        public bool addNewBookToReservedBookList(BookItem book)
         {
-            reserveBookItems.Add(book);
+            if (db.addNewBookToReserveList(this, book))
+            {
+                reserveBookItems.Add(book);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
         }
         public void removeBookToLendingBookList(BookItem book)
         {
-            if( db.updateLending(this, book))
+            if( db.RemoveLending(this, book))
             {
                 foreach (var bookItem in lendingBookItems)
                 {
@@ -144,8 +156,7 @@ namespace main.model
                         db.updateAccount(this);
                         return;
                     }
-                }
-                
+                }                
             }
             else
             {
@@ -154,69 +165,55 @@ namespace main.model
 
         }
         private DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
-        private void updateLendingInfo()
-        {
-            
-            for(int i =0; i< lendingBookItems.Count; i++)
+        
+        public bool removeBookToReserveBookList(BookItem book, string status)
+        {            
+            if(db.updateReserveList(this,book, status))
             {
-                foreach(var book in dataLoadFromDB.getBookItems())
+                DateTime bordate = (DateTime)book.bordate;
+                DateTime dueDate = (DateTime)book.dueDate;
+                if ((dueDate - bordate).TotalDays > 10)
                 {
-                    if(lendingBookItems[i].id == book.id)
-                    {
-                        lendingBookItems[i] = book;
-                    }
+                    book.lendingStatus = model.enums.LendingStatus.RENEWED;
                 }
-            }
-        }
-        private void updateReservingInfo()
-        {
+                if (book.lendingStatus == model.enums.LendingStatus.RESV)
+                {
+                    book.lendingStatus = model.enums.LendingStatus.LOANED;
+                }
+                if (book.lendingStatus == model.enums.LendingStatus.READY)
+                {
+                    book.lendingStatus = model.enums.LendingStatus.AVAI;
+                }
 
-            for (int i = 0; i < reserveBookItems.Count; i++)
-            {
-                foreach (var book in dataLoadFromDB.getBookItems())
-                {
-                    if (reserveBookItems[i].id == book.id)
-                    {
-                        reserveBookItems[i] = book;
-                    }
-                }
+                data.updateBookItem(book);
+                reserveBookItems.Remove(book);
+               return true;              
+                       
             }
-        }
-        public void updateBookToLendingBookList(BookItem book)
-        {
-            for(int i=0; i< lendingBookItems.Count; i++)
+            else
             {
-                if(lendingBookItems[i].id == book.id)
-                {
-                    lendingBookItems[i] = book;
-                    return;
-                }
+                MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-        public void removeBookToReserveBookList(BookItem book)
-        {
-            if(reserveBookItems.Count != 0)
-            {
-                foreach (var bookItem in reserveBookItems)
-                {
-                    if (bookItem.id == book.id)
-                    {
-                        reserveBookItems.Remove(bookItem);
-                        return;
-                    }
-                }
-            }  
+            return false;
+           
             
         }
         
         public List<BookItem> getReservedBookItem()
         {
-            updateReservingInfo();
+            loadReservedBookItem();
             return reserveBookItems;
         }
         public void loadReservedBookItem()
         {
-            //Load reserved book item in db
+            List<int> idBookLending = db.loadReserveList(this);
+            reserveBookItems = new List<BookItem>();
+            foreach ( var value in idBookLending)
+            {
+                BookItem temp = dataLoadFromDB.findBookItemByID(value);
+                reserveBookItems.Add(temp);
+
+            }
                        
         }
         
@@ -233,7 +230,7 @@ namespace main.model
                 
             }    
         }
-        public bool resetPassword() { return true; }
+       
        
         #endregion
     //test region

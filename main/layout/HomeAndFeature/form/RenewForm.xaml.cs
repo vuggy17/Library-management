@@ -66,13 +66,14 @@ namespace main.layout.HomeAndFeature.form
                 }
                 bookItem.lendingStatus = model.enums.LendingStatus.RENEWED;
                
-                
-                if (dataLoadFromDB.updateBookItem(bookItem) != null)
+                if(Db.getInstace().updateLendingRenew(CurrentMember.getInstance().GetAccount(), bookItem))
                 {
-                    Db.getInstace().updateLendingRenew(CurrentMember.getInstance().GetAccount(),bookItem);
-                    returnUpdateBook();
-                    returnUpdateMember();
-                }
+                    if (dataLoadFromDB.updateBookItem(bookItem) != null)
+                    {
+                        returnUpdateBook();
+                        returnUpdateMember();
+                    }
+                }                
                 else
                 {
                     MessageBox.Show("Unknow error");

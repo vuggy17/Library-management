@@ -16,8 +16,8 @@ namespace main.model.features
 {
     class UserScanerBoardViewModel: BaseViewModel
     {
-        
 
+        public static event ChangePageHandler changePage;
         private List<Account> allAccounts;
       
         private Account targetAccount;
@@ -92,6 +92,7 @@ namespace main.model.features
             getReservedBooks = new RelayCommand<Object>((p) => true, (p) => { showCurrentMemberReservedBooks(); });
             CheckOutConfirm.ClearInfo += hideUserInfo;
             ReserveConfirm.ClearInfo += hideUserInfo;
+            MainWindow.resetInfoScan += hideUserInfo;
             ReturnBookForm.returnUpdateMember += updateUI;
             RenewForm.returnUpdateMember += updateUI;
         }
@@ -128,6 +129,7 @@ namespace main.model.features
                     if(TargetAccount.status == AccountStatus.BLACKLISTED)
                     {
                         MessageBox.Show("This is blacklist member!!", "WARNING", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        changePage("ReturnBook");
                     }
                     
                 }

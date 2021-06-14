@@ -35,6 +35,17 @@ namespace main.layout.member.forms
             model.Account account = data.findMemberByID(int.Parse(ID.Content.ToString()));
             if (account != null)
             {
+                foreach (var bookItem in account.getLendingBookItems())
+                {
+                    bookItem.lendingStatus = model.enums.LendingStatus.LOST;                    
+                    data.updateBookItem(bookItem);
+                }
+                while (account.getReservedBookItem().Count > 0)
+                {
+                    account.removeBookToReserveBookList(account.getReservedBookItem()[0], "CANCELED");
+                }
+                
+                
                 data.deleteMember(account);
                 updateMember();
                 this.Close();
