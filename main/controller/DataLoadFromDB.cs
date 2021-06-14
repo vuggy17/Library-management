@@ -61,7 +61,7 @@ namespace main.controller
         public void addNewMember(Account member)
         {
             member.id=db.addNewAccount(member);
-            //db.insertImageData(member.info, member.info.imgSource);
+            db.insertImageData(member.info, member.info.imgSource);
             if(member.id != -1)
             {
                 members.Add(member);

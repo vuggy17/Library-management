@@ -9,6 +9,7 @@ using main.model;
 using System.Globalization;
 using System.IO;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace main
 {
@@ -34,13 +35,13 @@ namespace main
             try
             {
                 connection = new MySqlConnection(connectionString);
-                connection.Open();           
+                connection.Open();
 
                 var cmd = connection.CreateCommand();
                 cmd.CommandText = command;
                 reader = cmd.ExecuteReader();
-                
-                
+
+
             }
             catch (Exception ex)
             {
@@ -144,7 +145,7 @@ namespace main
             var reader = executeCommand(command);
             while (reader.Read())
             {
-               
+
                 books.Add(new Book(reader[1].ToString(), reader[2].ToString(), (DateTime)reader[3], (double)reader[4]).buildWithID((int)reader[0]));
             }
             closeConnection();
@@ -158,8 +159,8 @@ namespace main
             while (reader.Read())
             {
 
-                   
-                    bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString())));
+
+                bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString())));
 
             }
             closeConnection();
@@ -178,17 +179,17 @@ namespace main
                 lastInsertID = int.Parse(cmd.LastInsertedId.ToString());
                 connection.Close();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
-            }            
-            return lastInsertID;            
+            }
+            return lastInsertID;
         }
         public bool addBookItem(BookItem bookItem)
         {
             string command = $"INSERT INTO `BOOKITEM`(`ID`,`STATUS`, `BOOKINFO`) VALUES ('{bookItem.id}','{bookItem.lendingStatus}','{bookItem.info}')";
             var reader = executeCommand(command);
-            if(reader != null)
+            if (reader != null)
             {
                 closeConnection();
                 return true;
@@ -198,7 +199,7 @@ namespace main
                 closeConnection();
                 return false;
             }
-            
+
         }
         private int addNewPersonInfo(Person info)
         {
@@ -231,7 +232,7 @@ namespace main
                 connection.Open();
                 MySqlCommand cmd = new MySqlCommand(command, connection);
                 cmd.ExecuteNonQuery();
-                lastInsertID = int.Parse(cmd.LastInsertedId.ToString());                
+                lastInsertID = int.Parse(cmd.LastInsertedId.ToString());
                 connection.Close();
             }
             catch (Exception e)
@@ -240,8 +241,8 @@ namespace main
             }
             return lastInsertID;
         }
-       public bool dropBook(Book book)
-       {
+        public bool dropBook(Book book)
+        {
             bool result = false;
             string command = $"DELETE FROM `BOOK` WHERE ID = {book.id}";
             var reader = executeCommand(command);
@@ -257,7 +258,7 @@ namespace main
             bool result = false;
             string command = $"DELETE FROM `BOOKITEM` WHERE ID = {bookItem.id}";
             var reader = executeCommand(command);
-            if(reader != null)
+            if (reader != null)
             {
                 result = true;
             }
@@ -288,7 +289,7 @@ namespace main
             closeConnection();
             return result;
         }
-       public bool updateBook(Book book)
+        public bool updateBook(Book book)
         {
             bool result = false;
             string command = $"UPDATE `BOOK` SET `TITLE`='{book.title}',`AUTHOR`='{book.author}',`PUBDATE`='{book.pubDate.Year}-{book.pubDate.Month}-{book.pubDate.Day}',`PRICE`='{book.price}' WHERE ID = '{book.id}'";
@@ -302,8 +303,8 @@ namespace main
         }
         public bool updateBookItem(BookItem bookItem)
         {
-            bool result = false;          
-            string command = $"UPDATE `BOOKITEM` SET `STATUS`='{bookItem.lendingStatus}' WHERE ID = '{bookItem.id}'";                 
+            bool result = false;
+            string command = $"UPDATE `BOOKITEM` SET `STATUS`='{bookItem.lendingStatus}' WHERE ID = '{bookItem.id}'";
             var reader = executeCommand(command);
             if (reader != null)
             {
@@ -340,7 +341,7 @@ namespace main
         {
             bool result = false;
             DateTime dateTime = DateTime.Now.AddDays(10);
-            string cmd = $"INSERT INTO `LENDINGDETAIL`(`MEMBER_ID`, `BID`, `DUEDATE`, `STAFF_ID`) VALUES ('{account.id}','{item.id}','{dateTime.Year}-{dateTime.Month}-{dateTime.Day}','{staff.id}')";           
+            string cmd = $"INSERT INTO `LENDINGDETAIL`(`MEMBER_ID`, `BID`, `DUEDATE`, `STAFF_ID`) VALUES ('{account.id}','{item.id}','{dateTime.Year}-{dateTime.Month}-{dateTime.Day}','{staff.id}')";
             var reader = executeCommand(cmd);
             if (reader != null)
             {
@@ -352,27 +353,27 @@ namespace main
         public List<BookItem> loadLendingBookList(Account account)
         {
             List<BookItem> lendingBookList = new List<BookItem>();
-            
+
             string command = $"select * from `LENDINGDETAIL` where MEMBER_ID = '{account.id}'";
             var reader = executeCommand(command);
             if (reader != null)
             {
                 while (reader.Read())
                 {
-                    if(reader[4].GetType() == typeof(DBNull))
+                    if (reader[4].GetType() == typeof(DBNull))
                     {
                         if (reader[3].GetType() != typeof(DBNull))
                         {
 
                             lendingBookList.Add(new BookItem((int)reader[1], (DateTime)reader[2], (DateTime)reader[3]));
                         }
-                        
-                    }                   
-                    
+
+                    }
+
                 }
             }
             closeConnection();
-            return lendingBookList;           
+            return lendingBookList;
         }
         public bool updateLendingRenew(Account account, BookItem item)
         {
@@ -402,7 +403,7 @@ namespace main
         }
         public bool addNewBookToReserveList(Account account, BookItem item)
         {
-            bool result = false;           
+            bool result = false;
             string cmd = $"INSERT INTO `BOOKRESERVATION`(`STATUS`, `BOOKID`, `MEMBER_ID`) VALUES ('WAITING','{item.id}','{account.id}')";
             var reader = executeCommand(cmd);
             if (reader != null)
@@ -423,7 +424,7 @@ namespace main
                 {
                     idListReseved.Add((int)reader[3]);
                 }
-            }            
+            }
             closeConnection();
             return idListReseved;
         }
@@ -475,6 +476,24 @@ namespace main
             closeConnection();
             return result;
         }
+        public void getImage(Person person)
+        {
+            string cmd = $"SELECT * FROM `PERSON` WHERE ID ={person.id}";
+            var reader = executeCommand(cmd);
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    if (reader[5].GetType() != typeof(DBNull))
+                    {
+                        person.image = (byte[])reader[5];
+
+                    }
+                }
+                
+            }
+            closeConnection();
+        }
         public void insertImageData(Person person, string imageName)
         {
             try
@@ -482,19 +501,13 @@ namespace main
                 if (imageName != "")
                 {
                     MessageBox.Show(imageName);
-                    //Initialize a file stream to read the image file
-                    FileStream fs = new FileStream(imageName, FileMode.Open, FileAccess.Read);
-
-                    //Initialize a byte array with size of stream
-                    byte[] imgByteArr = new byte[fs.Length];
-
-                    //Read data from the file stream and put into the byte array
-                    fs.Read(imgByteArr, 0, Convert.ToInt32(fs.Length));
-
-                    //Close a file stream
-                    fs.Close();
-                    
-                    string cmd = $"UPDATE `PERSON` SET `IMAGE`='{imgByteArr}' WHERE ID = {person.id}";
+                    byte[]imageData = File.ReadAllBytes(imageName);
+                    string data = "";
+                    for(long i = 0; i < imageData.Length; i++)
+                    {
+                        data = data + imageData[i].ToString();
+                    }                    
+                    string cmd = $"UPDATE `PERSON` SET `IMAGE`='{data}' WHERE ID = {person.id}";
                     var reader = executeCommand(cmd);
                     if (reader != null)
                     {

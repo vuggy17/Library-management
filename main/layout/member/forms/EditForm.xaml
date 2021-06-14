@@ -62,7 +62,7 @@
 
                         </Grid>
                     </Border>
-                    <Label Name="lbId" ContentStringFormat="ID: {0}" Content="{Binding SelectedItem.id, Mode=OneWay}" FontWeight="Bold" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
+                    <Label Name="lbId" MouseDoubleClick="lbId_MouseDoubleClick" ContentStringFormat="ID: {0}" Content="{Binding SelectedItem.id, Mode=OneWay}" FontWeight="Bold" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
                 </Grid>
 
                 

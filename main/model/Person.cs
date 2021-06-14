@@ -73,6 +73,11 @@ namespace main.model
             this.imgSource = imgSrc;
             return this;
         }
+        public byte[] image
+        {
+            get;
+            set;
+        }
         public Person(Person source)
         {
             this.address = source.address;

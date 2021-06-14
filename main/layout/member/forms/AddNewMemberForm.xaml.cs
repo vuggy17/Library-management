@@ -110,6 +110,8 @@ namespace main.layout.member.forms
             {
                 ImageSourceConverter isc = new ImageSourceConverter();
                 imageName = open.FileName;
+                Image image = new Image();
+                
                 imgBookCover.SetValue(Image.SourceProperty,isc.ConvertFromString(imageName));
 
             }            

@@ -2,6 +2,8 @@
 using main.model;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -30,6 +32,18 @@ namespace main.layout.member.forms
             InitializeComponent();
             ToggleForm();
             DataContext = MemberViewModel.getInstance();
+            
+        }
+        private void setImage()
+        {
+            int updateAccountID = int.Parse(lbId.Content.ToString());
+            Account updateAccount = data.findMemberByID(updateAccountID);
+            Db.getInstace().getImage(updateAccount.info);
+            byte[] blob = updateAccount.info.image;
+            string imreBase64Data = Convert.ToBase64String(blob);
+          
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -103,6 +117,12 @@ namespace main.layout.member.forms
         {
             this.Close();
             ToggleForm();
+        }
+
+
+        private void lbId_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            setImage();
         }
     }
 }
