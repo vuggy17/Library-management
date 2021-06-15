@@ -85,18 +85,18 @@
                                                         <ColumnDefinition Width="5*"/>
                                                         <ColumnDefinition Width="1.5*"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <Label Style="{DynamicResource Imagelabel}"
-                                                   Width="97"
+                                                    <Border 
+                                                   Width="100"
                                                    Height="135"
                                                    BorderBrush="Black" 
                                                    HorizontalAlignment="Center" 
                                                    VerticalAlignment="Center">
-                                                        <Label.Background>
-                                                            <ImageBrush ImageSource="/assests/img_book.png"
-                                                                Stretch="Fill">
-                                                            </ImageBrush>
-                                                        </Label.Background>
-                                                    </Label>
+                                                        
+                                                            <Image Source="{Binding bitmapimage}"
+                                                                >
+                                                            </Image>
+                                                        
+                                                    </Border>
                                                     <Grid Grid.Column="1"  Height="142" VerticalAlignment="Center"
 >
                                                         <Grid.RowDefinitions>
@@ -106,10 +106,10 @@
                                                         </Grid.RowDefinitions>
                                                         <Label Content="{Binding Name}"                            
                                                        FontFamily="Roboto"
-                                                       FontSize="38"
+                                                       FontSize="30"
                                                        Padding="0 0 4 0"
                                                        FontWeight="Bold"
-                                                       VerticalAlignment="Center"
+                                                       VerticalAlignment="Bottom"
                                                        VerticalContentAlignment="Center"
                                                        HorizontalAlignment="Left"
                                                        TextOptions.TextHintingMode="Animated">
@@ -118,7 +118,7 @@
                                                        Content="{Binding Id}"
                                                        ContentStringFormat="ID: {0}"
                                                        FontFamily="Roboto"
-                                                       FontSize="25"
+                                                       FontSize="23"
                                                        Padding="0 0 4 0"
                                                        FontWeight="Regular"
                                                        VerticalAlignment="Center"
@@ -130,11 +130,11 @@
                                                        Content="{Binding OverDueFee}"   
                                                        ContentStringFormat="Over due fee: {0} VNĐ"
                                                        FontFamily="Roboto"
-                                                       FontSize="25"
+                                                       FontSize="23"
                                                        Padding="0 0 4 0"
                                                        FontWeight="Regular"
                                                        Foreground="Red"
-                                                       VerticalAlignment="Center"
+                                                       VerticalAlignment="Top"
                                                        VerticalContentAlignment="Center"
                                                        HorizontalAlignment="Left"
                                                        TextOptions.TextHintingMode="Animated">
@@ -143,11 +143,11 @@
                                                                Content="{Binding lendingStatus}"
                                                        ContentStringFormat="Status: {0}"                              
                                                        FontFamily="Roboto"
-                                                       FontSize="25"
+                                                       FontSize="23"
                                                        Padding="0 0 4 0"
                                                        FontWeight="Regular"
                                                        Foreground="Red"
-                                                       VerticalAlignment="Center"
+                                                       VerticalAlignment="Top"
                                                        VerticalContentAlignment="Center"
                                                        HorizontalAlignment="Right"
                                                        TextOptions.TextHintingMode="Animated">

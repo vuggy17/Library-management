@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace main.model
 {
@@ -78,6 +79,8 @@ namespace main.model
         private int _id;
         private LendingStatus _lendingStatusInfo;
 
+        public BitmapImage bitmapimage { get; set; }
+
         public BookToShow(int id, Book info, DateTime? dueDate, LendingStatus lendingStatus)
         {
             this.Id = id.ToString();
@@ -87,6 +90,7 @@ namespace main.model
             {
                 this._dueDate = dueDate;
             }
+            bitmapimage = info.image;
 
 
             this.info = info;

@@ -149,19 +149,15 @@
                                                         ></Button>
                                                     </Grid>
 
-                                                    <Label Style="{DynamicResource Imagelabel}"
+                                                    <Border
                                                            Width="132"
                                                            Height="186"
                                                            Grid.Column="1"
                                                            BorderBrush="Black" 
                                                            HorizontalAlignment="Center" 
                                                            VerticalAlignment="Center">
-                                                        <Label.Background>
-                                                            <ImageBrush ImageSource="/assests/img_book.png"
-                                                                Stretch="Fill">
-                                                            </ImageBrush>
-                                                        </Label.Background>
-                                                    </Label>
+                                                        <Image Source="{Binding image}"></Image>
+                                                    </Border>
                                                     <Grid Grid.Column="2"
                                                   Height="186"
                                                   VerticalAlignment="Center"

@@ -71,18 +71,14 @@
                                                         <ColumnDefinition Width="5*"/>
                                                         <ColumnDefinition Width="1.5*"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <Label Style="{DynamicResource Imagelabel}"
-                                                   Width="97"
+                                                    <Border
+                                                   Width="100"
                                                    Height="135"
                                                    BorderBrush="Black" 
                                                    HorizontalAlignment="Center" 
                                                    VerticalAlignment="Center">
-                                                        <Label.Background>
-                                                            <ImageBrush ImageSource="/assests/img_book.png"
-                                                                Stretch="Fill">
-                                                            </ImageBrush>
-                                                        </Label.Background>
-                                                    </Label>
+                                                        <Image Source="{Binding bitmapimage}"></Image>
+                                                    </Border>
                                                     <Grid Grid.Column="1"  Height="142" VerticalAlignment="Center"
 >
                                                         <Grid.RowDefinitions>

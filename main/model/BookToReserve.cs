@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace main.model
 {
@@ -80,7 +81,7 @@ namespace main.model
 
         public BookToReserve(Book bookInfo)
         {
-            this.info = bookInfo;
+            this.info = new Book(bookInfo);
             this.availableCopies= getAvailableCopies(bookInfo);
             if(this.availableCopies == 0)
             {
@@ -95,7 +96,10 @@ namespace main.model
             this.author = bookInfo.author;
             this.pubDate = bookInfo.pubDate.ToShortDateString();
             this.AddAble = true;
+            this.image = bookInfo.image;
+
         }
+        public BitmapImage image { get; set; }
         public Book toBook()
         {
             return new Book(info);
