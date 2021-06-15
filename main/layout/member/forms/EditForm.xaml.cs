@@ -49,13 +49,13 @@ namespace main.layout.member.forms
                     Person newInfo = new Person(tbName.Text, tbAddress.Text, tbEmail.Text, tbPhone.Text);
                     Account updateAccount= data.findMemberByID(updateAccountID);
                     newInfo.id = updateAccount.info.id;
+                    newInfo.imgSource = updateAccount.info.imgSource;
                     if(imageName != "")
                     {
                         byte[] imageData = File.ReadAllBytes(imageName);
                         string base64String = Convert.ToBase64String(imageData, 0, imageData.Length);
                         newInfo.imgSource = base64String;
-                    }
-                   
+                    }                  
                     
                     if (data.updateMemberInfo(newInfo) != null)
                     {
