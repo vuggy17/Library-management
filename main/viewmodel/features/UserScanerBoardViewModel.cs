@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace main.model.features
 {
@@ -53,6 +54,8 @@ namespace main.model.features
         public String BorrowBook { get; set; }
 
         public String OverDue { get; set; }
+
+        public BitmapImage imageSource { get; set; }
 
 
         private Boolean userView;
@@ -158,7 +161,8 @@ namespace main.model.features
             OnPropertyChanged("BorrowBook");
             OverDue = "Over due: " + TargetAccount.TotalOverDueBook.ToString();
             OnPropertyChanged("OverDue");
-
+            imageSource = TargetAccount.info.image;
+            OnPropertyChanged("imageSource");
             //Lấy image user and set here           
             UserView = true;
             TargetAccount.getLendingBookItems();

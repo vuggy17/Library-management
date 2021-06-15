@@ -61,7 +61,9 @@ namespace main.controller
         public void addNewMember(Account member)
         {
             member.id=db.addNewAccount(member);
-            db.insertImageData(member.info, member.info.imgSource);
+            db.insertImageData(member.info);       
+           
+            
             if(member.id != -1)
             {
                 members.Add(member);
@@ -191,8 +193,9 @@ namespace main.controller
             {
                 if (members[i].info.id == value.id)
                 {                  
-                    if (db.updateInfo(value))
+                    if (db.updateInfo(value) && db.insertImageData(value))
                     {
+
                         members[i].info = value;
                         return members[i];
                     }

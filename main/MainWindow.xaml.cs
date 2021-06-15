@@ -30,6 +30,7 @@ using main.layout.Book.Forms;
 using main.controller;
 using main.layout.member.forms;
 using main.viewmodel.features;
+using System.IO;
 
 namespace main
 {
@@ -49,8 +50,7 @@ namespace main
         public MainWindow()
         {
             InitializeComponent();
-
-
+            
             loginForm login = new loginForm();
             login.ShowDialog();
             if (login.DialogResult == true)
@@ -91,7 +91,7 @@ namespace main
             HomeNavigationViewModel.ChangePage += HomeNavigationViewModel_ChangePage;
             this.DataContext = new MemberViewModel();
         }
-
+        
         private void LibrarianBar_logout()
         {
             System.Windows.Forms.Application.Restart();

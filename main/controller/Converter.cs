@@ -76,7 +76,11 @@ namespace main.controller
             get => _id;
             set => _id = value;
         }
-
+        public BitmapImage imagePath
+        {
+            get;
+            set;
+        }
 
 
 
@@ -85,23 +89,8 @@ namespace main.controller
         public Converter()
         {
         }
-        public Converter build(int id, string name, string addr, string mail, string phone, AccountStatus status, int totB, string imgSrc)
-        {
-            this.id = id;
-            this.name = name;
-            this.address = addr;
-            this.email = mail;
-            this.phone = phone;
-            this.status = status;
-            this.bookNumber = totB;
-            this.overDue = 0;
-            if(imgSrc != "")
-            {
-                this.imgSrc = LoadImage(imgSrc);
-            }            
-            return this;
-        }
-        public Converter buildWithAccount(Account account,string imgSrc)
+        
+        public Converter buildWithAccount(Account account)
         {
             this.id = account.id;
             this.name = account.info.name;
@@ -111,18 +100,12 @@ namespace main.controller
             this.status = account.status;
             this.bookNumber = account.totalBookLoan;
             this.overDue = account.TotalOverDueBook;
-            if (imgSrc != "")
-            {
-                this.imgSrc = LoadImage(imgSrc);
-            }
+            this.imagePath = account.info.image;
             return this;
         }
         
         
 
-        private BitmapImage LoadImage(string filename)
-        {
-            return new BitmapImage(new Uri("pack://application:,,,/" + filename));
-        }
+       
     }
 }

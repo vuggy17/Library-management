@@ -2,6 +2,7 @@
 using main.model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -10,11 +11,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MessageBox = System.Windows.MessageBox;
 
 namespace main.layout.HomeAndFeature.components
 {
@@ -34,6 +37,7 @@ namespace main.layout.HomeAndFeature.components
             address.Text = currentStaff.info.address;
             phone.Text = currentStaff.info.phone;
             email.Text = currentStaff.info.email;
+            img.Source = currentStaff.info.image;
             ChangePasswordBoard.ToggleForm += ChangePasswordBoard_ToggleForm;
 
         }
@@ -101,7 +105,14 @@ namespace main.layout.HomeAndFeature.components
             {
                 if (IsValidEmail(email.Text) && isVietnamesePhoneNumber(phone.Text) && isValidName(name.Text))
                 {
+
                     Person newInfo = new Person(name.Text, address.Text, email.Text, phone.Text);
+                    if (imageName != "")
+                    {
+                        byte[] imageData = File.ReadAllBytes(imageName);
+                        string base64String = Convert.ToBase64String(imageData, 0, imageData.Length);
+                        newInfo.imgSource = base64String;
+                    }
                     currentStaff.ChangeInfo(newInfo);
                     this.Close();
                     ToggleForm();
@@ -125,6 +136,20 @@ namespace main.layout.HomeAndFeature.components
         {
             ChangePasswordBoard changePasswordBoard = new ChangePasswordBoard();
             changePasswordBoard.Show();
+        }
+        string imageName = "";
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            if (open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ImageSourceConverter isc = new ImageSourceConverter();
+                imageName = open.FileName;
+                img.SetValue(Image.SourceProperty, isc.ConvertFromString(imageName));
+
+
+            }
         }
     }
 }

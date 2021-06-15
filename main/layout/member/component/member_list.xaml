@@ -34,8 +34,8 @@
                                                 <ColumnDefinition Width="215"/>
                                             </Grid.ColumnDefinitions>
                                             <!--Source="{Binding imgSrc}"-->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Grid.Column="0">
-                                                <Image Height="100" Width="100" Source="/resource/img/avt_default.png" 
+                                            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="0">
+                                                <Image Height="100" Width="100" Source="{Binding imagePath}" 
                                  Margin="14,0,24,0"/>
 
                                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">

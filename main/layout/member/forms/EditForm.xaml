@@ -34,7 +34,8 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Image x:Name="imgBookCover"
-                               Source="/main;component/assests/addMember.jpg" 
+                                   
+                               Source="{Binding SelectedItem.imagePath,Mode=OneWay}" 
                                Grid.Row="0"
                                Grid.RowSpan="2"
                                Height="Auto"
@@ -49,7 +50,7 @@
                                 FontSize="45"
                                 FontWeight="Bold"
                                 FontFamily="Roboto"
-                                Opacity="0.7">
+                                Opacity="0.7" Click="btnAddImage_Click">
                                 <Button.Background>
                                     <LinearGradientBrush  StartPoint="0,1" EndPoint="0,0">
                                         <LinearGradientBrush.GradientStops>
@@ -62,7 +63,7 @@
 
                         </Grid>
                     </Border>
-                    <Label Name="lbId" MouseDoubleClick="lbId_MouseDoubleClick" ContentStringFormat="ID: {0}" Content="{Binding SelectedItem.id, Mode=OneWay}" FontWeight="Bold" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
+                    <Label Name="lbId"  ContentStringFormat="ID: {0}" Content="{Binding SelectedItem.id, Mode=OneWay}" FontWeight="Bold" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Center"></Label>
                 </Grid>
 
                 

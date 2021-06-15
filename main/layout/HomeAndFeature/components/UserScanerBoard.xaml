@@ -35,7 +35,7 @@
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="2.5*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Style="{DynamicResource Imagelabel}"
+                    <Border 
                            Width="118"
                            Visibility="{Binding FullInfoView ,Converter={StaticResource BooleanToVisibilityConverter} ,UpdateSourceTrigger=PropertyChanged}"
                            Height="142" BorderBrush="Black" 
@@ -43,13 +43,11 @@
                            VerticalAlignment="Center"
                           
                            >
-                        <Label.Background>
-                            <ImageBrush ImageSource="/assests/img_user.png"
-                                        Stretch="Fill"
-                                        >
-                            </ImageBrush>
-                        </Label.Background>
-                    </Label>
+                        <Image Source="{Binding imageSource, UpdateSourceTrigger=PropertyChanged}" >
+
+
+                        </Image>
+                    </Border>
                     <Grid Grid.Column="1"  Height="142" VerticalAlignment="Center"
 >
                         <Grid.RowDefinitions>

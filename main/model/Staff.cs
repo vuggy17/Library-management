@@ -59,6 +59,7 @@ namespace main.model
         {
             this.info.modifyInfo(input);
             Db.getInstace().updateInfo(info);
+            Db.getInstace().insertImageData(info);
             return true;
         }       
         public void changePassWord()

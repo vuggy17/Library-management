@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace main.model.form
 {
@@ -19,9 +20,12 @@ namespace main.model.form
         public String OverDue { get; set; }
         public Boolean BlackList { get; set; }
 
+        public BitmapImage BitmapImage { get; set; }
+
         public ReturnFullInforViewModel(Account account)
         {
             Id = "ID: "+ account.id.ToString();
+            BitmapImage = account.info.image;
             Name = account.info.name;
             Address = account.info.address;
             Phone = account.info.phone;

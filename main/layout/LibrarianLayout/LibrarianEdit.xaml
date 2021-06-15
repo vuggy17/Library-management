@@ -48,6 +48,7 @@
                         </Grid.RowDefinitions>
                         <Image Source="/main;component/assests/img_user.png" 
                                Grid.Row="0"
+                               x:Name="img"
                                Grid.RowSpan="2"
                                Height="Auto"
                                Width="Auto"></Image>
@@ -59,7 +60,7 @@
                                 FontSize="45"
                                 FontWeight="Bold"
                                 FontFamily="Roboto"
-                                Opacity="0.7">
+                                Opacity="0.7" Click="Button_Click_1">
                             <Button.Background>
                                 <LinearGradientBrush  StartPoint="0,1" EndPoint="0,0">
                                     <LinearGradientBrush.GradientStops>

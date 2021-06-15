@@ -46,7 +46,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Image x:Name="imgAvatar"
-                               Source="/main;component/assests/img_user.png" 
+                               Source="{Binding BitmapImage}" 
                                Grid.Row="0"
                                Grid.RowSpan="2"
                                Height="Auto"

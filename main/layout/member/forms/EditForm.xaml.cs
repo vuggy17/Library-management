@@ -12,10 +12,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MessageBox = System.Windows.MessageBox;
 
 namespace main.layout.member.forms
 {
@@ -32,19 +34,10 @@ namespace main.layout.member.forms
             InitializeComponent();
             ToggleForm();
             DataContext = MemberViewModel.getInstance();
-            
-        }
-        private void setImage()
-        {
-            int updateAccountID = int.Parse(lbId.Content.ToString());
-            Account updateAccount = data.findMemberByID(updateAccountID);
-            Db.getInstace().getImage(updateAccount.info);
-            byte[] blob = updateAccount.info.image;
-            string imreBase64Data = Convert.ToBase64String(blob);
+
           
-
-
         }
+       
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -56,6 +49,14 @@ namespace main.layout.member.forms
                     Person newInfo = new Person(tbName.Text, tbAddress.Text, tbEmail.Text, tbPhone.Text);
                     Account updateAccount= data.findMemberByID(updateAccountID);
                     newInfo.id = updateAccount.info.id;
+                    if(imageName != "")
+                    {
+                        byte[] imageData = File.ReadAllBytes(imageName);
+                        string base64String = Convert.ToBase64String(imageData, 0, imageData.Length);
+                        newInfo.imgSource = base64String;
+                    }
+                   
+                    
                     if (data.updateMemberInfo(newInfo) != null)
                     {
                         MessageBox.Show("Update Success", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -118,11 +119,19 @@ namespace main.layout.member.forms
             this.Close();
             ToggleForm();
         }
-
-
-        private void lbId_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        string imageName = "";
+        private void btnAddImage_Click(object sender, RoutedEventArgs e)
         {
-            setImage();
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            if (open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ImageSourceConverter isc = new ImageSourceConverter();
+                imageName = open.FileName;
+                imgBookCover.SetValue(Image.SourceProperty, isc.ConvertFromString(imageName));
+
+
+            }
         }
     }
 }

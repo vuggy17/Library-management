@@ -18,6 +18,10 @@ using main.viewmodel.Members;
 using main.layout.member.forms;
 using System.Reflection;
 using main.layout.HomeAndFeature.form;
+using System.IO;
+using System.Windows.Media;
+using System.Windows.Controls;
+using System.Drawing;
 
 namespace main.controller
 {
@@ -98,8 +102,27 @@ namespace main.controller
             AddNewMemberForm add = new AddNewMemberForm();
             add.Show();            
         }
-        private void RunEditForm()
+        private BitmapImage setImage(int updateAccountID)
         {
+            
+            Account updateAccount = data.findMemberByID(updateAccountID);
+            Db.getInstace().getImage(updateAccount.info);
+            string imreBase64Data = updateAccount.info.imgSource;
+            byte[] blob = Convert.FromBase64String(imreBase64Data);          
+          
+            using (var ms = new System.IO.MemoryStream(blob))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad; // here
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
+            }
+        }
+        private void RunEditForm()
+        {            
+            SelectedItem.imagePath = setImage(SelectedAccountID);
             EditForm editForm = new EditForm();
             editForm.Show();
         }
@@ -141,7 +164,10 @@ namespace main.controller
             foreach (var member in data.getAllMembers())
             {
                 if( member.status == AccountStatus.ACTIVE)
-                memberList.Add( new Converter().buildWithAccount(member,""));
+                {
+                    memberList.Add(new Converter().buildWithAccount(member));
+                }
+               
             }
             return memberList;
         }
@@ -151,7 +177,7 @@ namespace main.controller
             foreach (var member in data.getAllMembers())
             {
                 if (member.status == AccountStatus.BLACKLISTED)
-                    memberList.Add(new Converter().buildWithAccount(member, ""));
+                    memberList.Add(new Converter().buildWithAccount(member));
             }
             return memberList;
         }

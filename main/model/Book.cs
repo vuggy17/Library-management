@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace main.model
 {
@@ -72,6 +73,34 @@ namespace main.model
             get { return _price; }
             set { _price = value; }
         }
+
+        private string _imgSource;
+        public string imgSource
+        {
+            get => _imgSource;
+            set
+            {
+                _imgSource = value;
+                setImage();
+            }            
+        }
+        public BitmapImage image;
+        private void setImage()
+        {
+            string imreBase64Data = this.imgSource;
+            byte[] blob = Convert.FromBase64String(imreBase64Data);
+
+            using (var ms = new System.IO.MemoryStream(blob))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad; // here
+                image.StreamSource = ms;
+                image.EndInit();
+                this.image = image;
+            }
+        }
+
         #endregion
         public Book( Book book) {
             this.id = book.id;

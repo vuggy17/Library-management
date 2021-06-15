@@ -10,6 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Windows.Media.Imaging;
 
 namespace main
 {
@@ -63,7 +64,10 @@ namespace main
             var reader = executeCommand(command);
             while (reader.Read())
             {
-                return new Person(reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString()).buildWithID((int)reader[0]);
+                Person person = new Person(reader[1].ToString(), reader[2].ToString(), reader[3].ToString(), reader[4].ToString()).buildWithID((int)reader[0]);
+                getImage(person);
+                person.image = setImage(person);
+                return person;
             }
             closeConnection();
             return null;
@@ -101,6 +105,21 @@ namespace main
                     return model.enums.LendingStatus.AVAI;
             }
         }
+        public BitmapImage setImage(Person person)
+        {           
+            string imreBase64Data = person.imgSource;
+            byte[] blob = Convert.FromBase64String(imreBase64Data);
+
+            using (var ms = new System.IO.MemoryStream(blob))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad; // here
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
+            }
+        }
         public List<Account> getAllAccount()
         {
             List<Account> accounts = new List<Account>();
@@ -114,6 +133,7 @@ namespace main
                 {
                     Account account = new Account(info.name, info.address, info.email, info.phone, castTypeAccount(reader[1].ToString()), (DateTime)reader[3], (int)reader[4]).buildWithId((int)reader[0]);
                     account.info.id = info.id;
+                    account.info.image = setImage(info);
                     accounts.Add(account);
                 }
 
@@ -486,41 +506,35 @@ namespace main
                 {
                     if (reader[5].GetType() != typeof(DBNull))
                     {
-                        person.image = (byte[])reader[5];
 
+                        person.imgSource =(string)reader[5];                       
                     }
+                    
                 }
                 
             }
             closeConnection();
         }
-        public void insertImageData(Person person, string imageName)
+        public bool insertImageData(Person person)
         {
             try
             {
-                if (imageName != "")
-                {
-                    MessageBox.Show(imageName);
-                    byte[]imageData = File.ReadAllBytes(imageName);
-                    string data = "";
-                    for(long i = 0; i < imageData.Length; i++)
-                    {
-                        data = data + imageData[i].ToString();
-                    }                    
-                    string cmd = $"UPDATE `PERSON` SET `IMAGE`='{data}' WHERE ID = {person.id}";
-                    var reader = executeCommand(cmd);
-                    if (reader != null)
-                    {
-                        MessageBox.Show("add success");
-                    }
-                    closeConnection();
+                if (person.imgSource != "")
+                {                   
+                                   
+                    string cmd = $"UPDATE `PERSON` SET `IMAGE`='{person.imgSource}' WHERE ID = {person.id}";
+                    var reader = executeCommand(cmd);                    
+                    closeConnection();                  
 
                 }
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
+
     }
 }

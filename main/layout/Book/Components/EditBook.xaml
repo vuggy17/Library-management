@@ -11,6 +11,8 @@
              WindowStyle="None"
              Topmost="True"
              ResizeMode="NoResize">
+    
+
     <Window.Background>
         <SolidColorBrush Color="White" Opacity="0.3">
         </SolidColorBrush>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Forms;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -16,9 +17,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using main.model;
+using MessageBox = System.Windows.MessageBox;
 
 using main.layout.Book.Forms;
 using System.Text.RegularExpressions;
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace main.layout.Book.Components
 {
@@ -93,15 +96,21 @@ namespace main.layout.Book.Components
 
            
         }
-
+        string imageName = "";
         private void btnAddImage_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
-            var result = openFileDialog.ShowDialog();
-            if (result == false) return;
-            imgBookCover.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-            //Luu lai duong dan push len db
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            if (open.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ImageSourceConverter isc = new ImageSourceConverter();
+                imageName = open.FileName;
+                imgBookCover.SetValue(Image.SourceProperty, isc.ConvertFromString(imageName));
+
+
+            }
+
+
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
