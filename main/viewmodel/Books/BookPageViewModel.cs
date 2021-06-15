@@ -83,6 +83,7 @@ namespace main.viewmodel.Books
 
         private void editBookFormShow(Book book)
         {
+            
             EditBook edit = new EditBook(book);
             edit.Show();
         }

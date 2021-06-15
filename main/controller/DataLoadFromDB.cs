@@ -49,6 +49,7 @@ namespace main.controller
         public void addNewBook(Book book)
         {            
             book.buildWithID(db.addBook(book));
+            db.inseartBookImage(book);
             if(book.id != -1)
             {
                 books.Add(book);
@@ -134,6 +135,7 @@ namespace main.controller
                 {
                     if (db.updateBook(value))
                     {
+                        db.inseartBookImage(value);
                         books[i] = value;
                     }
                     else

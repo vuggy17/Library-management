@@ -47,9 +47,10 @@
                             <RowDefinition Height="4.5*"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Image Source="/main;component/assests/img_book.png" 
+                        <Image Source="{Binding Path=bookToShow.image}" 
                                Grid.Row="0"
-                               Stretch="UniformToFill"
+                               Name="imgBookCover"
+                               
                                Grid.RowSpan="2"
                                Height="Auto"
                                Width="Auto"></Image>
@@ -61,7 +62,7 @@
                                 FontSize="45"
                                 FontWeight="Bold"
                                 FontFamily="Roboto"
-                                Opacity="0.7">
+                                Opacity="0.7" Click="Button_Click">
                             <Button.Background>
                                 <LinearGradientBrush  StartPoint="0,1" EndPoint="0,0">
                                     <LinearGradientBrush.GradientStops>

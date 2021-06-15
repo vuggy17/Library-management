@@ -84,7 +84,7 @@ namespace main.model
                 setImage();
             }            
         }
-        public BitmapImage image;
+        public BitmapImage image { get; set;  }
         private void setImage()
         {
             string imreBase64Data = this.imgSource;
@@ -109,6 +109,7 @@ namespace main.model
             this.title = book.title;
             this.subject = book.subject;
             this.pubDate = book.pubDate;
+            this.imgSource = book.imgSource;
         }
         #region method
         public Book(string title, string author, DateTime pubDate, double price) {

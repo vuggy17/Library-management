@@ -165,8 +165,10 @@ namespace main
             var reader = executeCommand(command);
             while (reader.Read())
             {
+                Book add = new Book(reader[1].ToString(), reader[2].ToString(), (DateTime)reader[3], (double)reader[4]).buildWithID((int)reader[0]);
+                add.imgSource = reader[5].ToString();
+                books.Add(add);
 
-                books.Add(new Book(reader[1].ToString(), reader[2].ToString(), (DateTime)reader[3], (double)reader[4]).buildWithID((int)reader[0]));
             }
             closeConnection();
             return books;
@@ -535,6 +537,25 @@ namespace main
                 return false;
             }
         }
+        public bool inseartBookImage(Book book)
+        {
+            try
+            {
+                if (book.imgSource != "")
+                {
 
+                    string cmd = $"UPDATE `BOOK` SET `IMAGE`='{book.imgSource}' WHERE ID = {book.id}";
+                    var reader = executeCommand(cmd);
+                    closeConnection();
+
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
     }
 }
