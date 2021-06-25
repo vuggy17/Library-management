@@ -172,7 +172,7 @@ namespace main.model
             {
                 DateTime bordate = (DateTime)book.bordate;
                 DateTime dueDate = (DateTime)book.dueDate;
-                if ((dueDate - bordate).TotalDays > 10)
+                if ((dueDate - bordate).TotalDays > 11)
                 {
                     book.lendingStatus = model.enums.LendingStatus.RENEWED;
                 }
