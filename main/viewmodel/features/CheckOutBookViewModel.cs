@@ -54,7 +54,17 @@ namespace main.model.features
 
         private void CurrentMemberReservedBooksViewModel_addToCheckOut(BookToShow bookToShow)
         {
+            foreach (var book in bookToShows)
+            {
+                if (book.Id == bookToShow.Id)
+                {
+                    MessageBox.Show("This book already in check out book list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             bookToShows.Add(bookToShow);
+            
+
         }
 
         private void ClearBooksItem()
