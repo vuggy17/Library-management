@@ -64,6 +64,7 @@ namespace main.model
         }       
         public void changePassWord()
         {
+
             if (!Db.getInstace().updatePassword(this))
             {
                 MessageBox.Show("System error, please wait a minute then try again", "Error", MessageBoxButton.OK, MessageBoxImage.Error);

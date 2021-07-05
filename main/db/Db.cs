@@ -11,6 +11,8 @@ using System.IO;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Media.Imaging;
+using System.Security.Cryptography;
+using main.controller;
 
 namespace main
 {
@@ -464,8 +466,9 @@ namespace main
         }
         public bool updatePassword(Staff staff)
         {
-            bool result = false;
-            string cmd = $"UPDATE `STAFF` SET `PASSWORD`='{staff.password}' WHERE ID = '{staff.id}'";
+            
+            bool result = false;           
+            string cmd = $"UPDATE `STAFF` SET `PASSWORD`='{PasswordHash.CreateHash(staff.password)}' WHERE ID = '{staff.id}'";
             var reader = executeCommand(cmd);
             if (reader != null)
             {

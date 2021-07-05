@@ -68,13 +68,13 @@ namespace main.layout.LoginForm.Components
                 {
                     Staff loginStaff = getEmailLogin(email.Text);
                     if(loginStaff != null)
-                    {
-                        if(loginStaff.password == password.Password)
+                    {                       
+                        if(PasswordHash.ValidatePassword(password.Password, loginStaff.password))
                         {
                             error.Text = "Login success";
                             error.Foreground = Brushes.Green;
                             CurrentStaff.setCurrentStaff(loginStaff);                           
-                            loginSuccess();                           
+                            loginSuccess();                          
                             
                         }
                         else
@@ -92,7 +92,7 @@ namespace main.layout.LoginForm.Components
                     Staff loginStaff = getIDLogin(email.Text);
                     if (loginStaff != null)
                     {
-                        if (loginStaff.password == password.Password)
+                        if (PasswordHash.ValidatePassword(password.Password, loginStaff.password))
                         {
                             error.Text = "Login success";
                             error.Foreground = Brushes.Green;

@@ -31,7 +31,7 @@ namespace main.layout.HomeAndFeature.components
         }
         private bool checkPass()
         {
-            if(pass.Password == currentStaff.password)
+            if(PasswordHash.ValidatePassword(pass.Password, currentStaff.password))            
             {
                 return true;
             }
@@ -63,6 +63,7 @@ namespace main.layout.HomeAndFeature.components
             if(checkPass() && checkConfrimPass())
             {
                 currentStaff.password = newPass.Password;
+
                 currentStaff.changePassWord();
                 this.Close();
                 ToggleForm();
