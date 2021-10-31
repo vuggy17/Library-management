@@ -19,8 +19,7 @@ namespace main.viewmodel.Members
         public MemberNavigationViewModel()
         {
             ActiveList = new RelayCommand<object>((p) => { return true; }, (p) => { ChangePage("ActiveList"); });
-            BlackList = new RelayCommand<object>((p) => { return true; }, (p) => { ChangePage("BlackList"); });
-            
+            BlackList = new RelayCommand<object>((p) => { return true; }, (p) => { ChangePage("BlackList"); });          
         }
     }
 }

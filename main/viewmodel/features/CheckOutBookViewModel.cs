@@ -171,9 +171,6 @@ namespace main.model.features
                         MessageBox.Show("This book was already added in list!!!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         searchKeyword = "";
                     }
-                   
-                    
-                    
                 }
                 else
                 {

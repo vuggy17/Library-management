@@ -95,6 +95,7 @@ namespace main
         private void LibrarianBar_logout()
         {
             System.Windows.Forms.Application.Restart();
+            this.Close();
 
         }
 

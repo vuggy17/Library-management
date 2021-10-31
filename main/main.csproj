@@ -406,7 +406,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="controller\AnotherComandImplementation.cs" />
     <Compile Include="controller\Converter.cs" />
     <Compile Include="viewmodel\Members\Member.cs" />
     <Compile Include="controller\ViewModelBase.cs" />

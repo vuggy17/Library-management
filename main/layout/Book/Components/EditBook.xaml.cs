@@ -73,7 +73,6 @@ namespace main.layout.Book.Components
                 imageName = open.FileName;
                 imgBookCover.SetValue(Image.SourceProperty, isc.ConvertFromString(imageName));
                 updateBookImage(this.book);
-
             }
         }
         private void updateBookImage(model.Book book)

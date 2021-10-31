@@ -126,10 +126,9 @@ namespace main
         {
             List<Account> accounts = new List<Account>();
             string command = "select * from ACCOUNT";
-            var reader = executeCommand(command);
+            var reader = executeCommand(command);            
             while (reader.Read())
             {
-
                 Person info = getInfoByAccountID((int)reader[2]);
                 if (info != null)
                 {
@@ -170,7 +169,6 @@ namespace main
                 Book add = new Book(reader[1].ToString(), reader[2].ToString(), (DateTime)reader[3], (double)reader[4]).buildWithID((int)reader[0]);
                 add.imgSource = reader[5].ToString();
                 books.Add(add);
-
             }
             closeConnection();
             return books;
@@ -525,8 +523,7 @@ namespace main
             try
             {
                 if (person.imgSource != "")
-                {                   
-                                   
+                {                                                      
                     string cmd = $"UPDATE `PERSON` SET `IMAGE`='{person.imgSource}' WHERE ID = {person.id}";
                     var reader = executeCommand(cmd);                    
                     closeConnection();                  

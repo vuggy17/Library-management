@@ -66,10 +66,6 @@ namespace main.layout.HomeAndFeature.form
                         MessageBox.Show("Unknow error");
                     }
                 }
-                
-                 
-                
-                
             }
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
