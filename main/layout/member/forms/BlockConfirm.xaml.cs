@@ -1,4 +1,4 @@
-﻿using main.controller;
+﻿using LibraryManagement.controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace main.layout.member.forms
+namespace LibraryManagement.layout.member.forms
 {
     /// <summary>
     /// Interaction logic for BlockConfirm.xaml

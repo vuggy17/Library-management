@@ -1,5 +1,5 @@
-﻿using main.layout.HomeAndFeature.form;
-using main.model;
+﻿using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace main.viewmodel.features
+namespace LibraryManagement.viewmodel.features
 {
     class ReturnBookViewModel: BaseViewModel
     {

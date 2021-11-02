@@ -1,7 +1,7 @@
-﻿using main.layout.Book;
-using main.layout.HomeAndFeature.components;
-using main.layout.LoginForm.Components;
-using main.viewmodel.features;
+﻿using LibraryManagement.layout.Book;
+using LibraryManagement.layout.HomeAndFeature.components;
+using LibraryManagement.layout.LoginForm.Components;
+using LibraryManagement.viewmodel.features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace main.layout.LoginForm
+namespace LibraryManagement.layout.LoginForm
 {
     /// <summary>
     /// Interaction logic for loginForm.xaml

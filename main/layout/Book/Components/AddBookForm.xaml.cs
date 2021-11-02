@@ -1,5 +1,5 @@
-﻿using main.controller;
-using main.viewmodel.features;
+﻿using LibraryManagement.controller;
+using LibraryManagement.viewmodel.features;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -16,15 +16,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using main.model;
+using LibraryManagement.model;
 using MessageBox = System.Windows.MessageBox;
 
-using main.layout.Book.Forms;
+using LibraryManagement.layout.Book.Forms;
 using System.Text.RegularExpressions;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 using System.IO;
 
-namespace main.layout.Book.Components
+namespace LibraryManagement.layout.Book.Components
 {
     /// <summary>
     /// Interaction logic for AddBookForm.xaml
@@ -82,7 +82,7 @@ namespace main.layout.Book.Components
                         for (int i = 0; i < numOfCopies; i++)
                         {
                             autoID += 1;
-                            data.addNewBookItem(new main.model.BookItem(autoID, newBook.id, model.enums.LendingStatus.AVAI));
+                            data.addNewBookItem(new LibraryManagement.model.BookItem(autoID, newBook.id, model.enums.LendingStatus.AVAI));
                         }
                         AddBookSuccessForm add = new AddBookSuccessForm(newBook);
                         add.Show();

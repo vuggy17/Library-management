@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.HomeAndFeature.components
+namespace LibraryManagement.layout.HomeAndFeature.components
 {
     /// <summary>
     /// Interaction logic for SearchBookID.xaml

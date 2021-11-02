@@ -1,25 +1,15 @@
-﻿using main.controller;
-using main.model;
+﻿using LibraryManagement.controller;
+using LibraryManagement.model;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using MessageBox = System.Windows.MessageBox;
 
-namespace main.layout.HomeAndFeature.components
+namespace LibraryManagement.layout.HomeAndFeature.components
 {
     /// <summary>
     /// Interaction logic for LibrarianEdit.xaml
@@ -62,69 +52,48 @@ namespace main.layout.HomeAndFeature.components
             }
         }
 
-        public bool isValidName(string name)
-        {
-            var regexItem = new Regex("^[a-zA-Z ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*$");
-            if (!regexItem.IsMatch(name))
-            {
-                MessageBox.Show("Name can't constrain number or special char", "error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-
-            }
-            else
-            {
-                return true;
-            }
-        }
-        public bool IsValidEmail(string emailaddress)
-        {
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            Match match = regex.Match(emailaddress);
-            if (match.Success)
-                return true;
-            else
-            {
-                MessageBox.Show("In valid email", "error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-
-        }
-        private bool isVietnamesePhoneNumber(string number)
-        {
-            Regex _regex = new Regex("(03|05|07|08|09)+([0-9])");
-            if (!_regex.IsMatch(number))
-            {
-                MessageBox.Show("Phone Number Error!", "error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            return true;
-        }
+       
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (id.Text != "" && name.Text != "" && address.Text != "" && phone.Text != ""  && email.Text != "")
+            try
             {
-                if (IsValidEmail(email.Text) && isVietnamesePhoneNumber(phone.Text) && isValidName(name.Text))
-                {
+                currentStaff.updateInfo(id.Text, name.Text, address.Text, phone.Text, email.Text, imageName);
+                MessageBox.Show("Update success", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+                ToggleForm();
+            }
+            catch (Exception ex)
+            {
+                var exCode = ex.Message.ToString();
+                if(exCode =="BAD_INPUT") 
+                MessageBox.Show("Information is required", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                else
+                    MessageBox.Show("System error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                    Person newInfo = new Person(name.Text, address.Text, email.Text, phone.Text);
-                    if (imageName != "")
-                    {
-                        byte[] imageData = File.ReadAllBytes(imageName);
-                        string base64String = Convert.ToBase64String(imageData, 0, imageData.Length);
-                        newInfo.imgSource = base64String;
-                    }
-                    currentStaff.ChangeInfo(newInfo);
-                    this.Close();
-                    ToggleForm();
-                    MessageBox.Show("Update success", "", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
             }
-            else
-            {
-                MessageBox.Show("This infomation can not place empty!!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            
+
         }
+
+        //public bool updateStaffInfo(string id, string name, string address, string phone, string mail) 
+        //{
+        //    if (String.IsNullOrEmpty(id) || String.IsNullOrEmpty(name) || String.IsNullOrEmpty(address) || String.IsNullOrEmpty(phone) || String.IsNullOrEmpty(mail))
+        //        throw new Exception("BAD_INPUT");
+        //    if (IsValidEmail(email.Text) && isVietnamesePhoneNumber(phone) && isValidName(name))
+        //    {
+        //        Person newInfo = new Person(name, address, mail, phone); ;
+        //        if (imageName != "")
+        //        {
+        //            byte[] imageData = File.ReadAllBytes(imageName);
+        //            string base64String = Convert.ToBase64String(imageData, 0, imageData.Length);
+        //            newInfo.imgSource = base64String;
+        //        }
+        //        currentStaff.ChangeInfo(newInfo);
+        //        this.Close();
+        //        ToggleForm();
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {

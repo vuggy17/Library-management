@@ -1,4 +1,4 @@
-﻿using main.model;
+﻿using LibraryManagement.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace main.viewmodel.Books
+namespace LibraryManagement.viewmodel.Books
 {
     class DeleteBookViewModel: BaseViewModel
     {

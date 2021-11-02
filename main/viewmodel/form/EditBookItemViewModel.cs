@@ -1,4 +1,4 @@
-﻿using main.model;
+﻿using LibraryManagement.model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,9 +8,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using main.controller;
+using LibraryManagement.controller;
 
-namespace main.viewmodel.form
+namespace LibraryManagement.viewmodel.form
 {
     class EditBookItemViewModel: BaseViewModel
     {

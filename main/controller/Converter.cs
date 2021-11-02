@@ -1,9 +1,9 @@
-﻿using main.model;
-using main.model.enums;
+﻿using LibraryManagement.model;
+using LibraryManagement.model.enums;
 using System;
 using System.Windows.Media.Imaging;
 
-namespace main.controller
+namespace LibraryManagement.controller
 {
     public class Converter
     {

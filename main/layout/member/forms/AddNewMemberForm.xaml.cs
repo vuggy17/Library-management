@@ -15,11 +15,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using main.controller;
-using main.model;
+using LibraryManagement.controller;
+using LibraryManagement.model;
 using MessageBox = System.Windows.MessageBox;
 
-namespace main.layout.member.forms
+namespace LibraryManagement.layout.member.forms
 {
     /// <summary>
     /// Interaction logic for AddNewMemberForm.xaml

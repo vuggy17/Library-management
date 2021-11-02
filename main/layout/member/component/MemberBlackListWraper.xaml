@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="main.layout.member.component.MemberBlackListWraper"
+﻿<UserControl x:Class="LibraryManagement.layout.member.component.MemberBlackListWraper"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:main.layout.member.component"
+             xmlns:local="clr-namespace:LibraryManagement.layout.member.component"
              mc:Ignorable="d" 
             d:DesignHeight="{Binding RelativeSource={RelativeSource FindAncestor, 
     AncestorType={x:Type Grid}},Path=ActualWidth}" d:DesignWidth="{Binding RelativeSource={RelativeSource FindAncestor, 

@@ -1,5 +1,5 @@
-﻿using main.controller;
-using main.model;
+﻿using LibraryManagement.controller;
+using LibraryManagement.model;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
@@ -19,7 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MessageBox = System.Windows.MessageBox;
 
-namespace main.layout.member.forms
+namespace LibraryManagement.layout.member.forms
 {
     /// <summary>
     /// Interaction logic for EditForm.xaml

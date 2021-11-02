@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace main.layout.member.forms
+namespace LibraryManagement.layout.member.forms
 {
     /// <summary>
     /// Interaction logic for AddSuccess.xaml

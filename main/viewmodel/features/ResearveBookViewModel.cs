@@ -1,7 +1,7 @@
-﻿using main.controller;
-using main.layout.HomeAndFeature.form;
-using main.model;
-using main.model.features;
+﻿using LibraryManagement.controller;
+using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.model;
+using LibraryManagement.model.features;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace main.viewmodel.features
+namespace LibraryManagement.viewmodel.features
 {
     class ResearveBookViewModel: BaseViewModel
     {

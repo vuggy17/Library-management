@@ -1,19 +1,19 @@
-﻿using main.layout.Book.Components;
-using main.model;
+﻿using LibraryManagement.layout.Book.Components;
+using LibraryManagement.model;
 using System;
-using main.controller;
+using LibraryManagement.controller;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BookItem = main.model.BookItem;
+using BookItem = LibraryManagement.model.BookItem;
 using System.Windows.Forms;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using main.layout.HomeAndFeature.form;
-using main.viewmodel.form;
+using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.viewmodel.form;
 
-namespace main.model.features
+namespace LibraryManagement.model.features
 {
     class CheckOutBookViewModel: BaseViewModel
     {

@@ -1,6 +1,6 @@
-﻿using main.controller;
-using main.layout.Book.Forms;
-using main.viewmodel.features;
+﻿using LibraryManagement.controller;
+using LibraryManagement.layout.Book.Forms;
+using LibraryManagement.viewmodel.features;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,7 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.Book.Components
+namespace LibraryManagement.layout.Book.Components
 {
     /// <summary>
     /// Interaction logic for EditBook.xaml

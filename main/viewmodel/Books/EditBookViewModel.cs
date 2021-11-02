@@ -1,16 +1,16 @@
-﻿using main.model;
+﻿using LibraryManagement.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using main.controller;
+using LibraryManagement.controller;
 using System.Windows;
-using main.layout.Book.Forms;
-using main.viewmodel.form;
+using LibraryManagement.layout.Book.Forms;
+using LibraryManagement.viewmodel.form;
 
-namespace main.viewmodel.features
+namespace LibraryManagement.viewmodel.features
 {
     public class EditBookViewModel: BaseViewModel
     {
@@ -57,10 +57,18 @@ namespace main.viewmodel.features
             EditBookItemForm editBookItem = new EditBookItemForm(book);
             editBookItem.Show();
         }
-        private void updateBook(Book book)
+        private bool updateBook(Book book)
         {
+            var name = book.title;
+            var author = book.author;
+            var price = book.price;
+            var publishDate = book.pubDate;
+            if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(author) || Double.IsNaN(price) || price > 0)
+                return false;
+                
             dataLoadFromDB.updateBook(book);
             update();
+            return true;
         }
     }
 }

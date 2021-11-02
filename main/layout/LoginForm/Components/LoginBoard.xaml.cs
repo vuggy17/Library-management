@@ -1,7 +1,7 @@
-﻿using main.controller;
-using main.layout.Book;
-using main.model;
-using main.viewmodel.features;
+﻿using LibraryManagement.controller;
+using LibraryManagement.layout.Book;
+using LibraryManagement.model;
+using LibraryManagement.viewmodel.features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.LoginForm.Components
+namespace LibraryManagement.layout.LoginForm.Components
 {
     /// <summary>
     /// Interaction logic for LoginBoard.xaml
@@ -36,13 +36,13 @@ namespace main.layout.LoginForm.Components
             error.Text = "";
             allStaffAccount = new List<Staff>();
             allStaffAccount = LoadAllStaffAccount();
-            
+
         }
         private Staff getEmailLogin(string email)
         {
             foreach (var staff in allStaffAccount)
             {
-                if(staff.info.email == email)
+                if (staff.info.email == email)
                 {
                     return staff;
                 }
@@ -62,20 +62,20 @@ namespace main.layout.LoginForm.Components
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(email.Text !="" && password.Password != "")
+            if (email.Text != "" && password.Password != "")
             {
                 if (checkEmaillogin(email.Text))
                 {
                     Staff loginStaff = getEmailLogin(email.Text);
-                    if(loginStaff != null)
-                    {                       
-                        if(PasswordHash.ValidatePassword(password.Password, loginStaff.password))
+                    if (loginStaff != null)
+                    {
+                        if (PasswordHash.ValidatePassword(password.Password, loginStaff.password))
                         {
                             error.Text = "Login success";
                             error.Foreground = Brushes.Green;
-                            CurrentStaff.setCurrentStaff(loginStaff);                           
-                            loginSuccess();                          
-                            
+                            CurrentStaff.setCurrentStaff(loginStaff);
+                            loginSuccess();
+
                         }
                         else
                         {
@@ -122,7 +122,7 @@ namespace main.layout.LoginForm.Components
             loadAllStaff = Db.getInstace().getAllStaffs();
             return loadAllStaff;
         }
-        
+
         private bool checkEmaillogin(string emailaddress)
         {
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
@@ -130,7 +130,7 @@ namespace main.layout.LoginForm.Components
             if (match.Success)
                 return true;
             else
-            {               
+            {
                 return false;
             }
 

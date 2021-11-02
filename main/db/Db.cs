@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using MySql.Data.MySqlClient;
-using main.model;
+using LibraryManagement.model;
 using System.Globalization;
 using System.IO;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Security.Cryptography;
-using main.controller;
+using LibraryManagement.controller;
 
-namespace main
+
+namespace LibraryManagement
 {
     public class Db
     {
@@ -22,7 +23,7 @@ namespace main
         private Db() { }
         private static Db _instance;
         private MySqlConnection connection { get; set; }
-        private const string connectionString = "server=localhost;user id=root;database=cnpm;port=3306;password=pass";
+        private readonly static string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["cnpmConnectionString"].ConnectionString; 
         public static Db getInstace()
         {
             if (_instance == null)
@@ -462,11 +463,11 @@ namespace main
             closeConnection();
             return result;
         }
-        public bool updatePassword(Staff staff)
+        public bool updatePassword(int staffId, string newPassword)
         {
             
             bool result = false;           
-            string cmd = $"UPDATE `STAFF` SET `PASSWORD`='{PasswordHash.CreateHash(staff.password)}' WHERE ID = '{staff.id}'";
+            string cmd = $"UPDATE `STAFF` SET `PASSWORD`='{PasswordHash.CreateHash(newPassword)}' WHERE ID = '{staffId}'";
             var reader = executeCommand(cmd);
             if (reader != null)
             {

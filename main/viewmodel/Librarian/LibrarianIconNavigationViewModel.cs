@@ -1,5 +1,5 @@
-﻿using main.layout.HomeAndFeature.components;
-using main.model;
+﻿using LibraryManagement.layout.HomeAndFeature.components;
+using LibraryManagement.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace main.viewmodel.features
+namespace LibraryManagement.viewmodel.features
 {
     class LibrarianIconNavigationViewModel: BaseViewModel
     {

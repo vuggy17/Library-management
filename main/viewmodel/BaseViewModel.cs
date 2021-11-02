@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace main.model
+namespace LibraryManagement.model
 {
 
     public class BaseViewModel : INotifyPropertyChanged

@@ -14,25 +14,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using main.model;
-using main.model.enums;
-using main.layout.HomeAndFeature;
-using main.layout.Book;
-using main.layout.member;
-using main.layout;
-using main.layout.LoginForm;
-using main.layout.Book.Components;
-using main.layout.HomeAndFeature.form;
-using main.model.features;
-using main.layout.HomeAndFeature.components;
-using main.viewmodel;
-using main.layout.Book.Forms;
-using main.controller;
-using main.layout.member.forms;
-using main.viewmodel.features;
+using LibraryManagement.model;
+using LibraryManagement.model.enums;
+using LibraryManagement.layout.HomeAndFeature;
+using LibraryManagement.layout.Book;
+using LibraryManagement.layout.member;
+using LibraryManagement.layout;
+using LibraryManagement.layout.LoginForm;
+using LibraryManagement.layout.Book.Components;
+using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.model.features;
+using LibraryManagement.layout.HomeAndFeature.components;
+using LibraryManagement.viewmodel;
+using LibraryManagement.layout.Book.Forms;
+using LibraryManagement.controller;
+using LibraryManagement.layout.member.forms;
+using LibraryManagement.viewmodel.features;
 using System.IO;
 
-namespace main
+namespace LibraryManagement
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

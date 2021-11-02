@@ -12,11 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using main.model;
-using main.model.enums;
-using main.controller;
+using LibraryManagement.model;
+using LibraryManagement.model.enums;
+using LibraryManagement.controller;
 
-namespace main.layout.member.component
+namespace LibraryManagement.layout.member.component
 {
     /// <summary>
     /// Interaction logic for Member_blacklist.xaml

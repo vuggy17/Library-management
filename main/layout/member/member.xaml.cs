@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using main.model;
-using main.model.enums;
-using main.controller;
+using LibraryManagement.model;
+using LibraryManagement.model.enums;
+using LibraryManagement.controller;
 using System.Diagnostics;
-using main.layout.member.component;
+using LibraryManagement.layout.member.component;
 using MaterialDesignThemes.Wpf;
 
-namespace main.layout
+namespace LibraryManagement.layout
 {
     /// <summary>
     /// Interaction logic for UserControl1.xaml

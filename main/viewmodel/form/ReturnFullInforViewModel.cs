@@ -1,5 +1,5 @@
-﻿using main.model;
-using main.model.enums;
+﻿using LibraryManagement.model;
+using LibraryManagement.model.enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace main.model.form
+namespace LibraryManagement.model.form
 {
     class ReturnFullInforViewModel : BaseViewModel
     {

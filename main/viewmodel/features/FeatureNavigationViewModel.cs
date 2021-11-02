@@ -1,4 +1,4 @@
-﻿using main.controller;
+﻿using LibraryManagement.controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace main.model.features
+namespace LibraryManagement.model.features
 {
     class FeatureNavigationViewModel: BaseViewModel
     {

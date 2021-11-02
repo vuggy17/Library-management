@@ -1,7 +1,7 @@
-﻿using main.layout.HomeAndFeature.components;
-using main.layout.HomeAndFeature.form;
-using main.model.features;
-using main.viewmodel;
+﻿using LibraryManagement.layout.HomeAndFeature.components;
+using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.model.features;
+using LibraryManagement.viewmodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.HomeAndFeature
+namespace LibraryManagement.layout.HomeAndFeature
 {
     /// <summary>
     /// Interaction logic for HomePage.xaml

@@ -1,5 +1,5 @@
-﻿using main.layout.HomeAndFeature.form;
-using main.viewmodel.features;
+﻿using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.viewmodel.features;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.Book.Components
+namespace LibraryManagement.layout.Book.Components
 {
     /// <summary>
     /// Interaction logic for AddBookBoard.xaml

@@ -1,5 +1,5 @@
-﻿using main.controller;
-using main.model;
+﻿using LibraryManagement.controller;
+using LibraryManagement.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.HomeAndFeature.components
+namespace LibraryManagement.layout.HomeAndFeature.components
 {
     /// <summary>
     /// Interaction logic for ChangePasswordBoard.xaml
@@ -29,9 +29,9 @@ namespace main.layout.HomeAndFeature.components
             InitializeComponent();
             ToggleForm();
         }
-        private bool checkPass()
+        private bool checkPass(string password)
         {
-            if(PasswordHash.ValidatePassword(pass.Password, currentStaff.password))            
+            if (PasswordHash.ValidatePassword(password, currentStaff.password))
             {
                 return true;
             }
@@ -39,16 +39,16 @@ namespace main.layout.HomeAndFeature.components
             {
                 MessageBox.Show("Wrong password!!!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
-            }            
+            }
         }
-       private bool checkConfrimPass()
+        private bool checkConfrimPass(string password, string confirmPwd)
         {
-            if(newPass.Password.Length <8)
+            if (password.Length < 8)
             {
                 MessageBox.Show("Password is atleast 8 character", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
-            if(newPass.Password == newPassConfirm.Password)
+            if (password == confirmPwd)
             {
                 return true;
             }
@@ -60,15 +60,43 @@ namespace main.layout.HomeAndFeature.components
         }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if(checkPass() && checkConfrimPass())
-            {
-                currentStaff.password = newPass.Password;
+            var newPwd = newPass.Password;
+            var oldPwd = pass.Password;
+            var confirmPwd = newPassConfirm.Password;
 
-                currentStaff.changePassWord();
+            changeStaffPassword(oldPwd, newPwd, confirmPwd);
+        }
+        private void changeStaffPassword(string oldPassword, string newPassword, string confirmPwd)
+        {
+            try
+            {
+                currentStaff.changePassWord(oldPassword, newPassword, confirmPwd);
                 this.Close();
                 ToggleForm();
             }
-            
+            catch (Exception e)
+            {
+                var exCode = e.Message.ToString();
+                switch (exCode)
+                {
+                    case "WRONG_PASS":
+                        MessageBox.Show("Wrong password!!!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                    case "INVALID_PASS":
+                        MessageBox.Show("New password must have at least 8 character", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                    case "NOT_MATCH":
+                        MessageBox.Show("New password not match", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                    case "DB_ERROR":
+                        MessageBox.Show("Connection error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                    default:
+                        MessageBox.Show("System error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        break;
+                }
+                Console.WriteLine(exCode);
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

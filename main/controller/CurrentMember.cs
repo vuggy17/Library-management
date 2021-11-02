@@ -1,12 +1,12 @@
-﻿using main.model;
-using main.model.enums;
+﻿using LibraryManagement.model;
+using LibraryManagement.model.enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace main.controller
+namespace LibraryManagement.controller
 {
     class CurrentMember
     {

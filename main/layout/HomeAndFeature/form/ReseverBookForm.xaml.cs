@@ -1,5 +1,5 @@
-﻿using main.model;
-using main.model.features;
+﻿using LibraryManagement.model;
+using LibraryManagement.model.features;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace main.layout.HomeAndFeature.form
+namespace LibraryManagement.layout.HomeAndFeature.form
 {
     /// <summary>
     /// Interaction logic for ReseverBookForm.xaml

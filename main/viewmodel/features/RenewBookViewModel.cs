@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
-using main.layout.HomeAndFeature.form;
-using main.model;
-using main.viewmodel.features;
+using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.model;
+using LibraryManagement.viewmodel.features;
 
-namespace main.viewmodel.features
+namespace LibraryManagement.viewmodel.features
 {
     class RenewBookViewModel: BaseViewModel
     {        

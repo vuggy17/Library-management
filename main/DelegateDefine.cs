@@ -1,11 +1,11 @@
-﻿using main.model;
+﻿using LibraryManagement.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace main
+namespace LibraryManagement
 {
     public delegate void ChangePageHandler(string page);
 

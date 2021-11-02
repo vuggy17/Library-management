@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Media.Imaging;
 
-namespace main.model
+namespace LibraryManagement.model
 {
     public class Person
     {

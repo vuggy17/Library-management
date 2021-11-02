@@ -8,22 +8,22 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using main.layout.member.component;
-using main.model;
-using main.model.enums;
+using LibraryManagement.layout.member.component;
+using LibraryManagement.model;
+using LibraryManagement.model.enums;
 using MaterialDesignThemes.Wpf;
-using main.layout;
+using LibraryManagement.layout;
 using System.Windows;
-using main.viewmodel.Members;
-using main.layout.member.forms;
+using LibraryManagement.viewmodel.Members;
+using LibraryManagement.layout.member.forms;
 using System.Reflection;
-using main.layout.HomeAndFeature.form;
+using LibraryManagement.layout.HomeAndFeature.form;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System.Drawing;
 
-namespace main.controller
+namespace LibraryManagement.controller
 {
     public class MemberViewModel : BaseViewModel
     {

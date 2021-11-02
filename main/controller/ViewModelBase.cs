@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace main.controller
+namespace LibraryManagement.controller
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {

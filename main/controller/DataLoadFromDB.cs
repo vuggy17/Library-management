@@ -1,6 +1,6 @@
-﻿using main.layout;
-using main.model;
-using main.model.enums;
+﻿using LibraryManagement.layout;
+using LibraryManagement.model;
+using LibraryManagement.model.enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace main.controller
+namespace LibraryManagement.controller
 {
     class DataLoadFromDB
     {

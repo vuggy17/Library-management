@@ -13,11 +13,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using main.model.features;
-using main.layout.HomeAndFeature.form;
-using main.viewmodel.features;
+using LibraryManagement.model.features;
+using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.viewmodel.features;
 
-namespace main.layout.HomeAndFeature.components
+namespace LibraryManagement.layout.HomeAndFeature.components
 {
     /// <summary>
     /// Interaction logic for ReseviceBook.xaml

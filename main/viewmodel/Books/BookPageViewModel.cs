@@ -1,9 +1,9 @@
-﻿using main.controller;
-using main.layout.Book;
-using main.layout.Book.Components;
-using main.layout.HomeAndFeature.form;
-using main.model;
-using main.viewmodel.features;
+﻿using LibraryManagement.controller;
+using LibraryManagement.layout.Book;
+using LibraryManagement.layout.Book.Components;
+using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.model;
+using LibraryManagement.viewmodel.features;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace main.viewmodel.Books
+namespace LibraryManagement.viewmodel.Books
 {
     class BookPageViewModel: BaseViewModel
     {

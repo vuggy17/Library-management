@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.member.component
+namespace LibraryManagement.layout.member.component
 {
     /// <summary>
     /// Interaction logic for Progresbar.xaml

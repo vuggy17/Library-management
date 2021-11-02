@@ -1,6 +1,6 @@
-﻿using main.controller;
-using main.model;
-using main.viewmodel.form;
+﻿using LibraryManagement.controller;
+using LibraryManagement.model;
+using LibraryManagement.viewmodel.form;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace main.layout.HomeAndFeature.form
+namespace LibraryManagement.layout.HomeAndFeature.form
 {
     /// <summary>
     /// Interaction logic for ReturnBookForm.xaml

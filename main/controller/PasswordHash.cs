@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace main.controller
+namespace LibraryManagement.controller
 {
         public class PasswordHash
         {

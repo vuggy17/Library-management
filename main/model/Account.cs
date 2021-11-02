@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using main.controller;
-using main.model.enums;
+using LibraryManagement.controller;
+using LibraryManagement.model.enums;
 
-namespace main.model
+namespace LibraryManagement.model
 {
    public class Account
     {

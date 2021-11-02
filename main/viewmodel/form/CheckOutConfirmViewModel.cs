@@ -1,5 +1,5 @@
-﻿using main.model;
-using main.model.features;
+﻿using LibraryManagement.model;
+using LibraryManagement.model.features;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace main.model.form
+namespace LibraryManagement.model.form
 {
     class CheckOutConfirmViewModel: BaseViewModel
     {

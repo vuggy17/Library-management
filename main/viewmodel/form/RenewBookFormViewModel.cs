@@ -1,4 +1,4 @@
-﻿using main.model;
+﻿using LibraryManagement.model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace main.viewmodel.form
+namespace LibraryManagement.viewmodel.form
 {
     class RenewBookFormViewModel:BaseViewModel
     {

@@ -1,4 +1,4 @@
-﻿using main.viewmodel.Books;
+﻿using LibraryManagement.viewmodel.Books;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.Book
+namespace LibraryManagement.layout.Book
 {
     /// <summary>
     /// Interaction logic for BooksPage.xaml

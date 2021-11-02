@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using main.controller;
-using main.model.enums;
+using LibraryManagement.controller;
+using LibraryManagement.model.enums;
 
-namespace main.model
+namespace LibraryManagement.model
 {
     // for unique book
     public class BookItem

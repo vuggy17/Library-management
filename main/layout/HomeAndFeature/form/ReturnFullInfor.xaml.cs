@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using main.model;
+using LibraryManagement.model;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -15,9 +15,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
-using main.model.form;
+using LibraryManagement.model.form;
 
-namespace main.layout.HomeAndFeature.components
+namespace LibraryManagement.layout.HomeAndFeature.components
 {
     /// <summary>
     /// Interaction logic for ReturnFullInfor.xaml

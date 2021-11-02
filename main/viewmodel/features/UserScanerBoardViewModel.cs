@@ -1,9 +1,9 @@
-﻿using main.controller;
-using main.layout.HomeAndFeature.components;
-using main.layout.HomeAndFeature.form;
-using main.model;
-using main.model.enums;
-using main.model.form;
+﻿using LibraryManagement.controller;
+using LibraryManagement.layout.HomeAndFeature.components;
+using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.model;
+using LibraryManagement.model.enums;
+using LibraryManagement.model.form;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-namespace main.model.features
+namespace LibraryManagement.model.features
 {
     class UserScanerBoardViewModel: BaseViewModel
     {

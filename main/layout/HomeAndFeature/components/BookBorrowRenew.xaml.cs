@@ -1,8 +1,8 @@
-﻿using main.controller;
-using main.layout.HomeAndFeature.form;
-using main.model;
-using main.model.features;
-using main.viewmodel.features;
+﻿using LibraryManagement.controller;
+using LibraryManagement.layout.HomeAndFeature.form;
+using LibraryManagement.model;
+using LibraryManagement.model.features;
+using LibraryManagement.viewmodel.features;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace main.layout.HomeAndFeature.components
+namespace LibraryManagement.layout.HomeAndFeature.components
 {
     
     /// <summary>
