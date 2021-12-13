@@ -20,6 +20,7 @@ namespace LibraryManagement.UnitTest
             var pw = new Until.UntilService().createHash("123456789");
             List<Staff> staffList = new List<Staff>();
             staffList.Add(new Staff(new Person(), "19521110", pw));
+
             var mockUserService = new MockDbService().MockGetStaff(staffList);
             var vm = new LoginViewModel(mockUserService.Object, new Until.UntilService());
 
