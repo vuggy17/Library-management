@@ -87,9 +87,8 @@ namespace LibraryManagement.viewmodel.features
         public bool updateBook1(Book book)
         {
            
-            if (!validUpdateValue(book))
+            if (validUpdateValue(book))
             {
-               
                 return false;
             }
 
