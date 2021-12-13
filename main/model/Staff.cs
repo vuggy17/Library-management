@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using LibraryManagement.controller;
+using LibraryManagement.db;
 
 namespace LibraryManagement.model
 {
@@ -16,9 +17,9 @@ namespace LibraryManagement.model
         #region id 
         #endregion
 
-        private int _id;
+        private string _id;
 
-        public int id
+        public string id
         {
             get { return _id; }
             set { _id = value; }
@@ -42,10 +43,12 @@ namespace LibraryManagement.model
             get { return _info; }
             set { _info = value; }
         }
+
+        public IDatabase database;
         #endregion
 
         #region method
-        public Staff(Person accountInfo, int id, string password)
+        public Staff(Person accountInfo, string id, string password)
         {
             if (accountInfo != null)
             {
@@ -58,20 +61,25 @@ namespace LibraryManagement.model
         {
 
         }
+
+        public Staff(IDatabase mydb)
+        {
+            this.database = mydb;
+        }
         public bool ChangeInfo(Person input)
         {
             try
             {
                 this.info.modifyInfo(input);
-                Db.getInstace().updateInfo(info);
-                Db.getInstace().insertImageData(info);
+                Db.getInstace().updateInfo(input);
+                Db.getInstace().insertImageData(input);
                 return true;
             }
-            catch (Exception e)
+            catch 
             {
                 return false;
             }
-            
+
         }
         public void changePassWord(string oldPassword, string newPassword, string confirmPwd)
         {
@@ -89,10 +97,26 @@ namespace LibraryManagement.model
                 throw new Exception("DB_ERROR");
             Console.WriteLine("CHANGE PASSWORD SUCCESS");
         }
-
-        public bool updateInfo(string id, string name, string address, string phone, string mail,string imagename)
+        public void changePassWord1(string oldPassword, string newPassword, string confirmPwd)
         {
-            Staff currentStaff = CurrentStaff.getIntance();
+            // old passord is correct
+            if (!PasswordHash.ValidatePassword(oldPassword, this.password))
+                throw new Exception("WRONG_PASS");
+            // newpassword & confirmPwd is < 8 character
+            if (newPassword.Length < 8 || confirmPwd.Length < 8)
+                throw new Exception("INVALID_PASS");
+            // new and confirm password not match
+            if (newPassword != confirmPwd)
+                throw new Exception("NOT_MATCH");
+            // db error
+            //if (!database.updatePassword(this.id, this.password))
+            //    throw new Exception("DB_ERROR");
+            Console.WriteLine("CHANGE PASSWORD SUCCESS");
+        }
+
+        public bool updateInfo(string id, string name, string address, string phone, string mail, string imagename)
+        {
+
 
             if (String.IsNullOrEmpty(id) || String.IsNullOrEmpty(name) || String.IsNullOrEmpty(address) || String.IsNullOrEmpty(phone) || String.IsNullOrEmpty(mail))
                 throw new Exception("BAD_INPUT");
@@ -105,15 +129,55 @@ namespace LibraryManagement.model
                     string base64String = Convert.ToBase64String(imageData, 0, imageData.Length);
                     newInfo.imgSource = base64String;
                 }
-                currentStaff.ChangeInfo(newInfo);
-                
-                return true;
+                this.info.modifyInfo(info);
+                return this.ChangeInfo(info);
             }
             return false;
         }
+        public bool updateInfo1(string id, string name, string address, string phone, string mail, string imagename)
+        {
+            if (String.IsNullOrEmpty(id) || String.IsNullOrEmpty(name) || String.IsNullOrEmpty(address) || String.IsNullOrEmpty(phone) || String.IsNullOrEmpty(mail))
+                throw new Exception("BAD_INPUT");
+            if (isValidEmail(mail) && isVietnamesePhoneNumber(phone) && isValidName(name))
+            {
+                Person newInfo = new Person(name, address, mail, phone);
+                var updateResult = updateOuterInfo(newInfo, imagename);
+                if (updateResult)
+                    updateInternalInfo(newInfo);
+                return updateResult;
+            }
+            return false;
+        }
+        public void updateInternalInfo(Person info)
+        {
+            if (this.info != null)
+                this.info.modifyInfo(info);
+        }
+
+        //call db to update info
+        public bool updateOuterInfo(Person info, string imagename)
+        {
+            if (imagename != "")
+            {
+                byte[] imageData = File.ReadAllBytes(imagename);
+                string base64String = Convert.ToBase64String(imageData, 0, imageData.Length);
+                info.imgSource = base64String;
+            }
+            try
+            {
+                this.database.insertImageData(info);
+                this.database.updateInfo(info);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public bool isValidName(string name)
-        { if (String.IsNullOrEmpty(name)) return false;
+        {
+            if (String.IsNullOrEmpty(name)) return false;
             var regexItem = new Regex("^[a-zA-Z ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]*$");
             return regexItem.IsMatch(name);
         }

@@ -13,11 +13,11 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Security.Cryptography;
 using LibraryManagement.controller;
-
+using LibraryManagement.db;
 
 namespace LibraryManagement
 {
-    public class Db
+    public class Db:IDatabase
     {
         public StringBuilder result = new StringBuilder();
         private Db() { }
@@ -153,7 +153,7 @@ namespace LibraryManagement
                 Person info = getInfoByAccountID((int)reader[1]);
                 if (info != null)
                 {
-                    staff.Add(new Staff(info, (int)reader[0], reader[2].ToString()));
+                    staff.Add(new Staff(info, reader[0].ToString(), reader[2].ToString()));
                 }
 
             }
@@ -463,7 +463,7 @@ namespace LibraryManagement
             closeConnection();
             return result;
         }
-        public bool updatePassword(int staffId, string newPassword)
+        public bool updatePassword(string staffId, string newPassword)
         {
             
             bool result = false;           

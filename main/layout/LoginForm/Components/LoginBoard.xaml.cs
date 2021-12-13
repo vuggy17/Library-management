@@ -2,6 +2,7 @@
 using LibraryManagement.layout.Book;
 using LibraryManagement.model;
 using LibraryManagement.viewmodel.features;
+using LibraryManagement.viewmodel.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace LibraryManagement.layout.LoginForm.Components
     public partial class LoginBoard : UserControl
     {
         List<Staff> allStaffAccount;
-
+        LoginViewModel vm = new LoginViewModel(Db.getInstace(), new Until.UntilService());
         public static event LoginHandler loginSuccess;
 
         public LoginBoard()
@@ -36,6 +37,8 @@ namespace LibraryManagement.layout.LoginForm.Components
             error.Text = "";
             allStaffAccount = new List<Staff>();
             allStaffAccount = LoadAllStaffAccount();
+
+
 
         }
         private Staff getEmailLogin(string email)
@@ -62,58 +65,66 @@ namespace LibraryManagement.layout.LoginForm.Components
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (email.Text != "" && password.Password != "")
-            {
-                if (checkEmaillogin(email.Text))
-                {
-                    Staff loginStaff = getEmailLogin(email.Text);
-                    if (loginStaff != null)
-                    {
-                        if (PasswordHash.ValidatePassword(password.Password, loginStaff.password))
-                        {
-                            error.Text = "Login success";
-                            error.Foreground = Brushes.Green;
-                            CurrentStaff.setCurrentStaff(loginStaff);
-                            loginSuccess();
+            //if (email.Text != "" && password.Password != "")
+            //{
+            //    if (checkEmaillogin(email.Text))
+            //    {
+            //        Staff loginStaff = getEmailLogin(email.Text);
+            //        if (loginStaff != null)
+            //        {
+            //            if (PasswordHash.ValidatePassword(password.Password, loginStaff.password))
+            //            {
+            //                error.Text = "Login success";
+            //                error.Foreground = Brushes.Green;
+            //                CurrentStaff.setCurrentStaff(loginStaff);
+            //                loginSuccess();
 
-                        }
-                        else
-                        {
-                            error.Text = "Wrong password";
-                        }
-                    }
-                    else
-                    {
-                        error.Text = "Email not exist";
-                    }
-                }
-                else
-                {
-                    Staff loginStaff = getIDLogin(email.Text);
-                    if (loginStaff != null)
-                    {
-                        if (PasswordHash.ValidatePassword(password.Password, loginStaff.password))
-                        {
-                            error.Text = "Login success";
-                            error.Foreground = Brushes.Green;
-                            CurrentStaff.setCurrentStaff(loginStaff);
-                            loginSuccess();
+            //            }
+            //            else
+            //            {
+            //                error.Text = "Wrong password";
+            //            }
+            //        }
+            //        else
+            //        {
+            //            error.Text = "Email not exist";
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Staff loginStaff = getIDLogin(email.Text);
+            //        if (loginStaff != null)
+            //        {
+            //            if (PasswordHash.ValidatePassword(password.Password, loginStaff.password))
+            //            {
+            //                error.Text = "Login success";
+            //                error.Foreground = Brushes.Green;
+            //                CurrentStaff.setCurrentStaff(loginStaff);
+            //                loginSuccess();
 
-                        }
-                        else
-                        {
-                            error.Text = "Wrong password";
-                        }
-                    }
-                    else
-                    {
-                        error.Text = "ID not exist";
-                    }
-                }
+            //            }
+            //            else
+            //            {
+            //                error.Text = "Wrong password";
+            //            }
+            //        }
+            //        else
+            //        {
+            //            error.Text = "ID not exist";
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    error.Text = "Email or Password is empty";
+            //}
+            try { 
+                vm.login(email.Text, password.Password);
+                loginSuccess();
             }
-            else
+            catch(Exception ex)
             {
-                error.Text = "Email or Password is empty";
+                MessageBox.Show(ex.Message);
             }
         }
         private List<Staff> LoadAllStaffAccount()
@@ -135,5 +146,6 @@ namespace LibraryManagement.layout.LoginForm.Components
             }
 
         }
+
     }
 }

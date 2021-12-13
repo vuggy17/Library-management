@@ -131,6 +131,7 @@
     </ApplicationDefinition>
     <Compile Include="controller\CurrentStaff.cs" />
     <Compile Include="controller\PasswordHash.cs" />
+    <Compile Include="db\IDatabase.cs" />
     <Compile Include="layout\Book\BooksPage.xaml.cs">
       <DependentUpon>BooksPage.xaml</DependentUpon>
     </Compile>
@@ -161,6 +162,7 @@
     <Compile Include="layout\member\forms\UnBlockConfirm.xaml.cs">
       <DependentUpon>UnBlockConfirm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Until\UntilService.cs" />
     <Compile Include="viewmodel\Books\BookPageViewModel.cs" />
     <Compile Include="viewmodel\Books\DeleteBookViewModel.cs" />
     <Compile Include="viewmodel\Books\EditBookViewModel.cs" />
@@ -196,6 +198,7 @@
     <Compile Include="viewmodel\form\ReturnBookFormViewModel.cs" />
     <Compile Include="viewmodel\form\ReturnFullInforViewModel.cs" />
     <Compile Include="viewmodel\Home\HomeNavigationViewModel.cs" />
+    <Compile Include="viewmodel\Login\LoginViewModel.cs" />
     <Compile Include="viewmodel\Members\MemberNavigationViewModel.cs" />
     <Page Include="layout\Book\BooksPage.xaml">
       <SubType>Designer</SubType>
@@ -609,6 +612,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="model\test\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
