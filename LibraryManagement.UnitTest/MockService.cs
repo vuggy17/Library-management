@@ -70,9 +70,9 @@ namespace LibraryManagement.UnitTest
             return this;
         }
        
-        public MockDbService MockAddBlackList(int id, bool output)
+        public MockDbService MockAddBlackList(int id)
         {
-            Setup(x => !x.getIsInBlacklist(id)).Returns(output);
+            Setup(x => x.getIsInBlacklist(id)).Returns(false);
             return this;
         }
     }

@@ -13,26 +13,22 @@ namespace LibraryManagement.UnitTest
     [TestFixture]
     class BlackListTest
     {
-        [TestCase(4, true)]
-        public void addBlacklist_ValidValue_ReturnTrue(int id, bool result)
-        {
-            var mockUserService = new MockDbService().MockAddBlackList(id, output:true);
-            var vm = new MemberViewModel(mockUserService.Object, new Until.UntilService(), id);
-            bool isIn = false;
-            List<Account> listAccount = Db.getInstace().getAllAccount();
-           
-            foreach (Account item in listAccount)
-            {
-                if (item.id == id)
-                {
-                    if (item.status == model.enums.AccountStatus.BLACKLISTED) isIn = true;
-                    isIn = false;
-                }
-            }
+        [TestCase(false, true)]
+        [TestCase(true, false)]
+        public void addBlacklist_Testing(bool isIn, bool result)
+        {         
+            var vm = new MemberViewModel(isIn);                 
             var ex = vm.addInToBlacklist(isIn);
-
             Assert.That(ex, Is.EqualTo(result));
-            mockUserService.VerifyAll();
+        }
+
+        [TestCase(false, false)]
+        [TestCase(true, true)]
+        public void deleteBlacklist_Testing(bool isIn, bool result)
+        {
+            var vm = new MemberViewModel(isIn);
+            var ex = vm.deleteFromBlacklist(isIn);
+            Assert.That(ex, Is.EqualTo(result));
         }
     }
 }

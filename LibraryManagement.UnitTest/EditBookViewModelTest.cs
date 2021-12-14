@@ -35,7 +35,9 @@ namespace LibraryManagement.UnitTest
             EditBookViewModel viewmodel = new EditBookViewModel(mock.Object);
 
             var result = viewmodel.updateBook1(updateValue);
-            Assert.AreEqual(result, expected);
+            Console.WriteLine(expected);
+            Console.WriteLine(result);
+            Assert.AreEqual(expected, result);
         }
     }
 }

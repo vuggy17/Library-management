@@ -29,7 +29,7 @@ namespace LibraryManagement.controller
 {
     public class MemberViewModel : BaseViewModel
     {
-        DataLoadFromDB data = DataLoadFromDB.getIntance();
+        DataLoadFromDB data;
         private void updateMember()
         {            
             OnPropertyChanged("memberList");
@@ -53,14 +53,7 @@ namespace LibraryManagement.controller
             get => memberList.Count;
         }
 
-        bool isInBlacklist;
-        UntilService _until;
-        public MemberViewModel(IDatabase dbService, UntilService until, int id)
-        {
-            isInBlacklist = dbService.getIsInBlacklist(id);
-            _until = until;
-        }
-
+      
         private ObservableCollection<Converter> _memberList;
         public ObservableCollection<Converter> memberList 
         {
@@ -194,7 +187,7 @@ namespace LibraryManagement.controller
         public MemberViewModel()
         {
 
-            
+            data = DataLoadFromDB.getIntance();
             MemberNavigationViewModel.ChangePage += MemberNavigationViewModel_ChangePage;
             AddNewMemberForm.updateMember += updateMember;
             BlockConfirm.updateMember += updateMember;
@@ -203,6 +196,11 @@ namespace LibraryManagement.controller
             EditForm.updateMember += updateMember;
             CheckOutConfirm.checkOutUpdateMember += updateMember;
             ReturnBookForm.returnUpdateMember += updateMember;
+        }
+
+        public MemberViewModel(bool value)
+        {
+
         }
         private string searchKeyword = "";
         public string SearchKeyword
@@ -220,6 +218,12 @@ namespace LibraryManagement.controller
         public bool addInToBlacklist(bool isIn)
         {
             if (isIn) return false;
+            return true;
+        }
+
+        public bool deleteInToBlacklist(bool isIn)
+        {
+            if (!isIn) return false;
             return true;
         }
 

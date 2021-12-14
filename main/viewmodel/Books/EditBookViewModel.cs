@@ -91,16 +91,15 @@ namespace LibraryManagement.viewmodel.features
             {
                 return false;
             }
-
             var books = this._db.getAllBooks(); //get all book from server
             var updateItem = books.FindAll(item => item.id == book.id);
             updateItem.Insert(0, book); //update book in local
-           
+
             return true;
         }
         private bool validUpdateValue(Book value)
         {
-            return !(String.IsNullOrEmpty(value.title) && String.IsNullOrEmpty(value.author) && Double.IsNaN(value.price) && value.price < 0) ;
+            return (String.IsNullOrEmpty(value.title) || String.IsNullOrEmpty(value.author) || value.price < 0) ;
         }
     }
 }
