@@ -181,10 +181,7 @@ namespace LibraryManagement
             var reader = executeCommand(command);
             while (reader.Read())
             {
-
-
                 bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString())));
-
             }
             closeConnection();
             return bookItems;
@@ -264,10 +261,10 @@ namespace LibraryManagement
             }
             return lastInsertID;
         }
-        public bool dropBook(Book book)
+        public bool dropBook(int bookId)
         {
             bool result = false;
-            string command = $"DELETE FROM `BOOK` WHERE ID = {book.id}";
+            string command = $"DELETE FROM `BOOK` WHERE ID = {bookId}";
             var reader = executeCommand(command);
             if (reader != null)
             {

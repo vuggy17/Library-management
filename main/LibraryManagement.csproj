@@ -138,6 +138,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="controller\CurrentStaff.cs" />
+    <Compile Include="controller\IDataLoadFromDB.cs" />
     <Compile Include="controller\PasswordHash.cs" />
     <Compile Include="db\IDatabase.cs" />
     <Compile Include="layout\Book\BooksPage.xaml.cs">
