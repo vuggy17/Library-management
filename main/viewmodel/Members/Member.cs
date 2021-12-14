@@ -22,6 +22,8 @@ using System.IO;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System.Drawing;
+using LibraryManagement.Until;
+using LibraryManagement.db;
 
 namespace LibraryManagement.controller
 {
@@ -51,6 +53,13 @@ namespace LibraryManagement.controller
             get => memberList.Count;
         }
 
+        bool isInBlacklist;
+        UntilService _until;
+        public MemberViewModel(IDatabase dbService, UntilService until, int id)
+        {
+            isInBlacklist = dbService.getIsInBlacklist(id);
+            _until = until;
+        }
 
         private ObservableCollection<Converter> _memberList;
         public ObservableCollection<Converter> memberList 
@@ -208,9 +217,19 @@ namespace LibraryManagement.controller
             }
         }
        
-        
+        public bool addInToBlacklist(bool isIn)
+        {
+            if (isIn) return false;
+            return true;
+        }
 
-       
+        public bool deleteFromBlacklist(bool isIn)
+        {
+            if (!isIn) return false;
+            return true;
+        }
+
+
         private ObservableCollection<Converter> filterByInfo(ObservableCollection<Converter> listToFindMember)
         {
             

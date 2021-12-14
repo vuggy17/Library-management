@@ -14,5 +14,6 @@ namespace LibraryManagement.db
         bool insertImageData(Person person);
         List<Staff> getAllStaffs();
 
+        bool getIsInBlacklist(int ID);
     }
 }

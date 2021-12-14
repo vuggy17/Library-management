@@ -558,5 +558,19 @@ namespace LibraryManagement
                 return false;
             }
         }
+
+        public bool getIsInBlacklist(int ID)
+        {
+            List<Account> listAccount = getAllAccount();
+            foreach (Account item in listAccount)
+            {
+                if (item.id == ID)
+                {
+                    if (item.status == model.enums.AccountStatus.BLACKLISTED) return true;
+                    return false;
+                }    
+            }    
+            return false;
+        }
     }
 }
