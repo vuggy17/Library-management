@@ -5,6 +5,7 @@ using LibraryManagement.layout.Book.Components;
 using LibraryManagement.layout.HomeAndFeature.form;
 using LibraryManagement.model;
 using LibraryManagement.viewmodel.features;
+using LibraryManagement.viewmodel.form;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -67,7 +68,7 @@ namespace LibraryManagement.viewmodel.Books
             DeleteBookViewModel.deleteBook += deleteBookItem;
             EditBookViewModel.update += update;
             CheckOutConfirm.checkOutUpdateBook += update;
-            ReturnBookForm.returnUpdateBook += update;
+            ReturnBookFormViewModel.returnUpdateBook += update;
             this.dataLoadFromDB = DataLoadFromDB.getIntance();
         }
 

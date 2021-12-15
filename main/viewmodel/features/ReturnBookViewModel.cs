@@ -1,5 +1,6 @@
 ﻿using LibraryManagement.layout.HomeAndFeature.form;
 using LibraryManagement.model;
+using LibraryManagement.viewmodel.form;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,10 +26,9 @@ namespace LibraryManagement.viewmodel.features
         public ReturnBookViewModel(Account account)
         {
             lendingBookItems = new ObservableCollection<BookToShow>();
-            ReturnBookForm.returnUpdateBook += ReturnBookForm_returnUpdateBook;
+            ReturnBookFormViewModel.returnUpdateBook += ReturnBookForm_returnUpdateBook;
             this.account = account;
           
-
         }
         private ObservableCollection<BookToShow> getLendingBookItems()
         {

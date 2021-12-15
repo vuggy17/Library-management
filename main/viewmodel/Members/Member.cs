@@ -22,6 +22,7 @@ using System.IO;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System.Drawing;
+using LibraryManagement.viewmodel.form;
 
 namespace LibraryManagement.controller
 {
@@ -193,7 +194,7 @@ namespace LibraryManagement.controller
             DeleteConfirn.updateMember += updateMember;
             EditForm.updateMember += updateMember;
             CheckOutConfirm.checkOutUpdateMember += updateMember;
-            ReturnBookForm.returnUpdateMember += updateMember;
+            ReturnBookFormViewModel.returnUpdateMember += updateMember;
         }
         private string searchKeyword = "";
         public string SearchKeyword
