@@ -62,14 +62,15 @@ namespace LibraryManagement.viewmodel.Books
             Delete = new RelayCommand<Object>((p) => true, (p) => { deleteBookFormShow(SelectedItem); });
             Edit = new RelayCommand<Object>((p) => true, (p) => { editBookFormShow(SelectedItem); });
             filterList = new ObservableCollection<Book>();
-            AddBookForm.update += update;
+          
+            AddNewBookViewModel.update += update;
             DeleteBookViewModel.deleteBook += deleteBookItem;
             EditBookViewModel.update += update;
             CheckOutConfirm.checkOutUpdateBook += update;
             ReturnBookForm.returnUpdateBook += update;
             this.dataLoadFromDB = DataLoadFromDB.getIntance();
-
         }
+
         public BookPageViewModel(IDatabase db)
         {
             this._db = db;

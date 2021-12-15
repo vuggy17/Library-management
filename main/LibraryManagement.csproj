@@ -168,7 +168,9 @@
     <Compile Include="layout\member\forms\UnBlockConfirm.xaml.cs">
       <DependentUpon>UnBlockConfirm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="model\Test\AddNewBookResult.cs" />
     <Compile Include="Until\UntilService.cs" />
+    <Compile Include="viewmodel\Books\AddNewBookViewModel.cs" />
     <Compile Include="viewmodel\Books\BookPageViewModel.cs" />
     <Compile Include="viewmodel\Books\DeleteBookViewModel.cs" />
     <Compile Include="viewmodel\Books\EditBookViewModel.cs" />
@@ -619,9 +621,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="model\test\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
