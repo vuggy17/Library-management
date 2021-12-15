@@ -44,6 +44,30 @@ namespace LibraryManagement.UnitTest
             Setup(x => x.getAllStaffs()).Returns(output);
             return this;
         }
-       
+        public MockDbService MockDropBook(int id)
+        {
+            Setup(x => x.dropBook(id));
+            return this;
+        }
+        public MockDbService MockGetAllBookItems(List<BookItem> output)
+        {
+            Setup(x => x.getAllBookItems()).Returns(output);
+            return this;
+        }
+        public MockDbService MockGetAllBook(List<Book> output)
+        {
+            Setup(x => x.getAllBooks()).Returns(output);
+            return this;
+        }
+        public MockDbService MockUpdateBook(Book input)
+        {
+            Setup(x => x.updateBook(input)).Returns(true);
+            return this;
+        }
+        public MockDbService MockInsertBookImage(Book input)
+        {
+            Setup(x => x.inseartBookImage(input)).Returns(true);
+            return this;
+        }
     }
 }

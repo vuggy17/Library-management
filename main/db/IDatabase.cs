@@ -13,6 +13,10 @@ namespace LibraryManagement.db
         bool updatePassword(string staffId, string newPassword);
         bool insertImageData(Person person);
         List<Staff> getAllStaffs();
-
+        bool dropBook(int bookId);
+        List<BookItem> getAllBookItems();
+        List<Book> getAllBooks();
+        bool updateBook(Book book);
+        bool inseartBookImage(Book book);
     }
 }

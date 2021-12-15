@@ -99,12 +99,12 @@ namespace LibraryManagement.model
         }
         public void changePassWord1(string oldPassword, string newPassword, string confirmPwd)
         {
-            // old passord is correct
-            if (!PasswordHash.ValidatePassword(oldPassword, this.password))
-                throw new Exception("WRONG_PASS");
             // newpassword & confirmPwd is < 8 character
             if (newPassword.Length < 8 || confirmPwd.Length < 8)
                 throw new Exception("INVALID_PASS");
+            // old passord is correct
+            if (!PasswordHash.ValidatePassword(oldPassword, this.password))
+                throw new Exception("WRONG_PASS");
             // new and confirm password not match
             if (newPassword != confirmPwd)
                 throw new Exception("NOT_MATCH");

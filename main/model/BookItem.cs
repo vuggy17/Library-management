@@ -83,6 +83,7 @@ namespace LibraryManagement.model
             this.id = id;
             this.info = info;
             this.lendingStatus = lending;
+            this.dataLoadFromDB = DataLoadFromDB.getIntance();
             if (getBookInfor() != null)
             {
                 BookInfo = getBookInfor();
@@ -90,13 +91,20 @@ namespace LibraryManagement.model
            
             
         }
+        public BookItem(int id, LendingStatus lending, int info)
+        {
+            this.id = id;
+            this.info = info;
+            this.lendingStatus = lending;
+
+        }
         public BookItem (int id, DateTime bordate, DateTime dueDate)
         {
             this.id = id;
             this.bordate = bordate;
             this.dueDate = dueDate;
         }
-        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+        DataLoadFromDB dataLoadFromDB;
         public Book getBookInfor()
         {
             foreach (var book in dataLoadFromDB.getBooks())
