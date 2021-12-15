@@ -169,6 +169,7 @@
       <DependentUpon>UnBlockConfirm.xaml</DependentUpon>
     </Compile>
     <Compile Include="model\Test\AddNewBookResult.cs" />
+    <Compile Include="model\Test\ReturnBookResult.cs" />
     <Compile Include="Until\UntilService.cs" />
     <Compile Include="viewmodel\Books\AddNewBookViewModel.cs" />
     <Compile Include="viewmodel\Books\BookPageViewModel.cs" />

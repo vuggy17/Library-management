@@ -1,5 +1,6 @@
 ﻿using LibraryManagement.controller;
 using LibraryManagement.model;
+using LibraryManagement.model.Test;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +12,7 @@ using System.Windows;
 namespace LibraryManagement.viewmodel.form
 {
 
-    class ReturnBookFormViewModel : BaseViewModel
+    public class ReturnBookFormViewModel : BaseViewModel
     {
         public String Id { get; set; }
         public ObservableCollection<BookToShow> ConfirmBooks { get; set; }
@@ -30,6 +31,11 @@ namespace LibraryManagement.viewmodel.form
             this.ConfirmBooks = confirmBooks;
             dataLoadFromDB = DataLoadFromDB.getIntance();
         }
+        public ReturnBookFormViewModel()
+        {
+
+        }
+
         private double caculateTotalOverDuefee()
         {
             double result=0.0;
@@ -39,6 +45,33 @@ namespace LibraryManagement.viewmodel.form
             }
             return result;
         }
+        public ReturnBookResult removeBookToLendingListTest(ObservableCollection<BookToShow> checkOutBookList)
+        {
+            ReturnBookResult returnBook = new ReturnBookResult("", false, "Return book fail nothing selected");
+            foreach (var book in checkOutBookList)
+            {
+                returnBook.logMessage = "";
+                BookItem bookItem = book.bookItemTest();
+                returnBook.returnResult = true;                
+                if (bookItem.lendingStatus != model.enums.LendingStatus.RESV)
+                {
+                    bookItem.lendingStatus = model.enums.LendingStatus.AVAI;
+                    returnBook.newBookItemStatus = "Available";
+                }
+                else
+                {
+                    bookItem.lendingStatus = model.enums.LendingStatus.READY;
+                    returnBook.newBookItemStatus = "Ready";
+                }
+                if(book._dueDate < DateTime.Now)
+                {
+                    returnBook.logMessage = "Remind fee";
+                }              
+                returnBook.returnResult = true;
+            }
+            return returnBook;
+        }
+
         public void removeBookToLendingList(Account account, ObservableCollection<BookToShow> CheckOutBookList)
         {
             foreach (var book in CheckOutBookList)
@@ -47,7 +80,7 @@ namespace LibraryManagement.viewmodel.form
                 account.removeBookToLendingBookList(bookItem);
                 if (bookItem.lendingStatus != model.enums.LendingStatus.RESV)
                 {
-                    bookItem.lendingStatus = model.enums.LendingStatus.AVAI;
+                    bookItem.lendingStatus = model.enums.LendingStatus.AVAI;                    
                 }
                 else
                 {
@@ -57,7 +90,6 @@ namespace LibraryManagement.viewmodel.form
                 bookItem.dueDate = null;
                 if (dataLoadFromDB.updateBookItem(bookItem) != null)
                 {
-
                     returnUpdateBook();
                     returnUpdateMember();
                 }
@@ -65,9 +97,8 @@ namespace LibraryManagement.viewmodel.form
                 {
                     MessageBox.Show("Unknow error");
                 }
-
-
             }
         }
+        
     }
 }
