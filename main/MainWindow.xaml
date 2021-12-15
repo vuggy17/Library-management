@@ -10,11 +10,12 @@
         xmlns:book="clr-namespace:LibraryManagement.layout.Book"
         xmlns:member="clr-namespace:LibraryManagement.layout"
         xmlns:local="clr-namespace:LibraryManagement"
-       
+        
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1366"
-        WindowStartupLocation="CenterScreen"       
-        WindowState="Normal"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        WindowState="Maximized"
        
         >
     <Grid>
