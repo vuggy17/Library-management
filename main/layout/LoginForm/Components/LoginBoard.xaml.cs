@@ -37,20 +37,9 @@ namespace LibraryManagement.layout.LoginForm.Components
             error.Text = "";
             allStaffAccount = new List<Staff>();
             allStaffAccount = LoadAllStaffAccount();
-
-            print();
-
         }
 
-        public void print()
-        {
-            List<Account> listAccount = Db.getInstace().getAllAccount();
-
-            foreach (Account item in listAccount)
-            {
-                MessageBox.Show(item.id.ToString() + "." + item.status.ToString());
-            }
-        }
+        
         private Staff getEmailLogin(string email)
         {
             foreach (var staff in allStaffAccount)
