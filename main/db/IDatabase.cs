@@ -18,5 +18,7 @@ namespace LibraryManagement.db
         List<Book> getAllBooks();
         bool updateBook(Book book);
         bool inseartBookImage(Book book);
+
+        bool getIsInBlacklist(int ID);
     }
 }

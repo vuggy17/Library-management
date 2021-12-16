@@ -69,7 +69,10 @@ namespace LibraryManagement.UnitTest
             Setup(x => x.inseartBookImage(input)).Returns(true);
             return this;
         }
-
-
+        public MockDbService MockAddBlackList(int id)
+        {
+            Setup(x => x.getIsInBlacklist(id)).Returns(false);
+            return this;
+        }
     }
 }
