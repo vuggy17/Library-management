@@ -34,7 +34,7 @@
                     </Grid.RowDefinitions>
                     
                     <Image x:Name="imgBookCover"                           
-                               Source="/main;component/assests/addMember.jpg" 
+                               Source="/assests/addMember.jpg" 
                                Grid.Row="0"
                                Grid.RowSpan="2"
                                Height="Auto"

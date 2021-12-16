@@ -2,217 +2,181 @@
 using LibraryManagement.model;
 using NUnit.Framework;
 using LibraryManagement.controller;
+using LibraryManagement.db;
+using Moq;
+
 namespace LibraryManagement.UnitTest
 {
     [TestFixture]
     public class StaffTest
     {
-        private Staff staff;
 
-        [SetUp]
-        public void Setup()
+        [TestCase("invalidpassword", "7letter", "7letter", "INVALID_PASS")]
+        [TestCase("validpassword", "newvalidpassword", "notmatchpassword", "NOT_MATCH")]
+        [TestCase("fakepassword", "newvalidpassword", "newvalidpassword", "WRONG_PASS")]
+        public void changePassWord_InvalidValue_ThrowException(string password, string newpassowrd, string confirmPassword, string expectedErrorMessage)
         {
-            staff = new Staff();
+            Mock<IDatabase> mockDatabase;
+            mockDatabase = new Mock<IDatabase>(MockBehavior.Strict);
+            var mockUserService = new MockDbService()
+            .MockUpdatePassword("12321", password, output: false);
+
+            Staff staff = new Staff(mockUserService.Object);
             staff.password = PasswordHash.CreateHash("validpassword");
+
+            var ex = Assert.Throws<System.Exception>(() => staff.changePassWord1(password, newpassowrd, confirmPassword));
+            Assert.That(ex.Message, Is.EqualTo(expectedErrorMessage));
         }
 
-        [Test]
-        public void changePassWord_InvalidNewPassword_ThrowException()
+        [TestCase("validpassword", "newvalidpassword", "newvalidpassword")]
+        public void changePassWord_ValidValue_NotThrowException(string password, string newpassowrd, string confirmPassword)
         {
-            var ex = Assert.Throws<System.Exception>(() => staff.changePassWord("validpassword", "7letter", "7letter"));
-            Assert.That(ex.Message, Is.EqualTo("INVALID_PASS"));
-        }
-        [Test]
-        public void changePassWord_NewpassNotMatch_ThrowException()
-        {
-            var ex = Assert.Throws<System.Exception>(() => staff.changePassWord("validpassword", "newvalidpassword", "notmatchpassword"));
-            Assert.That(ex.Message, Is.EqualTo("NOT_MATCH"));
-        }
-        [Test]
-        public void changePassWord_WrongOldPassword_ThrowException()
-        {
-            var ex = Assert.Throws<System.Exception>(() => staff.changePassWord("fakepassword", "newvalidpassword", "newvalidpassword"));
-            Assert.That(ex.Message, Is.EqualTo("WRONG_PASS"));
-        }
-        [Test]
-        public void changePassWord_ValidValue_NotThrowException()
-        {
-            Assert.DoesNotThrow(() => staff.changePassWord("validpassword", "newvalidpassword", "newvalidpassword"));
+            Mock<IDatabase> mockDatabase;
+            mockDatabase = new Mock<IDatabase>(MockBehavior.Strict);
+            var mockUserService = new MockDbService()
+            .MockUpdatePassword("12321", password, output: false);
+
+            Staff staff = new Staff(mockUserService.Object);
+            staff.password = PasswordHash.CreateHash("validpassword");
+
+            Assert.DoesNotThrow(() => staff.changePassWord1(password, newpassowrd, confirmPassword));
         }
 
         // TEST UPDATE STAFF INFORMATION
-        [Test]
-        public void updateStaffInfo_BadInput_ThrowException()
+        [TestCase("", "", "", "", "", "", "BAD_INPUT")]
+        [TestCase("123456789", "Pham Minh Tam", "HCM, Q9", "0343027600", "", "", "BAD_INPUT")]
+        [TestCase("123456789", "Pham Minh Tam", "HCM, Q9", "", "tanpm@gmail.com", "", "BAD_INPUT")]
+
+        public void updateStaffInfo1_InvalidInput_ThrowException(string id, string name, string address, string phone, string mail, string imagename, string expectedErrorMessage)
         {
+            var mockUserService = new MockDbService()
+            .MockUpdateInfo(new Person(name, address, mail, phone));
+
+            Staff staff = new Staff(mockUserService.Object);
+
             //bad input is empty input
-            var ex = Assert.Throws<System.Exception>(() => staff.updateInfo("", "", "", "", "", ""));
-            Assert.That(ex.Message, Is.EqualTo("BAD_INPUT"));
-        }
-
-        [Test]
-        public void updateStaffInfo_MailEmpty_ThrowException()
-        {
-            var ex = Assert.Throws<System.Exception>(() => staff.updateInfo("123456789", "Pham Minh Tam", "HCM, Q9", "0343027600", "", ""));
-            Assert.That(ex.Message, Is.EqualTo("BAD_INPUT"));
+            var ex = Assert.Throws<System.Exception>(() => staff.updateInfo1(id, name, address, phone, mail, imagename));
+            Assert.That(ex.Message, Is.EqualTo(expectedErrorMessage));
 
         }
-        [Test]
-        public void updateStaffInfo_PhoneEmpty_ReturnFalse()
+
+        [TestCase("123456789", "Tan@@!!", "HCM, Q9", "0343027600", "tanpm@gmail.com", "", false)]
+        [TestCase("123456789", "Tan 1234", "HCM, Q9", "0343027600", "tanpm@gmail.com", "", false)]
+        public void updateStaffInfo1_NameInvalid_ReturnFalse(string id, string name, string address, string phone, string mail, string imagename, bool expectedReturnValue)
         {
-            var ex = Assert.Throws<System.Exception>(() => staff.updateInfo("123456789", "Pham Minh Tam", "HCM, Q9", "", "tanpm@gmail.com", ""));
-            Assert.That(ex.Message, Is.EqualTo("BAD_INPUT"));
-        }
-        [Test]
-        public void updateStaffInfo_NameContainSepecialCharacter_ReturnFalse()
-        {
-            // name wrong format
-            var ex = staff.updateInfo("123456789", "Tan@@!!", "HCM, Q9", "0343027600", "tanpm@gmail.com", "");
-            Assert.IsFalse(ex);
+            var mockUserService = new MockDbService()
+            .MockUpdateInfo(new Person(name, address, mail, phone));
+
+            Staff staff = new Staff(mockUserService.Object);
+
+            var ex = staff.updateInfo1(id, name, address, phone, mail, imagename);
+            Assert.That(ex, Is.EqualTo(expectedReturnValue));
 
         }
-        [Test]
-        public void updateStaffInfo_NameContainNumber_ReturnFalse()
+
+        [TestCase("123456789", "Pham Minh Tam", "HCM, Q9", "343027600", "tan1234", "", false)]
+
+        public void updateStaffInfo_MailWrongFormat_ReturnFalse(string id, string name, string address, string phone, string mail, string imagename, bool expectedReturnValue)
         {
-            // name wrong format
-            var ex = staff.updateInfo("123456789", "Tan 1234", "HCM, Q9", "0343027600", "tanpm@gmail.com", "");
-            Assert.IsFalse(ex);
+            Mock<IDatabase> mockDatabase;
+            mockDatabase = new Mock<IDatabase>(MockBehavior.Strict);
+            var mockUserService = new MockDbService()
+            .MockUpdateInfo(new Person(name, address, mail, phone));
+
+            Staff staff = new Staff(mockUserService.Object);
+
+            var ex = staff.updateInfo1(id, name, address, phone, mail, imagename);
+            Assert.That(ex, Is.EqualTo(expectedReturnValue));
 
         }
-        [Test]
-        public void updateStaffInfo_MailWrongFormat_ReturnFalse()
+
+        [TestCase("123456789", "Pham Minh Tam", "HCM, Q9", "32515575622", "tanpm@gmail.com", "", false)]
+        public void updateStaffInfo1_PhoneWrongFormat_ReturnFalse(string id, string name, string address, string phone, string mail, string imagename, bool expectedReturnValue)
         {
-            var ex = staff.updateInfo("123456789", "Pham Minh Tam", "HCM, Q9", "343027600", "tan1234", "");
-            Assert.IsFalse(ex);
+            Mock<IDatabase> mockDatabase;
+            mockDatabase = new Mock<IDatabase>(MockBehavior.Strict);
+            var mockUserService = new MockDbService()
+            .MockUpdateInfo(new Person(name, address, mail, phone));
+
+            Staff staff = new Staff(mockUserService.Object);
+
+            var ex = staff.updateInfo1(id, name, address, phone, mail, imagename);
+            Assert.That(ex, Is.EqualTo(expectedReturnValue));
+
         }
-        [Test]
-        public void updateStaffInfo_PhoneWrongFormat_ReturnFalse()
+        [TestCase("123456789", "Pham Minh Tam", "HCM, Q9", "0343027600", "tanpm@gmail.com", "", true)]
+        public void updateStaffInfo1_ValidValue_ReturnTrue(string id, string name, string address, string phone, string mail, string imagename, bool expectedReturnValue)
         {
-            var ex = staff.updateInfo("123456789", "Pham Minh Tam", "HCM, Q9", "32515575622", "tanpm@gmail.com", "");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void updateStaffInfo_ValidValue_ReturnTrue()
-        {
-            var ex = staff.updateInfo("123456789", "Pham Minh Tam", "HCM, Q9", "0343027600", "tanpm@gmail.com", "");
-            Assert.IsTrue(ex);
+            
+            var mockUserService = new MockDbService()
+            .MockUpdateInfo(new Person(name, address, mail, phone));
+
+            Staff staff = new Staff(mockUserService.Object);
+
+            var ex = staff.updateInfo1(id, name, address, phone, mail, imagename);
+
+            Assert.That(ex, Is.EqualTo(expectedReturnValue));
+
         }
 
         // TEST ISVALIDEMAIL
-        [Test]
-        public void isValidEmail_ValidValue_ReturnTrue()
+        [TestCase("tester@gmail.com")]
+        public void isValidEmail_ValidValue_ReturnTrue(string email)
         {
-            var ex = staff.isValidEmail("tester@gmail.com");
+            Staff staff = new Staff();
+            var ex = staff.isValidEmail(email);
             Assert.IsTrue(ex);
         }
-        [Test]
-        public void isValidEmail_InvalidValue1_ReturnFalse()
+        [TestCase("google@@gmail.com")]
+        [TestCase("example.gmail.@com")]
+        [TestCase("@gmail.com")]
+        [TestCase("..@gmail.com")]
+        [TestCase("1234@gmail.com")]
+        public void isValidEmail_InvalidValue_ReturnFalse(string email)
         {
-            var ex = staff.isValidEmail("google@@gmail.com");
+            Staff staff = new Staff();
+            var ex = staff.isValidEmail(email);
             Assert.IsFalse(ex);
         }
-        [Test]
-        public void isValidEmail_InvalidValue2_ReturnFalse()
-        {
-            var ex = staff.isValidEmail("example.gmail.@com");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isValidEmail_InvalidValue3_ReturnFalse()
-        {
-            var ex = staff.isValidEmail("@gmail.com");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isValidEmail_InvalidValue4_ReturnFalse()
-        {
-            var ex = staff.isValidEmail("..@gmail.com");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isValidEmail_InvalidValue5_ReturnFalse()
-        {
-            var ex = staff.isValidEmail("1234@gmail.com");
-            Assert.IsFalse(ex);
-        }
+
         // TEST ISVALIDNAME
-        [Test]
-        public void isValidName_ValidValue_ReturnTrue()
+        [TestCase("Vũ Đặng Khương Duy")]
+        public void isValidName_ValidValue_ReturnTrue(string name)
         {
-            var ex = staff.isValidName("Vũ Đặng Khương Duy");
+            Staff staff = new Staff();
+            var ex = staff.isValidName(name);
             Assert.IsTrue(ex);
         }
-        [Test]
-        public void isValidName_InvalidValue1_ReturnFalse()
+        [TestCase("Pham Minh Tan1")]
+        [TestCase("@Pham Minh Tan")]
+        [TestCase("BuiDuongDuyKhang")]
+        [TestCase("")]
+        [TestCase(".")]
+        [TestCase("super long long long long super long long long long super long long long long super long long long long super long long long long super long long long long super long long long long super long long long long super long long long long super long long long long name")]
+        public void isValidName_InvalidValue1_ReturnFalse(string name)
         {
-            var ex = staff.isValidEmail("Pham Minh Tan1");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isValidName_InvalidValue2_ReturnFalse()
-        {
-            var ex = staff.isValidEmail("@Pham Minh Tan");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isValidName_InvalidValue3_ReturnFalse()
-        {
-            var ex = staff.isValidEmail("BuiDuongDuyKhang");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isValidName_InvalidValue4_ReturnFalse()
-        {
-            var ex = staff.isValidEmail("");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isValidName_InvalidValue5_ReturnFalse()
-        {
-            var ex = staff.isValidEmail(".");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isValidName_InvalidValue6_ReturnFalse()
-        {
-            var ex = staff.isValidEmail("super long long long long super long long long long super long long long long super long long long long super long long long long super long long long long super long long long long super long long long long super long long long long super long long long long name");
+            Staff staff = new Staff();
+            var ex = staff.isValidEmail(name);
             Assert.IsFalse(ex);
         }
 
         //TEST ISVIETNAMESEPHONENUMBER
-        [Test]
-        public void isVietNamesePhoneNumber_ValidValue_ReturnTrue()
+        [TestCase("0323456789")]
+        public void isVietNamesePhoneNumber_ValidValue_ReturnTrue(string phonenumber)
         {
-            var ex = staff.isVietnamesePhoneNumber("0323456789");
+            Staff staff = new Staff();
+            var ex = staff.isVietnamesePhoneNumber(phonenumber);
             Assert.IsTrue(ex);
         }
-        [Test]
-        public void isVietNamesePhoneNumber_InvalidValue1_ReturnFalse()
+        [TestCase("Pham Minh Tan1")]
+        [TestCase("03232@231")]
+        [TestCase("032032030103201301032103021032103210320302103210321023023103219213973829768943678567386578678943619734")]
+        [TestCase("")]
+        [TestCase(".")]
+        public void isVietNamesePhoneNumber_InvalidValue_ReturnFalse(string phonenumber)
         {
-            var ex = staff.isVietnamesePhoneNumber("Pham Minh Tan1");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isVietNamesePhoneNumber_InvalidValue2_ReturnFalse()
-        {
-            var ex = staff.isVietnamesePhoneNumber("03232@231");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isVietNamesePhoneNumber_InvalidValue3_ReturnFalse()
-        {
-            var ex = staff.isVietnamesePhoneNumber("032032030103201301032103021032103210320302103210321023023103219213973829768943678567386578678943619734");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isVietNamesePhoneNumber_InvalidValue4_ReturnFalse()
-        {
-            var ex = staff.isVietnamesePhoneNumber("");
-            Assert.IsFalse(ex);
-        }
-        [Test]
-        public void isVietNamesePhoneNumber_InvalidValue5_ReturnFalse()
-        {
-            var ex = staff.isVietnamesePhoneNumber(".");
+            Staff staff = new Staff();
+            var ex = staff.isVietnamesePhoneNumber(phonenumber);
             Assert.IsFalse(ex);
         }
     }

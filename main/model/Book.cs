@@ -110,6 +110,8 @@ namespace LibraryManagement.model
             this.subject = book.subject;
             this.pubDate = book.pubDate;
             this.imgSource = book.imgSource;
+
+            this.dataLoadFromDB = DataLoadFromDB.getIntance();
         }
         #region method
         public Book(string title, string author, DateTime pubDate, double price) {
@@ -119,13 +121,24 @@ namespace LibraryManagement.model
             this.title = title;
             this.subject = subject;
             this.pubDate = pubDate;
+            this.dataLoadFromDB = DataLoadFromDB.getIntance();
         }
+        public Book(string title, string author, DateTime pubDate, double price, int foo)
+        {
+            this.price = price;
+            this.author = author;
+            this.title = title;
+            this.subject = subject;
+            this.pubDate = pubDate;
+           
+        }
+
         public Book buildWithID(int id)
         {
             this.id = id;
             return this;
         }
-        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+        DataLoadFromDB dataLoadFromDB;
         private int getTotalCopies(int id)
         {
             int totalCopies = 0;

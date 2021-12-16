@@ -63,8 +63,6 @@ namespace LibraryManagement.model.features
                 }
             }
             bookToShows.Add(bookToShow);
-            
-
         }
 
         private void ClearBooksItem()

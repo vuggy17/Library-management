@@ -46,7 +46,7 @@
                             <RowDefinition Height="4.5*"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Image Source="/main;component/assests/img_user.png" 
+                        <Image Source="/assests/img_user.png" 
                                Grid.Row="0"
                                x:Name="img"
                                Grid.RowSpan="2"

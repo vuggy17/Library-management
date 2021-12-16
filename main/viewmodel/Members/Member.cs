@@ -22,12 +22,16 @@ using System.IO;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System.Drawing;
+using LibraryManagement.viewmodel.form;
+using LibraryManagement.Until;
+using LibraryManagement.db;
+
 
 namespace LibraryManagement.controller
 {
     public class MemberViewModel : BaseViewModel
     {
-        DataLoadFromDB data = DataLoadFromDB.getIntance();
+        DataLoadFromDB data;
         private void updateMember()
         {            
             OnPropertyChanged("memberList");
@@ -51,7 +55,7 @@ namespace LibraryManagement.controller
             get => memberList.Count;
         }
 
-
+      
         private ObservableCollection<Converter> _memberList;
         public ObservableCollection<Converter> memberList 
         {
@@ -185,7 +189,7 @@ namespace LibraryManagement.controller
         public MemberViewModel()
         {
 
-            
+            data = DataLoadFromDB.getIntance();
             MemberNavigationViewModel.ChangePage += MemberNavigationViewModel_ChangePage;
             AddNewMemberForm.updateMember += updateMember;
             BlockConfirm.updateMember += updateMember;
@@ -193,7 +197,12 @@ namespace LibraryManagement.controller
             DeleteConfirn.updateMember += updateMember;
             EditForm.updateMember += updateMember;
             CheckOutConfirm.checkOutUpdateMember += updateMember;
-            ReturnBookForm.returnUpdateMember += updateMember;
+            ReturnBookFormViewModel.returnUpdateMember += updateMember;
+        }
+
+        public MemberViewModel(bool value)
+        {
+
         }
         private string searchKeyword = "";
         public string SearchKeyword
@@ -208,9 +217,25 @@ namespace LibraryManagement.controller
             }
         }
        
-        
+        public bool addInToBlacklist(bool isIn)
+        {
+            if (isIn) return false;
+            return true;
+        }
 
-       
+        public bool deleteInToBlacklist(bool isIn)
+        {
+            if (!isIn) return false;
+            return true;
+        }
+
+        public bool deleteFromBlacklist(bool isIn)
+        {
+            if (!isIn) return false;
+            return true;
+        }
+
+
         private ObservableCollection<Converter> filterByInfo(ObservableCollection<Converter> listToFindMember)
         {
             

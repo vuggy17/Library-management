@@ -87,6 +87,7 @@ namespace LibraryManagement.model
             this.email = email;
             this.phone = phone;
         }
+        public Person() { }
         public Person buildWithID(int id)
         {
             this.id = id;

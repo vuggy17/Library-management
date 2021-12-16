@@ -4,6 +4,7 @@ using LibraryManagement.layout.HomeAndFeature.form;
 using LibraryManagement.model;
 using LibraryManagement.model.enums;
 using LibraryManagement.model.form;
+using LibraryManagement.viewmodel.form;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,7 +97,7 @@ namespace LibraryManagement.model.features
             CheckOutConfirm.ClearInfo += hideUserInfo;
             ReserveConfirm.ClearInfo += hideUserInfo;
             MainWindow.resetInfoScan += hideUserInfo;
-            ReturnBookForm.returnUpdateMember += updateUI;
+            ReturnBookFormViewModel.returnUpdateMember += updateUI;
             RenewForm.returnUpdateMember += updateUI;
         }
 

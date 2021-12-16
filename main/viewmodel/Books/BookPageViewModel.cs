@@ -1,9 +1,11 @@
 ﻿using LibraryManagement.controller;
+using LibraryManagement.db;
 using LibraryManagement.layout.Book;
 using LibraryManagement.layout.Book.Components;
 using LibraryManagement.layout.HomeAndFeature.form;
 using LibraryManagement.model;
 using LibraryManagement.viewmodel.features;
+using LibraryManagement.viewmodel.form;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,15 +18,16 @@ using System.Windows.Input;
 
 namespace LibraryManagement.viewmodel.Books
 {
-    class BookPageViewModel: BaseViewModel
+    public class BookPageViewModel : BaseViewModel
     {
+        private IDatabase _db;
         public Book SelectedItem { get; set; }
-        
+
         public String TotalBook
         {
             get
             {
-              return allBooks.Count.ToString();             
+                return allBooks.Count.ToString();
             }
         }
 
@@ -51,22 +54,28 @@ namespace LibraryManagement.viewmodel.Books
                 OnPropertyChanged("FilterList");
             }
         }
-        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+        DataLoadFromDB dataLoadFromDB;
         public BookPageViewModel()
         {
             allBooks = new List<Book>();
-            allBooks = dataLoadFromDB.getBooks();
+            //allBooks = dataLoadFromDB.getBooks();
             searchKey = "";
             Delete = new RelayCommand<Object>((p) => true, (p) => { deleteBookFormShow(SelectedItem); });
             Edit = new RelayCommand<Object>((p) => true, (p) => { editBookFormShow(SelectedItem); });
             filterList = new ObservableCollection<Book>();
-            AddBookForm.update += update;
+          
+            AddNewBookViewModel.update += update;
             DeleteBookViewModel.deleteBook += deleteBookItem;
             EditBookViewModel.update += update;
             CheckOutConfirm.checkOutUpdateBook += update;
-            ReturnBookForm.returnUpdateBook += update;
+            ReturnBookFormViewModel.returnUpdateBook += update;
+            this.dataLoadFromDB = DataLoadFromDB.getIntance();
+        }
 
-
+        public BookPageViewModel(IDatabase db)
+        {
+            this._db = db;
+            allBooks = this._db.getAllBooks();
         }
 
         private void update()
@@ -77,13 +86,13 @@ namespace LibraryManagement.viewmodel.Books
 
         private void editBookItem(Book book)
         {
-            
-            
+
+
         }
 
         private void editBookFormShow(Book book)
         {
-            
+
             EditBook edit = new EditBook(book);
             edit.Show();
         }
@@ -94,9 +103,9 @@ namespace LibraryManagement.viewmodel.Books
             delete.Show();
         }
 
-        private void deleteBookItem(Book book)
+        public void deleteBookItem(Book book)
         {
-            if (book.TotalCopies == book.AvalableCopies )
+            if (book.TotalCopies == book.AvalableCopies)
             {
                 allBooks.Remove(book);
                 dataLoadFromDB.deleteBook(book);
@@ -107,7 +116,29 @@ namespace LibraryManagement.viewmodel.Books
             {
                 MessageBox.Show("Delete book only available when all of it's item had return", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-                      
+
+
+        }
+
+        public void deleteBookItem1(int bookId)
+        {
+                var books = this._db.getAllBookItems();
+                var copies = books.FindAll(item => item.info == bookId).Count;
+                var avai = books.FindAll(item => item.info == bookId && item.lendingStatus == model.enums.LendingStatus.AVAI).Count;
+
+                // nếu tất cả sách đã dược trả hết
+                if (copies == avai)
+                {
+                    var removeItem = allBooks.Find(item => item.id == bookId);
+                    allBooks.Remove(removeItem); // remove preloaded book list
+                    this._db.dropBook(bookId); // call db to drop book
+                    OnPropertyChanged("FilterList"); //update UI
+                    OnPropertyChanged("TotalBook");
+                }
+                else
+                {
+                    throw new Exception("Delete book only available when all of it's item had return");
+                }
             
         }
 

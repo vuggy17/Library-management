@@ -125,14 +125,31 @@ namespace LibraryManagement.model
         }
         public BookItem toBookItem()
         {
-            
             return new BookItem(this._id, this.info.id, this._lendingStatusInfo);
+        }
+        public BookItem bookItemTest()
+        {
+            return new BookItem(this._id, this._lendingStatusInfo, this.info.id);
         }
         public BookToShow(string id, string name)
         {
             this.Id = id;
             this.name = name;
         }
-        
+        public BookToShow(string id, DateTime date, string lending)
+        {
+            this.Id = id;
+            this._dueDate = date;
+            if(lending == "Loaned")
+            {
+                this._lendingStatusInfo = LendingStatus.LOANED;
+            }
+            else
+            {
+                this._lendingStatusInfo = LendingStatus.RESV;
+            }
+            this.info =  new model.Book("", "", DateTime.Now, 1000, 99).buildWithID(13);
+        }
+
     }
 }

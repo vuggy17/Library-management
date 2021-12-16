@@ -13,11 +13,11 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Security.Cryptography;
 using LibraryManagement.controller;
-
+using LibraryManagement.db;
 
 namespace LibraryManagement
 {
-    public class Db
+    public class Db:IDatabase
     {
         public StringBuilder result = new StringBuilder();
         private Db() { }
@@ -153,7 +153,7 @@ namespace LibraryManagement
                 Person info = getInfoByAccountID((int)reader[1]);
                 if (info != null)
                 {
-                    staff.Add(new Staff(info, (int)reader[0], reader[2].ToString()));
+                    staff.Add(new Staff(info, reader[0].ToString(), reader[2].ToString()));
                 }
 
             }
@@ -181,10 +181,7 @@ namespace LibraryManagement
             var reader = executeCommand(command);
             while (reader.Read())
             {
-
-
                 bookItems.Add(new BookItem(int.Parse(reader[0].ToString()), int.Parse(reader[2].ToString()), castTypeLendingBookItem(reader[1].ToString())));
-
             }
             closeConnection();
             return bookItems;
@@ -264,10 +261,10 @@ namespace LibraryManagement
             }
             return lastInsertID;
         }
-        public bool dropBook(Book book)
+        public bool dropBook(int bookId)
         {
             bool result = false;
-            string command = $"DELETE FROM `BOOK` WHERE ID = {book.id}";
+            string command = $"DELETE FROM `BOOK` WHERE ID = {bookId}";
             var reader = executeCommand(command);
             if (reader != null)
             {
@@ -463,7 +460,7 @@ namespace LibraryManagement
             closeConnection();
             return result;
         }
-        public bool updatePassword(int staffId, string newPassword)
+        public bool updatePassword(string staffId, string newPassword)
         {
             
             bool result = false;           
@@ -557,6 +554,20 @@ namespace LibraryManagement
                 MessageBox.Show(ex.Message);
                 return false;
             }
+        }
+
+        public bool getIsInBlacklist(int ID)
+        {
+            List<Account> listAccount = getAllAccount();
+            foreach (Account item in listAccount)
+            {
+                if (item.id == ID)
+                {
+                    if (item.status == model.enums.AccountStatus.BLACKLISTED) return true;
+                    return false;
+                }    
+            }    
+            return false;
         }
     }
 }

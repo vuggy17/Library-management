@@ -28,7 +28,7 @@
                     <ColumnDefinition Width="40"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Image Source="/main;component/assests/Add.png" 
+                <Image Source="/assests/Add.png" 
                        Width="35"
                        Height="35"></Image>
                 <TextBlock Grid.Column="1"

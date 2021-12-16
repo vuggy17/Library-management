@@ -1,4 +1,5 @@
-﻿using LibraryManagement.layout;
+﻿using LibraryManagement.db;
+using LibraryManagement.layout;
 using LibraryManagement.model;
 using LibraryManagement.model.enums;
 using System;
@@ -13,6 +14,7 @@ namespace LibraryManagement.controller
 {
     class DataLoadFromDB
     {
+        IDatabase fakeDb;
         Db db = Db.getInstace();
         private static DataLoadFromDB intance;
         private DataLoadFromDB() {
@@ -82,7 +84,7 @@ namespace LibraryManagement.controller
             {
                 deleteBookItems(bookItem);
             }
-            if (db.dropBook(book))
+            if (db.dropBook(book.id))
             {
                 books.Remove(book);
             }

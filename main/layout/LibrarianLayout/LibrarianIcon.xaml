@@ -14,7 +14,7 @@
                          StrokeThickness="2">
                         <Ellipse.Fill>
                            
-                                <ImageBrush ImageSource="/main;component/assests/librarian_avatar.png" 
+                                <ImageBrush ImageSource="/assests/librarian_avatar.png" 
                                         Stretch="UniformToFill"/>
 
                            
