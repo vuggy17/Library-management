@@ -17,7 +17,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Image Source="/main;component/assets/Background.png"
+        <Image Source="/assets/Background.png"
            Height="1100" Grid.ColumnSpan="2">
     </Image>
         <components:LoginBoard Height="750"

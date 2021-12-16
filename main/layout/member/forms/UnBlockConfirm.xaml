@@ -20,7 +20,7 @@
         <Border CornerRadius="26" Background="White">
             <StackPanel Orientation="Vertical" Margin="40,40">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/main;component/assests/unlock.png" Width="144" Height="130" />
+                    <Image Source="/assests/unlock.png" Width="144" Height="130" />
 
                     <StackPanel Orientation="Vertical" Margin="30 0 0 0">
                         <TextBlock FontWeight="SemiBold" FontSize="32" Text="Unblock member?" HorizontalAlignment="Stretch"/>
