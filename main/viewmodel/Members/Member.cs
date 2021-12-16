@@ -22,8 +22,10 @@ using System.IO;
 using System.Windows.Media;
 using System.Windows.Controls;
 using System.Drawing;
+using LibraryManagement.viewmodel.form;
 using LibraryManagement.Until;
 using LibraryManagement.db;
+
 
 namespace LibraryManagement.controller
 {
@@ -195,7 +197,7 @@ namespace LibraryManagement.controller
             DeleteConfirn.updateMember += updateMember;
             EditForm.updateMember += updateMember;
             CheckOutConfirm.checkOutUpdateMember += updateMember;
-            ReturnBookForm.returnUpdateMember += updateMember;
+            ReturnBookFormViewModel.returnUpdateMember += updateMember;
         }
 
         public MemberViewModel(bool value)

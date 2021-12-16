@@ -25,11 +25,7 @@ namespace LibraryManagement.layout.HomeAndFeature.form
     {
         public static event ToggleFormDialogNotifyHandler ToggleForm;
 
-        public static event updateBookListHandeler returnUpdateBook;
-
-        public static event updateMemberListHandeler returnUpdateMember;
-
-        DataLoadFromDB dataLoadFromDB = DataLoadFromDB.getIntance();
+        private ReturnBookFormViewModel viewModel;
 
         private Account account;
         private ObservableCollection<BookToShow> returnBookList;
@@ -39,39 +35,11 @@ namespace LibraryManagement.layout.HomeAndFeature.form
             ToggleForm();
             this.account = account;
             this.returnBookList = returnBookList;
-            DataContext = new ReturnBookFormViewModel(account.id.ToString(), returnBookList);
+            viewModel = new ReturnBookFormViewModel(account.id.ToString(), returnBookList);
+            DataContext = viewModel;
         }
 
-        private void removeBookToLendingList(Account account, ObservableCollection<BookToShow> CheckOutBookList)
-        {
-            foreach (var book in CheckOutBookList)
-            {
-                BookItem bookItem = book.toBookItem();
-                account.removeBookToLendingBookList(bookItem);
-                if (bookItem.lendingStatus != model.enums.LendingStatus.RESV)
-                {
-                    bookItem.lendingStatus = model.enums.LendingStatus.AVAI;
-                }
-                else
-                {
-                    bookItem.lendingStatus = model.enums.LendingStatus.READY;
-                }               
-                bookItem.bordate = null;
-                bookItem.dueDate = null;
-                if (dataLoadFromDB.updateBookItem(bookItem) != null)
-                {
-                    
-                    returnUpdateBook();
-                    returnUpdateMember();
-                }
-                else
-                {
-                    MessageBox.Show("Unknow error");
-                }
-
-
-            }
-        }
+        
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
@@ -81,7 +49,7 @@ namespace LibraryManagement.layout.HomeAndFeature.form
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-            removeBookToLendingList(account, returnBookList);
+            viewModel.removeBookToLendingList(account, returnBookList);
             this.Close();
             ToggleForm();
         }

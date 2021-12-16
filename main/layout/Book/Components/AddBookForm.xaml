@@ -88,7 +88,7 @@
                 </Grid.RowDefinitions>
                 <TextBox Name="tbName"
                          Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-                         Text=""
+                         Text="{Binding name}"
                          FontFamily="Roboto"
                          FontSize="30"
                          FontWeight="Regular"
@@ -99,7 +99,7 @@
                 <TextBox Grid.Row="1"
                          Name="tbAuthor"
                          Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
-                         Text=""
+                         Text="{Binding author}"
                          FontFamily="Roboto"
                          FontSize="30"
                          FontWeight="Regular"
@@ -120,7 +120,7 @@
                     <TextBox Grid.Column="1"
                              x:Name="tbPrice"
                              InputScope="Number"
-                               Text=""
+                               Text="{Binding price}"
                                FontFamily="Roboto"
                                FontSize="30"
                                FontWeight="Regular"
@@ -142,7 +142,8 @@
                                 Height="50"               
                                  Focusable="False"
                                 FontSize="30"                                
-                                IsTodayHighlighted="True"                               
+                                IsTodayHighlighted="True"     
+                                SelectedDate="{Binding publishingDate}"
                                 Name="datePicker"                               
                                 VerticalAlignment="Center" Width="auto" >              
                     </DatePicker>
@@ -183,8 +184,8 @@
                             Foreground="Black"
                             Background="#D9D7D7"></Button>
                     <Label x:Name="lbNumber"
-                           Grid.Column="2"
-                           Content="0"
+                           Grid.Column="2"                          
+                           Content="{Binding numberOfCopy}"
                            VerticalAlignment="Center"
                              HorizontalAlignment="Center"
                              FontSize="36"></Label>
@@ -207,8 +208,7 @@
                     </Grid.ColumnDefinitions>
                     <Button Content="SAVE"
                             x:Name="btnSave"
-                            Click="btnSave_Click"
-                            Command="{Binding addBookCommand}"
+                            Click="btnSave_Click"                            
                             FontSize="25"
                             FontWeight="Bold"
                             FontFamily="Roboto"
